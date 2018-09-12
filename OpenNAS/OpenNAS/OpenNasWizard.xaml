@@ -28,7 +28,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:OpenNAS_App"
         mc:Ignorable="d"
-        Title="OpenN@S Wizard 1.0" Height="380" Width="800">
+        Title="OpenN@S Wizard 1.0" Height="450" Width="800">
     <Grid>
         <xctk:Wizard x:Name="wizardControl" FinishButtonClosesWindow="True" Finish="Wizard_Finish" Next="Wizard_Next">
             <xctk:WizardPage x:Name="IntroPage" 
@@ -61,7 +61,7 @@
                                     NextPage="{Binding ElementName=Page4}"
                                    PreviousPage="{Binding ElementName=Page2}">
                 <Grid>
-                    <NASControls:AudioProcessingControl x:Name="audioProcessingControl" HorizontalAlignment="Left" Width="Auto" />
+                    <NASControls:AudioProcessingControl x:Name="audioProcessingControl" HorizontalAlignment="Left"/>
                 </Grid>
             </xctk:WizardPage>
 

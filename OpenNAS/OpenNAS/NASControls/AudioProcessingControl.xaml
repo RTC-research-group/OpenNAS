@@ -26,20 +26,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:OpenNAS_App.NASControls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" Width="430">
-    <Grid>
-        <StackPanel>
-            <DockPanel>
+             d:DesignHeight="Auto" Width="Auto">
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top" HorizontalAlignment="Left" Width="Auto" Margin="0 0 0 30">
                 <Label Content="Select NAS Architecture: "/>
-                <ComboBox x:Name="comboBox" HorizontalAlignment="Left"  Width="180" SelectionChanged="comboBox_SelectionChanged">
+                <ComboBox x:Name="comboBox" HorizontalAlignment="Left" VerticalAlignment="Center" Width="180" SelectionChanged="comboBox_SelectionChanged" >
                     <ComboBoxItem Content="Cascade SLPF Architecture"/>
                     <ComboBoxItem Content="Parallel SLPF Architecture"/>
                     <ComboBoxItem Content="Parallel SBPF Architecture"/>
                 </ComboBox>
             </DockPanel>
-            <DockPanel x:Name="archPanel" HorizontalAlignment="Left"   VerticalAlignment="Top" />
+            <DockPanel x:Name="archPanel"/>
 
-        </StackPanel>
+        </DockPanel>
 
-    </Grid>
 </UserControl>
