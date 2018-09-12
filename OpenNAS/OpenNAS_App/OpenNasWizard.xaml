@@ -1,0 +1,92 @@
+﻿<!--/////////////////////////////////////////////////////////////////////////////
+//                                                                             //
+//    Copyright © 2016  Ángel Francisco Jimñénez-Fernández                     //
+//                                                                             //
+//    This file is part of OpenNAS.                                            //
+//                                                                             //
+//    OpenNAS is free software: you can redistribute it and/or modify          //
+//    it under the terms of the GNU General Public License as published by     //
+//    the Free Software Foundation, either version 3 of the License, or        //
+//    (at your option) any later version.                                      //
+//                                                                             //
+//    OpenNAS is distributed in the hope that it will be useful,               //
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of           //
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the              //
+//    GNU General Public License for more details.                             //
+//                                                                             //
+//    You should have received a copy of the GNU General Public License        //
+//    along with OpenNAS. If not, see<http://www.gnu.org/licenses/> .          //
+//                                                                             //
+//////////////////////////////////////////////////////////////////////////////-->
+    
+
+<Window xmlns:NASControls="clr-namespace:OpenNAS_App.NASControls"  x:Class="OpenNAS_App.OpenNasWizard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:OpenNAS_App"
+        mc:Ignorable="d"
+        Title="OpenN@S Wizard 1.0" Height="380" Width="800">
+    <Grid>
+        <xctk:Wizard x:Name="wizardControl" FinishButtonClosesWindow="True" Finish="Wizard_Finish" Next="Wizard_Next">
+            <xctk:WizardPage x:Name="IntroPage" 
+                                   Title="Welcome to OpenN@S wizard."
+                                   Description="Through this process you will able to design a N@S for later generation." />
+          
+            <xctk:WizardPage x:Name="Page1" PageType="Interior"
+                                   Title="OpenN@S Common Settings"
+                                   Description="First define basic OpenN@S features."
+                                   NextPage="{Binding ElementName=Page2}"
+                                   PreviousPage="{Binding ElementName=IntroPage}">
+                <Grid>
+                    <NASControls:OpenNASCommonsControl x:Name="openNASCommonsControl"/>
+                </Grid>
+            </xctk:WizardPage>
+          
+            <xctk:WizardPage x:Name="Page2" PageType="Interior"
+                                   Title="Audio Input Interface"
+                                   Description="Select an input audio source."
+                                   NextPage="{Binding ElementName=Page3}"
+                                   PreviousPage="{Binding ElementName=Page1}">
+                <Grid>
+                    <NASControls:AudioInputControl x:Name="audioInputControl"/>
+                </Grid>
+            </xctk:WizardPage>
+
+            <xctk:WizardPage x:Name="Page3" PageType="Interior"
+                                   Title="Audio processing architecture"
+                                   Description="Choose an architecture to implement OpenN@S and its features."
+                                    NextPage="{Binding ElementName=Page4}"
+                                   PreviousPage="{Binding ElementName=Page2}">
+                <Grid>
+                    <NASControls:AudioProcessingControl x:Name="audioProcessingControl" HorizontalAlignment="Left" Width="Auto" />
+                </Grid>
+            </xctk:WizardPage>
+
+            <xctk:WizardPage x:Name="Page4" PageType="Interior"
+                                   Title="Spikes output stage"
+                                   Description="Select how OpenN@S output spikes will be propagated to other layers.">
+                <Grid>
+                    <NASControls:SpikesOutputControl x:Name="spikesMonitorControl" HorizontalAlignment="Left" Width="Auto" />
+                </Grid>
+            </xctk:WizardPage>
+
+            <xctk:WizardPage x:Name="LastPage" PageType="Interior"
+                                   Title="Last Page"
+                                   Description="OpenN@S generation and files path."
+                                   CanFinish="True">
+                <Grid>
+                    <StackPanel>
+                        <Label Content="Select destination folder for OpenN@S desing:"/>
+                        <DockPanel>
+                            <TextBox x:Name="routeTextBox" Width="300" IsEnabled="False"  Height="20"/>
+                            <Button x:Name="browseFolderButton" Click="browseFolderButton_Click" Content="Browse Folder" Width="100"  Height="20"/>
+                        </DockPanel>
+                    </StackPanel>
+                </Grid>
+            </xctk:WizardPage>
+        </xctk:Wizard>
+    </Grid>
+</Window>
