@@ -69,7 +69,7 @@ The author would like to thank and give credit to:
 <h2 name="License">License</h2>
 
 <p align="justify">
-This project is licensed under the GPL License - see the <a href="https://raw.githubusercontent.com/jpdominguez/NAVIS-Tool/master/LICENSE">LICENSE.md</a> file for details.
+This project is licensed under the GPL License - see the <a href="https://raw.githubusercontent.com/RTC-research-group/OpenNAS/master/LICENSE">LICENSE.md</a> file for details.
 </p>
 <p align="justify">
 Copyright © 2016 Ángel F. Jiménez-Fernández<br>  
