@@ -2,7 +2,7 @@
 
 <h2 name="Description">Description</h2>
 <p align="justify">
-Add some description of what is OpenN@S and its main features.</p>
+Add some description of what OpenN@S is and its main features.</p>
 
 <h2>Table of contents</h2>
 <p align="justify">
