@@ -80,7 +80,7 @@ Copyright © 2016 Ángel F. Jiménez-Fernández<br>
 
 <h2 name="Cite">Cite this work</h2>
 <p align="justify">
-<b>APA</b>: Jiménez-Fernández, A., Cerezuela-Escudero, E., Miró-Amarante, L., Domínguez-Morales, M. J., Gomez-Rodriguez, F., Linares-Barranco, A., & Jiménez-Moreno, G. (2017). A Binaural Neuromorphic Auditory Sensor for FPGA: A Spike Signal Processing Approach. IEEE Trans. Neural Netw. Learning Syst., 28(4), 804-818..
+<b>APA</b>: Jiménez-Fernández, A., Cerezuela-Escudero, E., Miró-Amarante, L., Domínguez-Morales, M. J., Gomez-Rodriguez, F., Linares-Barranco, A., & Jiménez-Moreno, G. (2017). A Binaural Neuromorphic Auditory Sensor for FPGA: A Spike Signal Processing Approach. IEEE Trans. Neural Netw. Learning Syst., 28(4), 804-818.
 </p>
 <p align="justify">
 <b>ISO 690</b>: JIMÉNEZ-FERNÁNDEZ, Angel, et al. A Binaural Neuromorphic Auditory Sensor for FPGA: A Spike Signal Processing Approach. IEEE Trans. Neural Netw. Learning Syst., 2017, vol. 28, no 4, p. 804-818.
