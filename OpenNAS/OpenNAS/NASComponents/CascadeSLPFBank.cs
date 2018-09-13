@@ -31,7 +31,8 @@ using System.Xml;
 
 namespace OpenNAS_App.NASComponents
 {
-    public enum SLPFType { Order2 = 0, Order4  };
+    //TODO: Implement Order4 filters
+    public enum SLPFType { Order2 = 0 }//, Order4  }; 
 
     public class CascadeSLPFBank: AudioProcessingArchitecture
     {

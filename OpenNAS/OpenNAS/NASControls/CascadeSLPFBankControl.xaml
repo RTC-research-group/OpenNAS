@@ -61,7 +61,7 @@
             
             
             <DockPanel Margin="100 0 0 0" DockPanel.Dock="Right">
-                <GroupBox Header="Target Mid Frequencies (Hz)">
+                <GroupBox Header="Target Mid Frequencies (Hz)" BorderBrush="Black">
                     <DataGrid x:Name="midFreqDataGrid" Margin="0 5 0 0">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Ch."/>
@@ -69,7 +69,7 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </GroupBox>
-                <GroupBox Header="SLPF Cut-off Frequencies (Hz)" Margin="20 0 0 0">
+                <GroupBox Header="SLPF Cut-off Frequencies (Hz)" Margin="20 0 0 0" BorderBrush="Black">
                     <DataGrid x:Name="cutOffFreqDataGrid" Margin="0 5 0 0">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Ch."/>
@@ -77,7 +77,7 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </GroupBox>
-                <GroupBox Header="SBPF Attenuation (dB)" Margin="20 0 0 0">
+                <GroupBox Header="SBPF Attenuation (dB)" Margin="20 0 0 0" BorderBrush="Black">
                     <DataGrid x:Name="attDataGrid" Margin="0 5 0 0">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Ch."/>

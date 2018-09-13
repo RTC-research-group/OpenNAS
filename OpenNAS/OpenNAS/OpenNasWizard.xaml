@@ -18,7 +18,7 @@
 //    along with OpenNAS. If not, see<http://www.gnu.org/licenses/> .          //
 //                                                                             //
 //////////////////////////////////////////////////////////////////////////////-->
-    
+
 
 <Window xmlns:NASControls="clr-namespace:OpenNAS_App.NASControls"  x:Class="OpenNAS_App.OpenNasWizard"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -28,55 +28,78 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:OpenNAS_App"
         mc:Ignorable="d"
-        Title="OpenN@S Wizard 1.0" Height="450" Width="800">
+        Title="OpenN@S" Height="450" Width="800">
     <Grid>
-        <xctk:Wizard x:Name="wizardControl" FinishButtonClosesWindow="True" Finish="Wizard_Finish" Next="Wizard_Next">
+        <xctk:Wizard x:Name="wizardControl" FinishButtonClosesWindow="True" Finish="Wizard_Finish" Next="Wizard_Next" Help="Wizard_Help" CanCancel="False" CancelButtonVisibility="Hidden">
+            
             <xctk:WizardPage x:Name="IntroPage" 
                                    Title="Welcome to OpenN@S wizard."
-                                   Description="Through this process you will able to design a N@S for later generation." />
-          
+                                   Description="Through this process you will able to design a NAS for later generation." 
+                                   HelpButtonVisibility="Hidden"
+                                   BackButtonVisibility="Hidden"
+                                   FinishButtonVisibility="Collapsed"
+             />            
+            
+
             <xctk:WizardPage x:Name="Page1" PageType="Interior"
                                    Title="OpenN@S Common Settings"
-                                   Description="First define basic OpenN@S features."
+                                   Description="First configure basic NAS features."
                                    NextPage="{Binding ElementName=Page2}"
-                                   PreviousPage="{Binding ElementName=IntroPage}">
+                                   PreviousPage="{Binding ElementName=IntroPage}" CanHelp="True"
+                                   FinishButtonVisibility="Collapsed">
                 <Grid>
-                    <NASControls:OpenNASCommonsControl x:Name="openNASCommonsControl"/>
+                    <NASControls:OpenNASCommonsControl x:Name="openNASCommonsControl" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 </Grid>
+
             </xctk:WizardPage>
-          
+
+
+
             <xctk:WizardPage x:Name="Page2" PageType="Interior"
                                    Title="Audio Input Interface"
                                    Description="Select an input audio source."
                                    NextPage="{Binding ElementName=Page3}"
-                                   PreviousPage="{Binding ElementName=Page1}">
+                                   PreviousPage="{Binding ElementName=Page1}"
+                                   FinishButtonVisibility="Collapsed">
                 <Grid>
                     <NASControls:AudioInputControl x:Name="audioInputControl"/>
                 </Grid>
+                
             </xctk:WizardPage>
+            
 
             <xctk:WizardPage x:Name="Page3" PageType="Interior"
                                    Title="Audio processing architecture"
                                    Description="Choose an architecture to implement OpenN@S and its features."
-                                    NextPage="{Binding ElementName=Page4}"
-                                   PreviousPage="{Binding ElementName=Page2}">
+                                   NextPage="{Binding ElementName=Page4}"
+                                   PreviousPage="{Binding ElementName=Page2}"
+                                   FinishButtonVisibility="Collapsed">
                 <Grid>
                     <NASControls:AudioProcessingControl x:Name="audioProcessingControl" HorizontalAlignment="Left"/>
                 </Grid>
+                
             </xctk:WizardPage>
+           
 
             <xctk:WizardPage x:Name="Page4" PageType="Interior"
                                    Title="Spikes output stage"
-                                   Description="Select how OpenN@S output spikes will be propagated to other layers.">
+                                   Description="Select how OpenN@S output spikes will be propagated to other layers."
+                                   FinishButtonVisibility="Collapsed">
+                
                 <Grid>
                     <NASControls:SpikesOutputControl x:Name="spikesMonitorControl" HorizontalAlignment="Left" Width="Auto" />
                 </Grid>
+                
             </xctk:WizardPage>
+            
 
             <xctk:WizardPage x:Name="LastPage" PageType="Interior"
                                    Title="Last Page"
                                    Description="OpenN@S generation and files path."
-                                   CanFinish="True">
+                                   CanFinish="True"
+                                   FinishButtonVisibility="Visible"
+                                   NextButtonVisibility="Collapsed">
+                
                 <Grid>
                     <StackPanel>
                         <Label Content="Select destination folder for OpenN@S desing:"/>
@@ -87,6 +110,8 @@
                     </StackPanel>
                 </Grid>
             </xctk:WizardPage>
+            
         </xctk:Wizard>
+        
     </Grid>
 </Window>

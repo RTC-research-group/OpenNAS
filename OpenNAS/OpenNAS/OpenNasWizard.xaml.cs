@@ -96,5 +96,10 @@ namespace OpenNAS_App
 
             routeTextBox.Text = route;
         }
+
+        private void Wizard_Help(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("test");
+        }
     }
 }
