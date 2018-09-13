@@ -29,32 +29,31 @@
              mc:Ignorable="d"              
             >
     <!--:DesignHeight="160" d:DesignWidth="720"-->
-    <Grid>
         <DockPanel>
 
-            <DockPanel MinWidth="210" Margin="0 5 0 0">
+            <DockPanel MinWidth="210" Margin="0 5 0 0" DockPanel.Dock="Left">
 
                 <DockPanel DockPanel.Dock="Top">
                     <Label Content="SLPF Filter:"/>
-                    <ComboBox x:Name="slpfTypecomboBox" HorizontalAlignment="Right" Width="100" VerticalAlignment="Center"/>
+                    <ComboBox x:Name="slpfTypecomboBox" HorizontalAlignment="Right" Width="100" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 </DockPanel>
 
                 <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
                     <Label Content="Number of Channels"/>
-                    <TextBox x:Name="nChTextBox" HorizontalAlignment="Right" Height="23" TextWrapping="Wrap" Text="16" VerticalAlignment="Center" Width="60" IsEnabled="False"/>
+                    <TextBox x:Name="nChTextBox" HorizontalAlignment="Right" Height="23" TextWrapping="Wrap" Text="16" VerticalAlignment="Center" Width="60" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                 </DockPanel>
                 <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
                     <Label Content="Start Freq. (Hz)"/>
-                    <xctk:SingleUpDown x:Name="startFreqUpDowm" Width="60" Height="20" Value="20" Minimum="20" HorizontalAlignment="Right"/>
+                    <xctk:SingleUpDown x:Name="startFreqUpDowm" Width="60" Height="20" Value="20" Minimum="20" HorizontalAlignment="Right" TextAlignment="Center"/>
 
                 </DockPanel>
                 <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
                     <Label Content="Stop Freq. (Hz)"/>
-                    <xctk:SingleUpDown x:Name="stopFreqUpDowm" Width="60" Height="20" Value="22000" Minimum="20" Maximum="22000"  HorizontalAlignment="Right"/>
+                    <xctk:SingleUpDown x:Name="stopFreqUpDowm" Width="60" Height="20" Value="22000" Minimum="20" Maximum="22000"  HorizontalAlignment="Right" TextAlignment="Center"/>
                 </DockPanel>
                 <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
                     <Label Content="SBPF Output Att. (dB)"/>
-                    <xctk:SingleUpDown x:Name="attUpDowm" Width="60" Height="20" Value="-12" Maximum="0"  HorizontalAlignment="Right"/>
+                    <xctk:SingleUpDown x:Name="attUpDowm" Width="60" Height="20" Value="-12" Maximum="0"  HorizontalAlignment="Right" TextAlignment="Center"/>
                 </DockPanel>
                 <Button x:Name="button" Content="Tune frequencies" HorizontalAlignment="Center" VerticalAlignment="Top" Width="100" Height="40" DockPanel.Dock="Bottom" Margin="0 30 0 0" Click="button_Click"/>
             </DockPanel>
@@ -89,5 +88,4 @@
 
         </DockPanel>
 
-    </Grid>
 </UserControl>

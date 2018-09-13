@@ -26,37 +26,33 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:local="clr-namespace:OpenNAS_App.NASControls"
-             mc:Ignorable="d" 
-             d:DesignHeight="160" d:DesignWidth="230">
-    <Grid>
-        <StackPanel>
-            <DockPanel HorizontalAlignment="Left">
-                <Label Content="Audio Input: "/>
-                <ComboBox x:Name="comboBox"  Width="120" />
+             mc:Ignorable="d">
+
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <Label Content="Audio Input: "/>
+            <ComboBox x:Name="comboBox" HorizontalAlignment="Right"  Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        </DockPanel>
+        <GroupBox Header="Select Spikes Generator Settings:" DockPanel.Dock="Top" Margin="0 15 0 0" BorderBrush="Black">
+            <DockPanel>
+                <DockPanel Margin="0 15 0 0" DockPanel.Dock="Top">
+                    <Label Content="Spikes Gen bits:"/>
+                    <xctk:SingleUpDown x:Name="genNbitsUpDowm" Width="60" Height="20" Value="20" Minimum="2" IsEnabled="False" HorizontalAlignment="Right" TextAlignment="Center"/>
+                </DockPanel>
+
+                <DockPanel Margin="0 15 0 0" DockPanel.Dock="Top">
+                    <Label Content="Spikes Gen Clock Div."/>
+                    <xctk:SingleUpDown x:Name="clockDivUpDowm" Width="60" Height="20" Value="15" Minimum="0" ValueChanged="clockDivUpDowm_ValueChanged" HorizontalAlignment="Right" TextAlignment="Center"/>
+                </DockPanel>
+                <DockPanel Margin="0 15 0 0" DockPanel.Dock="Top">
+                    <Label Content="KspikesGen (KSpk./s)"/>
+                    <TextBox x:Name="kgenText" Width="80" IsEnabled="False" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </DockPanel>
+                <DockPanel Margin="0 15 0 0" DockPanel.Dock="Top">
+                    <Label Content="Max Spike Rate: (KSpk./s)"/>
+                    <TextBox x:Name="maxText" Width="80" IsEnabled="False" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="5 0 0 0"/>
+                </DockPanel>
             </DockPanel>
-            <GroupBox Header="Select Spikes Generator Settings:">
-                <StackPanel>
-                    <DockPanel HorizontalAlignment="Left">
-                        <Label Content="Spikes Gen bits:"/>
-                        <xctk:SingleUpDown x:Name="genNbitsUpDowm" Width="60" Height="20" Value="20" Minimum="2" IsEnabled="False"/>
-                    </DockPanel>
-
-                    <DockPanel HorizontalAlignment="Left">
-                        <Label Content="Spikes Gen Clock Div."/>
-                        <xctk:SingleUpDown x:Name="clockDivUpDowm" Width="60" Height="20" Value="15" Minimum="0" ValueChanged="clockDivUpDowm_ValueChanged" />
-                    </DockPanel>
-                    <DockPanel HorizontalAlignment="Left">
-                        <Label Content="KspikesGen (KSpk./sec)"/>
-                        <TextBox x:Name="kgenText" Width="70" IsEnabled="False"/>
-                    </DockPanel>
-                    <DockPanel HorizontalAlignment="Left">
-                        <Label Content="Max Spk. Rate: (KSpk./sec)"/>
-                        <TextBox x:Name="maxText" Width="70" IsEnabled="False"/>
-                    </DockPanel>
-                </StackPanel>
-            </GroupBox>
-        </StackPanel>
-
-
-    </Grid>
+        </GroupBox>
+    </DockPanel>
 </UserControl>
