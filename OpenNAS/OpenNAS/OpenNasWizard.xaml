@@ -48,7 +48,7 @@
                                    PreviousPage="{Binding ElementName=IntroPage}" CanHelp="True"
                                    FinishButtonVisibility="Collapsed">
                 <Grid>
-                    <NASControls:OpenNASCommonsControl x:Name="openNASCommonsControl" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <NASControls:OpenNASCommonsControl x:Name="openNASCommonsControl" />
                 </Grid>
 
             </xctk:WizardPage>

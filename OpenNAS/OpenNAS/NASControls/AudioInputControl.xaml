@@ -39,7 +39,7 @@
 
                 </ComboBox>
             </DockPanel>
-            <DockPanel x:Name="audioInputPanel" HorizontalAlignment="Left"   VerticalAlignment="Top" />
+            <DockPanel x:Name="audioInputPanel" HorizontalAlignment="Left"   VerticalAlignment="Top" Margin="0 10 0 0"/>
 
         </StackPanel>
     </Grid>

@@ -27,27 +27,32 @@
              xmlns:local="clr-namespace:OpenNAS_App.NASControls"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d"
-             Width="200" Height="180">
-    <DockPanel >
-        <GroupBox Header="NAS Common Settings" BorderBrush="Black">
+             Width="Auto" Height="Auto">
+    <DockPanel>
+        <GroupBox Header="NAS Common Settings" BorderBrush="Black" Height="180" Width="200" VerticalAlignment="Top">
             <DockPanel Margin="0 5 0 0" LastChildFill="False">
                 <DockPanel DockPanel.Dock="Top">
                     <Label Content="NAS Chip:"/>
-                    <ComboBox x:Name="nas_chipComboBox" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" HorizontalContentAlignment="Center"/>
+                    <ComboBox x:Name="nas_chipComboBox" HorizontalAlignment="Right" VerticalAlignment="Top" Width="90" HorizontalContentAlignment="Center" SelectionChanged="nas_chipComboBox_SelectionChanged"/>
                 </DockPanel>
                 <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
                     <Label Content="NAS Type:"/>
-                    <ComboBox x:Name="msComboBox" HorizontalAlignment="Right" VerticalAlignment="Top" Width="80" HorizontalContentAlignment="Center"/>
+                    <ComboBox x:Name="msComboBox" HorizontalAlignment="Right" VerticalAlignment="Top" Width="90" HorizontalContentAlignment="Center"/>
                 </DockPanel>
                 <DockPanel DockPanel.Dock="Top"  Margin="0 15 0 0">
-                    <Label Content="Number of Ch." DockPanel.Dock="Left"/>
+                    <Label Content="Number of Channels:" DockPanel.Dock="Left"/>
                     <xctk:SingleUpDown x:Name="nChUpDowm" Width="50" Height="20" Value="64" Minimum="2" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
                 </DockPanel>
                 <DockPanel DockPanel.Dock="Top"  Margin="0 15 0 0">
-                    <Label Content="Clock Freq. (MHz)" DockPanel.Dock="Left"/>
+                    <Label Content="Clock Freq. (MHz):" DockPanel.Dock="Left"/>
                     <xctk:SingleUpDown x:Name="clockFreqUpDowm" Width="50" Height="20" Value="50" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                 </DockPanel>
             </DockPanel>
         </GroupBox>
+        <DockPanel DockPanel.Dock="Right" VerticalAlignment="Top">
+            <Image x:Name="img_platformUsed" Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+                
+            </Image>
+        </DockPanel>
     </DockPanel>
 </UserControl>

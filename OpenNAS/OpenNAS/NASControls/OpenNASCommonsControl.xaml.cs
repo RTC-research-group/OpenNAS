@@ -76,5 +76,33 @@ namespace OpenNAS_App.NASControls
         {
 
         }
+
+        private void nas_chipComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (nas_chipComboBox.SelectedIndex == (int)NASchip.AERNODE)
+            {
+                img_platformUsed.Source = new BitmapImage(new Uri("..\\Figures\\NASchips\\AER-Node.png", UriKind.Relative));
+                img_platformUsed.MaxWidth = 1616;
+                img_platformUsed.MaxHeight = 1022;
+            }
+            else if (nas_chipComboBox.SelectedIndex == (int)NASchip.ZTEX)
+            {
+                img_platformUsed.Source = new BitmapImage(new Uri("..\\Figures\\NASchips\\ZTEX.jpg", UriKind.Relative));
+                img_platformUsed.MaxWidth = 400;
+                img_platformUsed.MaxHeight = 232;
+            }
+            else if (nas_chipComboBox.SelectedIndex == (int)NASchip.SOC_DOCK)
+            {
+                img_platformUsed.Source = new BitmapImage(new Uri("..\\Figures\\NASchips\\SOC-DOCK.png", UriKind.Relative));
+                img_platformUsed.MaxWidth = 1432;
+                img_platformUsed.MaxHeight = 1039;
+            }
+            else if (nas_chipComboBox.SelectedIndex == (int)NASchip.OTHER)
+            {
+                img_platformUsed.Source = new BitmapImage(new Uri("..\\Figures\\NASchips\\Other.png", UriKind.Relative));
+                img_platformUsed.MaxWidth = 400;
+                img_platformUsed.MaxHeight = 232;
+            }
+        }
     }
 }

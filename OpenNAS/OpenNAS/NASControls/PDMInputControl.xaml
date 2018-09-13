@@ -28,45 +28,44 @@
              xmlns:local="clr-namespace:OpenNAS_App.NASControls"
              mc:Ignorable="d" 
             >
-    <Grid>
+
         <DockPanel>
-            <GroupBox Header="PDM Settings">
+            <GroupBox Header="PDM Settings" BorderBrush="Black">
                 <StackPanel>
                     <DockPanel>
                         <Label Content="System Clock (MHz)"/>
-                        <TextBox x:Name="sysClockTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="16" VerticalAlignment="Center" Width="60" IsEnabled="False"/>
+                        <TextBox x:Name="sysClockTextBox" Margin="10 0 0 0" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="23" TextWrapping="Wrap" Text="16" VerticalAlignment="Center" Width="60" IsEnabled="False"/>
                     </DockPanel>
-                    <DockPanel>
+                    <DockPanel Margin="0 10 0 0">
                         <Label Content="PDM Clock Div."/>
-                        <xctk:SingleUpDown x:Name="pdmDivUpDowm"  HorizontalAlignment="Left" Width="60" Height="20" Value="8" Minimum="1" Maximum="255" ValueChanged="pdmDivUpDowm_ValueChanged" />
+                        <xctk:SingleUpDown x:Name="pdmDivUpDowm"  HorizontalAlignment="Right" TextAlignment="Center" Width="60" Height="20" Value="8" Minimum="1" Maximum="255" ValueChanged="pdmDivUpDowm_ValueChanged" />
                     </DockPanel>
-                    <DockPanel>
+                <DockPanel Margin="0 10 0 0">
                         <Label Content="PDM Clock (MHz)"/>
-                        <TextBox x:Name="pdmClockTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="16" VerticalAlignment="Center" Width="60" IsEnabled="False"/>
+                        <TextBox x:Name="pdmClockTextBox" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="23" TextWrapping="Wrap" Text="16" VerticalAlignment="Center" Width="60" IsEnabled="False"/>
                     </DockPanel>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="Anti-Offset SHPF Settings">
+            <GroupBox Header="Anti-Offset SHPF Settings" BorderBrush="Black" Margin="10 0 0 0">
                 <StackPanel>
                     <DockPanel>
                         <Label Content="Cut-off Freq. (Hz)"/>
-                        <xctk:SingleUpDown x:Name="shpfCutOffUpDowm"  HorizontalAlignment="Left" Width="60" Height="20" Value="20" Minimum="1" Maximum="48000" />
+                        <xctk:SingleUpDown x:Name="shpfCutOffUpDowm" Margin="10 0 0 0"  HorizontalAlignment="Right" TextAlignment="Center" Width="60" Height="20" Value="20" Minimum="1" Maximum="48000" />
                     </DockPanel>
 
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="Anti-Aliasing SLPF Settings">
+        <GroupBox Header="Anti-Aliasing SLPF Settings" BorderBrush="Black"  Margin="10 0 0 0">
                 <StackPanel>
                     <DockPanel>
                         <Label Content="Cut-off Freq. (Hz)"/>
-                        <xctk:SingleUpDown x:Name="slpfCutOffUpDowm"  HorizontalAlignment="Left" Width="60" Height="20" Value="8000" Minimum="1" Maximum="48000" />
+                        <xctk:SingleUpDown x:Name="slpfCutOffUpDowm" Margin="10 0 0 0"  HorizontalAlignment="Right" TextAlignment="Center" Width="60" Height="20" Value="8000" Minimum="1" Maximum="48000" />
                     </DockPanel>
-                    <DockPanel>
+                    <DockPanel Margin="0 10 0 0">
                         <Label Content="Gain (dB)"/>
-                        <xctk:SingleUpDown x:Name="slpfGainUpDowm"  HorizontalAlignment="Left" Width="60" Height="20" Value="-3" Minimum="-100" Maximum="100"  />
+                        <xctk:SingleUpDown x:Name="slpfGainUpDowm"  HorizontalAlignment="Right" TextAlignment="Center" Width="60" Height="20" Value="-3" Minimum="-100" Maximum="100"  />
                     </DockPanel>
                 </StackPanel>
             </GroupBox>
         </DockPanel>
-    </Grid>
 </UserControl>
