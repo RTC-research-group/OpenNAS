@@ -60,7 +60,7 @@
         </DockPanel>
         
         
-        <DockPanel DockPanel.Dock="Right" Margin="100 0 0 0">
+        <DockPanel DockPanel.Dock="Right" Margin="50 0 0 0">
             <GroupBox Header="Target Mid Frequencies (Hz)" BorderBrush="Black">
                 <DataGrid x:Name="midFreqDataGrid" Margin="0 5 0 0">
                     <DataGrid.Columns>

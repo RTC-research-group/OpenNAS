@@ -34,7 +34,7 @@
 
             <DockPanel DockPanel.Dock="Top">
                 <Label Content="SLPF Filter:"/>
-                <ComboBox x:Name="slpfTypecomboBox" HorizontalAlignment="Right" Width="120" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                <ComboBox x:Name="slpfTypecomboBox" HorizontalAlignment="Right" Width="120" Height="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
             </DockPanel>
             <DockPanel DockPanel.Dock="Top"  Margin="0 15 0 0">
                 <Label Content="Number of Channels"/>
@@ -58,7 +58,7 @@
 
 
 
-        <DockPanel DockPanel.Dock="Right" Margin="100 0 0 0">
+        <DockPanel DockPanel.Dock="Right" Margin="50 0 0 0">
             <GroupBox Header="Target Mid Frequencies (Hz)" BorderBrush="Black">
                 <DataGrid x:Name="midFreqDataGrid" Margin="0 5 0 0">
                     <DataGrid.Columns>

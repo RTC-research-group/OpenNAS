@@ -31,7 +31,7 @@
         <StackPanel>
             <DockPanel>
                 <Label Content="Select Audio Input: "/>
-                <ComboBox x:Name="comboBox" HorizontalAlignment="Left"  Width="130" SelectionChanged="comboBox_SelectionChanged">
+                <ComboBox x:Name="comboBox" HorizontalAlignment="Left"  Width="130" SelectionChanged="comboBox_SelectionChanged" HorizontalContentAlignment="Center">
                     <ComboBoxItem Content="AC'97 Codec"/>
                     <ComboBoxItem Content="I2S Audio ADC"/>
                     <ComboBoxItem Content="PDM Mic"/>

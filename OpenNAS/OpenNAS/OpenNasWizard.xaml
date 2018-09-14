@@ -28,7 +28,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:OpenNAS_App"
         mc:Ignorable="d"
-        Title="OpenN@S" Height="450" Width="800">
+        Title="OpenN@S" Height="490" Width="850">
     <Grid>
         <xctk:Wizard x:Name="wizardControl" FinishButtonClosesWindow="True" Finish="Wizard_Finish" Next="Wizard_Next" Help="Wizard_Help" CanCancel="False" CancelButtonVisibility="Hidden">
             
@@ -43,7 +43,7 @@
 
             <xctk:WizardPage x:Name="Page1" PageType="Interior"
                                    Title="OpenN@S Common Settings"
-                                   Description="First configure basic NAS features."
+                                   Description="First configure basic OpenN@S features. (Step 1/5)"
                                    NextPage="{Binding ElementName=Page2}"
                                    PreviousPage="{Binding ElementName=IntroPage}" CanHelp="True"
                                    FinishButtonVisibility="Collapsed">
@@ -57,7 +57,7 @@
 
             <xctk:WizardPage x:Name="Page2" PageType="Interior"
                                    Title="Audio Input Interface"
-                                   Description="Select an input audio source."
+                                   Description="Select an input audio source. (Step 2/5)"
                                    NextPage="{Binding ElementName=Page3}"
                                    PreviousPage="{Binding ElementName=Page1}"
                                    FinishButtonVisibility="Collapsed">
@@ -70,7 +70,7 @@
 
             <xctk:WizardPage x:Name="Page3" PageType="Interior"
                                    Title="Audio processing architecture"
-                                   Description="Choose an architecture to implement OpenN@S and its features."
+                                   Description="Choose an architecture to implement OpenN@S and its features. (Step 3/5)"
                                    NextPage="{Binding ElementName=Page4}"
                                    PreviousPage="{Binding ElementName=Page2}"
                                    FinishButtonVisibility="Collapsed">
@@ -83,7 +83,7 @@
 
             <xctk:WizardPage x:Name="Page4" PageType="Interior"
                                    Title="Spikes output stage"
-                                   Description="Select how OpenN@S output spikes will be propagated to other layers."
+                                   Description="Select how OpenN@S output spikes will be propagated to other layers. (Step 4/5)"
                                    FinishButtonVisibility="Collapsed">
                 
                 <Grid>
@@ -94,8 +94,8 @@
             
 
             <xctk:WizardPage x:Name="LastPage" PageType="Interior"
-                                   Title="Last Page"
-                                   Description="OpenN@S generation and files path."
+                                   Title="OpenN@S generation"
+                                   Description="You OpenN@S design is almost ready. (Step 5/5)"
                                    CanFinish="True"
                                    FinishButtonVisibility="Visible"
                                    NextButtonVisibility="Collapsed">
@@ -104,7 +104,7 @@
                     <DockPanel>
                         <Label Content="Select destination folder for generating the OpenN@S design:" DockPanel.Dock="Top" VerticalAlignment="Top"/>
                         <DockPanel DockPanel.Dock="Top" VerticalAlignment="Top" Margin="0 5 0 0">
-                        <Button x:Name="browseFolderButton" Click="browseFolderButton_Click" Content="Browse Folder" Width="100"  Height="20" HorizontalAlignment="Right" Margin="20 0 0 0" DockPanel.Dock="Right"/>
+                        <Button x:Name="browseFolderButton" Click="browseFolderButton_Click" Content="Browse Folder" Width="100"  Height="20" HorizontalAlignment="Right" Margin="20 0 20 0" DockPanel.Dock="Right"/>
                         <TextBox x:Name="routeTextBox" Width="Auto" IsReadOnly="True" Height="20" DockPanel.Dock="Left"/>
                             
                         </DockPanel>
