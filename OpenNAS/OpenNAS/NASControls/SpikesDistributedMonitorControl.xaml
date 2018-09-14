@@ -25,30 +25,29 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             mc:Ignorable="d" 
-             d:DesignHeight="130" d:DesignWidth="180">
-    <Grid>
-        <GroupBox Header="Spikes Distributed Monitor">
-            <StackPanel>
-                <DockPanel>
+             mc:Ignorable="d">
+    <DockPanel Width="180">
+        <GroupBox Header="Spikes Distributed Monitor" BorderBrush="Black">
+            <DockPanel Margin="0 5 0 0">
+                <DockPanel DockPanel.Dock="Top">
                     <Label Content="Spikes to monitor:"/>
-                    <TextBox x:Name="totalSignalsText" IsEnabled="False"/>
+                    <TextBox x:Name="totalSignalsText" IsEnabled="False" HorizontalAlignment="Right" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 </DockPanel>
-                <DockPanel HorizontalAlignment="Left">
+                <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
                     <Label Content="Spikes FIFO Bits:"/>
-                    <xctk:SingleUpDown x:Name="spikesFifoUpDowm" Width="50" Height="20" Value="9" ValueChanged="spikesFifoUpDowm_ValueChanged" />
+                    <xctk:SingleUpDown x:Name="spikesFifoUpDowm" Width="50" Height="20" Value="9" ValueChanged="spikesFifoUpDowm_ValueChanged" HorizontalAlignment="Right" TextAlignment="Center"/>
                 </DockPanel>
-                <DockPanel>
+                <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
                     <Label Content="AER FIFO Bits:"/>
-                    <xctk:SingleUpDown x:Name="aerFifoUpDowm" Width="50" Height="20" Value="11" ValueChanged="spikesFifoUpDowm_ValueChanged"/>
+                    <xctk:SingleUpDown x:Name="aerFifoUpDowm" Width="50" Height="20" Value="11" ValueChanged="spikesFifoUpDowm_ValueChanged" HorizontalAlignment="Right" TextAlignment="Center"/>
                 </DockPanel>
 
-                <DockPanel>
+                <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
                     <Label Content="Total Bits:"/>
-                    <TextBox x:Name="totalBitsText" IsEnabled="False"/>
+                    <TextBox x:Name="totalBitsText" IsEnabled="False" HorizontalAlignment="Right" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 </DockPanel>
 
-            </StackPanel>
+            </DockPanel>
         </GroupBox>
-    </Grid>
+    </DockPanel>
 </UserControl>

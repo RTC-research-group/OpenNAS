@@ -100,15 +100,18 @@
                                    FinishButtonVisibility="Visible"
                                    NextButtonVisibility="Collapsed">
                 
-                <Grid>
-                    <StackPanel>
-                        <Label Content="Select destination folder for OpenN@S desing:"/>
-                        <DockPanel>
-                            <TextBox x:Name="routeTextBox" Width="300" IsEnabled="False"  Height="20"/>
-                            <Button x:Name="browseFolderButton" Click="browseFolderButton_Click" Content="Browse Folder" Width="100"  Height="20"/>
+
+                    <DockPanel>
+                        <Label Content="Select destination folder for generating the OpenN@S design:" DockPanel.Dock="Top" VerticalAlignment="Top"/>
+                        <DockPanel DockPanel.Dock="Top" VerticalAlignment="Top" Margin="0 5 0 0">
+                        <Button x:Name="browseFolderButton" Click="browseFolderButton_Click" Content="Browse Folder" Width="100"  Height="20" HorizontalAlignment="Right" Margin="20 0 0 0" DockPanel.Dock="Right"/>
+                        <TextBox x:Name="routeTextBox" Width="Auto" IsReadOnly="True" Height="20" DockPanel.Dock="Left"/>
+                            
                         </DockPanel>
-                    </StackPanel>
-                </Grid>
+                        <Label Content="Click on &quot;Finish&quot; to generate the design at the folder that you selected." DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Margin="0 0 0 0"/>
+                        
+                    </DockPanel>
+
             </xctk:WizardPage>
             
         </xctk:Wizard>

@@ -25,23 +25,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:OpenNAS_App.NASControls"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <StackPanel>
-            <DockPanel>
-                <Label Content="Select Spikes Output: "/>
-                <ComboBox x:Name="comboBox" HorizontalAlignment="Left"  Width="100" SelectionChanged="comboBox_SelectionChanged">
-                    <ComboBoxItem Content="Spikes Distributed Monitor"/>
-                    <ComboBoxItem Content="Spinnaker-AER Interface v1"/>
-                    <ComboBoxItem Content="Spinnaker-AER Interface v2"/>
-                    <ComboBoxItem Content="AER Monitor and Spinnaker Interface"/>
-                    <ComboBoxItem Content="USB Interface"/>
-                </ComboBox>
-                <Label x:Name="ACK_SpiNN_label" Visibility="Hidden">Developed by APT Group (University of Manchester)</Label>
-            </DockPanel>
-            <DockPanel x:Name="spikesOutputPanel" HorizontalAlignment="Left"   VerticalAlignment="Top" />
+             mc:Ignorable="d" Height="Auto" Width="Auto">
 
-        </StackPanel>
-    </Grid>
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <Label Content="Select Spikes Output: "/>
+            <ComboBox x:Name="comboBox" HorizontalAlignment="Left"  Width="230" SelectionChanged="comboBox_SelectionChanged" HorizontalContentAlignment="Center">
+                <ComboBoxItem Content="Spikes Distributed Monitor"/>
+                <ComboBoxItem Content="Spinnaker-AER Interface v1"/>
+                <ComboBoxItem Content="Spinnaker-AER Interface v2"/>
+                <ComboBoxItem Content="AER Monitor and Spinnaker Interface"/>
+                <ComboBoxItem Content="USB Interface"/>
+            </ComboBox>
+            <Label x:Name="ACK_SpiNN_label" Visibility="Hidden">Developed by APT Group (University of Manchester)</Label>
+        </DockPanel>
+        <DockPanel x:Name="spikesOutputPanel" HorizontalAlignment="Left"   VerticalAlignment="Top" Margin="0 20 0 0"/>
+
+    </DockPanel>
 </UserControl>
