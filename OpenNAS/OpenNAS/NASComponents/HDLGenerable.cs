@@ -1,6 +1,6 @@
 ﻿/////////////////////////////////////////////////////////////////////////////////
 //                                                                             //
-//    Copyright © 2016  Ángel Francisco Jimñénez-Fernández                     //
+//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                     //
 //                                                                             //
 //    This file is part of OpenNAS.                                            //
 //                                                                             //
@@ -54,7 +54,7 @@ namespace OpenNAS_App.NASComponents
 
             license =  "--///////////////////////////////////////////////////////////////////////////////\n";
             license += "--//                                                                           //\n";
-            license += "--//    Copyright © 2016  Ángel Francisco Jimñénez-Fernández                   //\n";
+            license += "--//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                   //\n";
             license += "--//                                                                           //\n";
             license += "--//    This file is part of OpenNAS.                                          //\n";
             license += "--//                                                                           //\n";
