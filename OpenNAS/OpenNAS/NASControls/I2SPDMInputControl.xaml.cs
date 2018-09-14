@@ -55,8 +55,8 @@ namespace OpenNAS_App.NASControls
             NASTYPE type = commons.monoStereo;
             uint clkDiv = (uint)uc_PDMInputControl.pdmDivUpDowm.Value;
 
-            uint nBits = 20;//(uint)genNbitsUpDowm.Value;
-            UInt16 clockDiv = 0x000f;//(UInt16)clockDivUpDowm.Value;
+            uint nBits = (uint) uc_I2SInputControl.genNbitsUpDowm.Value;
+            UInt16 clockDiv = (UInt16)uc_I2SInputControl.clockDivUpDowm.Value;
 
             I2S_PDMAudioInput i2spdm = new I2S_PDMAudioInput(clk, type, clkDiv, (double)uc_PDMInputControl.shpfCutOffUpDowm.Value, (double)uc_PDMInputControl.slpfCutOffUpDowm.Value, (double)uc_PDMInputControl.slpfGainUpDowm.Value, nBits, clockDiv);
             return i2spdm;
@@ -65,6 +65,7 @@ namespace OpenNAS_App.NASControls
         public void InitializeControlValues(OpenNASCommons commons)
         {
             this.commons = commons;
+            uc_I2SInputControl.clockDivUpDowm_ValueChanged(null, null);
         }
 
         public void ToControl(AudioInput audioIput)

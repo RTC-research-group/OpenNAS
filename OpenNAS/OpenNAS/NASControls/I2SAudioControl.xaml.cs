@@ -51,8 +51,8 @@ namespace OpenNAS_App.NASControls
 
         public AudioInput FromControl()
         {
-            uint nBits = 20;//(uint)genNbitsUpDowm.Value;
-            UInt16 clockDiv = 0x000f;//(UInt16)clockDivUpDowm.Value;
+            uint nBits = (uint)genNbitsUpDowm.Value;
+            UInt16 clockDiv = (UInt16)clockDivUpDowm.Value;
             I2SAudioInput i2s = new I2SAudioInput(commons.clockValue, commons.monoStereo, nBits, clockDiv);
             return i2s;
         }
@@ -60,11 +60,30 @@ namespace OpenNAS_App.NASControls
         public void InitializeControlValues(OpenNASCommons commons)
         {
             this.commons = commons;
+            clockDivUpDowm_ValueChanged(null, null);
         }
 
         public void ToControl(AudioInput audioIput)
         {
             throw new NotImplementedException();
+        }
+
+        public void clockDivUpDowm_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (commons != null)
+            {
+                uint nBits = (uint)genNbitsUpDowm.Value;
+                uint clockDiv = (uint)clockDivUpDowm.Value;
+
+                float kgen = 1000 * commons.clockValue / ((float)Math.Pow(2, nBits - 1) * (clockDiv + 1));
+                kgenText.Text = kgen.ToString("0.0000");
+                float max = kgen * (float)Math.Pow(2, nBits - 1);
+
+                maxText.Text = max.ToString("0.0000");
+            }
+
+
+
         }
     }
 }

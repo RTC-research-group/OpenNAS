@@ -24,10 +24,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:local="clr-namespace:OpenNAS_App.NASControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Label Content="I2S Audio ADC"/>
+        <GroupBox Header="Select Spikes Generator Settings:" DockPanel.Dock="Top" Margin="0 15 0 0" BorderBrush="Black">
+            <DockPanel>
+                <DockPanel Margin="0 15 0 0" DockPanel.Dock="Top">
+                    <Label Content="Spikes Gen bits:"/>
+                    <xctk:SingleUpDown x:Name="genNbitsUpDowm" Width="60" Height="20" Value="20" Minimum="2" IsEnabled="False" HorizontalAlignment="Right" TextAlignment="Center"/>
+                </DockPanel>
+
+                <DockPanel Margin="0 15 0 0" DockPanel.Dock="Top">
+                    <Label Content="Spikes Gen Clock Div."/>
+                    <xctk:SingleUpDown x:Name="clockDivUpDowm" Width="60" Height="20" Value="15" Minimum="0" ValueChanged="clockDivUpDowm_ValueChanged" HorizontalAlignment="Right" TextAlignment="Center"/>
+                </DockPanel>
+                <DockPanel Margin="0 15 0 0" DockPanel.Dock="Top">
+                    <Label Content="KspikesGen (KSpk./s)"/>
+                    <TextBox x:Name="kgenText" Width="80" IsEnabled="False" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </DockPanel>
+                <DockPanel Margin="0 15 0 0" DockPanel.Dock="Top">
+                    <Label Content="Max Spike Rate: (KSpk./s)"/>
+                    <TextBox x:Name="maxText" Width="80" IsEnabled="False" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="5 0 0 0"/>
+                </DockPanel>
+            </DockPanel>
+        </GroupBox>
+
     </Grid>
 </UserControl>
