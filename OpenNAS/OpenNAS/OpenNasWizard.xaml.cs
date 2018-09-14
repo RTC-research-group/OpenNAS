@@ -99,7 +99,7 @@ namespace OpenNAS_App
 
         private void Wizard_Help(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("test");
+            MessageBox.Show("Not implemented yet");
         }
     }
 }
