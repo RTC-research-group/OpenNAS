@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OpenNAS_App.NASComponents.AC97AudioInput" Collapsed="true">
+    <Position X="7.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CIAAQAAAAAAAAAIEAAAAAAAAAgAAACAAAAAAAAAgBAA=</HashCode>
+      <FileName>NASComponents\AC97AudioInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenNAS_App.NASComponents.CascadeSLPFBank" Collapsed="true">
+    <Position X="14.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAQAAAAAAECAAGAAGAAQAAAgAAACABAAAAAEAgJAE=</HashCode>
+      <FileName>NASComponents\CascadeSLPFBank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenNAS_App.NASComponents.HDLGenerable">
+    <Position X="9.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CAAAQAAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAAQABAA=</HashCode>
+      <FileName>NASComponents\HDLGenerable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenNAS_App.NASComponents.I2SAudioInput" Collapsed="true">
+    <Position X="9" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CIAAQAAAAAAAAAAEAAAAAAAAAgAAACAAAAAAAAAgBAA=</HashCode>
+      <FileName>NASComponents\I2SAudioInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenNAS_App.NASComponents.OpenNASArchitecture">
+    <Position X="18.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAJAAAAEAAAAAAAABAAAAAAABAQAAEAAAAA=</HashCode>
+      <FileName>NASComponents\OpenNASArchitecture.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenNAS_App.NASComponents.OpenNASCommons">
+    <Position X="14" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAACAAAAQAACQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NASComponents\OpenNASCommons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenNAS_App.NASComponents.AudioInput" Collapsed="true">
+    <Position X="9" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NASComponents\OpenNASComponentsInterface.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OpenNAS_App.NASComponents.AudioProcessingArchitecture" Collapsed="true">
+    <Position X="13.25" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NASComponents\OpenNASComponentsInterface.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OpenNAS_App.NASComponents.SpikesOutputInterface" Collapsed="true">
+    <Position X="17" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NASComponents\OpenNASComponentsInterface.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OpenNAS_App.NASComponents.ParallelSBPFBank" Collapsed="true">
+    <Position X="12.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CACAQAAAACAGCAAGAACAAAAAAiAAACABAAAAAAAgJAE=</HashCode>
+      <FileName>NASComponents\ParallelSBPFBank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenNAS_App.NASComponents.PDMAudioInput" Collapsed="true">
+    <Position X="10.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAQAAAAAAEAAAEAAAAACAAAgIAACAAAAAAAIAgBAA=</HashCode>
+      <FileName>NASComponents\PDMAudioInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenNAS_App.NASComponents.SpikesDistributedMonitor" Collapsed="true">
+    <Position X="16" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CQAAQAAAAAAAgAAEAACAAAAAAgAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>NASComponents\SpikesDistributedMonitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenNAS_App.NASComponents.SpiNNaker_AERInterface" Collapsed="true">
+    <Position X="18.25" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CQAAQAAAAAAAgAAEAACAAAAAAgAAAAAAAAAAAQAABAA=</HashCode>
+      <FileName>NASComponents\SpiNNaker_AERInterface.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
