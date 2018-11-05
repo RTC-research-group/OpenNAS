@@ -81,20 +81,48 @@ The Welcome screen show a brief text which indicates to the user what OpenNAS to
 <img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_Step1.png" alt="OpenNAS wizard step_1 screen">
 </p>
 
+<p align="justify">
+The first step allows to the user to select the NAS common settings, which are the target FPGA chip and its clock frequency, if the NAS is MONO or STEREO, and the number of frequency channels. A picture of the FPGA-based board selected in NAS chip is showed to the user to quickly identify the needed hardware components. 
+</p>
+
 <p align="center">
 <img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_Step2.png" alt="OpenNAS wizard step_2 screen">
+</p>
+
+<p align="justify">
+In this step, the input audio source must be selected. There are several options, among which we can find the AC'97 audio codec, a pair of Pulse Density Modulation (PDM) microphones and an I2S-based audio codec. Each input option has its own configuration parameters, which the user can set according with its project requirements. 
 </p>
 
 <p align="center">
 <img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_Step3.png" alt="OpenNAS wizard step_3 screen">
 </p>
 
+<p align="justify">
+NAS processing architecture is defined in the step 3, where user can choose either a cascade or parallel architecture. 
+</p>
+
 <p align="center">
 <img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_Step4.png" alt="OpenNAS wizard step_4 screen">
 </p>
 
+<p align="justify">
+In this step, the input audio source must be selected. There are several options, among which we can find the AC'97 audio codec, a pair of Pulse Density Modulation (PDM) microphones and an I2S-based audio codec. Each input option has its own configuration parameters, which the user can set according with its project requirements. 
+</p>
+
 <p align="center">
 <img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_Step5.png" alt="OpenNAS wizard step_5 screen">
+</p>
+
+<p align="justify">
+In this step, the input audio source must be selected. There are several options, among which we can find the AC'97 audio codec, a pair of Pulse Density Modulation (PDM) microphones and an I2S-based audio codec. Each input option has its own configuration parameters, which the user can set according with its project requirements. 
+</p>
+
+<p align="center">
+<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_Success.png" alt="OpenNAS wizard success screen">
+</p>
+
+<p align="justify">
+In this step, the input audio source must be selected. There are several options, among which we can find the AC'97 audio codec, a pair of Pulse Density Modulation (PDM) microphones and an I2S-based audio codec. Each input option has its own configuration parameters, which the user can set according with its project requirements. 
 </p>
 
 <h2 name="Contributing">Contributing</h2>
