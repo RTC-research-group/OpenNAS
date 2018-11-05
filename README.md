@@ -46,7 +46,7 @@ OpenNAS has several software dependencies which needs to be solved before execut
 </p>
 <h3>Installation</h3>
 <p align="justify">
-First step to use OpenNAS software is to download the repository from the RTC-OpenNAS GitHub main webpage. Click on "Clone or download" button, and select "Download ZIP".
+The first step to use OpenNAS software is to download the repository from the RTC-OpenNAS GitHub main webpage. Click on "Clone or download" button, and select "Download ZIP".
 </p>
 
 <p align="center">
