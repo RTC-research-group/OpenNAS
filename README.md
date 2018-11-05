@@ -1,8 +1,8 @@
 # OpenN@S
 
 <h2 name="Description">Description</h2>
-<p align="justify">
 <!--What OpenNAS is; Its main features-->
+<p align="justify">
 OpenNAS is an open source VHDL-based Neuromorphic Auditory Sensor (NAS) code generator capable of automatically generating the necessary files to create a VHDL project for FPGA. OpenNAS guides designers with a friendly interface and allows NAS specification using a five-steps wizard for later code generation. It includes several audio input interfaces (AC'97 audio codec, I2S ADC and PDM microphones), different processing architectures (cascade and parallel), and a set of neuromorphic output interfaces (parallel AER, Spinnaker). After NAS generation, designers have everything prepared for building and synthesizing the VHDL project for a target FPGA using manufacturer's tools.
 </p>
 
@@ -21,9 +21,9 @@ OpenNAS is an open source VHDL-based Neuromorphic Auditory Sensor (NAS) code gen
 
 <h2 name="GettingStarted">Getting started</h2>
 
-<p align="justify">
 <!--Add some brief instructions and introduction and maybe a link to a videotutorial!-->
- OpenNAS is a five-steps wizard which helps you to design and configurate a NAS in a easy way. Each step is focused on a specific section of the sensor, divided in Commons, Input, Processing and Output. User can set many parameters, like filters attenuation, number of frequency channels, etc. The meaning of all of these parameters will be detailed in the OpenNAS wiki.
+<p align="justify">
+OpenNAS is a five-steps wizard which helps you to design and configurate a NAS in a easy way. Each step is focused on a specific section of the sensor, divided in Commons, Input, Processing and Output. User can set many parameters, like filters attenuation, number of frequency channels, etc. The meaning of all of these parameters will be detailed in the OpenNAS wiki.
 </p>
 
 <p align="justify">
@@ -46,21 +46,35 @@ The tool has several software dependencies which needs to be solved before to be
 </p>
 <h3>Installation</h3>
 <p align="justify">
-  First step to use OpenNAS software is to download the repository from the RTC-OpenNAS GitHub main webpage. Click on "Clone or download" button, and select "Download ZIP".
-</p>
- 
-<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_download_repo.png" alt="Download OpenNAS repository">
- 
-<p align="justify">
-  When downloaded, extract the project. There is a main folder, OpenNAS, which contains the OpenNAS.sln file and the OpenNAS C# project folder. To run the OpenNAS software tool, open the OpenNAS project by clicking on OpenNAS.sln, and then the VisualStudio environment will be launched. Click on the "Start" button. Then, the Welcome window of the OpenNAS tool will appear.
+First step to use OpenNAS software is to download the repository from the RTC-OpenNAS GitHub main webpage. Click on "Clone or download" button, and select "Download ZIP".
 </p>
 
-<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_Welcome.PNG" alt="OpenNAS wizard Welcome screen">
+<p align="center">
+<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_download_repo.png" alt="Download OpenNAS repository">
+</p>
+ 
+<p align="justify">
+When downloaded, extract the project. There is a main folder, OpenNAS, which contains the OpenNAS.sln file and the OpenNAS C# project folder. To run the OpenNAS software tool, open the OpenNAS project by clicking on OpenNAS.sln, and then the VisualStudio environment will be launched. Click on the "Start" button. Then, the Welcome window of the OpenNAS tool will appear.
+</p>
+
+<p align="center">
+<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_tool_flow.png" alt="OpenNAS tool usage flow">	
+</p>
+
+
 
 <h2 name="Usage">Usage</h2>
 <!--Add a brief tutorial or user manual in order to make it easy and understandable to work with OpenN@S for a user that has not tried it yet. Add images and stuff. This could easily be the transcription of the videotutorial and some screenshots from it.-->
 <p align="justify">
-<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_tool_flow.png" alt="OpenNAS tool usage flow">	
+Once OpenNAS tool has been executed, and the Welcome screen appears, the user only needs to complete the five steps of the OpenNAS wizard to obtain the generated VHDL files.
+</p>
+
+<p align="center">
+<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_Welcome.PNG" alt="OpenNAS wizard Welcome screen">
+</p>
+
+<p align="justify">
+The Welcome screen show a brief text which indicates to the user what OpenNAS tool does and also the information about our research group. Click on Next button to move fordward in the wizard.
 </p>
 
 <h2 name="Contributing">Contributing</h2>
