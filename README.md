@@ -2,7 +2,9 @@
 
 <h2 name="Description">Description</h2>
 <p align="justify">
-Add some description of what OpenN@S is and its main features.</p>
+<!--What OpenNAS is; Its main features-->
+OpenNAS is an open source VHDL-based Neuromorphic Auditory Sensor(NAS) code generator capable of automatically generating the necessary files to create a VHDL project for FPGA. OpenNAS guides designers with a friendly interface and allows NAS specification using a five-steps wizard for later code generation. It includes several audio input interfaces (AC'97 audio codec, I2S ADC and PDM microphones), different processing architectures (cascade and parallel), and a set of neuromorphic output interfaces (parallel AER, Spinnaker). After NAS generation, designers have everything prepared for building and synthesizing the VHDL project for a target FPGA using manufacturer's tools.
+</p>
 
 <h2>Table of contents</h2>
 <p align="justify">
@@ -18,23 +20,42 @@ Add some description of what OpenN@S is and its main features.</p>
 </p>
 
 <h2 name="GettingStarted">Getting started</h2>
+
 <p align="justify">
-Add some brief instructions and introduction and maybe a link to a videotutorial! 
+<!--Add some brief instructions and introduction and maybe a link to a videotutorial!-->
+ OpenNAS is a five-steps wizard which helps you to design and configurate a NAS in a easy way. Each step is focused on a specific section of the sensor, divided in Commons, Input, Processing and Output. User can set many parameters, like filters attenuation, number of frequencies channels, etc. The meaning of all of these parameters will be detailed in the OpenNAS wiki.
+</p>
+
+<p align="justify">
+In this brief tutorial, we will guide to the user in how to download, configure and run OpenNAS tool. Until now, we do not have a videotutorial, but we are working on it!
+</p>
+
+ <!-- How to install OpenN@S and what prerrequisites are needed. -->
+<h3>Software dependencies</h3>
+<p align="justify">
+The tool has several software dependencies to be executed in your computer. Since OpenNAS is a .NET-based software application, a Microsoft .NET Framework needs to be installed, among others. Next, the OpenNAS software requeriments list is showed:
+</p>
+  <ul>
+    <li>Microsoft .NET Framework 4.5</li>By clicking in this link you will be redirected to the Microsoft .NET Framework download website. User just has to select the desired language and then click on the "Download" button. Once the downloading has been finished, execute the Microsoft .NET Framework installation file. 
+	<li>Xilinx ISE or Vivado</li>OpenNAS offers to the user the posibility of automatically generates the .bit file without to create an ISE project manually. For being able to use this feature, Xilinx software tool needs to be installed. Depending of the target FPGA chip, the user will need Xilinx ISE or Xilinx Vivado.
+  </ul>
 </p>
 <h3>Installation</h3>
 <p align="justify">
-How to install OpenN@S and what prerrequisites are needed.
+  First step to use OpenNAS software is to download the repository from the RTC-OpenNAS GitHub main webpage. Click on "Clone or download" button, and select "Download ZIP".
 </p>
-
-
-
+ 
+<img src="/OpenNAS/Wiki/Images/Img_download_repo.PNG" alt="Clone or download repository">
+ 
+<p align="justify">
+  When downloaded, extract the project. There is a main folder, OpenNAS, which contains the OpenNAS.sln file and the OpenNAS C# project folder. To run the OpenNAS software tool, open the OpenNAS project by clicking on OpenNAS.sln, and then the VisualStudio environment will be launched. Click on the "Start" button. Then, the Welcome window of the OpenNAS tool will appear.
+</p>
 
 <h2 name="Usage">Usage</h2>
 <p align="justify">
-Add a brief tutorial or user manual in order to make it easy and understandable to work with OpenN@S for a user that has not tried it yet. Add images and stuff. This could easily be the transcription of the videotutorial and some screenshots from it.
+<!--Add a brief tutorial or user manual in order to make it easy and understandable to work with OpenN@S for a user that has not tried it yet. Add images and stuff. This could easily be the transcription of the videotutorial and some screenshots from it.-->
+   
 </p>
-
-
 
 <h2 name="Contributing">Contributing</h2>
 <p align="justify">
