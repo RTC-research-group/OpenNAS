@@ -77,6 +77,26 @@ Once OpenNAS tool has been executed, and the Welcome screen appears, the user on
 The Welcome screen show a brief text which indicates to the user what OpenNAS tool does and also the information about our research group. Click on Next button to move fordward in the wizard.
 </p>
 
+<p align="center">
+<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_Step1.png" alt="OpenNAS wizard step_1 screen">
+</p>
+
+<p align="center">
+<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_Step2.png" alt="OpenNAS wizard step_2 screen">
+</p>
+
+<p align="center">
+<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_Step3.png" alt="OpenNAS wizard step_3 screen">
+</p>
+
+<p align="center">
+<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_Step4.png" alt="OpenNAS wizard step_4 screen">
+</p>
+
+<p align="center">
+<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_Step5.png" alt="OpenNAS wizard step_5 screen">
+</p>
+
 <h2 name="Contributing">Contributing</h2>
 <p align="justify">
 New functionalities or improvements to the existing project are welcome. To contribute to this project please follow these guidelines:
