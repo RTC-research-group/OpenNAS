@@ -51,6 +51,8 @@ The tool has several software dependencies to be executed in your computer. Sinc
   When downloaded, extract the project. There is a main folder, OpenNAS, which contains the OpenNAS.sln file and the OpenNAS C# project folder. To run the OpenNAS software tool, open the OpenNAS project by clicking on OpenNAS.sln, and then the VisualStudio environment will be launched. Click on the "Start" button. Then, the Welcome window of the OpenNAS tool will appear.
 </p>
 
+<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_Welcome.PNG">
+
 <h2 name="Usage">Usage</h2>
 <p align="justify">
 <!--Add a brief tutorial or user manual in order to make it easy and understandable to work with OpenN@S for a user that has not tried it yet. Add images and stuff. This could easily be the transcription of the videotutorial and some screenshots from it.-->
