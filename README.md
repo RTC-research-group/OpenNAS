@@ -45,7 +45,7 @@ The tool has several software dependencies to be executed in your computer. Sinc
   First step to use OpenNAS software is to download the repository from the RTC-OpenNAS GitHub main webpage. Click on "Clone or download" button, and select "Download ZIP".
 </p>
  
-<img src="/OpenNAS/Wiki/Images/Img_download_repo.PNG" alt="Clone or download repository">
+<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_download_repo.png">
  
 <p align="justify">
   When downloaded, extract the project. There is a main folder, OpenNAS, which contains the OpenNAS.sln file and the OpenNAS C# project folder. To run the OpenNAS software tool, open the OpenNAS project by clicking on OpenNAS.sln, and then the VisualStudio environment will be launched. Click on the "Start" button. Then, the Welcome window of the OpenNAS tool will appear.
