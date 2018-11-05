@@ -23,17 +23,21 @@ OpenNAS is an open source VHDL-based Neuromorphic Auditory Sensor (NAS) code gen
 
 <p align="justify">
 <!--Add some brief instructions and introduction and maybe a link to a videotutorial!-->
- OpenNAS is a five-steps wizard which helps you to design and configurate a NAS in a easy way. Each step is focused on a specific section of the sensor, divided in Commons, Input, Processing and Output. User can set many parameters, like filters attenuation, number of frequencies channels, etc. The meaning of all of these parameters will be detailed in the OpenNAS wiki.
+ OpenNAS is a five-steps wizard which helps you to design and configurate a NAS in a easy way. Each step is focused on a specific section of the sensor, divided in Commons, Input, Processing and Output. User can set many parameters, like filters attenuation, number of frequency channels, etc. The meaning of all of these parameters will be detailed in the OpenNAS wiki.
 </p>
 
 <p align="justify">
 In this brief tutorial, we will guide to the user in how to download, configure and run OpenNAS tool. Until now, we do not have a videotutorial, but we are working on it!
 </p>
 
- <!-- How to install OpenN@S and what prerrequisites are needed. -->
+<!-- How to install OpenN@S and what prerrequisites are needed. -->
+<h3>Prerequisites</h3>
+<p align="justify">OpenNAS has been programmed using Visual Studio Community 2016. Hence, user needs to have installed Visual Studio Community 2016 or greater to compile the project. In addition, Microsoft Windows 7 OS or greater is needed, since .NET Framework used in this work is not supported by Microsoft Windows XP OS. For Linux or MAC users, Visual Studio Code is not able to compile the OpenNAS project. Hence, a virtual machine with a Microsoft Windows OS installation have to be used.
+</p>
+ 
 <h3>Software dependencies</h3>
 <p align="justify">
-The tool has several software dependencies to be executed in your computer. Since OpenNAS is a .NET-based software application, a Microsoft .NET Framework needs to be installed, among others. Next, the OpenNAS software requeriments list is showed:
+The tool has several software dependencies which needs to be solved before to be executed in your computer. Since OpenNAS is a .NET-based software application, a Microsoft .NET Framework needs to be installed, among others. Next, the OpenNAS software requeriments list is showed:
 </p>
   <ul>
     <li>Microsoft .NET Framework 4.5</li>By clicking in this link you will be redirected to the Microsoft .NET Framework download website. User just has to select the desired language and then click on the "Download" button. Once the downloading has been finished, execute the Microsoft .NET Framework installation file. 
@@ -54,9 +58,9 @@ The tool has several software dependencies to be executed in your computer. Sinc
 <img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_Welcome.PNG">
 
 <h2 name="Usage">Usage</h2>
-<p align="justify">
 <!--Add a brief tutorial or user manual in order to make it easy and understandable to work with OpenN@S for a user that has not tried it yet. Add images and stuff. This could easily be the transcription of the videotutorial and some screenshots from it.-->
-   
+
+<p align="justify">
 </p>
 
 <h2 name="Contributing">Contributing</h2>
