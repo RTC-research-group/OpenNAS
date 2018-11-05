@@ -257,12 +257,12 @@ namespace OpenNAS_App.NASComponents
             if (nasType == NASTYPE.STEREO)
             {
                 sw.WriteLine("");
-                sw.WriteLine("U_SpikesSrcSel_Left: SpikesSource_Selector");
+                sw.WriteLine("U_SpikesSrcSel_Right: SpikesSource_Selector");
                 sw.WriteLine("    port map(");
                 sw.WriteLine("    source_sel => source_sel,");
-                sw.WriteLine("    i2s_data => spikes_in_left_i2s,");
-                sw.WriteLine("    pdm_data => spikes_in_left_pdm,");
-                sw.WriteLine("    spikes_data => spikes_in_left");
+                sw.WriteLine("    i2s_data => spikes_in_right_i2s,");
+                sw.WriteLine("    pdm_data => spikes_in_right_pdm,");
+                sw.WriteLine("    spikes_data => spikes_in_right");
                 sw.WriteLine(");");
             }
         }
