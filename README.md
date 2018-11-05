@@ -32,7 +32,7 @@ In this brief tutorial, we will guide to the user in how to download, configure 
 
 <!-- How to install OpenN@S and what prerrequisites are needed. -->
 <h3>Prerequisites</h3>
-<p align="justify">OpenNAS has been programmed using Visual Studio Community 2016. Hence, user needs to have installed Visual Studio Community 2016 or greater to compile the project. In addition, Microsoft Windows 7 OS or greater is needed, since .NET Framework used in this work is not supported by Microsoft Windows XP OS. For Linux or MAC users, Visual Studio Code is not able to compile the OpenNAS project. Hence, a virtual machine with a Microsoft Windows OS installation have to be used.
+<p align="justify">OpenNAS has been programmed using Visual Studio Community 2015. Hence, user needs to have installed Visual Studio Community 2016 or greater to compile the project. In addition, Microsoft Windows 7 OS or greater is needed, since .NET Framework used in this work is not supported by Microsoft Windows XP OS. For Linux or MAC users, Visual Studio Code is not able to compile the OpenNAS project. Hence, a virtual machine with a Microsoft Windows OS installation have to be used.
 </p>
  
 <h3>Software dependencies</h3>
@@ -41,7 +41,7 @@ The tool has several software dependencies which needs to be solved before to be
 </p>
   <ul>
     <li>Microsoft .NET Framework 4.5</li>By clicking in this link you will be redirected to the Microsoft .NET Framework download website. User just has to select the desired language and then click on the "Download" button. Once the downloading has been finished, execute the Microsoft .NET Framework installation file. 
-	<li>Xilinx ISE or Vivado</li>OpenNAS offers to the user the posibility of automatically generates the .bit file without to create an ISE project manually. For being able to use this feature, Xilinx software tool needs to be installed. Depending of the target FPGA chip, the user will need Xilinx ISE or Xilinx Vivado.
+	<li>Xilinx ISE 14.7</li>OpenNAS offers to the user the posibility of automatically generates the .bit file without to create an ISE project manually. For being able to use this feature, Xilinx software tool needs to be installed. Depending of the target FPGA chip, the user will need Xilinx ISE or Xilinx Vivado.
   </ul>
 </p>
 <h3>Installation</h3>
@@ -49,18 +49,18 @@ The tool has several software dependencies which needs to be solved before to be
   First step to use OpenNAS software is to download the repository from the RTC-OpenNAS GitHub main webpage. Click on "Clone or download" button, and select "Download ZIP".
 </p>
  
-<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_download_repo.png">
+<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_download_repo.png" alt="Download OpenNAS repository">
  
 <p align="justify">
   When downloaded, extract the project. There is a main folder, OpenNAS, which contains the OpenNAS.sln file and the OpenNAS C# project folder. To run the OpenNAS software tool, open the OpenNAS project by clicking on OpenNAS.sln, and then the VisualStudio environment will be launched. Click on the "Start" button. Then, the Welcome window of the OpenNAS tool will appear.
 </p>
 
-<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_Welcome.PNG">
+<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_Welcome.PNG" alt="OpenNAS wizard Welcome screen">
 
 <h2 name="Usage">Usage</h2>
 <!--Add a brief tutorial or user manual in order to make it easy and understandable to work with OpenN@S for a user that has not tried it yet. Add images and stuff. This could easily be the transcription of the videotutorial and some screenshots from it.-->
-
 <p align="justify">
+<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_tool_flow.png" alt="OpenNAS tool usage flow">	
 </p>
 
 <h2 name="Contributing">Contributing</h2>
