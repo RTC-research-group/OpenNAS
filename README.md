@@ -98,7 +98,7 @@ In this step, the input audio source must be selected. There are several options
 </p>
 
 <p align="justify">
-NAS processing architecture is defined in the step 3, where user can choose either a cascade or parallel architecture. 
+NAS processing architecture is defined in the step 3, where user can choose either a cascade or parallel architecture. Besides, filters order and filters output attenuation can be set. Finally, the user can define a frequency range between which the NAS will work, set by default as the human audible sounds range (from 20Hz to 22KHz).
 </p>
 
 <p align="center">
@@ -106,12 +106,14 @@ NAS processing architecture is defined in the step 3, where user can choose eith
 </p>
 
 <p align="justify">
-In this step, the input audio source must be selected. There are several options, among which we can find the AC'97 audio codec, a pair of Pulse Density Modulation (PDM) microphones and an I2S-based audio codec. Each input option has its own configuration parameters, which the user can set according with its project requirements. 
+Output interface is selected in the fourth step. As in the most of the event-based neuromorphic devices, the AER protocol is used as output. For this reason, the AER monitor is used as output interface by default and then to connect our neuromorphic sensor to the application jAER and to be able to visualize the NAS output in real-time. However, it is also interesting to connect the NAS output to others neuromorphic hardware, as the SpiNNaker board, in which Spiking Neural Networks (SNN) can be deployed and it can get as input data the output spikes from the NAS.
 </p>
 
 <p align="center">
 <img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_Step5.png" alt="OpenNAS wizard step_5 screen">
 </p>
+
+Finally, when
 
 <p align="justify">
 In this step, the input audio source must be selected. There are several options, among which we can find the AC'97 audio codec, a pair of Pulse Density Modulation (PDM) microphones and an I2S-based audio codec. Each input option has its own configuration parameters, which the user can set according with its project requirements. 
