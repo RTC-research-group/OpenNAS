@@ -160,14 +160,14 @@ The author would like to thank and give credit to:
 <li>Gabriel Jimenez-Moreno, for his support and contribution.
 </ul>
 </p>
-	
+<!--	
 <p align="justify">
 Also, the author would like to thank to the research groups which supports the OpenNAS project and work with it: 	
 <ul align="justify">
 <li>Neuromorphic Behaving Systems, CITEC (U. Bielefeld), lead by Elisabetta Chicca.</li>
 </ul>
 </p>
-
+-->
 <h2 name="License">License</h2>
 
 <p align="justify">
