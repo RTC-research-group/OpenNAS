@@ -74,7 +74,7 @@ Once OpenNAS tool has been executed, and the Welcome screen appears, the user on
 </p>
 
 <p align="justify">
-The Welcome screen show a brief text which indicates to the user what OpenNAS tool does and also the information about our research group. Click on Next button to move fordward in the wizard.
+The Welcome screen shows a brief text which indicates to the user what OpenNAS tool does and also the information about our research group. Click on Next button to move forward in the wizard.
 </p>
 
 <p align="center">
@@ -82,7 +82,7 @@ The Welcome screen show a brief text which indicates to the user what OpenNAS to
 </p>
 
 <p align="justify">
-The first step allows to the user to select the NAS common settings, which are the target FPGA chip and its clock frequency, if the NAS is MONO or STEREO, and the number of frequency channels. A picture of the FPGA-based board selected in NAS chip is showed to the user to quickly identify the needed hardware components. 
+The first step allows to the user to select the NAS common settings, which are the target FPGA chip and its clock frequency, if the NAS is MONO or STEREO, and the number of frequency channels. A picture of the FPGA-based board selected in NAS chip is shown to the user to quickly identify the needed hardware components.
 </p>
 
 <p align="center">
@@ -90,7 +90,7 @@ The first step allows to the user to select the NAS common settings, which are t
 </p>
 
 <p align="justify">
-In this step, the input audio source must be selected. There are several options, among which we can find the AC'97 audio codec, a pair of Pulse Density Modulation (PDM) microphones and an I2S-based audio codec. Each input option has its own configuration parameters, which the user can set according with its project requirements. 
+In this step, the input audio source must be selected. There are several options, among which we can find the AC'97 audio codec, a pair of Pulse Density Modulation (PDM) microphones, and an I2S-based audio codec. Each input option has its own configuration parameters, which the user can set according to its project requirements 
 </p>
 
 <p align="center">
@@ -98,7 +98,7 @@ In this step, the input audio source must be selected. There are several options
 </p>
 
 <p align="justify">
-NAS processing architecture is defined in the step 3, where user can choose either a cascade or parallel architecture. Besides, filters order and filters output attenuation can be set. Finally, the user can define a frequency range between which the NAS will work, set by default as the human audible sounds range (from 20Hz to 22KHz).
+NAS processing architecture is defined in step 3, where the user can choose either a cascade or parallel architecture. Besides, filters order and filters output attenuation can be set. Finally, the user can define a frequency range between which the NAS will work, set by default as the human audible sounds range (from 20Hz to 22KHz). 
 </p>
 
 <p align="center">
@@ -106,7 +106,7 @@ NAS processing architecture is defined in the step 3, where user can choose eith
 </p>
 
 <p align="justify">
-Output interface is selected in the fourth step. As in the most of the event-based neuromorphic devices, the AER protocol is used as output. For this reason, the AER monitor is used as output interface by default and then to connect our neuromorphic sensor to the application jAER and to be able to visualize the NAS output in real-time. However, it is also interesting to connect the NAS output to others neuromorphic hardware, as the SpiNNaker board, in which Spiking Neural Networks (SNN) can be deployed and it can get as input data the output spikes from the NAS.
+The output interface is selected in the fourth step. As in the most of the event-based neuromorphic devices, the AER protocol is used as output. For this reason, the AER monitor is used as output interface by default and then to connect our neuromorphic sensor to the application jAER and to be able to visualize the NAS output in real-time. However, it is also interesting to connect the NAS output to others neuromorphic hardware, as the SpiNNaker board, in which Spiking Neural Networks (SNN) can be deployed and it can get as input data the output spikes from the NAS.
 </p>
 
 <p align="center">
@@ -116,7 +116,7 @@ Output interface is selected in the fourth step. As in the most of the event-bas
 
 
 <p align="justify">
-Finally, when all previous steps have been done, the destination folder in which the VHDL files are going to be generated has to be selected by the user. It needs to create a new folder by hand, and then select it as destination folder.
+Finally, when all previous steps have been done, the destination folder in which the VHDL files are going to be generated has to be selected by the user. It needs to create a new folder by hand, and then select it as the destination folder.
 </p>
 
 <p align="center">
@@ -124,7 +124,7 @@ Finally, when all previous steps have been done, the destination folder in which
 </p>
 
 <p align="justify">
-A new message will appear if the generation process was done successfully, indicating the destination folder. Click on the Ok button to close the message. At this point, the process of the NAS generation has finished. Navigatin to the destination folder, user can find all the VHDL files needed to synthetize and genenerate the NAS .bit file and run it using an FPGA. Apart from VHDL files, OpenNAS also generates a XML file summarizing the parameters selection made by the user.
+A new message will appear if the generation process was done successfully, indicating the destination folder. Click on the Ok button to close the message. At this point, the process of the NAS generation has finished. Navigating to the destination folder, the user can find all the VHDL files needed to synthetize and generate the NAS .bit file and run it using an FPGA. Apart from VHDL files, OpenNAS also generates an XML file summarizing the parameters selection made by the user. 
 </p>
 
 <h2 name="Hardware">Hardware deployment</h2>
