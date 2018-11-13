@@ -28,6 +28,9 @@ using System.Threading.Tasks;
 
 namespace OpenNAS_App.NASComponents
 {
+    /// <summary>
+    /// Abstract class for VHDL generation of NAS components. Integrates templates of different methods which will be called for NAS generation.
+    /// </summary>
     public abstract class HDLGenerable
     {
         public void copyDependencies(string route, List<string> dependencies)
