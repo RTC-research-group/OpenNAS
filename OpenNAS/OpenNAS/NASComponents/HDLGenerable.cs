@@ -33,6 +33,11 @@ namespace OpenNAS_App.NASComponents
     /// </summary>
     public abstract class HDLGenerable
     {
+        /// <summary>
+        /// This function copy the dependency of a HDL module
+        /// </summary>
+        /// <param name="route">The route of dependency files destination</param>
+        /// <param name="dependencies">The list of all dependencies</param>
         public void copyDependencies(string route, List<string> dependencies)
         {
             for (int i = 0; i < dependencies.Count; i++)
@@ -42,15 +47,34 @@ namespace OpenNAS_App.NASComponents
             }
 
         }
-
+        /// <summary>
+        /// Generate the specific component top file HDL
+        /// </summary>
+        /// <param name="route">The route of dependency files destination</param>
         public abstract void generateHDL(string route);
 
+        /// <summary>
+        /// Writes the I/O signals in NAS top file
+        /// </summary>
+        /// <param name="sw">Handle to NAS top file</param>
         public abstract void WriteTopSignals(StreamWriter sw);
 
+        /// <summary>
+        /// Writes the component architectura in NAS top file
+        /// </summary>
+        /// <param name="sw">Handle to NAS top file</param>
         public abstract void WriteComponentArchitecture(StreamWriter sw);
 
+        /// <summary>
+        /// Writes the component invocation in NAS top file
+        /// </summary>
+        /// <param name="sw">Handle to NAS top file</param>
         public abstract void WriteComponentInvocation(StreamWriter sw);
 
+        /// <summary>
+        /// Summarizes the current NAS license as an string, to be copied as files header
+        /// </summary>
+        /// <returns>Current NAS license</returns>
         public static string copyLicense()
         {
             string license;
