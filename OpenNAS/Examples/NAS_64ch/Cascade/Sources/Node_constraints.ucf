@@ -1,0 +1,31 @@
+NET "clock"  LOC = "ab13" ;
+
+#External reset button
+NET "rst_ext"  LOC = "A20" ;
+
+#I2S interface
+NET "i2s_bclk" LOC = "C19";
+NET "i2s_d_in" LOC = "F17"; 
+NET "i2s_lr"   LOC = "B20";  
+
+#AER out bus
+NET "AER_DATA_OUT<0>"  LOC = "M2" ;
+NET "AER_DATA_OUT<1>"  LOC = "K1" ;
+NET "AER_DATA_OUT<2>"  LOC = "J1" ;
+NET "AER_DATA_OUT<3>"  LOC = "H2" ;
+NET "AER_DATA_OUT<4>"  LOC = "F1" ;
+NET "AER_DATA_OUT<5>"  LOC = "E1" ;
+NET "AER_DATA_OUT<6>"  LOC = "D2" ;
+NET "AER_DATA_OUT<7>"  LOC = "B1" ;
+NET "AER_DATA_OUT<8>"  LOC = "C1" ;
+NET "AER_DATA_OUT<9>"  LOC = "D1" ;
+NET "AER_DATA_OUT<10>"  LOC = "F2" ;
+NET "AER_DATA_OUT<11>"  LOC = "G1" ;
+NET "AER_DATA_OUT<12>"  LOC = "H1" ;
+NET "AER_DATA_OUT<13>"  LOC = "K2" ;
+NET "AER_DATA_OUT<14>"  LOC = "L1" ;
+NET "AER_DATA_OUT<15>"  LOC = "M1" ;
+
+NET "AER_REQ"  LOC = "N3" ;
+NET "AER_ACK"  LOC = "U3" ;
+

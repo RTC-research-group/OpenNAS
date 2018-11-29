@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<OpenNAS Version="1.0">
+  <OpenNasCommons nCh="64" cloclkValue="50" />
+  <I2SAudioADC genNbits="20" genFreqDiv="15" />
+  <ParallelSBPFBank nCH="64">
+    <midFreq>
+      <Freq id="0" freq="22000" Q="2" attenuation="-33" />
+      <Freq id="1" freq="19685.5070877125" Q="2" attenuation="-33" />
+      <Freq id="2" freq="17614.5086045627" Q="2" attenuation="-33" />
+      <Freq id="3" freq="15761.3879082587" Q="2" attenuation="-33" />
+      <Freq id="4" freq="14103.2233354642" Q="2" attenuation="-33" />
+      <Freq id="5" freq="12619.5046786305" Q="2" attenuation="-33" />
+      <Freq id="6" freq="11291.8794906637" Q="2" attenuation="-33" />
+      <Freq id="7" freq="10103.9260794117" Q="2" attenuation="-33" />
+      <Freq id="8" freq="9040.95038409005" Q="2" attenuation="-33" />
+      <Freq id="9" freq="8089.80422116643" Q="2" attenuation="-33" />
+      <Freq id="10" freq="7238.72265154446" Q="2" attenuation="-33" />
+      <Freq id="11" freq="6477.17845740742" Q="2" attenuation="-33" />
+      <Freq id="12" freq="5795.75192871238" Q="2" attenuation="-33" />
+      <Freq id="13" freq="5186.01434869504" Q="2" attenuation="-33" />
+      <Freq id="14" freq="4640.42373719158" Q="2" attenuation="-33" />
+      <Freq id="15" freq="4152.23156220337" Q="2" attenuation="-33" />
+      <Freq id="16" freq="3715.399265799" Q="2" attenuation="-33" />
+      <Freq id="17" freq="3324.52357184399" Q="2" attenuation="-33" />
+      <Freq id="18" freq="2974.76965167283" Q="2" attenuation="-33" />
+      <Freq id="19" freq="2661.81132101443" Q="2" attenuation="-33" />
+      <Freq id="20" freq="2381.77752845376" Q="2" attenuation="-33" />
+      <Freq id="21" freq="2131.20447353322" Q="2" attenuation="-33" />
+      <Freq id="22" freq="1906.99276223195" Q="2" attenuation="-33" />
+      <Freq id="23" freq="1706.3690698697" Q="2" attenuation="-33" />
+      <Freq id="24" freq="1526.85183723515" Q="2" attenuation="-33" />
+      <Freq id="25" freq="1366.22057562633" Q="2" attenuation="-33" />
+      <Freq id="26" freq="1222.48840113049" Q="2" attenuation="-33" />
+      <Freq id="27" freq="1093.87745841366" Q="2" attenuation="-33" />
+      <Freq id="28" freq="978.796930031413" Q="2" attenuation="-33" />
+      <Freq id="29" freq="875.823359252936" Q="2" attenuation="-33" />
+      <Freq id="30" freq="783.683043007174" Q="2" attenuation="-33" />
+      <Freq id="31" freq="701.236277165355" Q="2" attenuation="-33" />
+      <Freq id="32" freq="627.463259286351" Q="2" attenuation="-33" />
+      <Freq id="33" freq="561.451474452756" Q="2" attenuation="-33" />
+      <Freq id="34" freq="502.384408170288" Q="2" attenuation="-33" />
+      <Freq id="35" freq="449.531446717839" Q="2" attenuation="-33" />
+      <Freq id="36" freq="402.238840023348" Q="2" attenuation="-33" />
+      <Freq id="37" freq="359.921615283312" Q="2" attenuation="-33" />
+      <Freq id="38" freq="322.056341303662" Q="2" attenuation="-33" />
+      <Freq id="39" freq="288.174654062545" Q="2" attenuation="-33" />
+      <Freq id="40" freq="257.857463411242" Q="2" attenuation="-33" />
+      <Freq id="41" freq="230.729769254616" Q="2" attenuation="-33" />
+      <Freq id="42" freq="206.456023091273" Q="2" attenuation="-33" />
+      <Freq id="43" freq="184.735977539282" Q="2" attenuation="-33" />
+      <Freq id="44" freq="165.300972509319" Q="2" attenuation="-33" />
+      <Freq id="45" freq="147.91061208809" Q="2" attenuation="-33" />
+      <Freq id="46" freq="132.349791027635" Q="2" attenuation="-33" />
+      <Freq id="47" freq="118.426034060535" Q="2" attenuation="-33" />
+      <Freq id="48" freq="105.96711513038" Q="2" attenuation="-33" />
+      <Freq id="49" freq="94.8189270892514" Q="2" attenuation="-33" />
+      <Freq id="50" freq="84.8435755120342" Q="2" attenuation="-33" />
+      <Freq id="51" freq="75.9176730495008" Q="2" attenuation="-33" />
+      <Freq id="52" freq="67.930813222663" Q="2" attenuation="-33" />
+      <Freq id="53" freq="60.7842047804002" Q="2" attenuation="-33" />
+      <Freq id="54" freq="54.3894497284335" Q="2" attenuation="-33" />
+      <Freq id="55" freq="48.6674499148117" Q="2" attenuation="-33" />
+      <Freq id="56" freq="43.5474286472236" Q="2" attenuation="-33" />
+      <Freq id="57" freq="38.9660552402988" Q="2" attenuation="-33" />
+      <Freq id="58" freq="34.8666616642317" Q="2" attenuation="-33" />
+      <Freq id="59" freq="31.1985416052776" Q="2" attenuation="-33" />
+      <Freq id="60" freq="27.9163232680447" Q="2" attenuation="-33" />
+      <Freq id="61" freq="24.9794081616349" Q="2" attenuation="-33" />
+      <Freq id="62" freq="22.3514689278512" Q="2" attenuation="-33" />
+      <Freq id="63" freq="20" Q="2" attenuation="-33" />
+    </midFreq>
+    <SpikesDistributedMonitor aerFifoBits="11" spikeFifoBits="9" />
+  </ParallelSBPFBank>
+</OpenNAS>
