@@ -32,15 +32,38 @@ using System.Xml.Serialization;
 
 namespace OpenNAS_App.NASComponents
 {
-   public class OpenNASArchitecture
+    /// <summary>
+    /// This class contains a full NAS architecture. This is composed byte 3 elements: AudioInput <see cref="AudioInput"/>, AudioProcessingArchitecture <see cref="AudioProcessingArchitecture"/> and a SpikesOutputInterface <see cref="SpikesOutputInterface"/>.
+    /// </summary>
+    public class OpenNASArchitecture
     {
+        /// <summary>
+        /// NAS common setting parameters <see cref="OpenNASCommons"/>
+        /// </summary>
         public OpenNASCommons nasCommons;
+        /// <summary>
+        /// NAS audio input stage <see cref="AudioInput"/>
+        /// </summary>
         public AudioInput audioInput;
+        /// <summary>
+        /// NAS main processing block <see cref="AudioProcessingArchitecture"/>
+        /// </summary>
         public AudioProcessingArchitecture audioProcessing;
+        /// <summary>
+        /// NAS events output interface <see cref="SpikesOutputInterface"/>
+        /// </summary>
         public SpikesOutputInterface spikesOutput;
-
+        /// <summary>
+        /// Basic Open NAS Architecture class constructor
+        /// </summary>
         public OpenNASArchitecture() { }
-
+        /// <summary>
+        /// Main Open NAS Architecture class constructor
+        /// </summary>
+        /// <param name="commons">NAS common setting parameters <see cref="OpenNASCommons"/></param>
+        /// <param name="ai">NAS audio input stage <see cref="AudioInput"/></param>
+        /// <param name="ap">NAS main processing block <see cref="AudioProcessingArchitecture"/></param>
+        /// <param name="soi">NAS events output interface <see cref="SpikesOutputInterface"/></param>
         public OpenNASArchitecture(OpenNASCommons commons, AudioInput ai, AudioProcessingArchitecture ap, SpikesOutputInterface soi)
         {
             nasCommons = commons;
@@ -49,6 +72,10 @@ namespace OpenNAS_App.NASComponents
             spikesOutput = soi;
         }
 
+        /// <summary>
+        /// Generates a full NAS, copying library files, and generating custom sources
+        /// </summary>
+        /// <param name="route">Destination files route</param>
         public void Generate (string route)
         {
             //Generate HDL componets
