@@ -27,15 +27,38 @@ using System.Threading.Tasks;
 
 namespace OpenNAS_App.NASComponents
 {
+    /// <summary>
+    /// This class contain Spikes-Low Pass Filter features and parameters
+    /// </summary>
     public class SLPFParameters
     {
+        /// <summary>
+        /// SLPF Number of bits
+        /// </summary>
         public UInt16 nBits;
+        /// <summary>
+        /// SLPF main frequency divider
+        /// </summary>
         public UInt16 freqDiv;
+        /// <summary>
+        /// Output gain controller
+        /// </summary>
         public UInt16 outDiv;
+        /// <summary>
+        /// Internal feedback gain controller
+        /// </summary>
         public UInt16 fbDiv;
+        /// <summary>
+        /// SLPF Cut-off frequency
+        /// </summary>
         public double realFcut;
+        /// <summary>
+        /// Absolute SLPF Gain
+        /// </summary>
         public double realGain;
-
+        /// <summary>
+        /// SLPF Gain in dB
+        /// </summary>
         public double realGaindb
         {
             get
@@ -43,7 +66,13 @@ namespace OpenNAS_App.NASComponents
                 return 10.0 * Math.Log10(realGain);
             }
         }
-
+        /// <summary>
+        /// Construct an SLPFParameters instance with provider parameters
+        /// </summary>
+        /// <param name="clk">SLPF main clock frequency (in Hz)</param>
+        /// <param name="cutOffFreq">SLFP cut-off frequency (in Hz)</param>
+        /// <param name="gaindb">SLPF gain in dB</param>
+        /// <param name="minFreqDiv">Minium clock frequency divider (final one will be computer automatically)</param>
         public SLPFParameters(double clk, double cutOffFreq, double gaindb, UInt16 minFreqDiv)
         {
             UInt16[] paramSIG = OpenNasUtils.revkSIG(clk, cutOffFreq, minFreqDiv);
@@ -60,14 +89,12 @@ namespace OpenNAS_App.NASComponents
             realGain = OpenNasUtils.kDiv(outDiv) / OpenNasUtils.kDiv(fbDiv);
 
         }
-        
-        
-        
-        
-        
+               
     }
 
-
+    /// <summary>
+    /// This static class contains some common operations for computing parameters related frequency scales and spike-based filters features
+    /// </summary>
    public static class OpenNasUtils
     {
 
@@ -107,25 +134,46 @@ namespace OpenNAS_App.NASComponents
 
             return result;
         }
-
+        /// <summary>
+        /// Computes a set of values logaritmically distributed
+        /// </summary>
+        /// <param name="start">Start value</param>
+        /// <param name="stop">End value</param>
+        /// <param name="num">Quantity of values</param>
+        /// <returns>Log Space</returns>
         public static IEnumerable<double> LogSpace(double start, double stop, int num, bool endpoint = true, double numericBase = 10.0d)
         {
             var y = LinSpace(start, stop, num: num, endpoint: endpoint);
             return Power(y, numericBase);
         }
-
+        /// <summary>
+        /// Computes Spikes-Gain Divider 16 bits parameter from an absolute gain
+        /// </summary>
+        /// <param name="div">Gain as absolute value</param>
+        /// <returns>16 bit gain parameter</returns>
         public static UInt16 revkDiv(double div)
         {
             UInt16 result = (UInt16)((div * Math.Pow(2, 15))-1);
             return result;
         }
-
+        /// <summary>
+        /// Computes Spikes-Gain Divider absolute gain from a 16 bit paramter
+        /// </summary>
+        /// <param name="div">16 bit gain parameter</param>
+        /// <returns>Gain as absolute value</returns>
         public static double kDiv(int div)
         {
             double result = div / Math.Pow(2, 15);
             return result;
         }
 
+        /// <summary>
+        /// Computes Spikes Integrate-and-Generate constant from VHDL parameters
+        /// </summary>
+        /// <param name="Fclk">Clock Frequency</param>
+        /// <param name="nBits">Number of bits</param>
+        /// <param name="freqDiv">Clock Frequency divisor</param>
+        /// <returns>Spikes Integrate-and-Generate constant</returns>
         public static double kSIG(double Fclk, int nBits, UInt16 freqDiv)
         {
 
@@ -133,7 +181,13 @@ namespace OpenNAS_App.NASComponents
             return result;
 
         }
-
+        /// <summary>
+        /// Computes Spikes Integrate-and-Generate paramters from an specific clock and target constant
+        /// </summary>
+        /// <param name="Fclk">Clock frequency</param>
+        /// <param name="freq">Spikes Integrate-and-Generate constant</param>
+        /// <param name="minFreqDiv">Minium value for clock divisor</param>
+        /// <returns>Returns Spikes Integrate-and-Generate parameters </returns>
         public static UInt16[] revkSIG(double Fclk, double freq, UInt16 minFreqDiv)
         {
 
