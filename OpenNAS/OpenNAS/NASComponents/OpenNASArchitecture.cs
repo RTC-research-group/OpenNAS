@@ -62,9 +62,9 @@ namespace OpenNAS_App.NASComponents
         }
 
         /// <summary>
-        /// 
+        /// Writes top NAS HDL file, integrating all NAS componentes
         /// </summary>
-        /// <param name="route"></param>
+        /// <param name="route">Destination file route</param>
         private void writeTopFile(string route)
         {
 
@@ -189,7 +189,10 @@ namespace OpenNAS_App.NASComponents
             string[] s = dependencies.Split('\\');
             System.IO.File.Copy(dependencies, route + "\\" + s[s.Length - 1], true);
         }
-
+        /// <summary>
+        /// Writes NAS architecture and settings as a XML file
+        /// </summary>
+        /// <param name="route">Destination file route</param>
         public void toXML(string route)
         {
             string nasName = "OpenNas_TOP_" + audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + nasCommons.nCh + "ch";
