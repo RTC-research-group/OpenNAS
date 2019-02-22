@@ -31,22 +31,69 @@ using System.Xml;
 
 namespace OpenNAS_App.NASComponents
 {
-    //TODO: Implement Order4 filters
-    public enum SLPFType { Order2 = 0 }//, Order4  }; 
+    /// <summary>
+    /// Enumerate for defining SLPF order
+    /// </summary>
+    public enum SLPFType {
+        /// <summary>
+        /// Order 2 filters
+        /// </summary>
+        Order2 = 0 ,
+        /// <summary>
+        /// Order 4 filters
+        /// </summary>
+        Order4  };
 
+    /// <summary>
+    /// Class for implementing a ban of SLPF filters with a cascade topology, implements AudioProcessingArchitecture <see cref="AudioProcessingArchitecture"/>
+    /// </summary>
     public class CascadeSLPFBank: AudioProcessingArchitecture
     {
-
+        /// <summary>
+        /// Number of channels
+        /// </summary>
         public int nCH=0;
+        /// <summary>
+        /// Clock frequency in Hz
+        /// </summary>
         public float clk;
+        /// <summary>
+        /// NAS mono or stereo
+        /// </summary>
         public NASTYPE nasType;
+        /// <summary>
+        /// SLPF order
+        /// </summary>
         public SLPFType slpfType;
+        /// <summary>
+        /// List of channels mid frequencies
+        /// </summary>
         public List<double> midFreq;
+        /// <summary>
+        /// List of individual SLPF filters cut-off frequency
+        /// </summary>
         public List<double> cutoffFreq;
+        /// <summary>
+        /// Indivicual channel ouput attenuation, as an absolute value
+        /// </summary>
         public List<double> attenuation;
         private CultureInfo ci = new CultureInfo("en-us");
-
+        
+        /// <summary>
+        /// Basic CascadeSLPFBank constructor
+        /// </summary>
         public CascadeSLPFBank() { }
+
+        /// <summary>
+        /// Main CascadesLPFBank constructor
+        /// </summary>
+        /// <param name="nCH">Number of channels</param>
+        /// <param name="clk">Clock frequency in Hz</param>
+        /// <param name="nasType">NAS mono or stereo</param>
+        /// <param name="slpfType">SLPF order</param>
+        /// <param name="startFreq">Start mid frequency, in Hz</param>
+        /// <param name="stopFreq">Last mid frequency, in Hz</param>
+        /// <param name="att">Cascade output attenuation, as an absolute value</param>
         public CascadeSLPFBank(int nCH, float clk, NASTYPE nasType , SLPFType slpfType, double startFreq, double stopFreq, double att)
         {
             double start, stop;
@@ -75,7 +122,11 @@ namespace OpenNAS_App.NASComponents
             this.midFreq.Reverse();
             this.cutoffFreq.Reverse();
         }
-
+        /// <summary>
+        /// Computes SLPF cut-off requencies from target mid frequencies
+        /// </summary>
+        /// <param name="centerFreq">List of target mid frequencies, in Hz</param>
+        /// <returns>List of SLPF cut-off frequencies in Hz</returns>
         public List<double> computeCutOffFreq(List<double> centerFreq)
         {
             List<double> cutOffFreq = new List<double>();
@@ -272,7 +323,10 @@ namespace OpenNAS_App.NASComponents
 
 
         }
-
+        /// <summary>
+        /// Generates a full cascade SLPF bank, copying library files, and generating custom sources
+        /// </summary>
+        /// <param name="route">Destination files route</param>
         override public void generateHDL (string route)
         {
             List<string> dependencies = new List<string>();
@@ -298,7 +352,10 @@ namespace OpenNAS_App.NASComponents
             generateCFB(route);
 
         }
-
+        /// <summary>
+        /// Writes cascade SLPF bank in a XML file
+        /// </summary>
+        /// <param name="textWriter">XmlTextWriter handler</param>
         override public void toXML(XmlTextWriter textWriter)
         {
             int i = 0;
@@ -341,12 +398,19 @@ namespace OpenNAS_App.NASComponents
 
             textWriter.WriteEndElement();
         }
-
+        /// <summary>
+        /// Not used, either implemented
+        /// </summary>
+        /// <param name="sw">NAS Top file handler</param>
         public override void WriteTopSignals(StreamWriter sw)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Writes cascade SLPF bank component architecture <see cref="CascadeSLPFBank"/>
+        /// </summary>
+        /// <param name="sw">NAS Top file handler</param>
         public override void WriteComponentArchitecture(StreamWriter sw)
         {
             string entity = "CFBank_";
@@ -370,6 +434,10 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("");
         }
 
+        /// <summary>
+        /// Writes cascade SLPF bank invocation and signals link <see cref="AudioInput"/>
+        /// </summary>
+        /// <param name="sw">NAS Top file handler</param>
         public override void WriteComponentInvocation(StreamWriter sw)
         {
             string entity = "CFBank_";
@@ -403,7 +471,11 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("");
             }
         }
-
+        
+        /// <summary>
+        /// Gets component short description
+        /// </summary>
+        /// <returns>Short description</returns>
         public override string getShortDescription()
         {
             return "Cascade";

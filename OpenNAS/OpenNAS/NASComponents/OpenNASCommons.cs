@@ -30,18 +30,69 @@ using System.Xml;
 
 namespace OpenNAS_App.NASComponents
 {
-    public enum NASTYPE { MONO = 0, STEREO = 1 }
-    public enum NASchip { AERNODE = 0, ZTEX = 1, SOC_DOCK = 2, OTHER = 3 }
+    /// <summary>
+    /// Enum for defining NAS TYPE: mono or stereo
+    /// </summary>
+    public enum NASTYPE {
+        /// <summary>
+        /// Mono-aural NAS
+        /// </summary>
+        MONO = 0,
+        /// <summary>
+        /// Bi-aural NAS
+        /// </summary>
+        STEREO = 1 }
 
+    /// <summary>
+    /// NAS plattaform for synthesis
+    /// </summary>
+    public enum NASchip {
+        /// <summary>
+        /// AER-Node Board (Spartan 6)
+        /// </summary>
+        AERNODE = 0,
+        /// <summary>
+        /// ZTEX Board (Artyx 7)
+        /// </summary>
+        ZTEX = 1,
+        /// <summary>
+        /// SOC DOCK Board (Zynq 7000)
+        /// </summary>
+        SOC_DOCK = 2,
+        /// <summary>
+        /// Other custom board
+        /// </summary>
+        OTHER = 3 }
+    /// <summary>
+    /// This class contains NAS commons parameters for computing parameters and sources generating
+    /// </summary>
     public class OpenNASCommons
     {
+        /// <summary>
+        /// NAS type, mono or stereo <see cref="NASTYPE"/>
+        /// </summary>
         public NASTYPE monoStereo;
+        /// <summary>
+        /// Number of channels
+        /// </summary>
         public UInt16 nCh;
+        /// <summary>
+        /// Clock Frequency, in Hz
+        /// </summary>
         public float clockValue;
+        /// <summary>
+        /// Target NAS platform <see cref="NASchip"/>
+        /// </summary>
         public NASchip nasChip;
 
         private CultureInfo ci = new CultureInfo("en-us");
-
+        /// <summary>
+        /// NAS commons settings constuctor
+        /// </summary>
+        /// <param name="ms">Mono or stereo NAS</param>
+        /// <param name="nCh">Number of channels</param>
+        /// <param name="CLK">Clock Frequency, in Hz</param>
+        /// <param name="pNASchip">Target NAS platform</param>
         public OpenNASCommons(NASTYPE ms, UInt16 nCh, float CLK, NASchip pNASchip)
         {
             this.monoStereo = ms;
@@ -49,7 +100,10 @@ namespace OpenNAS_App.NASComponents
             this.clockValue = CLK;
             this.nasChip = pNASchip;
         }
-
+        /// <summary>
+        /// Writes NAS common settings in a XML file
+        /// </summary>
+        /// <param name="textWriter">XML text writer handler</param>
         public void toXML(XmlTextWriter textWriter)
         {
             textWriter.WriteStartElement("OpenNasCommons");

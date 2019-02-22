@@ -31,18 +31,53 @@ using System.Xml.Serialization;
 
 namespace OpenNAS_App.NASComponents
 {
-    public enum AC97AudioSource { LINE_IN=0, MIC_IN=1}
+    /// <summary>
+    /// Enumerator for spicifying AC97 codec audio input
+    /// </summary>
+    public enum AC97AudioSource {
+        /// <summary>
+        /// Line In
+        /// </summary>
+        LINE_IN =0,
+        /// <summary>
+        /// Microphone In
+        /// </summary>
+        MIC_IN =1}
 
-
+    /// <summary>
+    /// Class for AC97 codecs, extends AudioInput class <see cref="AudioInput"/>
+    /// </summary>
     public class AC97AudioInput : AudioInput
     {
-        [XmlAttribute]
+        /// <summary>
+        /// Audio input sorce
+        /// </summary>
         public AC97AudioSource source;
+        /// <summary>
+        /// Nas type (mono or stereo)
+        /// </summary>
         public NASTYPE nasType;
+        /// <summary>
+        /// Clock Frequency, in Hz
+        /// </summary>
         public float clk;
+        /// <summary>
+        /// Internal spikes generator number of bits
+        /// </summary>
         public uint genNbits;
+        /// <summary>
+        /// Clock divisor value
+        /// </summary>
         public UInt16 genFreqDiv;
 
+        /// <summary>
+        /// Creates an instance of AC97AudioInput class
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="clk"></param>
+        /// <param name="nasType"></param>
+        /// <param name="genNbits"></param>
+        /// <param name="genFreqDiv"></param>
         public AC97AudioInput (AC97AudioSource source, float clk, NASTYPE nasType, uint genNbits,  UInt16 genFreqDiv)
         {
             this.source = source;
@@ -52,7 +87,10 @@ namespace OpenNAS_App.NASComponents
             this.genFreqDiv = genFreqDiv;
         }
 
-        
+        /// <summary>
+        /// Writes AC97 input interface settings in a XML file
+        /// </summary>
+        /// <param name="textWriter">XML text writer handler</param>
         override public void toXML(XmlTextWriter textWriter)
         {
 
@@ -63,8 +101,10 @@ namespace OpenNAS_App.NASComponents
             textWriter.WriteEndElement();
         }
 
-
-
+        /// <summary>
+        /// Generates a full AC97 input stage, copying library files, and generating custom sources
+        /// </summary>
+        /// <param name="route">Destination files route</param>
         public override void generateHDL(string route)
         {
             List<string> dependencies = new List<string>();
@@ -118,27 +158,27 @@ namespace OpenNAS_App.NASComponents
 
             }
 
-            
-
 
         }
-
+        /// <summary>
+        /// Writes AC97 codec top signals <see cref="AudioInput"/>
+        /// </summary>
+        /// <param name="sw">NAS Top file handler</param>
         public override void WriteTopSignals(StreamWriter sw)
         {
-
 
             sw.WriteLine("--AC Link");
             sw.WriteLine("  ac97_bit_clock  : in std_logic;");
             sw.WriteLine("  ac97_sdata_in: in std_logic; --Serial data from AC'97");
-
             sw.WriteLine("  ac97_sdata_out: out std_logic; --Serial data to AC'97");
-
             sw.WriteLine("  ac97_synch: out std_logic; --Defines boundries of AC'97 frames, controls warm reset");
-
-
             sw.WriteLine("  audio_reset_b: out std_logic; --AC'97 codec cold reset");
         }
 
+        /// <summary>
+        /// Writes AC97 component architecture <see cref="AudioInput"/>
+        /// </summary>
+        /// <param name="sw">NAS Top file handler</param>
         public override void WriteComponentArchitecture(StreamWriter sw)
         {
             if (nasType == NASTYPE.MONO)
@@ -180,7 +220,10 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("end component;");
             }
         }
-
+        /// <summary>
+        /// Writes AC97 component invocation and signals link <see cref="AudioInput"/>
+        /// </summary>
+        /// <param name="sw">NAS Top file handler</param>
         public override void WriteComponentInvocation(StreamWriter sw)
         {
             if (nasType == NASTYPE.MONO)
@@ -220,11 +263,6 @@ namespace OpenNAS_App.NASComponents
 
             }
             sw.WriteLine("");
-
-
-
-
-
         }
     }
 
