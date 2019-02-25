@@ -28,8 +28,15 @@ using System.Xml;
 
 namespace OpenNAS_App.NASComponents
 {
+    /// <summary>
+    /// Interface for implement XML functionallities
+    /// </summary>
     public interface XMLSeriarizableElement
     {
+        /// <summary>
+        /// Writes components settings in a XML file
+        /// </summary>
+        /// <param name="textWriter">XML text writer handler</param>
         void toXML(XmlTextWriter textWriter);
     }
 

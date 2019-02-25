@@ -30,13 +30,35 @@ using System.Xml;
 
 namespace OpenNAS_App.NASComponents
 {
+    /// <summary>
+    /// This class implements an I2S ADC audio input stage, it includes an I2S interface and  one or two (depending of mono or stereo) synthetic spikes generators. <see cref="AudioInput"/>
+    /// </summary>
     public class I2SAudioInput : AudioInput
     {
+        /// <summary>
+        /// NAS type (mono or stereo)
+        /// </summary>
         public NASTYPE nasType;
+        /// <summary>
+        /// Clock Frequency, in Hz
+        /// </summary>
         public float clk;
+        /// <summary>
+        /// I2S Internal spikes generator number of bits
+        /// </summary>
         public uint genNbits;
+        /// <summary>
+        /// I2S Clock divisor value
+        /// </summary>
         public UInt16 genFreqDiv;
 
+        /// <summary>
+        /// Gives an instance of an I2S audio input
+        /// </summary>
+        /// <param name="clk">Nas type (mono or stereo)g</param>
+        /// <param name="nasType">NAS type (mono or stereo)</param>
+        /// <param name="genNbits">I2S Internal spikes generator number of bits</param>
+        /// <param name="genFreqDiv">I2S Clock divisor value</param>
         public I2SAudioInput(float clk, NASTYPE nasType, uint genNbits, UInt16 genFreqDiv)
         {
             this.clk = clk;
@@ -45,6 +67,10 @@ namespace OpenNAS_App.NASComponents
             this.genFreqDiv = genFreqDiv;
         }
 
+        /// <summary>
+        /// Generates a full I2S input stage, copying library files, and generating custom sources
+        /// </summary>
+        /// <param name="route">Destination files route</param>
         public override void generateHDL(string route)
         {
             List<string> dependencies = new List<string>();
@@ -53,7 +79,10 @@ namespace OpenNAS_App.NASComponents
             dependencies.Add(@"SSPLibrary\Components\i2s_to_spikes_stereo.vhd");
             copyDependencies(route, dependencies);
         }
-
+        /// <summary>
+        /// Writes I2S input interface settings in a XML file
+        /// </summary>
+        /// <param name="textWriter">XML text writer handler</param>
         public override void toXML(XmlTextWriter textWriter)
         {
             textWriter.WriteStartElement("I2SAudioADC");
@@ -62,6 +91,10 @@ namespace OpenNAS_App.NASComponents
             textWriter.WriteEndElement();
         }
 
+        /// <summary>
+        /// Writes I2S input stage component architecture <see cref="AudioInput"/>
+        /// </summary>
+        /// <param name="sw">NAS Top file handler</param>
         public override void WriteComponentArchitecture(StreamWriter sw)
         {
             sw.WriteLine("--I2S interface Stereo");
@@ -81,6 +114,10 @@ namespace OpenNAS_App.NASComponents
 
         }
 
+        /// <summary>
+        /// Writes Hybrid I2S input component invocation and signals link <see cref="AudioInput"/>
+        /// </summary>
+        /// <param name="sw">NAS Top file handler</param>
         public override void WriteComponentInvocation(StreamWriter sw)
         {
             
@@ -110,6 +147,10 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("");
         }
 
+        /// <summary>
+        /// Writes I2S input stage top signals <see cref="AudioInput"/>
+        /// </summary>
+        /// <param name="sw">NAS Top file handler</param>
         public override void WriteTopSignals(StreamWriter sw)
         {
             sw.WriteLine("--I2S Bus");

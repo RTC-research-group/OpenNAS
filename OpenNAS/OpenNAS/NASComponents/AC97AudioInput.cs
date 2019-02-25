@@ -71,7 +71,7 @@ namespace OpenNAS_App.NASComponents
         public UInt16 genFreqDiv;
 
         /// <summary>
-        /// Creates an instance of AC97AudioInput class
+        /// Creates an instance of AC97AudioInput class. This module will include an AC97 interface and one or two (depending of mono or stereo) synthetic spikes generators.
         /// </summary>
         /// <param name="source"></param>
         /// <param name="clk"></param>

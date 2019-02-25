@@ -29,22 +29,58 @@ using System.Xml;
 
 namespace OpenNAS_App.NASComponents
 {
+    /// <summary>
+    /// This class implements a hybrid audio input stage, it includes an I2S and PDM inputs, user selectable by a jumper. <see cref="PDMAudioInput"/> <see cref="I2SAudioInput"/>
+    /// </summary>
     class I2S_PDMAudioInput : AudioInput
     {
-        //Common I2S/PDM
+        /// <summary>
+        /// NAS type (mono or stereo)
+        /// </summary>
         public NASTYPE nasType;
+        /// <summary>
+        /// Clock Frequency, in Hz
+        /// </summary>
         public float clk;
 
-        //I2S
+        //PDM
+        /// <summary>
+        /// Clock divider factor for generating PDM clock
+        /// </summary>
         public uint clkDiv;
+        /// <summary>
+        /// PDM Input SHPF cut-off frequency, in Hz
+        /// </summary>
         public double shpfCutOff;
+        /// <summary>
+        /// PDM Output SLPF cut-off frequency, in Hz
+        /// </summary>
         public double slpfCutOff;
+        /// <summary>
+        /// PDM Output SLPF gain, as absolute value
+        /// </summary>
         public double slpfGain;
 
-        //PDM
+        //I2S
+        /// <summary>
+        /// I2S Internal spikes generator number of bits
+        /// </summary>
         public uint genNbits;
+        /// <summary>
+        /// I2S Clock divisor value
+        /// </summary>
         public UInt16 genFreqDiv;
-
+        /// <summary>
+        /// Gives an instance of hybrid I2S-PDM audio input
+        /// </summary>
+        /// <param name="clk">Nas type (mono or stereo)g</param>
+        /// <param name="nasType">NAS type (mono or stereo)</param>
+        /// <param name="clkDiv">Clock divider factor for generating PDM clock</param>
+        /// <param name="shpfCutOff"> PDM Input SHPF cut-off frequency, in Hz</param>
+        /// <param name="slpfCutOff">PDM Output SLPF cut-off frequency, in Hz</param>
+        /// <param name="slpfGain">PDM Output SLPF gain, as absolute value</param>
+        /// <param name="genNbits">I2S Internal spikes generator number of bits</param>
+        /// <param name="genFreqDiv">I2S Clock divisor value</param>
         public I2S_PDMAudioInput(float clk, NASTYPE nasType, uint clkDiv, double shpfCutOff, double slpfCutOff, double slpfGain, uint genNbits, UInt16 genFreqDiv)
         {
             //Common
@@ -60,6 +96,10 @@ namespace OpenNAS_App.NASComponents
             this.genFreqDiv = genFreqDiv;
         }
 
+        /// <summary>
+        /// Generates a full Hybrid I2S-PDM input stage, copying library files, and generating custom sources
+        /// </summary>
+        /// <param name="route">Destination files route</param>
         public override void generateHDL(string route)
         {
             List<string> dependencies = new List<string>();
@@ -82,6 +122,10 @@ namespace OpenNAS_App.NASComponents
             copyDependencies(route, dependencies);
         }
 
+        /// <summary>
+        /// Writes Hybrid I2S-PDM input interface settings in a XML file
+        /// </summary>
+        /// <param name="textWriter">XML text writer handler</param>
         public override void toXML(XmlTextWriter textWriter)
         {
             textWriter.WriteStartElement("I2S_PDMInput");
@@ -102,6 +146,10 @@ namespace OpenNAS_App.NASComponents
             textWriter.WriteEndElement();
         }
 
+        /// <summary>
+        /// Writes Hybrid I2S-PDM input stage component architecture <see cref="AudioInput"/>
+        /// </summary>
+        /// <param name="sw">NAS Top file handler</param>
         public override void WriteComponentArchitecture(StreamWriter sw)
         {
             sw.WriteLine("--PDM interface");
@@ -156,7 +204,10 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("end component;");
 
         }
-
+        /// <summary>
+        /// Writes Hybrid I2S-PDM input component invocation and signals link <see cref="AudioInput"/>
+        /// </summary>
+        /// <param name="sw">NAS Top file handler</param>
         public override void WriteComponentInvocation(StreamWriter sw)
         {
             SLPFParameters slpf = new SLPFParameters(clk, slpfCutOff, slpfGain, 3);
@@ -267,6 +318,10 @@ namespace OpenNAS_App.NASComponents
             }
         }
 
+        /// <summary>
+        /// Writes Hybrid I2S-PDM input stage top signals <see cref="AudioInput"/>
+        /// </summary>
+        /// <param name="sw">NAS Top file handler</param>
         public override void WriteTopSignals(StreamWriter sw)
         {
             sw.WriteLine("--PDM Interface");
