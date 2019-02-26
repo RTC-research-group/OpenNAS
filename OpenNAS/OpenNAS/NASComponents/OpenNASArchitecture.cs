@@ -30,6 +30,9 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
+/// <summary>
+/// This namespace groups all the classes for NAS representation and generation, performing components library
+/// </summary>
 namespace OpenNAS_App.NASComponents
 {
     /// <summary>
