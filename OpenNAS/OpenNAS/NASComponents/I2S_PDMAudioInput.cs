@@ -73,7 +73,7 @@ namespace OpenNAS_App.NASComponents
         /// <summary>
         /// Gives an instance of hybrid I2S-PDM audio input
         /// </summary>
-        /// <param name="clk">Nas type (mono or stereo)g</param>
+        /// <param name="clk">Clock frequency in Hz</param>
         /// <param name="nasType">NAS type (mono or stereo)</param>
         /// <param name="clkDiv">Clock divider factor for generating PDM clock</param>
         /// <param name="shpfCutOff"> PDM Input SHPF cut-off frequency, in Hz</param>
@@ -205,7 +205,7 @@ namespace OpenNAS_App.NASComponents
 
         }
         /// <summary>
-        /// Writes Hybrid I2S-PDM input component invocation and signals link <see cref="AudioInput"/>
+        /// Writes Hybrid I2S-PDM input component invocation and link signals <see cref="AudioInput"/>
         /// </summary>
         /// <param name="sw">NAS Top file handler</param>
         public override void WriteComponentInvocation(StreamWriter sw)

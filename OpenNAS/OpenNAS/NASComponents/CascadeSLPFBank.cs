@@ -45,7 +45,7 @@ namespace OpenNAS_App.NASComponents
         Order4  };
 
     /// <summary>
-    /// Class for implementing a ban of SLPF filters with a cascade topology, implements AudioProcessingArchitecture <see cref="AudioProcessingArchitecture"/>
+    /// Class for implementing a bank of SLPF filters with a cascade topology, implements AudioProcessingArchitecture <see cref="AudioProcessingArchitecture"/>
     /// </summary>
     public class CascadeSLPFBank: AudioProcessingArchitecture
     {
@@ -353,7 +353,7 @@ namespace OpenNAS_App.NASComponents
 
         }
         /// <summary>
-        /// Writes cascade SLPF bank in a XML file
+        /// Writes cascade SLPF bank features in a XML file
         /// </summary>
         /// <param name="textWriter">XmlTextWriter handler</param>
         override public void toXML(XmlTextWriter textWriter)
@@ -435,7 +435,7 @@ namespace OpenNAS_App.NASComponents
         }
 
         /// <summary>
-        /// Writes cascade SLPF bank invocation and signals link <see cref="AudioInput"/>
+        /// Writes cascade SLPF bank invocation and link signals <see cref="AudioInput"/>
         /// </summary>
         /// <param name="sw">NAS Top file handler</param>
         public override void WriteComponentInvocation(StreamWriter sw)

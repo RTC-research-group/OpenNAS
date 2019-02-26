@@ -30,17 +30,53 @@ using System.Xml;
 
 namespace OpenNAS_App.NASComponents
 {
+
+    /// <summary>
+    /// Class for implementing a bank of SBPF filters with a parallel topology, implements AudioProcessingArchitecture <see cref="AudioProcessingArchitecture"/>
+    /// </summary>
     class ParallelSBPFBank : AudioProcessingArchitecture
     {
+        /// <summary>
+        /// Number of channels
+        /// </summary>
         public int nCH = 0;
+        /// <summary>
+        /// Clock frequency in Hz
+        /// </summary>
         public float clk;
+        /// <summary>
+        /// NAS mono or stereo
+        /// </summary>
         public NASTYPE nasType;
+        /// <summary>
+        /// List of channels mid frequencies
+        /// </summary>
         public List<double> midFreq;
+        /// <summary>
+        /// List of channels Q factor
+        /// </summary>
         public List<double> Q;
+        /// <summary>
+        /// Indivicual channel ouput attenuation, as an absolute value
+        /// </summary>
         public List<double> attenuation;
         private CultureInfo ci = new CultureInfo("en-us");
 
+        /// <summary>
+        /// Basic ParallelSBPFBank constructor
+        /// </summary>
         public ParallelSBPFBank() { }
+
+        /// <summary>
+        /// Main CascadesLPFBank constructor
+        /// </summary>
+        /// <param name="nCH">Number of channels</param>
+        /// <param name="clk">Clock frequency in Hz</param>
+        /// <param name="nasType">NAS mono or stereo</param>
+        /// <param name="startFreq">Start mid frequency, in Hz</param>
+        /// <param name="stopFreq">Last mid frequency, in Hz</param>
+        /// <param name="Q">Filters Quality Factor</param>
+        /// <param name="att">Filters output attenuation, as an absolute value</param>
         public ParallelSBPFBank(int nCH, float clk, NASTYPE nasType, double startFreq, double stopFreq, double Q, double att)
         {
             double start, stop;
@@ -66,6 +102,11 @@ namespace OpenNAS_App.NASComponents
             }
 
         }
+
+        /// <summary>
+        /// Writes SBPF bank features in a XML file
+        /// </summary>
+        /// <param name="textWriter">XmlTextWriter handler</param>
         public override void toXML(XmlTextWriter textWriter)
         {
             int i = 0;
@@ -210,6 +251,10 @@ namespace OpenNAS_App.NASComponents
 
         }
 
+        /// <summary>
+        /// Generates a full SBPF bank, copying library files, and generating custom sources
+        /// </summary>
+        /// <param name="route">Destination files route</param>
         public override void generateHDL(string route)
         {
             List<string> dependencies = new List<string>();
@@ -226,11 +271,18 @@ namespace OpenNAS_App.NASComponents
 
         }
 
+        /// <summary>
+        /// Not used, either implemented
+        /// </summary>
+        /// <param name="sw">NAS Top file handler</param>
         public override void WriteTopSignals(StreamWriter sw)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// Writes a SBPF bank component architecture <see cref="CascadeSLPFBank"/>
+        /// </summary>
+        /// <param name="sw">NAS Top file handler</param>
         public override void WriteComponentArchitecture(StreamWriter sw)
         {
 
@@ -247,33 +299,40 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("");
         }
 
-       public override void WriteComponentInvocation(StreamWriter sw)
-       {
-        string entity = "PFBank_" + nCH + "CH";
-        sw.WriteLine("--Parallel Filter Bank");
-        sw.WriteLine("U_" + entity + "_Left: " + entity);
-        sw.WriteLine("  port map(");
-        sw.WriteLine("  clock =>clock,");
-        sw.WriteLine("   rst  => reset,");
-        sw.WriteLine("  spikes_in=> spikes_in_left,");
-        sw.WriteLine("  spikes_out=>spikes_out_left");
-        sw.WriteLine(");");
-        sw.WriteLine("");
-
-        if (nasType == NASTYPE.STEREO)
+        /// <summary>
+        /// Writes a SBPF bank invocation and link signals <see cref="AudioInput"/>
+        /// </summary>
+        /// <param name="sw">NAS Top file handler</param>
+        public override void WriteComponentInvocation(StreamWriter sw)
         {
+            string entity = "PFBank_" + nCH + "CH";
             sw.WriteLine("--Parallel Filter Bank");
-            sw.WriteLine("U_" + entity + "_Rigth: " + entity);
+            sw.WriteLine("U_" + entity + "_Left: " + entity);
             sw.WriteLine("  port map(");
             sw.WriteLine("  clock =>clock,");
             sw.WriteLine("   rst  => reset,");
-            sw.WriteLine("  spikes_in=> spikes_in_rigth,");
-            sw.WriteLine("  spikes_out=>spikes_out_rigth");
+            sw.WriteLine("  spikes_in=> spikes_in_left,");
+            sw.WriteLine("  spikes_out=>spikes_out_left");
             sw.WriteLine(");");
             sw.WriteLine("");
-        }
-        }
 
+            if (nasType == NASTYPE.STEREO)
+            {
+                sw.WriteLine("--Parallel Filter Bank");
+                sw.WriteLine("U_" + entity + "_Rigth: " + entity);
+                sw.WriteLine("  port map(");
+                sw.WriteLine("  clock =>clock,");
+                sw.WriteLine("   rst  => reset,");
+                sw.WriteLine("  spikes_in=> spikes_in_rigth,");
+                sw.WriteLine("  spikes_out=>spikes_out_rigth");
+                sw.WriteLine(");");
+                sw.WriteLine("");
+            }
+        }
+        /// <summary>
+        /// Gets component short description
+        /// </summary>
+        /// <returns>Short description</returns>
         public override string getShortDescription()
         {
             return "Parallel";
