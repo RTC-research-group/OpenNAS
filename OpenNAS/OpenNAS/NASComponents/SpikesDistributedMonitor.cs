@@ -29,22 +29,45 @@ using System.Xml;
 
 namespace OpenNAS_App.NASComponents
 {
+    /// <summary>
+    /// This class implements a distributed spikes monitor. This converts a set of input spikes (channels) to AER events, and includes a 4-phase hand-shake unit for events propagation. <see cref="SpikesOutputInterface"/>
+    /// </summary>
     public class SpikesDistributedMonitor:SpikesOutputInterface
     {
-
+        /// <summary>
+        /// Number of channels
+        /// </summary>
         public UInt16 nCh;
-        public UInt16 aerFifoBits;
-        public UInt16 spikeFifoBits;
+        /// <summary>
+        /// AER Events ouput fifo depth 
+        /// </summary>
+        public UInt16 aerFifoDepth;
+        /// <summary>
+        /// Input spikes fifo depth
+        /// </summary>
+        public UInt16 spikeFifoDepth;
 
+        /// <summary>
+        /// Gives an empty instance of SpikesDistributedMonitor
+        /// </summary>
         public SpikesDistributedMonitor() { }
 
+        /// <summary>
+        /// Gives an instance of SpikesDistributedMonitor 
+        /// </summary>
+        /// <param name="nCh">Number of channels</param>
+        /// <param name="aerFifoBits">AER Events ouput fifo depth</param>
+        /// <param name="spikeFifoBits">Input spikes fifo depth</param>
         public SpikesDistributedMonitor(UInt16 nCh, UInt16 aerFifoBits, UInt16 spikeFifoBits)
         {
             this.nCh = nCh;
-            this.aerFifoBits = aerFifoBits;
-            this.spikeFifoBits = spikeFifoBits;
+            this.aerFifoDepth = aerFifoBits;
+            this.spikeFifoDepth = spikeFifoBits;
         }
-
+        /// <summary>
+        /// Generates a SpikesDistributedMonitor output stage, copying library files, and generating custom sources
+        /// </summary>
+        /// <param name="route">Destination files route</param>
         public override void generateHDL(string route)
         {
             List<string> dependencies = new List<string>();
@@ -59,15 +82,22 @@ namespace OpenNAS_App.NASComponents
             copyDependencies(route, dependencies);
         }
 
+        /// <summary>
+        /// Writes SpikesDistributedMonitor output settings in a XML file
+        /// </summary>
+        /// <param name="textWriter">XML text writer handler</param>
         public override void toXML(XmlTextWriter textWriter)
         { 
             textWriter.WriteStartElement("SpikesDistributedMonitor");
-            textWriter.WriteAttributeString("aerFifoBits", aerFifoBits.ToString());
-            textWriter.WriteAttributeString("spikeFifoBits", spikeFifoBits.ToString());
+            textWriter.WriteAttributeString("aerFifoDepth", aerFifoDepth.ToString());
+            textWriter.WriteAttributeString("spikeFifoDepth", spikeFifoDepth.ToString());
             textWriter.WriteEndElement();
         }
 
-                      
+        /// <summary>
+        /// Writes a SpikesDistributedMonitor output stage component architecture <see cref="AudioInput"/>
+        /// </summary>
+        /// <param name="sw">NAS Top file handler</param>              
         public override void WriteComponentArchitecture(StreamWriter sw)
         {
             sw.WriteLine("--Spikes Distributed Monitor");
@@ -83,11 +113,15 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("end component;");
         }
 
+        /// <summary>
+        /// Writes a SpikesDistributedMonitor output component invocation and link signals<see cref="AudioInput"/>
+        /// </summary>
+        /// <param name="sw">NAS Top file handler</param>
         public override void WriteComponentInvocation(StreamWriter sw)
         {
             sw.WriteLine("--Spikes Distributed Monitor");
             sw.WriteLine(" U_AER_DISTRIBUTED_MONITOR: AER_DISTRIBUTED_MONITOR");
-            sw.WriteLine("generic map (N_SPIKES=>" + (2 * nCh) + ", LOG_2_N_SPIKES=>" + ((int)Math.Log(2 * nCh, 2)) + ", TAM_AER=>" + ((int)Math.Pow(2,aerFifoBits))+", IL_AER=>" + aerFifoBits + ")");
+            sw.WriteLine("generic map (N_SPIKES=>" + (2 * nCh) + ", LOG_2_N_SPIKES=>" + ((int)Math.Log(2 * nCh, 2)) + ", TAM_AER=>" + ((int)Math.Pow(2,aerFifoDepth))+", IL_AER=>" + aerFifoDepth + ")");
             sw.WriteLine("Port map (");
             sw.WriteLine("  CLK=>clock,");
             sw.WriteLine("  RST=> reset,");
@@ -98,6 +132,10 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("");
         }
 
+        /// <summary>
+        /// Writes SpikesDistributedMonitor output stage top signals <see cref="AudioInput"/>
+        /// </summary>
+        /// <param name="sw">NAS Top file handler</param>
         public override void WriteTopSignals(StreamWriter sw)
         {
 

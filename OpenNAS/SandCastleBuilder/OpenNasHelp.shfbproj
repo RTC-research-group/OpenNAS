@@ -24,8 +24,8 @@
     <HelpTitle>OpenNAS Documented Class Library</HelpTitle>
     <HelpFileVersion>1.0.0.0</HelpFileVersion>
     <NamingMethod>Guid</NamingMethod>
-    <ContentPlacement>AboveNamespaces</ContentPlacement>
-    <RootNamespaceContainer>False</RootNamespaceContainer>
+    <ContentPlacement>BelowNamespaces</ContentPlacement>
+    <RootNamespaceContainer>True</RootNamespaceContainer>
     <NamespaceGrouping>False</NamespaceGrouping>
     <Preliminary>False</Preliminary>
     <SdkLinkTarget>Blank</SdkLinkTarget>
@@ -37,12 +37,12 @@
     <TocParentVersion>100</TocParentVersion>
     <TopicVersion>100</TopicVersion>
     <MSHelpViewerSdkLinkType>Msdn</MSHelpViewerSdkLinkType>
-    <VisibleItems>Attributes, ExplicitInterfaceImplementations, InheritedMembers, InheritedFrameworkMembers, Protected, ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
+    <VisibleItems>Attributes, InheritedMembers, InheritedFrameworkMembers, Protected, ProtectedInternalAsProtected, NonBrowsable</VisibleItems>
     <RootNamespaceTitle>OpenNAS Documented Class Library</RootNamespaceTitle>
     <HtmlSdkLinkType>Msdn</HtmlSdkLinkType>
     <BinaryTOC>True</BinaryTOC>
     <IncludeFavorites>False</IncludeFavorites>
-    <WebsiteSdkLinkType>Msdn</WebsiteSdkLinkType>
+    <WebsiteSdkLinkType>None</WebsiteSdkLinkType>
     <WebsiteAdContent>OpenNAS Documented Class Library</WebsiteAdContent>
     <AppendMarkdownFileExtensionsToUrls>False</AppendMarkdownFileExtensionsToUrls>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
