@@ -44,8 +44,8 @@ namespace OpenNAS_App
     /// </summary>
     public partial class OpenNasWizard : Window
     {
-        public OpenNASArchitecture nas;
-        public string route = "";
+        private OpenNASArchitecture nas;
+        private string route = "";
 
         public OpenNasWizard()
         {
