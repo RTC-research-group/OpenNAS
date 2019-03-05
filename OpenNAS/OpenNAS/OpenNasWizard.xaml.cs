@@ -117,9 +117,12 @@ namespace OpenNAS_App
             var dialog = new System.Windows.Forms.FolderBrowserDialog();
             System.Windows.Forms.DialogResult result = dialog.ShowDialog();
 
-            route = dialog.SelectedPath;
+            if (dialog.SelectedPath != "")
+            {
+                route = dialog.SelectedPath;
 
-            routeTextBox.Text = route;
+                routeTextBox.Text = route;
+            }
         }
 
         private void Wizard_Help(object sender, RoutedEventArgs e)
