@@ -78,17 +78,18 @@ namespace OpenNAS_App.NASComponents
         /// <summary>
         /// Generates a full NAS, copying library files, and generating custom sources
         /// </summary>
-        /// <param name="route">Destination files route</param>
-        public void Generate (string route)
+        /// <param name="sourceRoute">Destination of source files</param>
+        /// <param name="constrainsRoute">Destination of constrains files</param>
+        public void Generate (string sourceRoute, string constrainsRoute)
         {
             //Generate HDL componets
-            audioInput.generateHDL(route);
-            audioProcessing.generateHDL(route);
-            spikesOutput.generateHDL(route);
+            audioInput.generateHDL(sourceRoute);
+            audioProcessing.generateHDL(sourceRoute);
+            spikesOutput.generateHDL(sourceRoute);
             //Write Top HDL file
-            writeTopFile(route);
+            writeTopFile(sourceRoute);
 
-            writeConstraints(route);
+            writeConstraints(constrainsRoute);
         }
 
         /// <summary>

@@ -23,7 +23,9 @@
 using OpenNAS_App.NASComponents;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -43,11 +45,20 @@ namespace OpenNAS_App
     public partial class OpenNasWizard : Window
     {
         public OpenNASArchitecture nas;
-        public string route= @"C:\Users\angel\Desktop\OpenNas\OpenNas";
+        public string route = "";
 
         public OpenNasWizard()
         {
             InitializeComponent();
+
+            //Checks startup routes and folder
+            string baseRoute = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\Projects";
+            bool folderExists = Directory.Exists(baseRoute);
+            if (!folderExists)
+                Directory.CreateDirectory(baseRoute);
+            routeTextBox.Text = baseRoute;
+            route = baseRoute;
+
         }
 
         private void Wizard_Finish(object sender, RoutedEventArgs e)
@@ -60,16 +71,30 @@ namespace OpenNAS_App
 
             nas = new OpenNASArchitecture(commons, audioInput, audioProcessing, spikesOutput);
 
-            //string route = @"F:\aer\BIOSense\NAS_2016\OpenNAS_App\OpenNAS_App_rev0.1\OpenNas";
+            string sourceRoute = route + "\\sources";
+            string constrainRoute = route + "\\constrains";
+            checkFolders(route);
 
             nas.toXML(route);
-            //System.Diagnostics.Process.Start("notepad.exe", filename);
 
-            nas.Generate(route);
-
-
+            nas.Generate(sourceRoute, constrainRoute);
 
             MessageBox.Show("OpenN@S successfully generated at: " + route);
+
+            if(openFolderCheckBox.IsChecked==true)
+                System.Diagnostics.Process.Start("explorer.exe",route);
+        }
+
+        private void checkFolders (string nasRoute)
+        {
+            string sourceRoute = route + "\\sources";
+            bool folderExists = Directory.Exists(sourceRoute);
+            if (!folderExists)
+                Directory.CreateDirectory(sourceRoute);
+            string constrainRoute = route + "\\constrains";
+            folderExists = Directory.Exists(constrainRoute);
+            if (!folderExists)
+                Directory.CreateDirectory(constrainRoute);
         }
 
         private void Wizard_Next(object sender, Xceed.Wpf.Toolkit.Core.CancelRoutedEventArgs e)
