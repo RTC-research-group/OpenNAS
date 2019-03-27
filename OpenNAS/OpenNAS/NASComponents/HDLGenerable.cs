@@ -74,33 +74,45 @@ namespace OpenNAS_App.NASComponents
         /// <summary>
         /// Summarizes the current NAS license as an string, to be copied as files header
         /// </summary>
+        /// /// <param name="fileType">Indicates the file's extension to copy the license</param>
         /// <returns>Current NAS license</returns>
-        public static string copyLicense()
+        public static string copyLicense(char fileType)
         {
             string license;
+            string commentFormat;
 
-            license =  "--///////////////////////////////////////////////////////////////////////////////\n";
-            license += "--//                                                                           //\n";
-            license += "--//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                   //\n";
-            license += "--//                                                                           //\n";
-            license += "--//    This file is part of OpenNAS.                                          //\n";
-            license += "--//                                                                           //\n";
-            license += "--//    OpenNAS is free software: you can redistribute it and/or modify        //\n";
-            license += "--//    it under the terms of the GNU General Public License as published by   //\n";
-            license += "--//    the Free Software Foundation, either version 3 of the License, or      //\n";
-
-            license += "--//    (at your option) any later version.                                    //\n";
-            license += "--//                                                                           //\n";
-            license += "--//    OpenNAS is distributed in the hope that it will be useful,             //\n";
-            license += "--//    but WITHOUT ANY WARRANTY; without even the implied warranty of         //\n";
-            license += "--//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the            //\n";
-
-            license += "--//    GNU General Public License for more details.                           //\n";
-            license += "--//                                                                           //\n";
-            license += "--//    You should have received a copy of the GNU General Public License      //\n";
-            license += "--//    along with OpenNAS. If not, see <http://www.gnu.org/licenses/>.        //\n";
-            license += "--//                                                                           //\n";
-            license += "--///////////////////////////////////////////////////////////////////////////////\n\n";
+            if(fileType == 'H')
+            {
+                commentFormat = "--";
+            }
+            else if(fileType == 'C')
+            {
+                commentFormat = "#";
+            }
+            else
+            {
+                commentFormat = "//";
+            }
+            license = commentFormat + "///////////////////////////////////////////////////////////////////////////////\n";
+            license += commentFormat + "//                                                                           //\n";
+            license += commentFormat + "//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                   //\n";
+            license += commentFormat + "//                                                                           //\n";
+            license += commentFormat + "//    This file is part of OpenNAS.                                          //\n";
+            license += commentFormat + "//                                                                           //\n";
+            license += commentFormat + "//    OpenNAS is free software: you can redistribute it and/or modify        //\n";
+            license += commentFormat + "//    it under the terms of the GNU General Public License as published by   //\n";
+            license += commentFormat + "//    the Free Software Foundation, either version 3 of the License, or      //\n";
+            license += commentFormat + "//    (at your option) any later version.                                    //\n";
+            license += commentFormat + "//                                                                           //\n";
+            license += commentFormat + "//    OpenNAS is distributed in the hope that it will be useful,             //\n";
+            license += commentFormat + "//    but WITHOUT ANY WARRANTY; without even the implied warranty of         //\n";
+            license += commentFormat + "//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the            //\n";
+            license += commentFormat + "//    GNU General Public License for more details.                           //\n";
+            license += commentFormat + "//                                                                           //\n";
+            license += commentFormat + "//    You should have received a copy of the GNU General Public License      //\n";
+            license += commentFormat + "//    along with OpenNAS. If not, see <http://www.gnu.org/licenses/>.        //\n";
+            license += commentFormat + "//                                                                           //\n";
+            license += commentFormat + "///////////////////////////////////////////////////////////////////////////////\n\n";
 
             return license;
         }

@@ -44,7 +44,7 @@ namespace OpenNAS_App.NASControls
     {
         public enum NASAUDIOSOURCE {AC97 = 0, I2S = 1, PDM = 2, I2SPDM = 3 };
         AudioInputControlInterface currentControl;
-        NASAUDIOSOURCE audioSource;
+        public static NASAUDIOSOURCE audioSource;
         public OpenNASCommons commons;
         public AudioInputControl()
         {

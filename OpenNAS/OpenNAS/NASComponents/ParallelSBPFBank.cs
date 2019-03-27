@@ -174,7 +174,7 @@ namespace OpenNAS_App.NASComponents
             computeFiltersParameters();
             StreamWriter sw = new StreamWriter(route + "\\PFBank_" + nCH + ".vhd");
 
-            sw.WriteLine(HDLGenerable.copyLicense());
+            sw.WriteLine(HDLGenerable.copyLicense('H'));
 
             sw.WriteLine("library IEEE;");
             sw.WriteLine("use IEEE.STD_LOGIC_1164.ALL;");

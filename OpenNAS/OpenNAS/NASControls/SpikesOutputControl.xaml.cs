@@ -42,7 +42,9 @@ namespace OpenNAS_App.NASControls
     /// </summary>
     public partial class SpikesOutputControl : UserControl, SpikesOutputControlInterface
     {
+        public enum NASAUDIOOUTPUT { AERMONITOR = 0, SPINNAKERV1 = 1, SPINNAKERV2 = 2, AERNSPINN = 3 };
         SpikesOutputControlInterface currentControl;
+        public static NASAUDIOOUTPUT audioOutput;
         public OpenNASCommons commons;
 
         public SpikesOutputControl()
@@ -68,6 +70,8 @@ namespace OpenNAS_App.NASControls
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             updateControl();
+
+            audioOutput = (NASAUDIOOUTPUT)comboBox.SelectedIndex;
         }
 
         public SpikesOutputInterface FromControl()

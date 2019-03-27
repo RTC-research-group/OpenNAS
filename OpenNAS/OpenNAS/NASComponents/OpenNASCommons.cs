@@ -63,6 +63,7 @@ namespace OpenNAS_App.NASComponents
         /// Other custom board
         /// </summary>
         OTHER = 3 }
+
     /// <summary>
     /// This class contains NAS commons parameters for computing parameters and sources generating
     /// </summary>

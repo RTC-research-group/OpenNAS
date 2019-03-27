@@ -44,7 +44,8 @@ namespace OpenNAS_App.NASControls
     public partial class AudioProcessingControl : UserControl, AudioProcessingArchitectureControlInterface
     {
         private CultureInfo ci = new CultureInfo("en-us");
-
+        public enum NASAUDIOPROCESSING { CASCADE_SLPFB = 0, PARALLEL_SLPFB = 1, PARALLEL_SBPFB = 2};
+        public static NASAUDIOPROCESSING audioProcessing;
         private AudioProcessingArchitectureControlInterface currentControl;
         public OpenNASCommons commons;
 
@@ -100,6 +101,8 @@ namespace OpenNAS_App.NASControls
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             updateActiveControl();
+
+            audioProcessing = (NASAUDIOPROCESSING)comboBox.SelectedIndex;
         }
 
         public void InitializeControlValues(OpenNASCommons commons)

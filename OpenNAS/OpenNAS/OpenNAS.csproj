@@ -317,6 +317,9 @@
     <None Include="SSPLibrary\SpikesOutputInterfaces\ramfifo.vhd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SSPLibrary\SpikesOutputInterfaces\spinn_aer_if.v">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -335,6 +338,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Figures\NASchips\Other.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TCL\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

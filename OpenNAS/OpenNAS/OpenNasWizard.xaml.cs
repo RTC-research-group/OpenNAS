@@ -72,12 +72,13 @@ namespace OpenNAS_App
             nas = new OpenNASArchitecture(commons, audioInput, audioProcessing, spikesOutput);
 
             string sourceRoute = route + "\\sources";
-            string constrainRoute = route + "\\constrains";
+            string constrainRoute = route + "\\constraints";
+            string projectRoute = route + "\\project";
             checkFolders(route);
 
             nas.toXML(route);
 
-            nas.Generate(sourceRoute, constrainRoute);
+            nas.Generate(sourceRoute, constrainRoute, projectRoute);
 
             MessageBox.Show("OpenN@S successfully generated at: " + route);
 
@@ -91,10 +92,15 @@ namespace OpenNAS_App
             bool folderExists = Directory.Exists(sourceRoute);
             if (!folderExists)
                 Directory.CreateDirectory(sourceRoute);
-            string constrainRoute = route + "\\constrains";
+
+            string constrainRoute = route + "\\constraints";
             folderExists = Directory.Exists(constrainRoute);
             if (!folderExists)
                 Directory.CreateDirectory(constrainRoute);
+            string projectRoute = route + "\\project";
+            folderExists = Directory.Exists(projectRoute);
+            if (!folderExists)
+                Directory.CreateDirectory(projectRoute);
         }
 
         private void Wizard_Next(object sender, Xceed.Wpf.Toolkit.Core.CancelRoutedEventArgs e)

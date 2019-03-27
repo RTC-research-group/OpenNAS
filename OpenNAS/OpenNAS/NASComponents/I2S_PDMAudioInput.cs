@@ -188,6 +188,7 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("  spikes_rigth: out std_logic_vector(1 downto 0)");
             sw.WriteLine(");");
             sw.WriteLine("end component;");
+            sw.WriteLine("");
 
             sw.WriteLine("--Spikes Input Source Selector");
             sw.WriteLine("component SpikesSource_Selector is");
@@ -202,6 +203,7 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("   spikes_data : out std_logic_vector(1 downto 0)");
             sw.WriteLine(");");
             sw.WriteLine("end component;");
+            sw.WriteLine("");
 
         }
         /// <summary>
@@ -237,17 +239,17 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("U_PDM2Spikes_Left: PDM2Spikes");
             sw.WriteLine("generic map(SLPF_GL => " + slpf.nBits + ", SLPF_SAT => " + (int)(Math.Pow(2, slpf.nBits - 1) - 1) + ", SHPF_GL => " + shpf.nBits + ", SHPF_SAT => " + (int)(Math.Pow(2, shpf.nBits - 1) - 1) + " )");
             sw.WriteLine("port map (");
-            sw.WriteLine("clk => clock,");
-            sw.WriteLine("rst => pdm_reset,");
-            sw.WriteLine("clock_div => x\"" + (this.clkDiv - 1).ToString("X2") + "\", --PDM clock: +" + pdmClock.ToString("0.000") + "MHz");
-            sw.WriteLine("PDM_CLK => PDM_CLK_LEFT,");
-            sw.WriteLine("PDM_DAT => PDM_DAT_LEFT,");
-            sw.WriteLine("SHPF_FREQ_DIV => x\"" + shpf.freqDiv.ToString("X2") + "\",");
-            sw.WriteLine("SLPF_FREQ_DIV => x\"" + slpf.freqDiv.ToString("X2") + "\",");
-            sw.WriteLine("SLPF_SPIKES_DIV_FB => x\"" + slpf.fbDiv.ToString("X4") + "\",");
-            sw.WriteLine("SLPF_SPIKES_DIV_OUT => x\"" + slpf.outDiv.ToString("X4") + "\",");
-            sw.WriteLine("--Spikes Output");
-            sw.WriteLine("spikes_out => spikes_in_left_pdm");
+            sw.WriteLine("  clk => clock,");
+            sw.WriteLine("  rst => pdm_reset,");
+            sw.WriteLine("  clock_div => x\"" + (this.clkDiv - 1).ToString("X2") + "\", --PDM clock: +" + pdmClock.ToString("0.000") + "MHz");
+            sw.WriteLine("  PDM_CLK => PDM_CLK_LEFT,");
+            sw.WriteLine("  PDM_DAT => PDM_DAT_LEFT,");
+            sw.WriteLine("  SHPF_FREQ_DIV => x\"" + shpf.freqDiv.ToString("X2") + "\",");
+            sw.WriteLine("  SLPF_FREQ_DIV => x\"" + slpf.freqDiv.ToString("X2") + "\",");
+            sw.WriteLine("  SLPF_SPIKES_DIV_FB => x\"" + slpf.fbDiv.ToString("X4") + "\",");
+            sw.WriteLine("  SLPF_SPIKES_DIV_OUT => x\"" + slpf.outDiv.ToString("X4") + "\",");
+            sw.WriteLine("  --Spikes Output");
+            sw.WriteLine("  spikes_out => spikes_in_left_pdm");
             sw.WriteLine(");");
             sw.WriteLine("");
 
@@ -257,17 +259,17 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("U_PDM2Spikes_Rigth: PDM2Spikes");
                 sw.WriteLine("generic map(SLPF_GL => " + slpf.nBits + ", SLPF_SAT => " + (int)(Math.Pow(2, slpf.nBits - 1) - 1) + ", SHPF_GL => " + shpf.nBits + ", SHPF_SAT => " + (int)(Math.Pow(2, shpf.nBits - 1) - 1) + " )");
                 sw.WriteLine("port map (");
-                sw.WriteLine("clk => clock,");
-                sw.WriteLine("rst => pdm_reset,");
-                sw.WriteLine("clock_div => x\"" + (this.clkDiv - 1).ToString("X2") + "\", --PDM clock: +" + pdmClock.ToString("0.000") + "MHz");
-                sw.WriteLine("PDM_CLK => PDM_CLK_RIGTH,");
-                sw.WriteLine("PDM_DAT => PDM_DAT_RIGTH,");
-                sw.WriteLine("SHPF_FREQ_DIV => x\"" + shpf.freqDiv.ToString("X2") + "\",");
-                sw.WriteLine("SLPF_FREQ_DIV => x\"" + slpf.freqDiv.ToString("X2") + "\",");
-                sw.WriteLine("SLPF_SPIKES_DIV_FB => x\"" + slpf.fbDiv.ToString("X4") + "\",");
-                sw.WriteLine("SLPF_SPIKES_DIV_OUT => x\"" + slpf.outDiv.ToString("X4") + "\",");
-                sw.WriteLine("--Spikes Output");
-                sw.WriteLine("spikes_out => spikes_in_right_pdm");
+                sw.WriteLine("  clk => clock,");
+                sw.WriteLine("  rst => pdm_reset,");
+                sw.WriteLine("  clock_div => x\"" + (this.clkDiv - 1).ToString("X2") + "\", --PDM clock: +" + pdmClock.ToString("0.000") + "MHz");
+                sw.WriteLine("  PDM_CLK => PDM_CLK_RIGTH,");
+                sw.WriteLine("  PDM_DAT => PDM_DAT_RIGTH,");
+                sw.WriteLine("  SHPF_FREQ_DIV => x\"" + shpf.freqDiv.ToString("X2") + "\",");
+                sw.WriteLine("  SLPF_FREQ_DIV => x\"" + slpf.freqDiv.ToString("X2") + "\",");
+                sw.WriteLine("  SLPF_SPIKES_DIV_FB => x\"" + slpf.fbDiv.ToString("X4") + "\",");
+                sw.WriteLine("  SLPF_SPIKES_DIV_OUT => x\"" + slpf.outDiv.ToString("X4") + "\",");
+                sw.WriteLine("  --Spikes Output");
+                sw.WriteLine("  spikes_out => spikes_in_right_pdm");
                 sw.WriteLine(");");
                 sw.WriteLine("");
 
@@ -281,8 +283,8 @@ namespace OpenNAS_App.NASComponents
 
             sw.WriteLine("--I2S Bus");
             sw.WriteLine("  i2s_bclk  => i2s_bclk,");
-            sw.WriteLine("   i2s_d_in => i2s_d_in,");
-            sw.WriteLine("   i2s_lr => i2s_lr,");
+            sw.WriteLine("  i2s_d_in => i2s_d_in,");
+            sw.WriteLine("  i2s_lr => i2s_lr,");
             sw.WriteLine("--Spikes Output");
             sw.WriteLine("  spikes_left=>spikes_in_left_i2s,");
 
@@ -296,7 +298,7 @@ namespace OpenNAS_App.NASComponents
             }
             sw.WriteLine(");");
 
-            sw.WriteLine("--Spikes source selector");
+            sw.WriteLine("--Spikes source selector left");
             sw.WriteLine("U_SpikesSrcSel_Left: SpikesSource_Selector");
             sw.WriteLine("    port map(");
             sw.WriteLine("    source_sel => source_sel,");
@@ -308,6 +310,7 @@ namespace OpenNAS_App.NASComponents
             if (nasType == NASTYPE.STEREO)
             {
                 sw.WriteLine("");
+                sw.WriteLine("--Spikes source selector right");
                 sw.WriteLine("U_SpikesSrcSel_Right: SpikesSource_Selector");
                 sw.WriteLine("    port map(");
                 sw.WriteLine("    source_sel => source_sel,");
