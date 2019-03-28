@@ -1,5 +1,9 @@
 # OpenN@S
 
+<p align="center">
+<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_logo.png" alt="OpenNAS logo">
+</p>
+
 <h2 name="Description">Description</h2>
 <!--What OpenNAS is; Its main features-->
 <p align="justify">
