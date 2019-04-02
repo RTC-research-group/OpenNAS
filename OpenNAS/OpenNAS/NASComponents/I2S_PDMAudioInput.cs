@@ -119,6 +119,9 @@ namespace OpenNAS_App.NASComponents
             dependencies.Add(@"SSPLibrary\Components\I2S_inteface_sync.vhd");
             dependencies.Add(@"SSPLibrary\Components\i2s_to_spikes_stereo.vhd");
 
+            //Spikes Source Selector
+            dependencies.Add(@"SSPLibrary\Components\SpikesSource_Selector.vhd");
+
             copyDependencies(route, dependencies);
         }
 
@@ -316,7 +319,7 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("    source_sel => source_sel,");
                 sw.WriteLine("    i2s_data => spikes_in_right_i2s,");
                 sw.WriteLine("    pdm_data => spikes_in_right_pdm,");
-                sw.WriteLine("    spikes_data => spikes_in_right");
+                sw.WriteLine("    spikes_data => spikes_in_rigth");
                 sw.WriteLine(");");
             }
         }
