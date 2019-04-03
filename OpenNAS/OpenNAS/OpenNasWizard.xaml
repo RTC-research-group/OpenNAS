@@ -35,7 +35,6 @@
             <xctk:WizardPage x:Name="IntroPage" 
                                    Title="Welcome to OpenN@S wizard."
                                    Description="Through this process you will able to design a NAS for later generation." 
-                                   HelpButtonVisibility="Hidden"
                                    BackButtonVisibility="Hidden"
                                    FinishButtonVisibility="Collapsed"
              />            

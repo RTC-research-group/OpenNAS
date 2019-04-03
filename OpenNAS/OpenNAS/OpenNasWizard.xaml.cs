@@ -133,7 +133,7 @@ namespace OpenNAS_App
 
         private void Wizard_Help(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Not implemented yet");
+            System.Diagnostics.Process.Start("https://github.com/RTC-research-group/OpenNAS/wiki");
         }
     }
 }
