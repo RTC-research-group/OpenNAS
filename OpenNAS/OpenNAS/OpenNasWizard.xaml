@@ -31,14 +31,18 @@
         Title="OpenN@S" Height="490" Width="850">
     <Grid>
         <xctk:Wizard x:Name="wizardControl" FinishButtonClosesWindow="True" Finish="Wizard_Finish" Next="Wizard_Next" Help="Wizard_Help" CanCancel="False" CancelButtonVisibility="Hidden">
-            
+
             <xctk:WizardPage x:Name="IntroPage" 
                                    Title="Welcome to OpenN@S wizard."
                                    Description="Through this process you will able to design a NAS for later generation." 
                                    BackButtonVisibility="Hidden"
-                                   FinishButtonVisibility="Collapsed"
-             />            
-            
+                                   FinishButtonVisibility="Collapsed">
+
+                <StackPanel>
+                                 
+                </StackPanel>
+            </xctk:WizardPage>
+
 
             <xctk:WizardPage x:Name="Page1" PageType="Interior"
                                    Title="OpenN@S Common Settings"

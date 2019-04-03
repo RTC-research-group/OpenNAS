@@ -133,7 +133,27 @@ namespace OpenNAS_App
 
         private void Wizard_Help(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/RTC-research-group/OpenNAS/wiki");
+            switch(wizardControl.CurrentPage.Name)
+            {
+                case "IntroPage":
+                    System.Diagnostics.Process.Start("https://github.com/RTC-research-group/OpenNAS/wiki");
+                    break;
+                case "Page1":
+                    System.Diagnostics.Process.Start("https://github.com/RTC-research-group/OpenNAS/wiki/Step-1:-NAS-commons-settings");
+                    break;
+                case "Page2":
+                    System.Diagnostics.Process.Start("https://github.com/RTC-research-group/OpenNAS/wiki/Step-2:-NAS-audio-input-source");
+                    break;
+                case "Page3":
+                    System.Diagnostics.Process.Start("https://github.com/RTC-research-group/OpenNAS/wiki/Step-3:-NAS-processing-architecture");
+                    break;
+                case "Page4":
+                    System.Diagnostics.Process.Start("https://github.com/RTC-research-group/OpenNAS/wiki/Step-4:-NAS-neuromorphic-output-interface");
+                    break;
+                case "LastPage":
+                    System.Diagnostics.Process.Start("https://github.com/RTC-research-group/OpenNAS/wiki/Step-5:-NAS-destination-folder");
+                    break;
+            }
         }
     }
 }
