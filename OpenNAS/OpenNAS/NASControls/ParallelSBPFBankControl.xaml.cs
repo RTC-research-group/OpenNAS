@@ -132,5 +132,11 @@ namespace OpenNAS_App.NASControls
                 attDataGrid.Items.Add(s);
             }
         }
+
+        private void AttUpDowm_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (commons != null)
+                computeNas();
+        }
     }
 }

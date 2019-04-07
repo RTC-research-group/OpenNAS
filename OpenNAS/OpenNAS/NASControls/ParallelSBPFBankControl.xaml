@@ -54,7 +54,7 @@
 
             <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
                 <Label Content="SBPF Output Att. (dB)"/>
-                <xctk:SingleUpDown x:Name="attUpDowm" Width="60" Height="20" Value="-12" Maximum="0" HorizontalAlignment="Right"  TextAlignment="Center"/>
+                <xctk:SingleUpDown x:Name="attUpDowm" Width="60" Height="20" Value="-12" Maximum="0" HorizontalAlignment="Right"  TextAlignment="Center" ValueChanged="AttUpDowm_ValueChanged" />
             </DockPanel>
             <Button x:Name="button" Content="Tune Frequencies" HorizontalAlignment="Center" VerticalAlignment="Top" Width="100" Height="40" Click="button_Click" DockPanel.Dock="Bottom"  Margin="0 30 0 0"/>
         </DockPanel>
