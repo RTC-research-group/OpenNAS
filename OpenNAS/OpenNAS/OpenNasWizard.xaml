@@ -28,19 +28,32 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:OpenNAS_App"
         mc:Ignorable="d"
-        Title="OpenN@S" Height="490" Width="850">
+        Title="OpenN@S" Height="520" Width="850" WindowStartupLocation="CenterScreen">
     <Grid>
         <xctk:Wizard x:Name="wizardControl" FinishButtonClosesWindow="True" Finish="Wizard_Finish" Next="Wizard_Next" Help="Wizard_Help" CanCancel="False" CancelButtonVisibility="Hidden">
 
             <xctk:WizardPage x:Name="IntroPage" 
                                    Title="Welcome to OpenN@S wizard."
-                                   Description="Through this process you will able to design a NAS for later generation." 
+                                   Description="This wizard will lead you trough 5 different steps in order to customize, design and generate a NAS." 
                                    BackButtonVisibility="Hidden"
                                    FinishButtonVisibility="Collapsed">
 
-                <StackPanel>
-                                 
-                </StackPanel>
+                <DockPanel Margin="0 20 0 0" LastChildFill="True" VerticalAlignment="Top">
+                    <DockPanel DockPanel.Dock="Top">
+                        <DockPanel DockPanel.Dock="Left" Width="450" Height="200">
+                            <TextBlock TextAlignment="Justify" TextWrapping="Wrap" DockPanel.Dock="Top">You can find more information about NAS in <Hyperlink NavigateUri="https://ieeexplore.ieee.org/abstract/document/7523402/" RequestNavigate="Hyperlink_RequestNavigate">this paper</Hyperlink>:</TextBlock>
+                            <TextBlock TextAlignment="Justify" TextWrapping="Wrap" Margin="0 10 0 0" DockPanel.Dock="Top">Jiménez-Fernández, Angel, et al. "A binaural neuromorphic auditory sensor for FPGA: a spike signal processing approach." IEEE transactions on neural networks and learning systems 28.4 (2017): 804-818.</TextBlock>
+                            <TextBlock TextAlignment="Justify" TextWrapping="Wrap" Margin="0 10 0 0" DockPanel.Dock="Top">And also in <Hyperlink NavigateUri="https://github.com/RTC-research-group/OpenNAS" RequestNavigate="Hyperlink_RequestNavigate">the Github page</Hyperlink> and <Hyperlink NavigateUri="https://github.com/RTC-research-group/OpenNAS/wiki" RequestNavigate="Hyperlink_RequestNavigate">the Wiki</Hyperlink>.</TextBlock>
+                            <TextBlock TextAlignment="Justify" TextWrapping="Wrap" Margin="0 30 0 0" DockPanel.Dock="Top">OpenNAS has been developed by the <Hyperlink NavigateUri="https://rtc.us.es/" RequestNavigate="Hyperlink_RequestNavigate">Robotics and Technology of Computers Lab.</Hyperlink> from the <Hyperlink NavigateUri="http://www.atc.us.es/" RequestNavigate="Hyperlink_RequestNavigate">Dept. of Arquitectura y Tecnologia de Computadores</Hyperlink> in the University of Seville, Spain.</TextBlock>
+                        </DockPanel>
+                        <DockPanel DockPanel.Dock="Right" Height="200">
+                            <Image x:Name="img_OpenNAS_logo" Width="Auto" Height="Auto" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10"/>
+                        </DockPanel>
+                    </DockPanel>
+                    <DockPanel DockPanel.Dock="Bottom">
+                        <Image x:Name="img_RTC_logo" RenderOptions.BitmapScalingMode="HighQuality" Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10"/>
+                    </DockPanel>
+                </DockPanel>
             </xctk:WizardPage>
 
 
@@ -67,9 +80,9 @@
                 <Grid>
                     <NASControls:AudioInputControl x:Name="audioInputControl"/>
                 </Grid>
-                
+
             </xctk:WizardPage>
-            
+
 
             <xctk:WizardPage x:Name="Page3" PageType="Interior"
                                    Title="Audio processing architecture"
@@ -80,21 +93,21 @@
                 <Grid>
                     <NASControls:AudioProcessingControl x:Name="audioProcessingControl" HorizontalAlignment="Left"/>
                 </Grid>
-                
+
             </xctk:WizardPage>
-           
+
 
             <xctk:WizardPage x:Name="Page4" PageType="Interior"
                                    Title="Spikes output stage"
                                    Description="Select how OpenN@S output spikes will be propagated to other layers. (Step 4/5)"
                                    FinishButtonVisibility="Collapsed">
-                
+
                 <Grid>
                     <NASControls:SpikesOutputControl x:Name="spikesMonitorControl" HorizontalAlignment="Left" Width="Auto" />
                 </Grid>
-                
+
             </xctk:WizardPage>
-            
+
 
             <xctk:WizardPage x:Name="LastPage" PageType="Interior"
                                    Title="OpenN@S generation"
@@ -118,8 +131,8 @@
                 </DockPanel>
 
             </xctk:WizardPage>
-            
+
         </xctk:Wizard>
-        
+
     </Grid>
 </Window>

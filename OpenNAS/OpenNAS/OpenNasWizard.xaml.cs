@@ -35,6 +35,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace OpenNAS_App
@@ -58,6 +59,14 @@ namespace OpenNAS_App
                 Directory.CreateDirectory(baseRoute);
             routeTextBox.Text = baseRoute;
             route = baseRoute;
+
+            img_OpenNAS_logo.Source = new BitmapImage(new Uri("..\\Figures\\icons\\main_icon.png", UriKind.Relative));
+            img_OpenNAS_logo.MaxWidth = 150;
+            img_OpenNAS_logo.MaxHeight = 150;
+
+            img_RTC_logo.Source = new BitmapImage(new Uri("..\\Figures\\icons\\logortc.png", UriKind.Relative));
+            img_RTC_logo.MaxWidth = 600;
+            img_RTC_logo.MaxHeight = 200;
 
         }
 
@@ -154,6 +163,11 @@ namespace OpenNAS_App
                     System.Diagnostics.Process.Start("https://github.com/RTC-research-group/OpenNAS/wiki/Step-5:-NAS-destination-folder");
                     break;
             }
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.Uri.ToString());
         }
     }
 }

@@ -81,7 +81,7 @@ namespace OpenNAS_App.NASControls
                 archPanel.Children.Add(parallelControl);
                 currentControl = parallelControl;
             }
-
+            
             InitializeControlValues(this.commons);
         }
 
@@ -101,8 +101,12 @@ namespace OpenNAS_App.NASControls
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             updateActiveControl();
-
+              
             audioProcessing = (NASAUDIOPROCESSING)comboBox.SelectedIndex;
+            if(commons != null)
+            {
+                computeNas();
+            }
         }
 
         public void InitializeControlValues(OpenNASCommons commons)
