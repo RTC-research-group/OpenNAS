@@ -19,21 +19,10 @@
 //                                                                             //
 /////////////////////////////////////////////////////////////////////////////////
 
+using OpenNAS_App.NASComponents;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using OpenNAS_App.NASComponents;
 
 namespace OpenNAS_App.NASControls
 {
@@ -49,7 +38,7 @@ namespace OpenNAS_App.NASControls
 
         public SpikesOutputInterface FromControl()
         {
-            
+
             UInt16 aerFifoBits = (UInt16)aerFifoUpDowm.Value;
             UInt16 spikesFifoBits = (UInt16)spikesFifoUpDowm.Value;
 
@@ -58,8 +47,9 @@ namespace OpenNAS_App.NASControls
             {
                 nch = commons.nCh;
             }
-            else{
-                nch = (UInt16)(2*commons.nCh);
+            else
+            {
+                nch = (UInt16)(2 * commons.nCh);
             }
 
             return new SpikesDistributedMonitor(nch, aerFifoBits, spikesFifoBits);
@@ -83,7 +73,8 @@ namespace OpenNAS_App.NASControls
                 {
                     nch = (UInt16)(commons.nCh);
                 }
-                else {
+                else
+                {
                     nch = (UInt16)(2 * commons.nCh);
                 }
 
@@ -103,7 +94,7 @@ namespace OpenNAS_App.NASControls
 
         public void ToControl(SpikesOutputInterface spikesOutput)
         {
-            
+
         }
 
         private void spikesFifoUpDowm_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)

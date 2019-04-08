@@ -19,22 +19,13 @@
 //                                                                             //
 /////////////////////////////////////////////////////////////////////////////////
 
+using OpenNAS_App.NASComponents;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using OpenNAS_App.NASComponents;
-using System.Globalization;
 
 namespace OpenNAS_App.NASControls
 {
@@ -67,7 +58,7 @@ namespace OpenNAS_App.NASControls
 
         public AudioProcessingArchitecture FromControl()
         {
-            double start, stop, att,q;
+            double start, stop, att, q;
             int nCh;
             nCh = Convert.ToInt16(nChTextBox.Text);
             start = (double)startFreqUpDowm.Value;
@@ -101,7 +92,7 @@ namespace OpenNAS_App.NASControls
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-           ParallelSBPFBank pfb = (ParallelSBPFBank)FromControl();
+            ParallelSBPFBank pfb = (ParallelSBPFBank)FromControl();
 
 
 

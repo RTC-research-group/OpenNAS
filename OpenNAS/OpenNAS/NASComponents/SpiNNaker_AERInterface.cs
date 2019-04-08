@@ -22,9 +22,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace OpenNAS_App.NASComponents
@@ -97,7 +94,7 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine(");");
             sw.WriteLine("end component;");
 
-            if(moduleVersion == 2.0)
+            if (moduleVersion == 2.0)
             {
                 sw.WriteLine("");
                 sw.WriteLine("component raggedstone_spinn_aer_if_top is");

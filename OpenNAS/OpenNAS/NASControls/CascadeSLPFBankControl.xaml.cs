@@ -23,18 +23,9 @@ using OpenNAS_App.NASComponents;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace OpenNAS_App.NASControls
 {
@@ -103,7 +94,7 @@ namespace OpenNAS_App.NASControls
 
         }
 
-       public void InitializeControlValues(OpenNASCommons commons)
+        public void InitializeControlValues(OpenNASCommons commons)
         {
             if (commons != null)
             {
@@ -117,12 +108,12 @@ namespace OpenNAS_App.NASControls
         }
         public AudioProcessingArchitecture FromControl()
         {
-            double start, stop,att;
+            double start, stop, att;
             int nCh;
             nCh = Convert.ToInt16(nChTextBox.Text);
-            start = (double) startFreqUpDowm.Value;
-            stop = (double) stopFreqUpDowm.Value;
-            att = (double) attUpDowm.Value;
+            start = (double)startFreqUpDowm.Value;
+            stop = (double)stopFreqUpDowm.Value;
+            att = (double)attUpDowm.Value;
             SLPFType slpfType = (SLPFType)slpfTypecomboBox.SelectedValue;
 
             CascadeSLPFBank cfb = new CascadeSLPFBank(nCh, clk, commons.monoStereo, slpfType, start, stop, att);
@@ -142,7 +133,7 @@ namespace OpenNAS_App.NASControls
 
         private void AttUpDowm_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            if(commons != null)
+            if (commons != null)
                 computeNas();
         }
     }

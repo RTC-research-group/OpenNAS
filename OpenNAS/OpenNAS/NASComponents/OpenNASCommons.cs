@@ -20,12 +20,7 @@
 /////////////////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace OpenNAS_App.NASComponents
@@ -33,7 +28,8 @@ namespace OpenNAS_App.NASComponents
     /// <summary>
     /// Enum for defining NAS TYPE: mono or stereo
     /// </summary>
-    public enum NASTYPE {
+    public enum NASTYPE
+    {
         /// <summary>
         /// Mono-aural NAS
         /// </summary>
@@ -41,12 +37,14 @@ namespace OpenNAS_App.NASComponents
         /// <summary>
         /// Bi-aural NAS
         /// </summary>
-        STEREO = 1 }
+        STEREO = 1
+    }
 
     /// <summary>
     /// NAS plattaform for synthesis
     /// </summary>
-    public enum NASchip {
+    public enum NASchip
+    {
         /// <summary>
         /// AER-Node Board (Spartan 6)
         /// </summary>
@@ -62,7 +60,8 @@ namespace OpenNAS_App.NASComponents
         /// <summary>
         /// Other custom board
         /// </summary>
-        OTHER = 3 }
+        OTHER = 3
+    }
 
     /// <summary>
     /// This class contains NAS commons parameters for computing parameters and sources generating

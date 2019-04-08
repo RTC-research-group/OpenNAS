@@ -22,9 +22,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace OpenNAS_App.NASComponents
@@ -93,7 +90,7 @@ namespace OpenNAS_App.NASComponents
             dependencies.Add(@"SSPLibrary\SpikeBuildingBlocks\spikes_LPF_fullGain.vhd");
             dependencies.Add(@"SSPLibrary\SpikeBuildingBlocks\spikes_2LPF_fullGain.vhd");
             dependencies.Add(@"SSPLibrary\SpikeBuildingBlocks\spikes_HPF.vhd");
-            
+
             copyDependencies(route, dependencies);
         }
 
@@ -138,7 +135,7 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine(");");
             sw.WriteLine("end component;");
             sw.WriteLine("");
-            
+
         }
 
         /// <summary>
@@ -151,12 +148,12 @@ namespace OpenNAS_App.NASComponents
 
             SLPFParameters shpf = new SLPFParameters(clk, shpfCutOff, 0, 3);
 
-            
+
             double pdmClock = clk / (clkDiv * 2);
             sw.WriteLine("");
             sw.WriteLine("--PDM interface");
 
-            double realFreq = OpenNasUtils.kSIG(clk, shpf.nBits, shpf.freqDiv)/(2*Math.PI);
+            double realFreq = OpenNasUtils.kSIG(clk, shpf.nBits, shpf.freqDiv) / (2 * Math.PI);
             double freqError = 100 * ((shpfCutOff - realFreq) / shpfCutOff);
             sw.WriteLine("--Anti-Offset SHPF");
             string filterInfo = "--Ideal cutoff: " + shpfCutOff.ToString("0.0000") + "Hz - Real cutoff: " + realFreq.ToString("0.0000") + "Hz - Error: " + freqError.ToString("0.0000") + "%";
@@ -167,7 +164,7 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("--Anti-Aliasing SLPF");
             filterInfo = "--Ideal cutoff: " + slpfCutOff.ToString("0.0000") + "Hz - Real cutoff: " + realFreq.ToString("0.0000") + "Hz - Error: " + freqError.ToString("0.0000") + "%";
             sw.WriteLine(filterInfo);
-            filterInfo = "--Ideal Gain: " + slpfGain.ToString("0.0000") + "dB - Real Gain: " + slpf.realGaindb.ToString("0.000") + "dB ("+ slpf.realGain.ToString("0.000") + ")";
+            filterInfo = "--Ideal Gain: " + slpfGain.ToString("0.0000") + "dB - Real Gain: " + slpf.realGaindb.ToString("0.000") + "dB (" + slpf.realGain.ToString("0.000") + ")";
             sw.WriteLine(filterInfo);
             sw.WriteLine("");
 
@@ -176,7 +173,7 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("port map (");
             sw.WriteLine("clk => clock,");
             sw.WriteLine("rst => reset,");
-            sw.WriteLine("clock_div => x\""+(this.clkDiv-1).ToString("X2")+"\", --PDM clock: +"+pdmClock.ToString("0.000")+"MHz");
+            sw.WriteLine("clock_div => x\"" + (this.clkDiv - 1).ToString("X2") + "\", --PDM clock: +" + pdmClock.ToString("0.000") + "MHz");
             sw.WriteLine("PDM_CLK => PDM_CLK_LEFT,");
             sw.WriteLine("PDM_DAT => PDM_DAT_LEFT,");
             sw.WriteLine("SHPF_FREQ_DIV => x\"" + shpf.freqDiv.ToString("X2") + "\",");
@@ -196,7 +193,7 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("port map (");
                 sw.WriteLine("clk => clock,");
                 sw.WriteLine("rst => reset,");
-                sw.WriteLine("clock_div => x\""+(this.clkDiv-1).ToString("X2")+"\", --PDM clock: +" + pdmClock.ToString("0.000") + "MHz");
+                sw.WriteLine("clock_div => x\"" + (this.clkDiv - 1).ToString("X2") + "\", --PDM clock: +" + pdmClock.ToString("0.000") + "MHz");
                 sw.WriteLine("PDM_CLK => PDM_CLK_RIGTH,");
                 sw.WriteLine("PDM_DAT => PDM_DAT_RIGTH,");
                 sw.WriteLine("SHPF_FREQ_DIV => x\"" + shpf.freqDiv.ToString("X2") + "\",");

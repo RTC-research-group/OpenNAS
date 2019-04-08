@@ -23,26 +23,24 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
-using System.Xml.Serialization;
 
 namespace OpenNAS_App.NASComponents
 {
     /// <summary>
     /// Enumerator for spicifying AC97 codec audio input
     /// </summary>
-    public enum AC97AudioSource {
+    public enum AC97AudioSource
+    {
         /// <summary>
         /// Line In
         /// </summary>
-        LINE_IN =0,
+        LINE_IN = 0,
         /// <summary>
         /// Microphone In
         /// </summary>
-        MIC_IN =1}
+        MIC_IN = 1
+    }
 
     /// <summary>
     /// Class for AC97 codecs, extends AudioInput class <see cref="AudioInput"/>
@@ -78,7 +76,7 @@ namespace OpenNAS_App.NASComponents
         /// <param name="nasType"></param>
         /// <param name="genNbits"></param>
         /// <param name="genFreqDiv"></param>
-        public AC97AudioInput (AC97AudioSource source, float clk, NASTYPE nasType, uint genNbits,  UInt16 genFreqDiv)
+        public AC97AudioInput(AC97AudioSource source, float clk, NASTYPE nasType, uint genNbits, UInt16 genFreqDiv)
         {
             this.source = source;
             this.clk = clk;
@@ -127,7 +125,8 @@ namespace OpenNAS_App.NASComponents
             sw.Write(ac97parts[3]);
             sw.Close();
 
-            if (nasType == NASTYPE.STEREO) { 
+            if (nasType == NASTYPE.STEREO)
+            {
                 StreamReader sr2 = new StreamReader(@"SSPLibrary\Components\AC97InputComponentStereo.vhd");
 
                 ac97controller = sr2.ReadToEnd();

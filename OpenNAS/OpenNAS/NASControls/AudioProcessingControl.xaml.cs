@@ -20,21 +20,8 @@
 /////////////////////////////////////////////////////////////////////////////////
 
 using OpenNAS_App.NASComponents;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace OpenNAS_App.NASControls
 {
@@ -44,7 +31,7 @@ namespace OpenNAS_App.NASControls
     public partial class AudioProcessingControl : UserControl, AudioProcessingArchitectureControlInterface
     {
         private CultureInfo ci = new CultureInfo("en-us");
-        public enum NASAUDIOPROCESSING { CASCADE_SLPFB = 0, PARALLEL_SLPFB = 1, PARALLEL_SBPFB = 2};
+        public enum NASAUDIOPROCESSING { CASCADE_SLPFB = 0, PARALLEL_SLPFB = 1, PARALLEL_SBPFB = 2 };
         public static NASAUDIOPROCESSING audioProcessing;
         private AudioProcessingArchitectureControlInterface currentControl;
         public OpenNASCommons commons;
@@ -55,7 +42,7 @@ namespace OpenNAS_App.NASControls
             comboBox.SelectedIndex = 0;
 
             updateActiveControl();
-      
+
         }
 
         private void updateActiveControl()
@@ -64,7 +51,7 @@ namespace OpenNAS_App.NASControls
 
             if (comboBox.SelectedIndex == 0)
             {
-                
+
                 CascadeSLPFBankControl cascadeControl = new CascadeSLPFBankControl();
                 archPanel.Children.Add(cascadeControl);
                 currentControl = cascadeControl;
@@ -75,13 +62,13 @@ namespace OpenNAS_App.NASControls
                 archPanel.Children.Add(parallelControl);
                 currentControl = parallelControl;
             }
-            else 
+            else
             {
                 ParallelSBPFBankControl parallelControl = new ParallelSBPFBankControl();
                 archPanel.Children.Add(parallelControl);
                 currentControl = parallelControl;
             }
-            
+
             InitializeControlValues(this.commons);
         }
 
@@ -101,9 +88,9 @@ namespace OpenNAS_App.NASControls
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             updateActiveControl();
-              
+
             audioProcessing = (NASAUDIOPROCESSING)comboBox.SelectedIndex;
-            if(commons != null)
+            if (commons != null)
             {
                 computeNas();
             }

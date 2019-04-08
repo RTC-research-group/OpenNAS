@@ -20,15 +20,10 @@
 /////////////////////////////////////////////////////////////////////////////////
 
 using OpenNAS_App.NASComponents;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenNAS_App.NASControls
 {
-   public interface AudioInputControlInterface
+    public interface AudioInputControlInterface
     {
         void InitializeControlValues(OpenNASCommons commons);
         AudioInput FromControl();

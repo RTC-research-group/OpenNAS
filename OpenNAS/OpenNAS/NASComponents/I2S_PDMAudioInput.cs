@@ -22,9 +22,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace OpenNAS_App.NASComponents
@@ -132,7 +129,7 @@ namespace OpenNAS_App.NASComponents
         public override void toXML(XmlTextWriter textWriter)
         {
             textWriter.WriteStartElement("I2S_PDMInput");
-            
+
             //PDM
             textWriter.WriteStartElement("PDMInput");
             textWriter.WriteAttributeString("clkDiv", clkDiv.ToString());

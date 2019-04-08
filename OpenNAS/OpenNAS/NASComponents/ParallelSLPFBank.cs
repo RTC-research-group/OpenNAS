@@ -24,8 +24,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace OpenNAS_App.NASComponents
@@ -249,12 +247,12 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("  spike_in_slpf_n => lpf_spikes_" + (k - 1) + "(0),");
 
                 //Cascade Arch
-               /* sw.WriteLine("  spike_in_shf_p => lpf_spikes_" + (k - 1) + "(1),");
-                sw.WriteLine("  spike_in_shf_n => lpf_spikes_" + (k - 1) + "(0),");*/
+                /* sw.WriteLine("  spike_in_shf_p => lpf_spikes_" + (k - 1) + "(1),");
+                 sw.WriteLine("  spike_in_shf_n => lpf_spikes_" + (k - 1) + "(0),");*/
 
                 //Parallel Arch
                 sw.WriteLine("  spike_in_shf_p => spikes_in(1),");
-                sw.WriteLine("  spike_in_shf_n => spikes_in(0),"); 
+                sw.WriteLine("  spike_in_shf_n => spikes_in(0),");
 
 
                 sw.WriteLine("  spike_out_p => spikes_out(" + (2 * (k - 1) + 1) + "),");

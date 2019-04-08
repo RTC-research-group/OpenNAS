@@ -19,21 +19,9 @@
 //                                                                             //
 /////////////////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using OpenNAS_App.NASComponents;
+using System;
+using System.Windows.Controls;
 
 namespace OpenNAS_App.NASControls
 {
@@ -55,7 +43,7 @@ namespace OpenNAS_App.NASControls
             NASTYPE type = commons.monoStereo;
             uint clkDiv = (uint)uc_PDMInputControl.pdmDivUpDowm.Value;
 
-            uint nBits = (uint) uc_I2SInputControl.genNbitsUpDowm.Value;
+            uint nBits = (uint)uc_I2SInputControl.genNbitsUpDowm.Value;
             UInt16 clockDiv = (UInt16)uc_I2SInputControl.clockDivUpDowm.Value;
 
             I2S_PDMAudioInput i2spdm = new I2S_PDMAudioInput(clk, type, clkDiv, (double)uc_PDMInputControl.shpfCutOffUpDowm.Value, (double)uc_PDMInputControl.slpfCutOffUpDowm.Value, (double)uc_PDMInputControl.slpfGainUpDowm.Value, nBits, clockDiv);

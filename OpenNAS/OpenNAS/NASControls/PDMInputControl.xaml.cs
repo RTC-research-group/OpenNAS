@@ -19,21 +19,10 @@
 //                                                                             //
 /////////////////////////////////////////////////////////////////////////////////
 
+using OpenNAS_App.NASComponents;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using OpenNAS_App.NASComponents;
 
 namespace OpenNAS_App.NASControls
 {
@@ -51,8 +40,8 @@ namespace OpenNAS_App.NASControls
         {
             float clk = commons.clockValue;
             NASTYPE type = commons.monoStereo;
-            uint clkDiv = (uint) pdmDivUpDowm.Value;
-            PDMAudioInput pdm = new PDMAudioInput(clk, type, clkDiv, (double)shpfCutOffUpDowm.Value, (double) slpfCutOffUpDowm.Value, (double) slpfGainUpDowm.Value);
+            uint clkDiv = (uint)pdmDivUpDowm.Value;
+            PDMAudioInput pdm = new PDMAudioInput(clk, type, clkDiv, (double)shpfCutOffUpDowm.Value, (double)slpfCutOffUpDowm.Value, (double)slpfGainUpDowm.Value);
             return pdm;
         }
 

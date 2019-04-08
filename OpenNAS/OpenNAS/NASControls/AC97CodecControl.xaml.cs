@@ -21,19 +21,8 @@
 
 using OpenNAS_App.NASComponents;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace OpenNAS_App.NASControls
 {
@@ -59,12 +48,13 @@ namespace OpenNAS_App.NASControls
             this.commons = commons;
             clockDivUpDowm_ValueChanged(null, null);
         }
-        public AudioInput FromControl() {
-            uint nBits= (uint) genNbitsUpDowm.Value;
+        public AudioInput FromControl()
+        {
+            uint nBits = (uint)genNbitsUpDowm.Value;
             UInt16 clockDiv = (UInt16)clockDivUpDowm.Value;
             AC97AudioInput ac97 = new AC97AudioInput((AC97AudioSource)comboBox.SelectedIndex, commons.clockValue, commons.monoStereo, nBits, clockDiv);
             return ac97;
-                
+
         }
 
         public void ToControl(AudioInput audioIput)
@@ -79,14 +69,14 @@ namespace OpenNAS_App.NASControls
                 uint nBits = (uint)genNbitsUpDowm.Value;
                 uint clockDiv = (uint)clockDivUpDowm.Value;
 
-                float kgen = 1000*commons.clockValue / ((float)Math.Pow(2, nBits - 1) * (clockDiv + 1));
+                float kgen = 1000 * commons.clockValue / ((float)Math.Pow(2, nBits - 1) * (clockDiv + 1));
                 kgenText.Text = kgen.ToString("0.0000");
                 float max = kgen * (float)Math.Pow(2, nBits - 1);
 
                 maxText.Text = max.ToString("0.0000");
             }
 
-            
+
 
         }
     }

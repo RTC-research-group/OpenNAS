@@ -19,12 +19,8 @@
 //                                                                             //
 /////////////////////////////////////////////////////////////////////////////////
 
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenNAS_App.NASComponents
 {
@@ -81,11 +77,11 @@ namespace OpenNAS_App.NASComponents
             string license;
             string commentFormat;
 
-            if(fileType == 'H')
+            if (fileType == 'H')
             {
                 commentFormat = "--";
             }
-            else if(fileType == 'C')
+            else if (fileType == 'C')
             {
                 commentFormat = "#";
             }

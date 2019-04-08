@@ -22,21 +22,11 @@
 
 using OpenNAS_App.NASComponents;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace OpenNAS_App
 {
@@ -72,7 +62,7 @@ namespace OpenNAS_App
 
         private void Wizard_Finish(object sender, RoutedEventArgs e)
         {
-            
+
             OpenNASCommons commons = openNASCommonsControl.FromControl();
             AudioInput audioInput = audioInputControl.FromControl();
             AudioProcessingArchitecture audioProcessing = audioProcessingControl.FromControl();
@@ -91,11 +81,11 @@ namespace OpenNAS_App
 
             MessageBox.Show("OpenN@S successfully generated at: " + route);
 
-            if(openFolderCheckBox.IsChecked==true)
-                System.Diagnostics.Process.Start("explorer.exe",route);
+            if (openFolderCheckBox.IsChecked == true)
+                System.Diagnostics.Process.Start("explorer.exe", route);
         }
 
-        private void checkFolders (string nasRoute)
+        private void checkFolders(string nasRoute)
         {
             string sourceRoute = route + "\\sources";
             bool folderExists = Directory.Exists(sourceRoute);
@@ -142,7 +132,7 @@ namespace OpenNAS_App
 
         private void Wizard_Help(object sender, RoutedEventArgs e)
         {
-            switch(wizardControl.CurrentPage.Name)
+            switch (wizardControl.CurrentPage.Name)
             {
                 case "IntroPage":
                     System.Diagnostics.Process.Start("https://github.com/RTC-research-group/OpenNAS/wiki");

@@ -21,19 +21,8 @@
 
 using OpenNAS_App.NASComponents;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace OpenNAS_App.NASControls
 {
@@ -63,11 +52,11 @@ namespace OpenNAS_App.NASControls
         public OpenNASCommons FromControl()
         {
             NASTYPE ms = (NASTYPE)msComboBox.SelectedIndex;
-            UInt16 nch = (UInt16) nChUpDowm.Value;
-            float clock = (float) clockFreqUpDowm.Value;
+            UInt16 nch = (UInt16)nChUpDowm.Value;
+            float clock = (float)clockFreqUpDowm.Value;
             NASchip nas_chip = (NASchip)nas_chipComboBox.SelectedIndex;
 
-            OpenNASCommons commons = new OpenNASCommons(ms, nch,clock, nas_chip);
+            OpenNASCommons commons = new OpenNASCommons(ms, nch, clock, nas_chip);
 
             return commons;
         }
@@ -83,8 +72,10 @@ namespace OpenNAS_App.NASControls
             {
                 clockFreqUpDowm.Value = 50;
                 img_platformUsed.Source = new BitmapImage(new Uri("..\\Figures\\NASchips\\AER-Node.png", UriKind.Relative));
-                img_platformUsed.MaxWidth = 1616;
-                img_platformUsed.MaxHeight = 1022;
+                //img_platformUsed.MaxWidth = 1616;
+                //img_platformUsed.MaxHeight = 1022;
+                img_platformUsed.MaxWidth = 400;
+                img_platformUsed.MaxHeight = 232;
             }
             else if (nas_chipComboBox.SelectedIndex == (int)NASchip.ZTEX)
             {

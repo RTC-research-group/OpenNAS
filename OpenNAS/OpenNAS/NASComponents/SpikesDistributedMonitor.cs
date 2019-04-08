@@ -22,9 +22,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace OpenNAS_App.NASComponents
@@ -32,7 +29,7 @@ namespace OpenNAS_App.NASComponents
     /// <summary>
     /// This class implements a distributed spikes monitor. This converts a set of input spikes (channels) to AER events, and includes a 4-phase hand-shake unit for events propagation. <see cref="SpikesOutputInterface"/>
     /// </summary>
-    public class SpikesDistributedMonitor:SpikesOutputInterface
+    public class SpikesDistributedMonitor : SpikesOutputInterface
     {
         /// <summary>
         /// Number of channels
@@ -77,7 +74,7 @@ namespace OpenNAS_App.NASComponents
             dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\handsakeOut.vhd");
             dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\ramfifo.vhd");
             dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\DualPortRAM.vhd");
-            
+
 
             copyDependencies(route, dependencies);
         }
@@ -87,7 +84,7 @@ namespace OpenNAS_App.NASComponents
         /// </summary>
         /// <param name="textWriter">XML text writer handler</param>
         public override void toXML(XmlTextWriter textWriter)
-        { 
+        {
             textWriter.WriteStartElement("SpikesDistributedMonitor");
             textWriter.WriteAttributeString("aerFifoDepth", aerFifoDepth.ToString());
             textWriter.WriteAttributeString("spikeFifoDepth", spikeFifoDepth.ToString());
@@ -121,7 +118,7 @@ namespace OpenNAS_App.NASComponents
         {
             sw.WriteLine("--Spikes Distributed Monitor");
             sw.WriteLine(" U_AER_DISTRIBUTED_MONITOR: AER_DISTRIBUTED_MONITOR");
-            sw.WriteLine("generic map (N_SPIKES=>" + (2 * nCh) + ", LOG_2_N_SPIKES=>" + ((int)Math.Log(2 * nCh, 2)) + ", TAM_AER=>" + ((int)Math.Pow(2,aerFifoDepth))+", IL_AER=>" + aerFifoDepth + ")");
+            sw.WriteLine("generic map (N_SPIKES=>" + (2 * nCh) + ", LOG_2_N_SPIKES=>" + ((int)Math.Log(2 * nCh, 2)) + ", TAM_AER=>" + ((int)Math.Pow(2, aerFifoDepth)) + ", IL_AER=>" + aerFifoDepth + ")");
             sw.WriteLine("Port map (");
             sw.WriteLine("  CLK=>clock,");
             sw.WriteLine("  RST=> reset,");

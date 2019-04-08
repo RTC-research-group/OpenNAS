@@ -24,8 +24,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace OpenNAS_App.NASComponents
@@ -92,7 +90,7 @@ namespace OpenNAS_App.NASComponents
             this.midFreq = (OpenNasUtils.LogSpace(start, stop, nCH)).ToList<double>();
             this.midFreq.Reverse();
 
-            
+
             this.attenuation = new List<double>();
             this.Q = new List<double>();
             for (int i = 0; i < nCH; i++)
@@ -113,12 +111,12 @@ namespace OpenNAS_App.NASComponents
 
             textWriter.WriteStartElement("ParallelSBPFBank");
             textWriter.WriteAttributeString("nCH", nCH.ToString());
-    
+
             textWriter.WriteStartElement("midFreq");
             foreach (double d in midFreq)
             {
                 textWriter.WriteStartElement("Freq");
-                textWriter.WriteAttributeString("id", i.ToString()); 
+                textWriter.WriteAttributeString("id", i.ToString());
                 textWriter.WriteAttributeString("freq", d.ToString(ci));
                 textWriter.WriteAttributeString("Q", Q[i].ToString(ci));
                 textWriter.WriteAttributeString("attenuation", attenuation[i].ToString(ci));
@@ -127,7 +125,7 @@ namespace OpenNAS_App.NASComponents
             }
             textWriter.WriteEndElement();
 
-            
+
         }
 
 
@@ -157,7 +155,7 @@ namespace OpenNAS_App.NASComponents
                 double wrelation = 2 * Math.PI * midFreq[i] / tempWcut;
                 igDiv.Add(OpenNasUtils.revkDiv(wrelation));
 
-                fbDiv.Add((UInt16)(OpenNasUtils.revkDiv(1.0/Q[i])));
+                fbDiv.Add((UInt16)(OpenNasUtils.revkDiv(1.0 / Q[i])));
             }
 
             for (int k = 0; k < attenuation.Count; k++)
@@ -211,18 +209,18 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("      spike_out_n: out  STD_LOGIC);");
             sw.WriteLine("  end component;");
 
-            
+
             sw.WriteLine("");
 
             sw.WriteLine("  signal not_rst: std_logic;");
-  
+
             sw.WriteLine("begin");
             sw.WriteLine("");
 
             sw.WriteLine("not_rst <= not rst;");
             sw.WriteLine("");
 
-            
+
             for (int k = 0; k < nCH; k++)
             {
                 double realFreq = (OpenNasUtils.kSIG(clk, nBits[k], freqDiv[k]) * OpenNasUtils.kDiv(igDiv[k])) / (2 * Math.PI);
@@ -244,7 +242,7 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine(");");
                 sw.WriteLine("");
             }
-            
+
             sw.WriteLine("end PFBank_arq;");
 
             sw.Close();
@@ -264,7 +262,7 @@ namespace OpenNAS_App.NASComponents
             dependencies.Add(@"SSPLibrary\SpikeBuildingBlocks\AER_HOLDER_AND_FIRE.vhd");
             dependencies.Add(@"SSPLibrary\SpikeBuildingBlocks\spikes_div_BW.vhd");
             dependencies.Add(@"SSPLibrary\SpikeBuildingBlocks\spikes_BPF_HQ_Div.vhd");
-    
+
             copyDependencies(route, dependencies);
 
             generatePFB(route);
@@ -293,7 +291,7 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("  clock     : in std_logic;");
             sw.WriteLine("   rst             : in std_logic;");
             sw.WriteLine("  spikes_in: in std_logic_vector(1 downto 0);");
-            sw.WriteLine("  spikes_out: out std_logic_vector(" + (nCH* 2 - 1) + " downto 0)");
+            sw.WriteLine("  spikes_out: out std_logic_vector(" + (nCH * 2 - 1) + " downto 0)");
             sw.WriteLine(");");
             sw.WriteLine("end component;");
             sw.WriteLine("");

@@ -22,8 +22,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenNAS_App.NASComponents
 {
@@ -82,20 +80,20 @@ namespace OpenNAS_App.NASComponents
             double tempWcut = OpenNasUtils.kSIG(clk, nBits, freqDiv);
             double kdiv = 2 * Math.PI * cutOffFreq / tempWcut;
             fbDiv = OpenNasUtils.revkDiv(kdiv);
-            realFcut = OpenNasUtils.kDiv(fbDiv) * tempWcut/(2*Math.PI);
+            realFcut = OpenNasUtils.kDiv(fbDiv) * tempWcut / (2 * Math.PI);
 
             double gain = Math.Pow(10, gaindb / 10);
-            outDiv = OpenNasUtils.revkDiv(kdiv*gain);
+            outDiv = OpenNasUtils.revkDiv(kdiv * gain);
             realGain = OpenNasUtils.kDiv(outDiv) / OpenNasUtils.kDiv(fbDiv);
 
         }
-               
+
     }
 
     /// <summary>
     /// This static class contains some common operations for computing parameters related frequency scales and spike-based filters features
     /// </summary>
-   public static class OpenNasUtils
+    public static class OpenNasUtils
     {
 
         public static IEnumerable<double> Arange(double start, int count)
@@ -153,7 +151,7 @@ namespace OpenNAS_App.NASComponents
         /// <returns>16 bit gain parameter</returns>
         public static UInt16 revkDiv(double div)
         {
-            UInt16 result = (UInt16)((div * Math.Pow(2, 15))-1);
+            UInt16 result = (UInt16)((div * Math.Pow(2, 15)) - 1);
             return result;
         }
         /// <summary>
@@ -202,8 +200,8 @@ namespace OpenNAS_App.NASComponents
 
             UInt16[] result = new UInt16[2];
             result[0] = nBits;
-            result[1] = (UInt16) freqDiv;
-            
+            result[1] = (UInt16)freqDiv;
+
 
             return result;
 

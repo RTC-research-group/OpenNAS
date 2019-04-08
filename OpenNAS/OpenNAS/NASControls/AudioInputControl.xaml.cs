@@ -19,21 +19,8 @@
 //                                                                             //
 /////////////////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using OpenNAS_App.NASComponents;
+using System.Windows.Controls;
 
 namespace OpenNAS_App.NASControls
 {
@@ -42,7 +29,7 @@ namespace OpenNAS_App.NASControls
     /// </summary>
     public partial class AudioInputControl : UserControl, AudioInputControlInterface
     {
-        public enum NASAUDIOSOURCE {AC97 = 0, I2S = 1, PDM = 2, I2SPDM = 3 };
+        public enum NASAUDIOSOURCE { AC97 = 0, I2S = 1, PDM = 2, I2SPDM = 3 };
         AudioInputControlInterface currentControl;
         public static NASAUDIOSOURCE audioSource;
         public OpenNASCommons commons;
@@ -94,7 +81,7 @@ namespace OpenNAS_App.NASControls
         {
             updateControl();
 
-            audioSource =  (NASAUDIOSOURCE)comboBox.SelectedIndex;
+            audioSource = (NASAUDIOSOURCE)comboBox.SelectedIndex;
         }
 
         public AudioInput FromControl()

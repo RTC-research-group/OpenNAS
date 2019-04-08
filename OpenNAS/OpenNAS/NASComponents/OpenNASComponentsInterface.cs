@@ -19,11 +19,6 @@
 //                                                                             //
 /////////////////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace OpenNAS_App.NASComponents
@@ -40,7 +35,7 @@ namespace OpenNAS_App.NASComponents
         void toXML(XmlTextWriter textWriter);
     }
 
-    public abstract class AudioInput: HDLGenerable, XMLSeriarizableElement
+    public abstract class AudioInput : HDLGenerable, XMLSeriarizableElement
     {
         public abstract void toXML(XmlTextWriter textWriter);
     }

@@ -25,8 +25,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace OpenNAS_App.NASComponents
@@ -34,25 +32,27 @@ namespace OpenNAS_App.NASComponents
     /// <summary>
     /// Enumerate for defining SLPF order
     /// </summary>
-    public enum SLPFType {
+    public enum SLPFType
+    {
         /// <summary>
         /// Order 2 filters
         /// </summary>
-        Order2 = 0 ,
+        Order2 = 0,
         /// <summary>
         /// Order 4 filters
         /// </summary>
-        Order4  };
+        Order4
+    };
 
     /// <summary>
     /// Class for implementing a bank of SLPF filters with a cascade topology, implements AudioProcessingArchitecture <see cref="AudioProcessingArchitecture"/>
     /// </summary>
-    public class CascadeSLPFBank: AudioProcessingArchitecture
+    public class CascadeSLPFBank : AudioProcessingArchitecture
     {
         /// <summary>
         /// Number of channels
         /// </summary>
-        public int nCH=0;
+        public int nCH = 0;
         /// <summary>
         /// Clock frequency in Hz
         /// </summary>
@@ -78,7 +78,7 @@ namespace OpenNAS_App.NASComponents
         /// </summary>
         public List<double> attenuation;
         private CultureInfo ci = new CultureInfo("en-us");
-        
+
         /// <summary>
         /// Basic CascadeSLPFBank constructor
         /// </summary>
@@ -94,7 +94,7 @@ namespace OpenNAS_App.NASComponents
         /// <param name="startFreq">Start mid frequency, in Hz</param>
         /// <param name="stopFreq">Last mid frequency, in Hz</param>
         /// <param name="att">Cascade output attenuation, as an absolute value</param>
-        public CascadeSLPFBank(int nCH, float clk, NASTYPE nasType , SLPFType slpfType, double startFreq, double stopFreq, double att)
+        public CascadeSLPFBank(int nCH, float clk, NASTYPE nasType, SLPFType slpfType, double startFreq, double stopFreq, double att)
         {
             double start, stop;
 
@@ -107,15 +107,15 @@ namespace OpenNAS_App.NASComponents
             start = Math.Log10(startFreq);
             stop = Math.Log10(stopFreq);
 
-             this.midFreq = (OpenNasUtils.LogSpace(start, stop, nCH)).ToList<double>();
-            
+            this.midFreq = (OpenNasUtils.LogSpace(start, stop, nCH)).ToList<double>();
 
-             this.cutoffFreq = computeCutOffFreq(midFreq);
+
+            this.cutoffFreq = computeCutOffFreq(midFreq);
 
             this.attenuation = new List<double>();
-            for(int i=0; i< nCH; i++)
+            for (int i = 0; i < nCH; i++)
             {
-             
+
                 this.attenuation.Add(att);
             }
 
@@ -173,7 +173,7 @@ namespace OpenNAS_App.NASComponents
                 attDiv.Add(OpenNasUtils.revkDiv(tempAtt));
             }
         }
-    
+
         private void generateCFB(string route)
         {
             computeFiltersParameters();
@@ -194,7 +194,8 @@ namespace OpenNAS_App.NASComponents
             {
                 entity += "2";
             }
-            else{
+            else
+            {
                 entity += "4";
             }
             entity += "or_" + nCH + "CH";
@@ -204,9 +205,9 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("  clock     : in std_logic;");
             sw.WriteLine("   rst             : in std_logic;");
             sw.WriteLine("  spikes_in: in std_logic_vector(1 downto 0);");
-            sw.WriteLine("  spikes_out: out std_logic_vector("+(nCH*2-1)+" downto 0)");
+            sw.WriteLine("  spikes_out: out std_logic_vector(" + (nCH * 2 - 1) + " downto 0)");
             sw.WriteLine(");");
-            sw.WriteLine("end "+entity+";");
+            sw.WriteLine("end " + entity + ";");
             sw.WriteLine("");
 
             sw.WriteLine("architecture CFBank_arq of " + entity + " is");
@@ -222,7 +223,7 @@ namespace OpenNAS_App.NASComponents
                 filterName = "spikes_4BPF_fullGain";
             }
 
-            sw.WriteLine("  component "+filterName+" is");
+            sw.WriteLine("  component " + filterName + " is");
 
             sw.WriteLine("  generic (GL: in integer:= 11; SAT: in integer:= 1023);");
             sw.WriteLine("  Port(CLK: in  STD_LOGIC;");
@@ -245,9 +246,9 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("");
 
             sw.WriteLine("  signal not_rst: std_logic;");
-            for(int i = 0; i < nCH + 1; i++)
+            for (int i = 0; i < nCH + 1; i++)
             {
-                sw.WriteLine("  signal lpf_spikes_"+i+" : std_logic_vector(1 downto 0);");
+                sw.WriteLine("  signal lpf_spikes_" + i + " : std_logic_vector(1 downto 0);");
             }
 
             sw.WriteLine("begin");
@@ -258,16 +259,16 @@ namespace OpenNAS_App.NASComponents
 
             double realFreq = slpfParam[0].realFcut;
             double freqError = 100 * ((cutoffFreq[0] - realFreq) / cutoffFreq[0]);
-            string filterInfo = "--Ideal cutoff: " + cutoffFreq[0].ToString("0.0000") + "Hz - Real cutoff: " + realFreq.ToString("0.0000") + "Hz - Error: "+ freqError.ToString("0.0000") +"%";
+            string filterInfo = "--Ideal cutoff: " + cutoffFreq[0].ToString("0.0000") + "Hz - Real cutoff: " + realFreq.ToString("0.0000") + "Hz - Error: " + freqError.ToString("0.0000") + "%";
             sw.WriteLine(filterInfo);
             sw.WriteLine("U_BPF_0: " + filterName);
-            sw.WriteLine("generic map(GL => "+ slpfParam[0].nBits+", SAT => "+(int) (Math.Pow(2, slpfParam[0].nBits-1)-1)+")");
+            sw.WriteLine("generic map(GL => " + slpfParam[0].nBits + ", SAT => " + (int)(Math.Pow(2, slpfParam[0].nBits - 1) - 1) + ")");
             sw.WriteLine("Port map(CLK => clock,");
             sw.WriteLine("  RST => not_rst,");
-            sw.WriteLine("  FREQ_DIV => x\""+ slpfParam[0].freqDiv.ToString("X2")+"\",");
-            sw.WriteLine("  SPIKES_DIV_FB => x\""+ slpfParam[0].fbDiv.ToString("X4") + "\",");
-            sw.WriteLine("  SPIKES_DIV_OUT => x\""+ slpfParam[0].outDiv.ToString("X4") + "\",");
-            sw.WriteLine("  SPIKES_DIV_BPF => x\""+ attDiv[0].ToString("X4") + "\",");
+            sw.WriteLine("  FREQ_DIV => x\"" + slpfParam[0].freqDiv.ToString("X2") + "\",");
+            sw.WriteLine("  SPIKES_DIV_FB => x\"" + slpfParam[0].fbDiv.ToString("X4") + "\",");
+            sw.WriteLine("  SPIKES_DIV_OUT => x\"" + slpfParam[0].outDiv.ToString("X4") + "\",");
+            sw.WriteLine("  SPIKES_DIV_BPF => x\"" + attDiv[0].ToString("X4") + "\",");
             sw.WriteLine("  spike_in_slpf_p => spikes_in(1),");
             sw.WriteLine("  spike_in_slpf_n => spikes_in(0),");
             sw.WriteLine("  spike_in_shf_p => '0',");
@@ -289,15 +290,15 @@ namespace OpenNAS_App.NASComponents
                 freqError = 100 * ((cutoffFreq[k] - realFreq) / cutoffFreq[k]);
                 filterInfo = "--Ideal cutoff: " + cutoffFreq[k].ToString("0.0000") + "Hz - Real cutoff: " + realFreq.ToString("0.0000") + "Hz - Error: " + freqError.ToString("0.0000") + "%";
                 sw.WriteLine(filterInfo);
-                sw.WriteLine("U_BPF_"+k+": " + filterName);
+                sw.WriteLine("U_BPF_" + k + ": " + filterName);
                 sw.WriteLine("generic map(GL => " + slpfParam[k].nBits + ", SAT => " + (int)(Math.Pow(2, slpfParam[k].nBits - 1) - 1) + ")");
                 sw.WriteLine("Port map(CLK => clock,");
                 sw.WriteLine("  RST => not_rst,");
                 sw.WriteLine("  FREQ_DIV => x\"" + slpfParam[k].freqDiv.ToString("X2") + "\",");
                 sw.WriteLine("  SPIKES_DIV_FB => x\"" + slpfParam[k].fbDiv.ToString("X4") + "\",");
                 sw.WriteLine("  SPIKES_DIV_OUT => x\"" + slpfParam[k].outDiv.ToString("X4") + "\",");
-                sw.WriteLine("  SPIKES_DIV_BPF => x\"" + attDiv[k-1].ToString("X4") + "\",");
-                sw.WriteLine("  spike_in_slpf_p => lpf_spikes_"+(k-1)+"(1),");
+                sw.WriteLine("  SPIKES_DIV_BPF => x\"" + attDiv[k - 1].ToString("X4") + "\",");
+                sw.WriteLine("  spike_in_slpf_p => lpf_spikes_" + (k - 1) + "(1),");
                 sw.WriteLine("  spike_in_slpf_n => lpf_spikes_" + (k - 1) + "(0),");
 
                 //Cascade Arch
@@ -309,8 +310,8 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("  spike_in_shf_n => spikes_in(0),"); */
 
 
-                sw.WriteLine("  spike_out_p => spikes_out("+(2*(k-1)+1)+"),");
-                sw.WriteLine("  spike_out_n => spikes_out(" + (2 * (k-1)) + "), ");
+                sw.WriteLine("  spike_out_p => spikes_out(" + (2 * (k - 1) + 1) + "),");
+                sw.WriteLine("  spike_out_n => spikes_out(" + (2 * (k - 1)) + "), ");
                 sw.WriteLine("  spike_out_lpf_p => lpf_spikes_" + (k) + "(1),");
                 sw.WriteLine("  spike_out_lpf_n => lpf_spikes_" + (k) + "(0)");
                 sw.WriteLine(");");
@@ -327,7 +328,7 @@ namespace OpenNAS_App.NASComponents
         /// Generates a full cascade SLPF bank, copying library files, and generating custom sources
         /// </summary>
         /// <param name="route">Destination files route</param>
-        override public void generateHDL (string route)
+        override public void generateHDL(string route)
         {
             List<string> dependencies = new List<string>();
             dependencies.Add(@"SSPLibrary\SpikeBuildingBlocks\Spike_Int_n_Gen_BW.vhd");
@@ -347,7 +348,7 @@ namespace OpenNAS_App.NASComponents
                 dependencies.Add(@"SSPLibrary\SpikeBuildingBlocks\spikes_4LPF_fullGain.vhd");
                 dependencies.Add(@"SSPLibrary\SpikeBuildingBlocks\spikes_4BPF_fullGain.vhd");
             }
-            copyDependencies(route, dependencies );
+            copyDependencies(route, dependencies);
 
             generateCFB(route);
 
@@ -418,7 +419,8 @@ namespace OpenNAS_App.NASComponents
             {
                 entity += "2";
             }
-            else {
+            else
+            {
                 entity += "4";
             }
             entity += "or_" + nCH + "CH";
@@ -445,12 +447,13 @@ namespace OpenNAS_App.NASComponents
             {
                 entity += "2";
             }
-            else {
+            else
+            {
                 entity += "4";
             }
             entity += "or_" + nCH + "CH";
             sw.WriteLine("--Cascade Filter Bank");
-            sw.WriteLine("U_" + entity + "_Left: "+entity);
+            sw.WriteLine("U_" + entity + "_Left: " + entity);
             sw.WriteLine("  port map(");
             sw.WriteLine("  clock =>clock,");
             sw.WriteLine("   rst  => reset,");
@@ -471,7 +474,7 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("");
             }
         }
-        
+
         /// <summary>
         /// Gets component short description
         /// </summary>
@@ -481,5 +484,5 @@ namespace OpenNAS_App.NASComponents
             return "Cascade";
         }
     }
-    
+
 }

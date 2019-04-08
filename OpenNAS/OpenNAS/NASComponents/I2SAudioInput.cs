@@ -23,9 +23,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace OpenNAS_App.NASComponents
@@ -120,19 +117,19 @@ namespace OpenNAS_App.NASComponents
         /// <param name="sw">NAS Top file handler</param>
         public override void WriteComponentInvocation(StreamWriter sw)
         {
-            
-            
-                sw.WriteLine("--I2S Stereo");
-                sw.WriteLine("U_I2S_Stereo: is2_to_spikes_stereo");
-                sw.WriteLine("port map (");
-                sw.WriteLine("  clock=>clock,");
-                sw.WriteLine("  reset=>reset,");
 
-                sw.WriteLine("--I2S Bus");
-                sw.WriteLine("  i2s_bclk  => i2s_bclk,");
-                sw.WriteLine("   i2s_d_in => i2s_d_in,");
-                sw.WriteLine("   i2s_lr => i2s_lr,");
-                sw.WriteLine("--Spikes Output");
+
+            sw.WriteLine("--I2S Stereo");
+            sw.WriteLine("U_I2S_Stereo: is2_to_spikes_stereo");
+            sw.WriteLine("port map (");
+            sw.WriteLine("  clock=>clock,");
+            sw.WriteLine("  reset=>reset,");
+
+            sw.WriteLine("--I2S Bus");
+            sw.WriteLine("  i2s_bclk  => i2s_bclk,");
+            sw.WriteLine("   i2s_d_in => i2s_d_in,");
+            sw.WriteLine("   i2s_lr => i2s_lr,");
+            sw.WriteLine("--Spikes Output");
             sw.WriteLine("  spikes_left=>spikes_in_left,");
             if (nasType == NASTYPE.MONO)
             {
@@ -142,7 +139,7 @@ namespace OpenNAS_App.NASComponents
             {
                 sw.WriteLine("  spikes_rigth=>spikes_in_rigth");
             }
-                sw.WriteLine(");");
+            sw.WriteLine(");");
 
             sw.WriteLine("");
         }

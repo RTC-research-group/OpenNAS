@@ -20,16 +20,10 @@
 /////////////////////////////////////////////////////////////////////////////////
 
 
-using System;
-using System.Collections.Generic;
+using OpenNAS_App.NASControls;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
-using System.Xml.Serialization;
-using OpenNAS_App.NASControls;
 
 /// <summary>
 /// This namespace groups all the classes for NAS representation and generation, performing components library
@@ -82,7 +76,7 @@ namespace OpenNAS_App.NASComponents
         /// <param name="sourceRoute">Destination of source files</param>
         /// <param name="constraintsRoute">Destination of constraints files</param>
         /// <param name="projectRoute">Destination of tcl file for automatic project generation</param>
-        public void Generate (string sourceRoute, string constraintsRoute, string projectRoute)
+        public void Generate(string sourceRoute, string constraintsRoute, string projectRoute)
         {
             //Generate HDL componets
             audioInput.generateHDL(sourceRoute);
@@ -94,11 +88,11 @@ namespace OpenNAS_App.NASComponents
             writeConstraints(constraintsRoute);
 
             //Write .tcl file to generate the project
-            if(nasCommons.nasChip == NASchip.AERNODE)
+            if (nasCommons.nasChip == NASchip.AERNODE)
             {
                 writeProjectTCL(projectRoute);
             }
-            
+
         }
 
         /// <summary>
@@ -108,8 +102,8 @@ namespace OpenNAS_App.NASComponents
         private void writeTopFile(string route)
         {
 
-            string nasName = "OpenNas_TOP_"+ audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + nasCommons.nCh + "ch";
-            StreamWriter sw = new StreamWriter(route + "\\"+nasName+".vhd");
+            string nasName = "OpenNas_TOP_" + audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + nasCommons.nCh + "ch";
+            StreamWriter sw = new StreamWriter(route + "\\" + nasName + ".vhd");
 
             sw.WriteLine(HDLGenerable.copyLicense('H'));
 
@@ -119,9 +113,9 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("use IEEE.STD_LOGIC_UNSIGNED.ALL;");
 
             sw.WriteLine("");
-            
+
             //Top component signals
-            string entity = "OpenNas_" + audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + + nasCommons.nCh+"ch";
+            string entity = "OpenNas_" + audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + +nasCommons.nCh + "ch";
             sw.WriteLine("entity " + entity + " is");
             sw.WriteLine("  port(");
             sw.WriteLine("  clock     : in std_logic;");
@@ -156,12 +150,12 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("  signal spikes_in_left_i2s : std_logic_vector(1 downto 0);");
                 sw.WriteLine("  signal spikes_in_left_pdm : std_logic_vector(1 downto 0);");
             }
-           
+
             sw.WriteLine("--Left spikes");
             sw.WriteLine("  signal spikes_in_left : std_logic_vector(1 downto 0);");
-            sw.WriteLine("  signal spikes_out_left : std_logic_vector("+(nasCommons.nCh*2-1)+" downto 0);");
-            
-            
+            sw.WriteLine("  signal spikes_out_left : std_logic_vector(" + (nasCommons.nCh * 2 - 1) + " downto 0);");
+
+
             ///////////////////////////////////////spikes_out_left
 
             if (nasCommons.monoStereo == NASTYPE.STEREO)
@@ -275,7 +269,7 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("");
 
             sw.WriteLine("### External reset button ###");
-            switch(nasCommons.nasChip)
+            switch (nasCommons.nasChip)
             {
                 case NASchip.AERNODE:
                     sw.WriteLine("NET \"rst_ext\" LOC = \"A20\";");
@@ -337,7 +331,7 @@ namespace OpenNAS_App.NASComponents
 
                         sw.WriteLine("set_property PACKAGE_PIN H16 [get_ports i2s_lr]");
                         sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports i2s_lr]");
-                        
+
                         break;
                     default:
                         sw.WriteLine("set_property PACKAGE_PIN XX [get_ports i2s_bclk]");
@@ -429,7 +423,7 @@ namespace OpenNAS_App.NASComponents
 
             SpikesOutputControl.NASAUDIOOUTPUT nasOutputIF = SpikesOutputControl.audioOutput;
 
-            switch(nasOutputIF)
+            switch (nasOutputIF)
             {
                 //AER interface
                 case SpikesOutputControl.NASAUDIOOUTPUT.AERMONITOR:
@@ -574,7 +568,7 @@ namespace OpenNAS_App.NASComponents
                             sw.WriteLine("");
                             break;
                     }
-                    
+
                     break;
                 //SpiNNaker v1
                 case SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV1:
@@ -648,7 +642,7 @@ namespace OpenNAS_App.NASComponents
                             sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports ack_from_spinnaker]");
                             break;
                     }
-                    
+
                     sw.WriteLine("");
 
                     break;
@@ -763,7 +757,7 @@ namespace OpenNAS_App.NASComponents
                 nasFBankFileName += "P";
             }
 
-            nasFBankFileName += "FBank_"+nasCommons.nCh + ".vhd \\";
+            nasFBankFileName += "FBank_" + nasCommons.nCh + ".vhd \\";
 
             sw.WriteLine(nasFBankFileName);
 
@@ -799,7 +793,7 @@ namespace OpenNAS_App.NASComponents
 
             sw.WriteLine("# constraints with pin placements. This file will need to be replaced if you");
             sw.WriteLine("# are using a different Xilinx device or board.");
-            switch(nasCommons.nasChip)
+            switch (nasCommons.nasChip)
             {
                 case NASchip.AERNODE:
                     sw.WriteLine("set constraints_file      ../../constraints/Node_constraints.ucf");
@@ -816,7 +810,7 @@ namespace OpenNAS_App.NASComponents
                 default:
                     break;
             }
-            
+
             sw.WriteLine("");
 
             sw.WriteLine("# Remember: set variable_name value for user variables");
@@ -1075,7 +1069,7 @@ namespace OpenNAS_App.NASComponents
         {
             string nasName = "OpenNas_TOP_" + audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + nasCommons.nCh + "ch";
 
-            string filename = route + "\\"+nasName+".xml";
+            string filename = route + "\\" + nasName + ".xml";
             CultureInfo ci = new CultureInfo("en-us");
             XmlTextWriter textWriter;
             textWriter = new XmlTextWriter(filename, null);
@@ -1091,7 +1085,7 @@ namespace OpenNAS_App.NASComponents
             audioInput.toXML(textWriter);
             audioProcessing.toXML(textWriter);
             spikesOutput.toXML(textWriter);
-               
+
             textWriter.WriteEndElement();
             textWriter.WriteEndDocument();
             textWriter.Close();
