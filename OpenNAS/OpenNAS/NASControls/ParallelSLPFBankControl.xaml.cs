@@ -128,13 +128,64 @@ namespace OpenNAS_App.NASControls
 
         public void computeNas()
         {
-            button_Click(null, null);
+            ParallelSLPFBank pfb = (ParallelSLPFBank)FromControl();
+                       
+            midFreqDataGrid.Items.Clear();
+            cutOffFreqDataGrid.Items.Clear();
+            attDataGrid.Items.Clear();
+
+            List<double> targetFreq = pfb.midFreq;
+            List<double> cutOffFreq = pfb.cutoffFreq;
+            List<double> att = pfb.attenuation;
+
+
+            for (int i = 0; i < targetFreq.Count; i++)
+            {
+                string[] s = { i + "", targetFreq[i].ToString(ci) };
+                midFreqDataGrid.Items.Add(s);
+            }
+
+            for (int i = 0; i < cutOffFreq.Count; i++)
+            {
+                string[] s = { i + "", cutOffFreq[i].ToString(ci) };
+                cutOffFreqDataGrid.Items.Add(s);
+            }
+
+            for (int i = 0; i < att.Count; i++)
+            {
+                string[] s = { i + "", att[i].ToString(ci) };
+                attDataGrid.Items.Add(s);
+            }
         }
 
         private void AttUpDowm_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             if (commons != null)
                 computeNas();
+        }
+
+        private void StopFreqUpDowm_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (commons != null)
+            {
+                computeNas();
+            }
+        }
+
+        private void StartFreqUpDowm_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (commons != null)
+            {
+                computeNas();
+            }
+        }
+
+        private void SlpfTypecomboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (commons != null)
+            {
+                computeNas();
+            }
         }
     }
 }

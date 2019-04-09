@@ -53,7 +53,34 @@ namespace OpenNAS_App.NASControls
 
         public void computeNas()
         {
-            button_Click(null, null);
+            ParallelSBPFBank pfb = (ParallelSBPFBank)FromControl();
+
+            midFreqDataGrid.Items.Clear();
+            qFactorDataGrid.Items.Clear();
+            attDataGrid.Items.Clear();
+
+            List<double> targetFreq = pfb.midFreq;
+            List<double> qFactor = pfb.Q;
+            List<double> att = pfb.attenuation;
+
+
+            for (int i = 0; i < targetFreq.Count; i++)
+            {
+                string[] s = { i + "", targetFreq[i].ToString(ci) };
+                midFreqDataGrid.Items.Add(s);
+            }
+
+            for (int i = 0; i < qFactor.Count; i++)
+            {
+                string[] s = { i + "", qFactor[i].ToString(ci) };
+                qFactorDataGrid.Items.Add(s);
+            }
+
+            for (int i = 0; i < att.Count; i++)
+            {
+                string[] s = { i + "", att[i].ToString(ci) };
+                attDataGrid.Items.Add(s);
+            }
         }
 
         public AudioProcessingArchitecture FromControl()
@@ -93,9 +120,7 @@ namespace OpenNAS_App.NASControls
         private void button_Click(object sender, RoutedEventArgs e)
         {
             ParallelSBPFBank pfb = (ParallelSBPFBank)FromControl();
-
-
-
+                       
             midFreqDataGrid.Items.Clear();
             qFactorDataGrid.Items.Clear();
             attDataGrid.Items.Clear();
@@ -128,6 +153,30 @@ namespace OpenNAS_App.NASControls
         {
             if (commons != null)
                 computeNas();
+        }
+
+        private void QFactorUpDowm_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (commons != null)
+            {
+                computeNas();
+            }
+        }
+
+        private void StopFreqUpDowm_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (commons != null)
+            {
+                computeNas();
+            }
+        }
+
+        private void StartFreqUpDowm_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (commons != null)
+            {
+                computeNas();
+            }
         }
     }
 }
