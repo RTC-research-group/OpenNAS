@@ -38,7 +38,7 @@
                     </DockPanel>
                     <DockPanel Margin="0 10 0 0">
                         <Label Content="PDM Clock Div."/>
-                        <xctk:SingleUpDown x:Name="pdmDivUpDowm"  HorizontalAlignment="Right" TextAlignment="Center" Width="60" Height="20" Value="8" Minimum="1" Maximum="255" ValueChanged="pdmDivUpDowm_ValueChanged" />
+                        <xctk:SingleUpDown x:Name="pdmDivUpDowm"  HorizontalAlignment="Right" TextAlignment="Center" Width="60" Height="20" Value="8" Minimum="1" Maximum="255" ValueChanged="pdmDivUpDowm_ValueChanged" PreviewTextInput="PdmDivUpDowm_PreviewTextInput"/>
                     </DockPanel>
                 <DockPanel Margin="0 10 0 0">
                         <Label Content="PDM Clock (MHz)"/>
@@ -50,7 +50,7 @@
                 <StackPanel>
                     <DockPanel>
                         <Label Content="Cut-off Freq. (Hz)"/>
-                        <xctk:SingleUpDown x:Name="shpfCutOffUpDowm" Margin="10 0 0 0"  HorizontalAlignment="Right" TextAlignment="Center" Width="60" Height="20" Value="20" Minimum="1" Maximum="48000" />
+                        <xctk:SingleUpDown x:Name="shpfCutOffUpDowm" Margin="10 0 0 0"  HorizontalAlignment="Right" TextAlignment="Center" Width="60" Height="20" Value="20" Minimum="1" Maximum="48000" PreviewTextInput="ShpfCutOffUpDowm_PreviewTextInput"/>
                     </DockPanel>
 
                 </StackPanel>
@@ -59,11 +59,11 @@
                 <StackPanel>
                     <DockPanel>
                         <Label Content="Cut-off Freq. (Hz)"/>
-                        <xctk:SingleUpDown x:Name="slpfCutOffUpDowm" Margin="10 0 0 0"  HorizontalAlignment="Right" TextAlignment="Center" Width="60" Height="20" Value="8000" Minimum="1" Maximum="48000" />
+                        <xctk:SingleUpDown x:Name="slpfCutOffUpDowm" Margin="10 0 0 0"  HorizontalAlignment="Right" TextAlignment="Center" Width="60" Height="20" Value="8000" Minimum="1" Maximum="48000" PreviewTextInput="SlpfCutOffUpDowm_PreviewTextInput"/>
                     </DockPanel>
                     <DockPanel Margin="0 10 0 0">
                         <Label Content="Gain (dB)"/>
-                        <xctk:SingleUpDown x:Name="slpfGainUpDowm"  HorizontalAlignment="Right" TextAlignment="Center" Width="60" Height="20" Value="-3" Minimum="-100" Maximum="100"  />
+                        <xctk:SingleUpDown x:Name="slpfGainUpDowm"  HorizontalAlignment="Right" TextAlignment="Center" Width="60" Height="20" Value="-3" Minimum="-100" Maximum="100"  PreviewTextInput="SlpfGainUpDowm_PreviewTextInput"/>
                     </DockPanel>
                 </StackPanel>
             </GroupBox>

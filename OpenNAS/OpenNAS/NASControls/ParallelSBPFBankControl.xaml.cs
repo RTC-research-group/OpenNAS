@@ -23,6 +23,7 @@ using OpenNAS_App.NASComponents;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -177,6 +178,26 @@ namespace OpenNAS_App.NASControls
             {
                 computeNas();
             }
+        }
+
+        private void AttUpDowm_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = Regex.IsMatch(e.Text, "[^0-9]+");
+        }
+
+        private void QFactorUpDowm_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = Regex.IsMatch(e.Text, "[^0-9]+");
+        }
+
+        private void StopFreqUpDowm_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = Regex.IsMatch(e.Text, "[^0-9]+");
+        }
+
+        private void StartFreqUpDowm_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = Regex.IsMatch(e.Text, "[^0-9]+");
         }
     }
 }

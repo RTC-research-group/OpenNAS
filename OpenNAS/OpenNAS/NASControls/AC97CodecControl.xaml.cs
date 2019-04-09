@@ -21,6 +21,7 @@
 
 using OpenNAS_App.NASComponents;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -78,6 +79,16 @@ namespace OpenNAS_App.NASControls
 
 
 
+        }
+
+        private void ClockDivUpDowm_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = Regex.IsMatch(e.Text, "[^0-9]+");
+        }
+
+        private void GenNbitsUpDowm_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = Regex.IsMatch(e.Text, "[^0-9]+");
         }
     }
 }

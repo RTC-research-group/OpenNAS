@@ -37,12 +37,12 @@
             <DockPanel>
                 <DockPanel Margin="0 15 0 0" DockPanel.Dock="Top">
                     <Label Content="Spikes Gen bits:"/>
-                    <xctk:SingleUpDown x:Name="genNbitsUpDowm" Width="60" Height="20" Value="20" Minimum="2" IsEnabled="False" HorizontalAlignment="Right" TextAlignment="Center"/>
+                    <xctk:SingleUpDown x:Name="genNbitsUpDowm" Width="60" Height="20" Value="20" Minimum="2" IsEnabled="False" HorizontalAlignment="Right" TextAlignment="Center" PreviewTextInput="GenNbitsUpDowm_PreviewTextInput"/>
                 </DockPanel>
 
                 <DockPanel Margin="0 15 0 0" DockPanel.Dock="Top">
                     <Label Content="Spikes Gen Clock Div."/>
-                    <xctk:SingleUpDown x:Name="clockDivUpDowm" Width="60" Height="20" Value="15" Minimum="0" ValueChanged="clockDivUpDowm_ValueChanged" HorizontalAlignment="Right" TextAlignment="Center"/>
+                    <xctk:SingleUpDown x:Name="clockDivUpDowm" Width="60" Height="20" Value="15" Minimum="0" ValueChanged="clockDivUpDowm_ValueChanged" HorizontalAlignment="Right" TextAlignment="Center" PreviewTextInput="ClockDivUpDowm_PreviewTextInput"/>
                 </DockPanel>
                 <DockPanel Margin="0 15 0 0" DockPanel.Dock="Top">
                     <Label Content="KspikesGen (KSpk./s)"/>

@@ -21,6 +21,7 @@
 
 using OpenNAS_App.NASComponents;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
@@ -97,6 +98,16 @@ namespace OpenNAS_App.NASControls
                 img_platformUsed.MaxWidth = 400;
                 img_platformUsed.MaxHeight = 232;
             }
+        }
+
+        private void NChUpDowm_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = Regex.IsMatch(e.Text, "[^0-9]+");
+        }
+
+        private void ClockFreqUpDowm_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = Regex.IsMatch(e.Text, "[^0-9]+");
         }
     }
 }
