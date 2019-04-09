@@ -35,11 +35,11 @@
                 </DockPanel>
                 <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
                     <Label Content="Spikes FIFO Bits:"/>
-                    <xctk:SingleUpDown x:Name="spikesFifoUpDowm" Width="50" Height="20" Value="9" ValueChanged="spikesFifoUpDowm_ValueChanged" HorizontalAlignment="Right" TextAlignment="Center"/>
+                    <xctk:SingleUpDown x:Name="spikesFifoUpDowm" Width="50" Height="20" Value="9" ValueChanged="SpikesFifoUpDowm_ValueChanged" HorizontalAlignment="Right" TextAlignment="Center"/>
                 </DockPanel>
                 <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
                     <Label Content="AER FIFO Bits:"/>
-                    <xctk:SingleUpDown x:Name="aerFifoUpDowm" Width="50" Height="20" Value="11" ValueChanged="spikesFifoUpDowm_ValueChanged" HorizontalAlignment="Right" TextAlignment="Center"/>
+                    <xctk:SingleUpDown x:Name="aerFifoUpDowm" Width="50" Height="20" Value="11" ValueChanged="SpikesFifoUpDowm_ValueChanged" HorizontalAlignment="Right" TextAlignment="Center"/>
                 </DockPanel>
 
                 <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">

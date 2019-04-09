@@ -97,7 +97,7 @@ namespace OpenNAS_App.NASControls
 
         }
 
-        private void spikesFifoUpDowm_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        private void SpikesFifoUpDowm_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             UpdateMemoryValues();
         }

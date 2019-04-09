@@ -73,9 +73,9 @@ namespace OpenNAS_App
             string sourceRoute = route + "\\sources";
             string constrainRoute = route + "\\constraints";
             string projectRoute = route + "\\project";
-            checkFolders(route);
+            CheckFolders(route);
 
-            nas.toXML(route);
+            nas.ToXML(route);
 
             nas.Generate(sourceRoute, constrainRoute, projectRoute);
 
@@ -85,7 +85,7 @@ namespace OpenNAS_App
                 System.Diagnostics.Process.Start("explorer.exe", route);
         }
 
-        private void checkFolders(string nasRoute)
+        private void CheckFolders(string nasRoute)
         {
             string sourceRoute = route + "\\sources";
             bool folderExists = Directory.Exists(sourceRoute);
@@ -117,7 +117,7 @@ namespace OpenNAS_App
             }
         }
 
-        private void browseFolderButton_Click(object sender, RoutedEventArgs e)
+        private void BrowseFolderButton_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new System.Windows.Forms.FolderBrowserDialog();
             System.Windows.Forms.DialogResult result = dialog.ShowDialog();

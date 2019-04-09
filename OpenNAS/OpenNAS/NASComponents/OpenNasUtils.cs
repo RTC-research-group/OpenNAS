@@ -138,6 +138,8 @@ namespace OpenNAS_App.NASComponents
         /// <param name="start">Start value</param>
         /// <param name="stop">End value</param>
         /// <param name="num">Quantity of values</param>
+        /// <param name="endpoint">Indicates if should be include last element, true by default</param>
+        /// <param name="numericBase">Specify space numeric base, 10 by default</param>
         /// <returns>Log Space</returns>
         public static IEnumerable<double> LogSpace(double start, double stop, int num, bool endpoint = true, double numericBase = 10.0d)
         {

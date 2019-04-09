@@ -83,14 +83,14 @@ namespace OpenNAS_App.NASComponents
             audioProcessing.generateHDL(sourceRoute);
             spikesOutput.generateHDL(sourceRoute);
             //Write Top HDL file
-            writeTopFile(sourceRoute);
+            WriteTopFile(sourceRoute);
 
-            writeConstraints(constraintsRoute);
+            WriteConstraints(constraintsRoute);
 
             //Write .tcl file to generate the project
             if (nasCommons.nasChip == NASchip.AERNODE)
             {
-                writeProjectTCL(projectRoute);
+                WriteProjectTCL(projectRoute);
             }
 
         }
@@ -99,7 +99,7 @@ namespace OpenNAS_App.NASComponents
         /// Writes top NAS HDL file, integrating all NAS componentes
         /// </summary>
         /// <param name="route">Destination file route</param>
-        private void writeTopFile(string route)
+        private void WriteTopFile(string route)
         {
 
             string nasName = "OpenNas_TOP_" + audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + nasCommons.nCh + "ch";
@@ -220,7 +220,7 @@ namespace OpenNAS_App.NASComponents
         /// Writes NAS constraint file for a specific board
         /// </summary>
         /// <param name="route">Destination file route</param>
-        private void writeConstraints(string route)
+        private void WriteConstraints(string route)
         {
             string fileExtension = ".";
             string fileName = "_constraints";
@@ -665,7 +665,7 @@ namespace OpenNAS_App.NASComponents
         /// Writes a tcl script for automatic NAS project generation
         /// </summary>
         /// <param name="route">Destination file route</param>
-        private void writeProjectTCL(string route)
+        private void WriteProjectTCL(string route)
         {
             string nasName = "OpenNas_TOP_" + audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + nasCommons.nCh + "ch";
             StreamWriter sw = new StreamWriter(route + "\\" + nasName + ".tcl");
@@ -1065,7 +1065,7 @@ namespace OpenNAS_App.NASComponents
         /// Writes NAS architecture and settings as a XML file
         /// </summary>
         /// <param name="route">Destination file route</param>
-        public void toXML(string route)
+        public void ToXML(string route)
         {
             string nasName = "OpenNas_TOP_" + audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + nasCommons.nCh + "ch";
 
