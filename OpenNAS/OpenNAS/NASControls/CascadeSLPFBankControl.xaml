@@ -31,11 +31,11 @@
     <!--:DesignHeight="160" d:DesignWidth="720"-->
         <DockPanel>
 
-            <DockPanel MinWidth="210" Margin="0 5 0 0" DockPanel.Dock="Left">
+            <DockPanel MinWidth="210" Margin="0 5 0 0" DockPanel.Dock="Left" LastChildFill="False">
 
                 <DockPanel DockPanel.Dock="Top">
                     <Label Content="SLPF Filter:"/>
-                    <ComboBox x:Name="slpfTypecomboBox" HorizontalAlignment="Right" Width="120" Height="22" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <ComboBox x:Name="slpfTypecomboBox" IsEnabled="False" HorizontalAlignment="Right" Width="120" Height="22" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionChanged="SlpfTypecomboBox_SelectionChanged"/>
                 </DockPanel>
 
                 <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
@@ -44,18 +44,17 @@
                 </DockPanel>
                 <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
                     <Label Content="Start Freq. (Hz)"/>
-                    <xctk:SingleUpDown x:Name="startFreqUpDowm" Width="60" Height="20" Value="20" Minimum="20" HorizontalAlignment="Right" TextAlignment="Center"/>
+                    <xctk:SingleUpDown x:Name="startFreqUpDowm" Width="60" Height="20" Value="20" Minimum="20" HorizontalAlignment="Right" TextAlignment="Center" ValueChanged="StartFreqUpDowm_ValueChanged" PreviewTextInput="StartFreqUpDowm_PreviewTextInput"/>
 
                 </DockPanel>
                 <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
                     <Label Content="Stop Freq. (Hz)"/>
-                    <xctk:SingleUpDown x:Name="stopFreqUpDowm" Width="60" Height="20" Value="22000" Minimum="20" Maximum="22000"  HorizontalAlignment="Right" TextAlignment="Center"/>
+                    <xctk:SingleUpDown x:Name="stopFreqUpDowm" Width="60" Height="20" Value="22000" Minimum="20" Maximum="22000"  HorizontalAlignment="Right" TextAlignment="Center" ValueChanged="StopFreqUpDowm_ValueChanged" PreviewTextInput="StopFreqUpDowm_PreviewTextInput"/>
                 </DockPanel>
                 <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
                     <Label Content="SBPF Output Att. (dB)"/>
-                    <xctk:SingleUpDown x:Name="attUpDowm" Width="60" Height="20" Value="-12" Maximum="0"  HorizontalAlignment="Right" TextAlignment="Center" ValueChanged="AttUpDowm_ValueChanged"/>
+                    <xctk:SingleUpDown x:Name="attUpDowm" Width="60" Height="20" Value="-12" Maximum="0"  HorizontalAlignment="Right" TextAlignment="Center" ValueChanged="AttUpDowm_ValueChanged" PreviewTextInput="AttUpDowm_PreviewTextInput"/>
                 </DockPanel>
-                <Button x:Name="button" Content="Tune Frequencies" HorizontalAlignment="Center" VerticalAlignment="Top" Width="100" Height="40" DockPanel.Dock="Bottom" Margin="0 30 0 0" Click="button_Click"/>
             </DockPanel>
             
             

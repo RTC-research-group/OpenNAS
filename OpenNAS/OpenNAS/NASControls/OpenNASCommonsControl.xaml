@@ -42,11 +42,11 @@
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top"  Margin="0 15 0 0">
                         <Label Content="Number of Channels:" DockPanel.Dock="Left"/>
-                        <xctk:SingleUpDown x:Name="nChUpDowm" Width="50" Height="20" Value="64" Minimum="2" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
+                        <xctk:SingleUpDown x:Name="nChUpDowm" Width="50" Height="20" Value="64" Minimum="2" DockPanel.Dock="Right" HorizontalAlignment="Right" PreviewTextInput="NChUpDowm_PreviewTextInput"/>
                     </DockPanel>
                     <DockPanel DockPanel.Dock="Top"  Margin="0 15 0 0">
                         <Label Content="Clock Freq. (MHz):" DockPanel.Dock="Left"/>
-                        <xctk:SingleUpDown x:Name="clockFreqUpDowm" Width="50" Height="20" Value="50" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        <xctk:SingleUpDown x:Name="clockFreqUpDowm" Width="50" Height="20" Value="50" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right" PreviewTextInput="ClockFreqUpDowm_PreviewTextInput"/>
                     </DockPanel>
                 </DockPanel>
             </GroupBox>

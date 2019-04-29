@@ -21,6 +21,7 @@
 
 using OpenNAS_App.NASComponents;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -100,6 +101,16 @@ namespace OpenNAS_App.NASControls
         private void SpikesFifoUpDowm_ValueChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             UpdateMemoryValues();
+        }
+
+        private void AerFifoUpDowm_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = Regex.IsMatch(e.Text, "[^0-9]+");
+        }
+
+        private void SpikesFifoUpDowm_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            e.Handled = Regex.IsMatch(e.Text, "[^0-9]+");
         }
     }
 }
