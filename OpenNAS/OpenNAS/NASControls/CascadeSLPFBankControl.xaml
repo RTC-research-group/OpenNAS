@@ -75,7 +75,7 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </GroupBox>
-                <GroupBox Header="SBPF Attenuation (dB)" Margin="20 0 0 0" BorderBrush="Black">
+                <GroupBox Header="SLPF Attenuation (dB)" Margin="20 0 0 0" BorderBrush="Black">
                     <DataGrid x:Name="attDataGrid" Margin="0 5 0 0">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Ch."/>
