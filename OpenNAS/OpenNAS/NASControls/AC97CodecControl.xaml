@@ -33,7 +33,7 @@
             <Label Content="Audio Input: "/>
             <ComboBox x:Name="comboBox" HorizontalAlignment="Right"  Width="120" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </DockPanel>
-        <GroupBox Header="Select Spikes Generator Settings:" DockPanel.Dock="Top" Margin="0 15 0 0" BorderBrush="Black">
+        <GroupBox Header="Spikes Generator Settings:" DockPanel.Dock="Top" Margin="0 15 0 0" BorderBrush="Black">
             <DockPanel>
                 <DockPanel Margin="0 15 0 0" DockPanel.Dock="Top">
                     <Label Content="Spikes Gen bits:"/>
