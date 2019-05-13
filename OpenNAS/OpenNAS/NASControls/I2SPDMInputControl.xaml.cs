@@ -53,7 +53,8 @@ namespace OpenNAS_App.NASControls
         public void InitializeControlValues(OpenNASCommons commons)
         {
             this.commons = commons;
-            uc_I2SInputControl.clockDivUpDowm_ValueChanged(null, null);
+            uc_I2SInputControl.InitializeControlValues(commons);
+            
         }
 
         public void ToControl(AudioInput audioIput)
