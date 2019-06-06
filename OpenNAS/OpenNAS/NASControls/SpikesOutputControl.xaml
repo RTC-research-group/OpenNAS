@@ -35,7 +35,7 @@
                 <ComboBoxItem Content="Spinnaker-AER Interface v1"/>
                 <ComboBoxItem Content="Spinnaker-AER Interface v2"/>
                 <ComboBoxItem Content="AER Monitor and Spinnaker Interface"/>
-                <ComboBoxItem Content="USB Interface"/>
+                <!--<ComboBoxItem Content="USB Interface"/>-->
             </ComboBox>
             <Label x:Name="ACK_SpiNN_label" Visibility="Hidden">Developed by APT Group (University of Manchester)</Label>
         </DockPanel>
