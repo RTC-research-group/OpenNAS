@@ -1,7 +1,7 @@
 # OpenN@S
 
 <p align="center">
-<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_logo.png" alt="OpenNAS logo">
+<img align="center" src="https://github.com/RTC-research-group/OpenNAS/blob/master/OpenNAS/Wiki_files/Images/Img_OpenNAS_extended_logo.png" alt="OpenNAS extended logo">
 </p>
 
 <h2 name="Description">Description</h2>
