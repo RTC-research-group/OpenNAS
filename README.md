@@ -92,7 +92,7 @@ The first step allows to the user to select the NAS common settings, which are t
 </p>
 
 <p align="justify">
-In this step, the input audio source must be selected. There are several options, among which we can find the AC'97 audio codec, a pair of Pulse Density Modulation (PDM) microphones, and an I2S-based audio codec. Each input option has its own configuration parameters, which the user can set according to its project requirements 
+In this step, the input audio source must be selected. There are several options, among which we can find the AC'97 audio codec, a pair of Pulse Density Modulation (PDM) microphones, and an I2S-based audio codec. Each input option has its own configuration parameters, which the user can set according to its project requirements.
 </p>
 
 <p align="center">
