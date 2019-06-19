@@ -29,7 +29,7 @@ OpenNAS is a five-steps wizard which helps you to design and configurate a NAS i
 </p>
 
 <p align="justify">
-In this brief tutorial, we will guide the user in how to download, configure and run OpenNAS tool. For now, we do not have a videotutorial, but we are working on it!
+In this brief tutorial, we will guide the user in how to download, configure and run OpenNAS tool. There is also a videotutorial which summarizes the information showed here on the GitHub repository. You can watch it by clicking on the following image:
 </p>
 
 <p align="center">
