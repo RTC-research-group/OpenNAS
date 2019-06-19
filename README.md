@@ -32,6 +32,9 @@ OpenNAS is a five-steps wizard which helps you to design and configurate a NAS i
 In this brief tutorial, we will guide the user in how to download, configure and run OpenNAS tool. For now, we do not have a videotutorial, but we are working on it!
 </p>
 
+
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://www.youtube.com/watch?v=FiN07aihYow)
+
 <!-- How to install OpenN@S and what prerrequisites are needed. -->
 <h3>Prerequisites</h3>
 <p align="justify">OpenNAS has been programmed using Visual Studio Community 2015. Hence, user needs to have installed Visual Studio Community 2015 or greater to compile the project. In addition, Microsoft Windows 7 OS or greater is needed, since the .NET Framework version used in this work is not supported by Microsoft Windows XP OS. For Linux or MAC users, Visual Studio Code is not able to compile the OpenNAS project. Thus, a virtual machine with a Microsoft Windows OS installed have to be used.
