@@ -102,7 +102,8 @@ begin
 
 end process;
 
-U_AER_FIFO:	ramfifo 
+U_AER_FIFO:	ramfifo
+generic map (TAM => 64, IL => 6, WL => LOG_2_N_IN_SPIKES)
 	 port map(clk  =>clk, 
 		wr  => aer_fifo_wr, 
 		rd	=> aer_fifo_rd,
