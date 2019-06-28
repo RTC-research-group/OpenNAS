@@ -300,6 +300,9 @@
     <None Include="SSPLibrary\SpikesOutputInterfaces\AER_DISTRIBUTED_MONITOR_MODULE.vhd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SSPLibrary\SpikesOutputInterfaces\AER_IN.vhd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SSPLibrary\SpikesOutputInterfaces\AER_OUT.vhd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -309,10 +312,46 @@
     <None Include="SSPLibrary\SpikesOutputInterfaces\handsakeOut.vhd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_control.v">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_debouncer.v">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_dump.v">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_router.v">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_top.v">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_user_int.v">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SSPLibrary\SpikesOutputInterfaces\ramfifo.vhd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SSPLibrary\SpikesOutputInterfaces\spinn_aer_if.v">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SSPLibrary\SpikesOutputInterfaces\spio_aer2spinn_mapper.v">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SSPLibrary\SpikesOutputInterfaces\spio_spinn2aer_mapper.v">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SSPLibrary\SpikesOutputInterfaces\spio_spinnaker_link_sync.v">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SSPLibrary\SpikesOutputInterfaces\spio_spinnaker_link_synchronous_receiver.v">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SSPLibrary\SpikesOutputInterfaces\spio_spinnaker_link_synchronous_sender.v">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SSPLibrary\SpikesOutputInterfaces\spio_switch.v">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -348,6 +387,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Figures\Icons\logortc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_top.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SSPLibrary\SpikesOutputInterfaces\spio_spinnaker_link.h">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

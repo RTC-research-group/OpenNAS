@@ -26,17 +26,31 @@ using System.Xml;
 
 namespace OpenNAS_App.NASComponents
 {
+    /// <summary>
+    /// Enum for defining SpiNNaker interface version: v1 (unidirectional) or v2 (bidirectional)
+    /// </summary>
+    public enum SPINNIFVERSION
+    {
+        /// <summary>
+        /// Unidirectional communication
+        /// </summary>
+        V1 = 0,
+        /// <summary>
+        /// Bidirectional communication
+        /// </summary>
+        V2 = 1
+    }
     class SpiNNaker_AERInterface : SpikesOutputInterface
     {
 
         public UInt16 nCh;
         public UInt16 aerFifoBits;
         public UInt16 spikeFifoBits;
-        public double moduleVersion;
+        public UInt16 moduleVersion;
 
         public SpiNNaker_AERInterface() { }
 
-        public SpiNNaker_AERInterface(UInt16 nCh, UInt16 aerFifoBits, UInt16 spikeFifoBits, double moduleVersion)
+        public SpiNNaker_AERInterface(UInt16 nCh, UInt16 aerFifoBits, UInt16 spikeFifoBits, UInt16 moduleVersion)
         {
             this.nCh = nCh;
             this.aerFifoBits = aerFifoBits;
@@ -47,56 +61,54 @@ namespace OpenNAS_App.NASComponents
         public override void generateHDL(string route)
         {
             List<string> dependencies = new List<string>();
-            dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\AER_DISTRIBUTED_MONITOR.vhd");
-            dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\AER_DISTRIBUTED_MONITOR_MODULE.vhd");
-            dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\AER_OUT.vhd");
-            dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\handsakeOut.vhd");
-            dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\ramfifo.vhd");
-            dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\DualPortRAM.vhd");
-            dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\AER_IN.vhd"); //Tenemos que copiar el archivo aer_in a esat carpeta
-            dependencies.Add(@"SpiNNakerAERInterface\v1\spinn_aer_if.v");
-            dependencies.Add(@"SpiNNakerAERInterface\v2\"); //Copiar todas las carpetas con todos los archivos...TODO!
+
+            if (moduleVersion.Equals(SPINNIFVERSION.V2))
+            {
+                dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_top.h");
+                dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\spio_spinnaker_link.h");
+                dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_control.v");
+                dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_debouncer.v");
+                dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_dump.v");
+                dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_router.v");
+                dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_top.v");
+                dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_user_int.v");
+                dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\spinn_aer_if.v");
+                dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\spio_aer2spinn_mapper.v");
+                dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\spio_spinn2aer_mapper.v");
+                dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\spio_spinnaker_link_sync.v");
+                dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\spio_spinnaker_link_synchronous_receiver.v");
+                dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\spio_spinnaker_link_synchronous_sender.v");
+                dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\spio_switch.v");
+
+                dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\AER_IN.vhd");
+            }
+            else
+            {
+                dependencies.Add(@"SpiNNakerAERInterface\v1\spinn_aer_if.v");
+            }
+            
             copyDependencies(route, dependencies);
         }
 
         public override void toXML(XmlTextWriter textWriter)
         {
+            // Start SpiNNaker-AER interface element
             textWriter.WriteStartElement("SpiNNakerAERInterface");
-            //AER Monitor
-            textWriter.WriteStartElement("SpikesDistributedMonitor");
-            textWriter.WriteAttributeString("aerFifoBits", aerFifoBits.ToString());
-            textWriter.WriteAttributeString("spikeFifoBits", spikeFifoBits.ToString());
-            textWriter.WriteEndElement();
-            //SpiNNaker
-            textWriter.WriteStartElement("SpiNNakerModule");
+            // Start SpiNNaker version
             textWriter.WriteAttributeString("moduleVersion", moduleVersion.ToString());
+            // End SpiNNaker version
             textWriter.WriteEndElement();
-            textWriter.WriteEndElement();
+            // End SpiNNaker-AER interface element
         }
 
 
         public override void WriteComponentArchitecture(StreamWriter sw)
         {
-            sw.WriteLine("--Spikes Distributed Monitor");
-            sw.WriteLine("component AER_DISTRIBUTED_MONITOR is");
-            sw.WriteLine("generic(N_SPIKES: integer:=128; LOG_2_N_SPIKES: integer:=7; TAM_AER: in integer; IL_AER: in integer);");
-            sw.WriteLine("Port(");
-            sw.WriteLine("  CLK: in  STD_LOGIC;");
-            sw.WriteLine("  RST: in  STD_LOGIC;");
-            sw.WriteLine("  SPIKES_IN: in  STD_LOGIC_VECTOR(N_SPIKES - 1 downto 0);");
-            sw.WriteLine("  AER_DATA_OUT: out  STD_LOGIC_VECTOR(15 downto 0);");
-            sw.WriteLine("  AER_REQ_OUT: out  STD_LOGIC;");
-            sw.WriteLine("  AER_ACK_OUT: in  STD_LOGIC;");
-            sw.WriteLine("  AER_DATA_IN: in  STD_LOGIC_VECTOR(15 downto 0);");
-            sw.WriteLine("  AER_REQ_IN: in  STD_LOGIC;");
-            sw.WriteLine("  AER_ACK_IN: out  STD_LOGIC;");
-            sw.WriteLine("  SPIKES_OUT: out STD_LOGIC_VECTOR(N_SPIKES - 1 downto 0)"); //Poner estas señales más abajo tambien! todo!
-            sw.WriteLine(");");
-            sw.WriteLine("end component;");
 
             if (moduleVersion == 2.0)
             {
                 sw.WriteLine("");
+                sw.WriteLine("-- SpiNNaer-AER interface v2");
                 sw.WriteLine("component raggedstone_spinn_aer_if_top is");
                 sw.WriteLine("	port(");
                 sw.WriteLine("		ext_nreset: in STD_LOGIC;");
@@ -135,6 +147,7 @@ namespace OpenNAS_App.NASComponents
             else //por defecto sera la 1.0
             {
                 sw.WriteLine("");
+                sw.WriteLine("-- SpiNNaer-AER interface v1");
                 sw.WriteLine("component spinn_aer_if is");
                 sw.WriteLine("port (");
                 sw.WriteLine("    CLK: in  STD_LOGIC;");

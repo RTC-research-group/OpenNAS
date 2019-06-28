@@ -20,6 +20,7 @@
 /////////////////////////////////////////////////////////////////////////////////
 
 using OpenNAS_App.NASComponents;
+using System;
 using System.Windows.Controls;
 
 namespace OpenNAS_App.NASControls
@@ -45,11 +46,25 @@ namespace OpenNAS_App.NASControls
         {
             spikesOutputPanel.Children.Clear();
 
-            if (comboBox.SelectedIndex == 0)
+            SpikesDistributedMonitorControl spikesDistributedMonitor = new SpikesDistributedMonitorControl();
+            spikesOutputPanel.Children.Add(spikesDistributedMonitor);
+            currentControl = spikesDistributedMonitor;
+
+            if (comboBox.SelectedIndex == Convert.ToInt32(NASAUDIOOUTPUT.AERMONITOR))
             {
-                SpikesDistributedMonitorControl spikesDistributedMonitor = new SpikesDistributedMonitorControl();
-                spikesOutputPanel.Children.Add(spikesDistributedMonitor);
-                currentControl = spikesDistributedMonitor;
+                ACK_SpiNN_label.Visibility = System.Windows.Visibility.Hidden;
+            }
+            else if(comboBox.SelectedIndex == Convert.ToInt32(NASAUDIOOUTPUT.SPINNAKERV1))
+            {
+                ACK_SpiNN_label.Visibility = System.Windows.Visibility.Visible;
+            }
+            else if (comboBox.SelectedIndex == Convert.ToInt32(NASAUDIOOUTPUT.SPINNAKERV2))
+            {
+                ACK_SpiNN_label.Visibility = System.Windows.Visibility.Visible;
+            }
+            else if (comboBox.SelectedIndex == Convert.ToInt32(NASAUDIOOUTPUT.AERNSPINN))
+            {
+                ACK_SpiNN_label.Visibility = System.Windows.Visibility.Visible;
             }
             InitializeControlValues(commons);
         }
