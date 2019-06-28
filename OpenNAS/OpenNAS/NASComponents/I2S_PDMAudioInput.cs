@@ -175,7 +175,7 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("");
 
             sw.WriteLine("--I2S interface Stereo");
-            sw.WriteLine("component is2_to_spikes_stereo is");
+            sw.WriteLine("component i2s_to_spikes_stereo is");
             sw.WriteLine("port (");
             sw.WriteLine("  clock: in std_logic;");
             sw.WriteLine("  reset: in std_logic;");
@@ -276,7 +276,7 @@ namespace OpenNAS_App.NASComponents
             }
 
             sw.WriteLine("--I2S Stereo");
-            sw.WriteLine("U_I2S_Stereo: is2_to_spikes_stereo");
+            sw.WriteLine("U_I2S_Stereo: i2s_to_spikes_stereo");
             sw.WriteLine("port map (");
             sw.WriteLine("  clock=>clock,");
             sw.WriteLine("  reset=>i2s_reset,");

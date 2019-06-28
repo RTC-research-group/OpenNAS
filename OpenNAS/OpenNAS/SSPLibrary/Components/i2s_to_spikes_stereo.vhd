@@ -25,7 +25,7 @@
 -- 
 -- Create Date:    11:30:32 11/01/2016 
 -- Design Name: 
--- Module Name:    is2_to_spikes_stereo - Behavioral 
+-- Module Name:    i2s_to_spikes_stereo - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -50,7 +50,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity is2_to_spikes_stereo is
+entity i2s_to_spikes_stereo is
 port(
 	clock		: in std_logic;		
 	reset				: in std_logic;
@@ -63,9 +63,9 @@ port(
 		--Spikes Output
 	spikes_left		: out std_logic_vector(1 downto 0);		
 	spikes_rigth	: out std_logic_vector(1 downto 0)	);
-end is2_to_spikes_stereo;
+end i2s_to_spikes_stereo;
 
-architecture Behavioral of is2_to_spikes_stereo is
+architecture Behavioral of i2s_to_spikes_stereo is
 	
 	component I2S_inteface is
     Port ( clk           : in  STD_LOGIC;
