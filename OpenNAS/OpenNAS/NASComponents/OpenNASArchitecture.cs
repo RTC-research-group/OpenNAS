@@ -836,10 +836,44 @@ namespace OpenNAS_App.NASComponents
         /// <param name="route">Destination file route</param>
         private void WriteProjectTCL(string route)
         {
-            string nasName = "OpenNas_TOP_" + audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + nasCommons.nCh + "ch";
-            StreamWriter sw = new StreamWriter(route + "\\" + nasName + ".tcl");
+            
+            string nasTopFileName = "OpenNas_TOP_" + audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + nasCommons.nCh + "ch";
+
+            SpikesOutputControl.NASAUDIOOUTPUT nasOutputIF = SpikesOutputControl.audioOutput;
+            bool isAERMonitor = (nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.AERMONITOR);
+
+            string tclProjectName = nasTopFileName;
+
+            if (!isAERMonitor)
+            {
+                tclProjectName = "SpiNNakerNAS_if";
+                if(nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV1)
+                {
+                    tclProjectName = tclProjectName + "1";
+                }
+                else if (nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV2)
+                {
+                    tclProjectName = tclProjectName + "2";
+                }
+                else
+                {
+
+                }
+            }
+
+            StreamWriter sw = new StreamWriter(route + "\\" + tclProjectName + ".tcl");
 
             sw.WriteLine(HDLGenerable.copyLicense('C'));
+
+            sw.WriteLine("#///////////////////////////////////////////////////////////////////////");
+            sw.WriteLine("#/////////////////////////////// README ////////////////////////////////");
+            sw.WriteLine("#///////////////////////////////////////////////////////////////////////");
+            sw.WriteLine("# For running the script:");
+            sw.WriteLine("#     -Open ISE Design Suite 32/64 Bit Command Prompt");
+            sw.WriteLine("#     -Change the current directory to which the .tcl file is located");
+            sw.WriteLine("#     -Write the command: xtclsh scriptname.tcl");
+            sw.WriteLine("#///////////////////////////////////////////////////////////////////////");
+            sw.WriteLine("");
 
             sw.WriteLine("#");
             sw.WriteLine("# Input files");
@@ -851,14 +885,34 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("");
 
             sw.WriteLine("# the top-level of our HDL source:");
-            string entity = "OpenNas_" + audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + +nasCommons.nCh + "ch";
-            sw.WriteLine("set top_name " + entity);
+            string openNASTopName = "OpenNas_" + audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + +nasCommons.nCh + "ch";
+
+            string topName = "";
+
+            if (isAERMonitor)
+            {
+                topName = openNASTopName;
+            }
+            else
+            {
+                topName = "SpiNNakerNAS_if";
+                if(nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV1)
+                {
+                    topName = topName + "1";
+                }
+                else if(nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV2)
+                {
+                    topName = topName + "2";
+                }
+            }
+
+            sw.WriteLine("set top_name " + topName);
             sw.WriteLine("");
 
             sw.WriteLine("# input source files:");
             sw.WriteLine("");
 
-            sw.WriteLine("# WARNING: OpenNas TOP Cascade STEREO 64ch module could have different names");
+            sw.WriteLine("# WARNING: OpenNas TOP module could have different names");
             sw.WriteLine("set hdl_files [ list \\");
 
             /******************* Input *******************/
@@ -932,8 +986,6 @@ namespace OpenNAS_App.NASComponents
 
             /******************* Output *******************/
 
-            SpikesOutputControl.NASAUDIOOUTPUT nasOutputIF = SpikesOutputControl.audioOutput;
-
             //AER interface
             sw.WriteLine("  ../../sources/AER_DISTRIBUTED_MONITOR_MODULE.vhd \\");
             sw.WriteLine("  ../../sources/AER_DISTRIBUTED_MONITOR.vhd \\");
@@ -950,12 +1002,34 @@ namespace OpenNAS_App.NASComponents
             //SpiNNaker v2
             if (nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV2)
             {
+                sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_top.h \\");
+                sw.WriteLine("  ../../sources/spio_spinnaker_link.h \\");
+                sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_control.v \\");
+                sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_debouncer.v \\");
+                sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_dump.v \\");
+                sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_router.v \\");
+                sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_top.v \\");
+                sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_user_int.v \\");
                 sw.WriteLine("  ../../sources/spinn_aer_if.v \\");
+                sw.WriteLine("  ../../sources/spio_aer2spinn_mapper.v \\");
+                sw.WriteLine("  ../../sources/spio_spinn2aer_mapper.v \\");
+                sw.WriteLine("  ../../sources/spio_spinnaker_link_sync.v \\");
+                sw.WriteLine("  ../../sources/spio_spinnaker_link_synchronous_receiver.v \\");
+                sw.WriteLine("  ../../sources/spio_spinnaker_link_synchronous_sender.v \\");
+                sw.WriteLine("  ../../sources/spio_switch.v \\");
+                sw.WriteLine("  ../../sources/AER_IN.vhd \\");
             }
 
             /****** Top ******/
-            string nasTopFileName = "  ../../sources/" + nasName + ".vhd \\";
-            sw.WriteLine(nasTopFileName);
+
+            string tclTopFileName = "  ../../sources/" + tclProjectName + ".vhd \\";
+
+            if (!isAERMonitor)
+            {
+                sw.WriteLine("  ../../sources/" + nasTopFileName + ".vhd \\");
+            }
+
+            sw.WriteLine(tclTopFileName);
 
             sw.WriteLine("]");
             sw.WriteLine("");
@@ -1283,11 +1357,11 @@ namespace OpenNAS_App.NASComponents
             if((nasInputIF == AudioInputControl.NASAUDIOSOURCE.PDM) || (nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2SPDM))
             {
                 sw.WriteLine("        --PDM");
-                sw.WriteLine("        i_nas_pdm_clk_left : in std_logic;");
+                sw.WriteLine("        i_nas_pdm_clk_left : out std_logic;");
                 sw.WriteLine("        i_nas_pdm_data_left : in std_logic;");
-                if(version == 2)
+                if(nasCommons.monoStereo == NASTYPE.STEREO)
                 {
-                    sw.WriteLine("        i_nas_pdm_clk_rigth : in std_logic;");
+                    sw.WriteLine("        i_nas_pdm_clk_rigth : out std_logic;");
                     sw.WriteLine("        i_nas_pdm_data_rigth : in std_logic;");
                 }
             }
@@ -1349,12 +1423,12 @@ namespace OpenNAS_App.NASComponents
             if ((nasInputIF == AudioInputControl.NASAUDIOSOURCE.PDM) || (nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2SPDM))
             {
                 sw.WriteLine("        --PDM");
-                sw.WriteLine("        pdm_clk_left : in std_logic;");
-                sw.WriteLine("        pdm_data_left : in std_logic;");
+                sw.WriteLine("        pdm_clk_left : out std_logic;");
+                sw.WriteLine("        pdm_dat_left : in std_logic;");
                 if(nasCommons.monoStereo == NASTYPE.STEREO)
                 {
-                    sw.WriteLine("        pdm_clk_rigth : in std_logic;");
-                    sw.WriteLine("        pdm_data_rigth : in std_logic;");
+                    sw.WriteLine("        pdm_clk_rigth : out std_logic;");
+                    sw.WriteLine("        pdm_dat_rigth : in std_logic;");
                 }
             }
             if (nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2SPDM)
@@ -1497,7 +1571,7 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("");
             }
 
-            sw.WriteLine("        U_NAS: OpenNas_" + audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + nasCommons.nCh + "ch is");
+            sw.WriteLine("        U_NAS: OpenNas_" + audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + nasCommons.nCh + "ch");
             sw.WriteLine("        port map(");
             sw.WriteLine("            clock => i_ext_clock,");
             sw.WriteLine("            rst_ext => reset,");
@@ -1521,11 +1595,11 @@ namespace OpenNAS_App.NASComponents
             {
                 sw.WriteLine("            --PDM");
                 sw.WriteLine("            pdm_clk_left => i_nas_pdm_clk_left,");
-                sw.WriteLine("            pdm_data_left => i_nas_pdm_data_left,");
+                sw.WriteLine("            pdm_dat_left => i_nas_pdm_data_left,");
                 if(nasCommons.monoStereo == NASTYPE.STEREO)
                 {
                     sw.WriteLine("            pdm_clk_rigth => i_nas_pdm_clk_rigth,");
-                    sw.WriteLine("            pdm_data_rigth => i_nas_pdm_data_rigth,");
+                    sw.WriteLine("            pdm_dat_rigth => i_nas_pdm_data_rigth,");
                 }
             }
             if (nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2SPDM)
@@ -1618,7 +1692,7 @@ namespace OpenNAS_App.NASComponents
             }
 
 
-            sw.WriteLine("end Behavioral;");
+            sw.WriteLine("end " + moduleName + "_arch; ");
 
             sw.Close();
 
@@ -1634,7 +1708,6 @@ namespace OpenNAS_App.NASComponents
                 dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_router.v");
                 dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_top.v");
                 dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_user_int.v");
-                dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\spinn_aer_if.v");
                 dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\spio_aer2spinn_mapper.v");
                 dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\spio_spinn2aer_mapper.v");
                 dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\spio_spinnaker_link_sync.v");
