@@ -21,7 +21,7 @@
 // TODO
 // -------------------------------------------------------------------------
 
-`include "../spinnaker_link/spio_spinnaker_link.h"
+`include "spio_spinnaker_link.h"
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 `timescale 1ns / 1ps

@@ -22,8 +22,8 @@
 // -------------------------------------------------------------------------
 
 
-`include "../raggedstone_spinn_aer_if/raggedstone_spinn_aer_if_top.h"
-`include "../spinnaker_link/spio_spinnaker_link.h"
+`include "raggedstone_spinn_aer_if_top.h"
+`include "spio_spinnaker_link.h"
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 `timescale 1ns / 1ps
