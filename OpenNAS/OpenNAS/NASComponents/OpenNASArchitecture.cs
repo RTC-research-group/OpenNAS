@@ -89,10 +89,10 @@ namespace OpenNAS_App.NASComponents
             WriteConstraints(constraintsRoute);
 
             //Write .tcl file to generate the project
-            if (nasCommons.nasChip == NASchip.AERNODE)
-            {
+            //if (nasCommons.nasChip == NASchip.AERNODE)
+            //{
                 WriteProjectTCL(projectRoute);
-            }
+            //}
 
         }
 
@@ -863,15 +863,31 @@ namespace OpenNAS_App.NASComponents
 
             StreamWriter sw = new StreamWriter(route + "\\" + tclProjectName + ".tcl");
 
+            bool isISEtcl = nasCommons.nasChip == NASchip.AERNODE;
+
             sw.WriteLine(HDLGenerable.copyLicense('C'));
 
             sw.WriteLine("#///////////////////////////////////////////////////////////////////////");
             sw.WriteLine("#/////////////////////////////// README ////////////////////////////////");
             sw.WriteLine("#///////////////////////////////////////////////////////////////////////");
             sw.WriteLine("# For running the script:");
-            sw.WriteLine("#     -Open ISE Design Suite 32/64 Bit Command Prompt");
+            if(isISEtcl)
+            {
+                sw.WriteLine("#     -Open ISE Design Suite 32/64 Bit Command Prompt");
+            }
+            else
+            {
+                sw.WriteLine("#     -Open Vivado 20xx.x Tcl Shell");
+            }
             sw.WriteLine("#     -Change the current directory to which the .tcl file is located");
-            sw.WriteLine("#     -Write the command: xtclsh scriptname.tcl");
+            if (isISEtcl)
+            {
+                sw.WriteLine("#     -Write the command: xtclsh scriptname.tcl");
+            }
+            else
+            {
+                sw.WriteLine("#     -Write the command: source scriptname.tcl");
+            }
             sw.WriteLine("#///////////////////////////////////////////////////////////////////////");
             sw.WriteLine("");
 
@@ -880,8 +896,17 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("#");
             sw.WriteLine("");
 
-            sw.WriteLine("# where the design will be compiled and where all output will be created");
-            sw.WriteLine("set compile_directory OpenNas");
+            if (isISEtcl)
+            {
+                sw.WriteLine("# where the design will be compiled and where all output will be created");
+                sw.WriteLine("set compile_directory OpenNas");
+            }
+            else
+            {
+                sw.WriteLine("# Set the reference directory for source file relative paths (by default the value is script directory path)");
+                sw.WriteLine("set origin_dir \".\"");
+            }
+            
             sw.WriteLine("");
 
             sw.WriteLine("# the top-level of our HDL source:");
@@ -906,13 +931,60 @@ namespace OpenNAS_App.NASComponents
                 }
             }
 
-            sw.WriteLine("set top_name " + topName);
-            sw.WriteLine("");
+            if(isISEtcl)
+            {
+                sw.WriteLine("set top_name " + topName);
+                sw.WriteLine("");
+            }
+            else
+            {
+                sw.WriteLine("# Set the project name");
+                sw.WriteLine("set _xil_proj_name_ \"" + topName + "\"");
+                sw.WriteLine("");
 
-            sw.WriteLine("# input source files:");
-            sw.WriteLine("");
+                sw.WriteLine("variable script_file");
+                sw.WriteLine("set script_file \"" + topName + ".tcl\"");
+                sw.WriteLine("");
 
-            sw.WriteLine("# WARNING: OpenNas TOP module could have different names");
+                sw.WriteLine("# Create project");
+                sw.WriteLine("create_project ${_xil_proj_name_} ./${_xil_proj_name_} -part xc7a75tcsg324-2");
+                sw.WriteLine("");
+
+                sw.WriteLine("# Set the directory path for the new project");
+                sw.WriteLine("set proj_dir [get_property directory [current_project]]");
+                sw.WriteLine("");
+
+                sw.WriteLine("# Set project properties");
+                sw.WriteLine("set obj [current_project]");
+                sw.WriteLine("set_property -name \"default_lib\" -value \"xil_defaultlib\" -objects $obj");
+                sw.WriteLine("set_property -name \"ip_cache_permissions\" -value \"read write\" -objects $obj");
+                sw.WriteLine("set_property -name \"ip_output_repo\" -value \"$proj_dir/${_xil_proj_name_}.cache/ip\" -objects $obj");
+                sw.WriteLine("set_property -name \"part\" -value \"xc7a75tcsg324-2\" -objects $obj");
+                sw.WriteLine("set_property -name \"sim.ip.auto_export_scripts\" -value \"1\" -objects $obj");
+                sw.WriteLine("set_property -name \"simulator_language\" -value \"Mixed\" -objects $obj");
+                sw.WriteLine("set_property -name \"target_language\" -value \"VHDL\" -objects $obj");
+                sw.WriteLine("");
+
+                sw.WriteLine("# Create 'sources_1' fileset (if not found)");
+                sw.WriteLine("if {[string equal [get_filesets -quiet sources_1] \"\"]} {");
+                sw.WriteLine("    create_fileset -srcset sources_1");
+                sw.WriteLine("}");
+                sw.WriteLine("");
+            }
+
+            if (isISEtcl)
+            {
+                sw.WriteLine("# input source files:");
+                sw.WriteLine("");
+
+                sw.WriteLine("# WARNING: OpenNas TOP module could have different names");
+            }
+            else
+            {
+                sw.WriteLine("# Set 'sources_1' fileset object");
+                sw.WriteLine("set obj [get_filesets sources_1]");
+            }
+
             sw.WriteLine("set hdl_files [ list \\");
 
             /******************* Input *******************/
@@ -922,27 +994,64 @@ namespace OpenNAS_App.NASComponents
             //AC'97
             if (nasInputIF == AudioInputControl.NASAUDIOSOURCE.AC97)
             {
-                sw.WriteLine("  ../../sources/AC97Controller.vhd \\");
-                sw.WriteLine("  ../../sources/AC97InputComponentStereo.vhd \\");
+                if (isISEtcl)
+                {
+                    sw.WriteLine("  ../../sources/AC97Controller.vhd \\");
+                    sw.WriteLine("  ../../sources/AC97InputComponentStereo.vhd \\");
+                }
+                else
+                {
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/AC97Controller.vhd\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/AC97InputComponentStereo.vhd\"] \\");
+                }
+                
             }
             //I2S
             if ((nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2S) || (nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2SPDM))
             {
-                sw.WriteLine("  ../../sources/I2S_inteface_sync.vhd \\");
-                sw.WriteLine("  ../../sources/Spikes_Generator_signed_BW.vhd \\");
-                sw.WriteLine("  ../../sources/i2s_to_spikes_stereo.vhd \\");
+                if (isISEtcl)
+                {
+                    sw.WriteLine("  ../../sources/I2S_inteface_sync.vhd \\");
+                    sw.WriteLine("  ../../sources/Spikes_Generator_signed_BW.vhd \\");
+                    sw.WriteLine("  ../../sources/i2s_to_spikes_stereo.vhd \\");
+                }
+                else
+                {
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/I2S_inteface_sync.vhd\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/Spikes_Generator_signed_BW.vhd\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/i2s_to_spikes_stereo.vhd\"] \\");
+                }
+                
             }
             //PDM
             if ((nasInputIF == AudioInputControl.NASAUDIOSOURCE.PDM) || (nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2SPDM))
             {
-                sw.WriteLine("  ../../sources/PDM_Interface.vhd \\");
-                sw.WriteLine("  ../../sources/PDM2Spikes.vhd \\");
-                sw.WriteLine("  ../../sources/spikes_HPF.vhd \\");
+                if (isISEtcl)
+                {
+                    sw.WriteLine("  ../../sources/PDM_Interface.vhd \\");
+                    sw.WriteLine("  ../../sources/PDM2Spikes.vhd \\");
+                    sw.WriteLine("  ../../sources/spikes_HPF.vhd \\");
+                }
+                else
+                {
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/PDM_Interface.vhd\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/PDM2Spikes.vhd\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/spikes_HPF.vhd\"] \\");
+                }
+                
             }
             //I2S + PDM
             if (nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2SPDM)
             {
-                sw.WriteLine("  ../../sources/SpikesSource_Selector.vhd \\");
+                if (isISEtcl)
+                {
+                    sw.WriteLine("  ../../sources/SpikesSource_Selector.vhd \\");
+                }
+                else
+                {
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/SpikesSource_Selector.vhd\"] \\");
+                }
+                
             }
 
             /******************* Processing *******************/
@@ -950,19 +1059,40 @@ namespace OpenNAS_App.NASComponents
             AudioProcessingControl.NASAUDIOPROCESSING nasProcessingArch = AudioProcessingControl.audioProcessing;
 
             //Filters' commons
-            sw.WriteLine("  ../../sources/AER_HOLDER_AND_FIRE.vhd \\");
-            sw.WriteLine("  ../../sources/AER_DIF.vhd \\");
-            sw.WriteLine("  ../../sources/spikes_div_BW.vhd \\");
-            sw.WriteLine("  ../../sources/Spike_Int_n_Gen_BW.vhd \\");
+            if (isISEtcl)
+            {
+                sw.WriteLine("  ../../sources/AER_HOLDER_AND_FIRE.vhd \\");
+                sw.WriteLine("  ../../sources/AER_DIF.vhd \\");
+                sw.WriteLine("  ../../sources/spikes_div_BW.vhd \\");
+                sw.WriteLine("  ../../sources/Spike_Int_n_Gen_BW.vhd \\");
+            }
+            else
+            {
+                sw.WriteLine(" [file normalize \"${origin_dir}/../sources/AER_HOLDER_AND_FIRE.vhd\"] \\");
+                sw.WriteLine(" [file normalize \"${origin_dir}/../sources/AER_DIF.vhd\"] \\");
+                sw.WriteLine(" [file normalize \"${origin_dir}/../sources/spikes_div_BW.vhd\"] \\");
+                sw.WriteLine(" [file normalize \"${origin_dir}/../sources/Spike_Int_n_Gen_BW.vhd\"] \\");
+            }
+            
 
-            string nasFBankFileName = "  ../../sources/";
+            string nasFBankFileName = isISEtcl ? "  ../../sources/" : " [file normalize \"${origin_dir}/../sources/";
 
             //Cascade SLPFB
             if (nasProcessingArch == AudioProcessingControl.NASAUDIOPROCESSING.CASCADE_SLPFB)
             {
-                sw.WriteLine("  ../../sources/spikes_LPF_fullGain.vhd \\");
-                sw.WriteLine("  ../../sources/spikes_2LPF_fullGain.vhd \\");
-                sw.WriteLine("  ../../sources/spikes_2BPF_fullGain.vhd \\");
+                if (isISEtcl)
+                {
+                    sw.WriteLine("  ../../sources/spikes_LPF_fullGain.vhd \\");
+                    sw.WriteLine("  ../../sources/spikes_2LPF_fullGain.vhd \\");
+                    sw.WriteLine("  ../../sources/spikes_2BPF_fullGain.vhd \\");
+                }
+                else
+                {
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/spikes_LPF_fullGain.vhd\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/spikes_2LPF_fullGain.vhd\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/spikes_2BPF_fullGain.vhd\"] \\");
+                }
+
 
                 nasFBankFileName += "C";
             }
@@ -976,57 +1106,133 @@ namespace OpenNAS_App.NASComponents
             //Parallel SBPFB
             if (nasProcessingArch == AudioProcessingControl.NASAUDIOPROCESSING.PARALLEL_SBPFB)
             {
-                sw.WriteLine("  ../../sources/spikes_BPF_HQ_Div.vhd \\");
+                if(isISEtcl)
+                {
+                    sw.WriteLine("  ../../sources/spikes_BPF_HQ_Div.vhd \\");
+                }
+                else
+                {
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/spikes_BPF_HQ_Div.vhd\"] \\");
+                }
+                
                 nasFBankFileName += "P";
             }
 
-            nasFBankFileName += "FBank_" + nasCommons.nCh + ".vhd \\";
+            //nasFBankFileName += "FBank_" + nasCommons.nCh + ".vhd \\";
+            nasFBankFileName += "FBank_" + nasCommons.nCh + ".vhd";
+            if (isISEtcl)
+            {
+                nasFBankFileName += " \\";
+            }
+            else
+            {
+                nasFBankFileName += "\"] \\";
+            }
 
             sw.WriteLine(nasFBankFileName);
 
             /******************* Output *******************/
 
             //AER interface
-            sw.WriteLine("  ../../sources/AER_DISTRIBUTED_MONITOR_MODULE.vhd \\");
-            sw.WriteLine("  ../../sources/AER_DISTRIBUTED_MONITOR.vhd \\");
-            sw.WriteLine("  ../../sources/DualPortRAM.vhd \\");
-            sw.WriteLine("  ../../sources/ramfifo.vhd \\");
-            sw.WriteLine("  ../../sources/handsakeOut.vhd \\");
-            sw.WriteLine("  ../../sources/AER_OUT.vhd \\");
+            if (isISEtcl)
+            {
+                sw.WriteLine("  ../../sources/AER_DISTRIBUTED_MONITOR_MODULE.vhd \\");
+                sw.WriteLine("  ../../sources/AER_DISTRIBUTED_MONITOR.vhd \\");
+                sw.WriteLine("  ../../sources/DualPortRAM.vhd \\");
+                sw.WriteLine("  ../../sources/ramfifo.vhd \\");
+                sw.WriteLine("  ../../sources/handsakeOut.vhd \\");
+                sw.WriteLine("  ../../sources/AER_OUT.vhd \\");
+            }
+            else
+            {
+                sw.WriteLine(" [file normalize \"${origin_dir}/../sources/AER_DISTRIBUTED_MONITOR_MODULE.vhd\"] \\");
+                sw.WriteLine(" [file normalize \"${origin_dir}/../sources/AER_DISTRIBUTED_MONITOR.vhd\"] \\");
+                sw.WriteLine(" [file normalize \"${origin_dir}/../sources/DualPortRAM.vhd\"] \\");
+                sw.WriteLine(" [file normalize \"${origin_dir}/../sources/ramfifo.vhd\"] \\");
+                sw.WriteLine(" [file normalize \"${origin_dir}/../sources/handsakeOut.vhd\"] \\");
+                sw.WriteLine(" [file normalize \"${origin_dir}/../sources/AER_OUT.vhd\"] \\");
+            }
+            
 
             //SpiNNaker v1
             if (nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV1)
             {
-                sw.WriteLine("  ../../sources/spinn_aer_if.v \\");
+                if (isISEtcl)
+                {
+                    sw.WriteLine("  ../../sources/spinn_aer_if.v \\");
+                }
+                else
+                {
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/spinn_aer_if.v\"] \\");
+                }
+                
             }
             //SpiNNaker v2
             if (nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV2)
             {
-                sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_top.h \\");
-                sw.WriteLine("  ../../sources/spio_spinnaker_link.h \\");
-                sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_control.v \\");
-                sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_debouncer.v \\");
-                sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_dump.v \\");
-                sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_router.v \\");
-                sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_top.v \\");
-                sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_user_int.v \\");
-                sw.WriteLine("  ../../sources/spinn_aer_if.v \\");
-                sw.WriteLine("  ../../sources/spio_aer2spinn_mapper.v \\");
-                sw.WriteLine("  ../../sources/spio_spinn2aer_mapper.v \\");
-                sw.WriteLine("  ../../sources/spio_spinnaker_link_sync.v \\");
-                sw.WriteLine("  ../../sources/spio_spinnaker_link_synchronous_receiver.v \\");
-                sw.WriteLine("  ../../sources/spio_spinnaker_link_synchronous_sender.v \\");
-                sw.WriteLine("  ../../sources/spio_switch.v \\");
-                sw.WriteLine("  ../../sources/AER_IN.vhd \\");
+                if (isISEtcl)
+                {
+                    sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_top.h \\");
+                    sw.WriteLine("  ../../sources/spio_spinnaker_link.h \\");
+                    sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_control.v \\");
+                    sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_debouncer.v \\");
+                    sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_dump.v \\");
+                    sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_router.v \\");
+                    sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_top.v \\");
+                    sw.WriteLine("  ../../sources/raggedstone_spinn_aer_if_user_int.v \\");
+                    sw.WriteLine("  ../../sources/spio_aer2spinn_mapper.v \\");
+                    sw.WriteLine("  ../../sources/spio_spinn2aer_mapper.v \\");
+                    sw.WriteLine("  ../../sources/spio_spinnaker_link_sync.v \\");
+                    sw.WriteLine("  ../../sources/spio_spinnaker_link_synchronous_receiver.v \\");
+                    sw.WriteLine("  ../../sources/spio_spinnaker_link_synchronous_sender.v \\");
+                    sw.WriteLine("  ../../sources/spio_switch.v \\");
+                    sw.WriteLine("  ../../sources/AER_IN.vhd \\");
+                }
+                else
+                {
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/raggedstone_spinn_aer_if_top.h\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/spio_spinnaker_link.h\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/raggedstone_spinn_aer_if_control.v\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/raggedstone_spinn_aer_if_debouncer.v\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/raggedstone_spinn_aer_if_dump.v\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/raggedstone_spinn_aer_if_router.v\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/raggedstone_spinn_aer_if_top.v\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/raggedstone_spinn_aer_if_user_int.v\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/spio_aer2spinn_mapper.v\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/spio_spinn2aer_mapper.v\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/spio_spinnaker_link_synchronous_receiver.v\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/spio_spinnaker_link_synchronous_sender.v\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/spio_switch.v\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/AER_IN.vhd\"] \\");
+                }
+                
             }
 
             /****** Top ******/
 
-            string tclTopFileName = "  ../../sources/" + tclProjectName + ".vhd \\";
+            //string tclTopFileName = "  ../../sources/" + tclProjectName + ".vhd \\";
+            string tclTopFileName = "";
+            if (isISEtcl)
+            {
+                tclTopFileName = "  ../../sources/" + tclProjectName + ".vhd \\";
+            }
+            else
+            {
+                tclTopFileName = " [file normalize \"${origin_dir}/../sources/" + tclProjectName + ".vhd\"] \\";
+            }
+
 
             if (!isAERMonitor)
             {
-                sw.WriteLine("  ../../sources/" + nasTopFileName + ".vhd \\");
+                if (isISEtcl)
+                {
+                    sw.WriteLine("  ../../sources/" + nasTopFileName + ".vhd \\");
+                }
+                else
+                {
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/" + nasTopFileName + ".vhd\"] \\");
+                }
+                
             }
 
             sw.WriteLine(tclTopFileName);
@@ -1036,186 +1242,227 @@ namespace OpenNAS_App.NASComponents
 
             sw.WriteLine("# constraints with pin placements. This file will need to be replaced if you");
             sw.WriteLine("# are using a different Xilinx device or board.");
-            switch (nasCommons.nasChip)
+
+            if (isISEtcl)
             {
-                case NASchip.AERNODE:
-                    sw.WriteLine("set constraints_file      ../../constraints/Node_constraints.ucf");
-                    break;
-                case NASchip.ZTEX:
-                    sw.WriteLine("set constraints_file      ../../constraints/ZTEX_constraints.xdc");
-                    break;
-                case NASchip.SOC_DOCK:
-                    sw.WriteLine("set constraints_file      ../../constraints/SOC_DOCK_constraints.xdc");
-                    break;
-                case NASchip.OTHER:
-                    sw.WriteLine("set constraints_file      ../../constraints/Other_generic_constraints.xdc");
-                    break;
-                default:
-                    break;
+                sw.WriteLine("set constraints_file      ../../constraints/Node_constraints.ucf");
             }
+            else
+            {
+                sw.WriteLine("# Create 'constrs_1' fileset (if not found)");
+                sw.WriteLine("if {[string equal [get_filesets -quiet constrs_1] \"\"]} {");
+                sw.WriteLine("  create_fileset -constrset constrs_1");
+                sw.WriteLine("}");
+                sw.WriteLine("");
+
+                sw.WriteLine("# Set 'constrs_1' fileset object");
+                sw.WriteLine("set obj [get_filesets constrs_1]");
+                sw.WriteLine("");
+
+                sw.WriteLine("# Add/Import constrs file and set constrs file properties");
+
+
+                switch (nasCommons.nasChip)
+                {
+                    case NASchip.ZTEX:
+                        sw.WriteLine("set file \"[file normalize \"$origin_dir/../constraints/ZTEX_constraints.xdc\"]\"");
+                        break;
+                    case NASchip.SOC_DOCK:
+                        sw.WriteLine("set file \"[file normalize \"$origin_dir/../constraints/SOC_DOCK_constraints.xdc\"]\"");
+                        break;
+                    case NASchip.OTHER:
+                        sw.WriteLine("set file \"[file normalize \"$origin_dir/../constraints/Other_generic_constraints.xdc\"]\"");
+                        break;
+                    default:
+                        break;
+                }
+            }
+            
 
             sw.WriteLine("");
+            if (isISEtcl)
+            {
+                sw.WriteLine("# Remember: set variable_name value for user variables");
 
-            sw.WriteLine("# Remember: set variable_name value for user variables");
+                sw.WriteLine("# implement the design");
+                sw.WriteLine("#########################################################################");
+                sw.WriteLine("# Set cableserver host");
+                sw.WriteLine("#########################################################################");
+                sw.WriteLine("");
 
-            sw.WriteLine("# implement the design");
-            sw.WriteLine("#########################################################################");
-            sw.WriteLine("# Set cableserver host");
-            sw.WriteLine("#########################################################################");
-            sw.WriteLine("");
+                sw.WriteLine("# If your starter kit is connected to a remote machine, edit the following");
+                sw.WriteLine("# line to include the name of the Xilinx CableServer host PC:");
+                sw.WriteLine("");
 
-            sw.WriteLine("# If your starter kit is connected to a remote machine, edit the following");
-            sw.WriteLine("# line to include the name of the Xilinx CableServer host PC:");
-            sw.WriteLine("");
+                sw.WriteLine("set cableserver_host {}");
+                sw.WriteLine("");
 
-            sw.WriteLine("set cableserver_host {}");
-            sw.WriteLine("");
+                sw.WriteLine("#########################################################################");
+                sw.WriteLine("# Set Tcl Variables");
+                sw.WriteLine("#########################################################################");
+                sw.WriteLine("");
 
-            sw.WriteLine("#########################################################################");
-            sw.WriteLine("# Set Tcl Variables");
-            sw.WriteLine("#########################################################################");
-            sw.WriteLine("");
+                sw.WriteLine("set version_number \"1.0\"");
+                sw.WriteLine("");
+                sw.WriteLine("set proj $top_name");
+                sw.WriteLine("");
 
-            sw.WriteLine("set version_number \"1.0\"");
-            sw.WriteLine("");
-            sw.WriteLine("set proj $top_name");
-            sw.WriteLine("");
+                sw.WriteLine("#########################################################################");
+                sw.WriteLine("# Welcome");
+                sw.WriteLine("#########################################################################");
+                sw.WriteLine("");
+                sw.WriteLine("puts \"Running Xilinx Tcl script \\\"NAS_projectgen.tcl\\\" from OpenNAS, version $version_number.\"");
+                sw.WriteLine("");
 
-            sw.WriteLine("#########################################################################");
-            sw.WriteLine("# Welcome");
-            sw.WriteLine("#########################################################################");
-            sw.WriteLine("");
-            sw.WriteLine("puts \"Running Xilinx Tcl script \\\"NAS_projectgen.tcl\\\" from OpenNAS, version $version_number.\"");
-            sw.WriteLine("");
+                sw.WriteLine("if { $cableserver_host == \"\" } {");
+                sw.WriteLine("  puts \"Running with Spartan6 board connected to the local PC.\\n\"");
+                sw.WriteLine("} else {");
+                sw.WriteLine("  puts \"Running with Spartan6 board connected to $cableserver_host.\\n\"");
+                sw.WriteLine("}");
+                sw.WriteLine("");
 
-            sw.WriteLine("if { $cableserver_host == \"\" } {");
-            sw.WriteLine("  puts \"Running with Spartan6 board connected to the local PC.\\n\"");
-            sw.WriteLine("} else {");
-            sw.WriteLine("  puts \"Running with Spartan6 board connected to $cableserver_host.\\n\"");
-            sw.WriteLine("}");
-            sw.WriteLine("");
+                sw.WriteLine("#########################################################################");
+                sw.WriteLine("# Create a directory in which to run");
+                sw.WriteLine("#########################################################################");
+                sw.WriteLine("");
 
-            sw.WriteLine("#########################################################################");
-            sw.WriteLine("# Create a directory in which to run");
-            sw.WriteLine("#########################################################################");
-            sw.WriteLine("");
+                sw.WriteLine("#");
+                sw.WriteLine("# Setting a compilation directory");
+                sw.WriteLine("#");
+                sw.WriteLine("");
 
-            sw.WriteLine("#");
-            sw.WriteLine("# Setting a compilation directory");
-            sw.WriteLine("#");
-            sw.WriteLine("");
+                sw.WriteLine("# Run in the compile directory");
+                sw.WriteLine("# If the directory doesn't already exist then create it.");
+                sw.WriteLine("if {![file isdirectory $compile_directory]} {");
+                sw.WriteLine("  file mkdir $compile_directory");
+                sw.WriteLine("}");
+                sw.WriteLine("");
 
-            sw.WriteLine("# Run in the compile directory");
-            sw.WriteLine("# If the directory doesn't already exist then create it.");
-            sw.WriteLine("if {![file isdirectory $compile_directory]} {");
-            sw.WriteLine("  file mkdir $compile_directory");
-            sw.WriteLine("}");
-            sw.WriteLine("");
-
-            sw.WriteLine("# change to the directory");
-            sw.WriteLine("cd $compile_directory");
-            sw.WriteLine("");
+                sw.WriteLine("# change to the directory");
+                sw.WriteLine("cd $compile_directory");
+                sw.WriteLine("");
+            }
+            
 
             sw.WriteLine("#########################################################################");
             sw.WriteLine("# Create a new project or open project");
             sw.WriteLine("#########################################################################");
-            sw.WriteLine("# This if-then-else statement looks to see if this is the first time the");
-            sw.WriteLine("# script has been run - if so, it will setup the project.  If not, the");
-            sw.WriteLine("# project already exists - therefore, it will simply open the project.");
+
+            if (isISEtcl)
+            {
+                sw.WriteLine("# This if-then-else statement looks to see if this is the first time the");
+                sw.WriteLine("# script has been run - if so, it will setup the project.  If not, the");
+                sw.WriteLine("# project already exists - therefore, it will simply open the project.");
+                sw.WriteLine("");
+
+                sw.WriteLine("#");
+                sw.WriteLine("# Project creation and settings");
+                sw.WriteLine("#");
+                sw.WriteLine("");
+
+                sw.WriteLine("set proj_exists [file exists $proj.xise]");
+                sw.WriteLine("");
+
+                sw.WriteLine("if {$proj_exists == 0} {");
+                sw.WriteLine("	");
+
+                sw.WriteLine("  puts \"Creating a new project...\"");
+                sw.WriteLine("  ");
+
+                sw.WriteLine("  # Create new project");
+                sw.WriteLine("  project new $proj.xise");
+                sw.WriteLine("  # Project settings");
+                sw.WriteLine("  project set family Spartan6");
+                sw.WriteLine("  project set device xc6slx150t");
+                sw.WriteLine("  project set package fgg484");
+                sw.WriteLine("  project set speed -3");
+                sw.WriteLine("  ");
+
+                sw.WriteLine("  # Add files to the project (must come after the settings)");
+                sw.WriteLine("  foreach filename $hdl_files {");
+                sw.WriteLine("      xfile add $filename");
+                sw.WriteLine("      puts \"Adding file $filename to the project.\"");
+                sw.WriteLine("  }");
+                sw.WriteLine("  xfile add $constraints_file");
+                sw.WriteLine("  # Test to see if $source_directory is set ...");
+                sw.WriteLine("  if { ! [catch {set source_directory $source_directory}] } {");
+                sw.WriteLine("      project set \"Macro Search Path\" $source_directory -process Translate");
+                sw.WriteLine("  }");
+                sw.WriteLine("  ");
+                sw.WriteLine("} else {");
+                sw.WriteLine("  puts \"Opening the existing project...\"");
+                sw.WriteLine("  # Open the previously created project");
+                sw.WriteLine("  project open $proj.xise");
+                sw.WriteLine("}");
+            }
+            else
+            {
+                sw.WriteLine("puts \"INFO: Project created: ${_xil_proj_name_}\"");
+            }
+            
             sw.WriteLine("");
 
-            sw.WriteLine("#");
-            sw.WriteLine("# Project creation and settings");
-            sw.WriteLine("#");
-            sw.WriteLine("");
+            if (isISEtcl)
+            {
+                sw.WriteLine("#########################################################################");
+                sw.WriteLine("# Implementation Properties");
+                sw.WriteLine("# See TCL chapter of the Xilinx Development System Reference Guide for");
+                sw.WriteLine("# how to set controls on the various processes.");
+                sw.WriteLine("# These are included as examples.");
+                sw.WriteLine("#########################################################################");
+                sw.WriteLine("# MAP");
+                sw.WriteLine("#project set \"Map Effort Level\" Medium -process map");
+                sw.WriteLine("#project set \"Perform Timing-Driven Packing and Placement\" true -process map");
+                sw.WriteLine("#project set \"Register Duplication\" true -process map");
+                sw.WriteLine("#project set \"Retiming\" true -process map");
+                sw.WriteLine("#");
+                sw.WriteLine("# PAR");
+                sw.WriteLine("#project set \"Place & Route Effort Level (Overall)\" Standard");
+                sw.WriteLine("#project set \"Extra Effort (Highest PAR level only)\" Normal");
+                sw.WriteLine("");
+                sw.WriteLine("");
 
-            sw.WriteLine("set proj_exists [file exists $proj.xise]");
-            sw.WriteLine("");
+                sw.WriteLine("#########################################################################");
+                sw.WriteLine("# Implement Design");
+                sw.WriteLine("#########################################################################");
+                sw.WriteLine("");
 
-            sw.WriteLine("if {$proj_exists == 0} {");
-            sw.WriteLine("	");
+                sw.WriteLine("#");
+                sw.WriteLine("# Running processes");
+                sw.WriteLine("#");
+                sw.WriteLine("");
 
-            sw.WriteLine("  puts \"Creating a new project...\"");
-            sw.WriteLine("  ");
+                sw.WriteLine("puts -nonewline \"Would you like run the Generate Programming File process ? y/n : \"");
+                sw.WriteLine("flush stdout");
+                sw.WriteLine("");
 
-            sw.WriteLine("  # Create new project");
-            sw.WriteLine("  project new $proj.xise");
-            sw.WriteLine("  # Project settings");
-            sw.WriteLine("  project set family Spartan6");
-            sw.WriteLine("  project set device xc6slx150t");
-            sw.WriteLine("  project set package fgg484");
-            sw.WriteLine("  project set speed -3");
-            sw.WriteLine("  ");
+                sw.WriteLine("set genBitFile [gets stdin]");
+                sw.WriteLine("");
 
-            sw.WriteLine("  # Add files to the project (must come after the settings)");
-            sw.WriteLine("  foreach filename $hdl_files {");
-            sw.WriteLine("      xfile add $filename");
-            sw.WriteLine("      puts \"Adding file $filename to the project.\"");
-            sw.WriteLine("  }");
-            sw.WriteLine("  xfile add $constraints_file");
-            sw.WriteLine("  # Test to see if $source_directory is set ...");
-            sw.WriteLine("  if { ! [catch {set source_directory $source_directory}] } {");
-            sw.WriteLine("      project set \"Macro Search Path\" $source_directory -process Translate");
-            sw.WriteLine("  }");
-            sw.WriteLine("  ");
-            sw.WriteLine("} else {");
-            sw.WriteLine("  puts \"Opening the existing project...\"");
-            sw.WriteLine("  # Open the previously created project");
-            sw.WriteLine("  project open $proj.xise");
-            sw.WriteLine("}");
-            sw.WriteLine("");
+                sw.WriteLine("if {$genBitFile == \"y\"} {");
+                sw.WriteLine("	process run \"Generate Programming File\"");
+                sw.WriteLine("  #process run \"Implement Design\" -force rerun_all");
+                sw.WriteLine("  puts \"Running...\"");
+                sw.WriteLine("} elseif {$genBitFile == \"n\"} {");
+                sw.WriteLine("	puts \"User does not want to generate the .bit file...\"");
+                sw.WriteLine("} else {");
+                sw.WriteLine("	puts \"Unknown option...\"");
+                sw.WriteLine("}");
+                sw.WriteLine("");
 
-            sw.WriteLine("#########################################################################");
-            sw.WriteLine("# Implementation Properties");
-            sw.WriteLine("# See TCL chapter of the Xilinx Development System Reference Guide for");
-            sw.WriteLine("# how to set controls on the various processes.");
-            sw.WriteLine("# These are included as examples.");
-            sw.WriteLine("#########################################################################");
-            sw.WriteLine("# MAP");
-            sw.WriteLine("#project set \"Map Effort Level\" Medium -process map");
-            sw.WriteLine("#project set \"Perform Timing-Driven Packing and Placement\" true -process map");
-            sw.WriteLine("#project set \"Register Duplication\" true -process map");
-            sw.WriteLine("#project set \"Retiming\" true -process map");
-            sw.WriteLine("#");
-            sw.WriteLine("# PAR");
-            sw.WriteLine("#project set \"Place & Route Effort Level (Overall)\" Standard");
-            sw.WriteLine("#project set \"Extra Effort (Highest PAR level only)\" Normal");
-            sw.WriteLine("");
-            sw.WriteLine("");
-
-            sw.WriteLine("#########################################################################");
-            sw.WriteLine("# Implement Design");
-            sw.WriteLine("#########################################################################");
-            sw.WriteLine("");
-
-            sw.WriteLine("#");
-            sw.WriteLine("# Running processes");
-            sw.WriteLine("#");
-            sw.WriteLine("");
-
-            sw.WriteLine("puts -nonewline \"Would you like run the Generate Programming File process ? y/n : \"");
-            sw.WriteLine("flush stdout");
-            sw.WriteLine("");
-
-            sw.WriteLine("set genBitFile [gets stdin]");
-            sw.WriteLine("");
-
-            sw.WriteLine("if {$genBitFile == \"y\"} {");
-            sw.WriteLine("	process run \"Generate Programming File\"");
-            sw.WriteLine("  #process run \"Implement Design\" -force rerun_all");
-            sw.WriteLine("  puts \"Running...\"");
-            sw.WriteLine("} elseif {$genBitFile == \"n\"} {");
-            sw.WriteLine("	puts \"User does not want to generate the .bit file...\"");
-            sw.WriteLine("} else {");
-            sw.WriteLine("	puts \"Unknown option...\"");
-            sw.WriteLine("}");
-            sw.WriteLine("");
-
-            sw.WriteLine("#########################################################################");
-            sw.WriteLine("# Close Project");
-            sw.WriteLine("#########################################################################");
-            sw.WriteLine("project close");
-            sw.WriteLine("");
+                sw.WriteLine("#########################################################################");
+                sw.WriteLine("# Close Project");
+                sw.WriteLine("#########################################################################");
+                sw.WriteLine("project close");
+                sw.WriteLine("");
+            }
+            else
+            {
+                sw.WriteLine("puts \"Running synthesis step...\"");
+                sw.WriteLine("launch_runs impl_1 -to_step write_bitstream");
+                sw.WriteLine("");
+            }
+            
             /*
             sw.WriteLine("#########################################################################");
             sw.WriteLine("# Download");
@@ -1298,7 +1545,7 @@ namespace OpenNAS_App.NASComponents
 
             sw.WriteLine("");
             */
-            sw.WriteLine("puts \"\\nEnd of ISE Tcl script.\\n\\n\"");
+            sw.WriteLine("puts \"\\nEnd of Tcl script.\\n\\n\"");
 
             sw.Close();
 
