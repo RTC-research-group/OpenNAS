@@ -27,7 +27,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity AER_OUT is
 	Generic (
-		TAM      : integer := 512; 
+		TAM      : integer := 2048; 
 		IL       : integer  := 11
 	);
     Port ( 
@@ -46,7 +46,7 @@ architecture Behavioral of AER_OUT is
 
 	component ramfifo is
 		Generic (
-			TAM      : integer := 512; 
+			TAM      : integer := 2048; 
 			IL       : integer := 11; 
 			WL       : integer := 16
 		);
@@ -87,8 +87,8 @@ architecture Behavioral of AER_OUT is
 
 		U_fifo: ramfifo 
 		Generic Map (
-			TAM      => 2048, 
-			IL       => 11, 
+			TAM      => TAM, 
+			IL       => IL, 
 			WL       => 16
 		) --512 AER events in FIFO
 		Port Map (

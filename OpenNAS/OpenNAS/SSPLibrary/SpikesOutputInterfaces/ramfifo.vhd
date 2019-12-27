@@ -50,8 +50,8 @@ architecture syn of ramfifo is
 	component dualram
 		Generic (
 			TAM     : INTEGER := TAM; 
-			IL      : INTEGER :=IL; 
-			WL      : INTEGER :=WL
+			IL      : INTEGER := IL; 
+			WL      : INTEGER := WL
 		);
 		Port(
 			clk     : in  STD_LOGIC;
