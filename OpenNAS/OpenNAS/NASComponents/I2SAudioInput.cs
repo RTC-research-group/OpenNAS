@@ -1,6 +1,6 @@
 ﻿/////////////////////////////////////////////////////////////////////////////////
 //                                                                             //
-//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                     //
+//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                      //
 //                                                                             //
 //    This file is part of OpenNAS.                                            //
 //                                                                             //
@@ -94,21 +94,21 @@ namespace OpenNAS_App.NASComponents
         /// <param name="sw">NAS Top file handler</param>
         public override void WriteComponentArchitecture(StreamWriter sw)
         {
-            sw.WriteLine("--I2S interface Stereo");
-            sw.WriteLine("component i2s_to_spikes_stereo is");
-            sw.WriteLine("port (");
-            sw.WriteLine("  clock: in std_logic;");
-            sw.WriteLine("  reset: in std_logic;");
-            sw.WriteLine("--I2S Bus");
-            sw.WriteLine("  i2s_bclk  : in std_logic;");
-            sw.WriteLine("  i2s_d_in: in std_logic;");
-            sw.WriteLine("  i2s_lr: in std_logic;");
-            sw.WriteLine("--Spikes Output");
-            sw.WriteLine("  spikes_left: out std_logic_vector(1 downto 0);");
-            sw.WriteLine("  spikes_rigth: out std_logic_vector(1 downto 0)");
-            sw.WriteLine(");");
-            sw.WriteLine("end component;");
-
+            sw.WriteLine("    --I2S interface Stereo");
+            sw.WriteLine("    component i2s_to_spikes_stereo is");
+            sw.WriteLine("        Port (");
+            sw.WriteLine("            clock        : in std_logic;");
+            sw.WriteLine("            reset        : in std_logic;");
+            sw.WriteLine("            --I2S Bus");
+            sw.WriteLine("            i2s_bclk     : in std_logic;");
+            sw.WriteLine("            i2s_d_in     : in std_logic;");
+            sw.WriteLine("            i2s_lr       : in std_logic;");
+            sw.WriteLine("            --Spikes Output");
+            sw.WriteLine("            spikes_left  : out std_logic_vector(1 downto 0);");
+            sw.WriteLine("            spikes_rigth : out std_logic_vector(1 downto 0)");
+            sw.WriteLine("        );");
+            sw.WriteLine("    end component;");
+            sw.WriteLine("");
         }
 
         /// <summary>
@@ -117,30 +117,27 @@ namespace OpenNAS_App.NASComponents
         /// <param name="sw">NAS Top file handler</param>
         public override void WriteComponentInvocation(StreamWriter sw)
         {
+            sw.WriteLine("        --I2S Stereo");
+            sw.WriteLine("        U_I2S_Stereo: i2s_to_spikes_stereo");
+            sw.WriteLine("        Port Map (");
+            sw.WriteLine("            clock        => clock,");
+            sw.WriteLine("            reset        => reset,");
+            sw.WriteLine("            --I2S Bus");
+            sw.WriteLine("            i2s_bclk     => i2s_bclk,");
+            sw.WriteLine("            i2s_d_in     => i2s_d_in,");
+            sw.WriteLine("            i2s_lr       => i2s_lr,");
+            sw.WriteLine("            --Spikes Output");
+            sw.WriteLine("            spikes_left  => spikes_in_left,");
 
-
-            sw.WriteLine("--I2S Stereo");
-            sw.WriteLine("U_I2S_Stereo: i2s_to_spikes_stereo");
-            sw.WriteLine("port map (");
-            sw.WriteLine("  clock=>clock,");
-            sw.WriteLine("  reset=>reset,");
-
-            sw.WriteLine("--I2S Bus");
-            sw.WriteLine("  i2s_bclk  => i2s_bclk,");
-            sw.WriteLine("   i2s_d_in => i2s_d_in,");
-            sw.WriteLine("   i2s_lr => i2s_lr,");
-            sw.WriteLine("--Spikes Output");
-            sw.WriteLine("  spikes_left=>spikes_in_left,");
             if (nasType == NASTYPE.MONO)
             {
-                sw.WriteLine("  spikes_rigth=>open");
+                sw.WriteLine("            spikes_rigth => open");
             }
             else
             {
-                sw.WriteLine("  spikes_rigth=>spikes_in_rigth");
+                sw.WriteLine("            spikes_rigth => spikes_in_rigth");
             }
-            sw.WriteLine(");");
-
+            sw.WriteLine("        );");
             sw.WriteLine("");
         }
 
@@ -150,12 +147,10 @@ namespace OpenNAS_App.NASComponents
         /// <param name="sw">NAS Top file handler</param>
         public override void WriteTopSignals(StreamWriter sw)
         {
-            sw.WriteLine("--I2S Bus");
-            sw.WriteLine("  i2s_bclk      : in  STD_LOGIC;");
-            sw.WriteLine("  i2s_d_in: in  STD_LOGIC;");
-            sw.WriteLine("  i2s_lr: in  STD_LOGIC;");
-
-
+            sw.WriteLine("        --I2S Bus");
+            sw.WriteLine("        i2s_bclk      : in  STD_LOGIC;");
+            sw.WriteLine("        i2s_d_in: in  STD_LOGIC;");
+            sw.WriteLine("        i2s_lr: in  STD_LOGIC;");
         }
     }
 }

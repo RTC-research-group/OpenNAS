@@ -1,6 +1,6 @@
 --/////////////////////////////////////////////////////////////////////////////////
 --//                                                                             //
---//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                     //
+--//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                      //
 --//                                                                             //
 --//    This file is part of OpenNAS.                                            //
 --//                                                                             //
@@ -43,124 +43,112 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+-- use IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity I2S_inteface is
-    Port ( clk           : in  STD_LOGIC;
-			  rst           : in  STD_LOGIC;
-           
-           i2s_bclk      : in  STD_LOGIC;
-           i2s_d_in      : in  STD_LOGIC;
-           i2s_lr        : in  STD_LOGIC;
-			  
-			  audio_l_out   : out STD_LOGIC_VECTOR (31 downto 0);
-           audio_r_out   : out STD_LOGIC_VECTOR (31 downto 0);
-           new_sample    : out STD_LOGIC );
+    Port ( 
+		clk           : STD_LOGIC;
+		rst           : STD_LOGIC;
+        -- I2S signals   
+		i2s_bclk      : in  STD_LOGIC;
+		i2s_d_in      : in  STD_LOGIC;
+		i2s_lr        : in  STD_LOGIC;
+		-- Audio samples output
+		audio_l_out   : out STD_LOGIC_VECTOR (31 downto 0);
+		audio_r_out   : out STD_LOGIC_VECTOR (31 downto 0);
+		new_sample    : out STD_LOGIC 
+	);
 end I2S_inteface;
 
 architecture Behavioral of I2S_inteface is
-	signal cs: integer range 0 to 6:=0;
-	signal ns: integer range 0 to 6:=0;
-	signal i_i2s_bclk: STD_LOGIC:='0';
-	signal i_i2s_d_in: STD_LOGIC:='0';
-	signal i_i2s_lr: STD_LOGIC:='0';
-	signal l_bclk: STD_LOGIC:='0';
+	signal cs         : INTEGER range 0 to 6;
+	signal ns         : INTEGER range 0 to 6;
+	signal i_i2s_bclk : STD_LOGIC;
+	signal i_i2s_d_in : STD_LOGIC;
+	signal i_i2s_lr   : STD_LOGIC;
+	signal l_bclk     : STD_LOGIC;
 
-	signal shift_left: STD_LOGIC_VECTOR (31 downto 0);
+	signal shift_left : STD_LOGIC_VECTOR (31 downto 0);
 	signal shift_right: STD_LOGIC_VECTOR (31 downto 0);
-begin
 
-process (clk, cs, i2s_bclk, i2s_d_in, i2s_lr,l_bclk,shift_left,shift_right)
-begin
-	if(clk='1' and clk'event) then
-	case cs is
-		when 0=>
-			if(i_i2s_lr='0') then
-				NS<=1;
-				shift_right<=(others=>'0');
-				shift_left<=(others=>'0');
-			end if;
-			new_sample<='0';
-		when 1=>
-			if(l_bclk='0' and i_i2s_bclk='1') then
-				NS<=2;		
-			end if;
+	begin
+
+		process (clk, rst)
+		begin
+			if (rst = '0') then
+				cs          <= 0; 
+				ns          <= 0;
+				l_bclk      <= '0';
+				i_i2s_bclk  <= '0';
+				i_i2s_d_in  <= '0';
+				i_i2s_lr    <= '0';
+				new_sample  <= '0';
+				shift_right <= (others =>'0');
+				shift_left  <= (others => '0');
+				audio_l_out <= (others => '0');
+				audio_r_out <= (others => '0');
+
+			elsif(clk = '1' and clk'event) then
+				case cs is
+					when 0 =>
+						audio_l_out <= (others => '0');
+						audio_r_out <= (others => '0');
+						if(i_i2s_lr = '0') then
+							NS          <= 1;
+							shift_right <= (others=>'0');
+							shift_left  <= (others=>'0');
+						end if;
+						new_sample <= '0';
+					when 1 =>
+						audio_l_out <= (others => '0');
+						audio_r_out <= (others => '0');
+						if(l_bclk = '0' and i_i2s_bclk = '1') then
+							NS <= 2;		
+						end if;
+					when 2 =>
+						audio_l_out <= (others => '0');
+						audio_r_out <= (others => '0');
+						if(l_bclk = '0' and i_i2s_bclk = '1') then
+							shift_left  <= shift_left(30 downto 0) & i_i2s_d_in;
+							shift_right <= shift_right;
+							if(i_i2s_lr = '1') then
+								NS <= 3;
+							end if;
+						end if;
+					when 3 =>
+						audio_l_out <= (others => '0');
+						audio_r_out <= (others => '0');
+						if(l_bclk = '0' and i_i2s_bclk = '1') then
+							shift_right <= shift_right(30 downto 0) & i_i2s_d_in;
+							if(i_i2s_lr = '0') then
+								NS <= 4;
+							end if;
+						end if;
+					when 4 =>
+						audio_l_out <= shift_left;
+						audio_r_out <= shift_right;
+						new_sample  <= '1';
+						NS          <= 5;
+					when 5=>
+						audio_l_out <= (others => '0');
+						audio_r_out <= (others => '0');
+						shift_left  <= (others=>'0');
+						shift_right <=( others=>'0');
+						new_sample  <= '0';
+						NS          <= 2;
+					when others =>
+						NS <= 0;
+				end case;
 			
-		when 2=>
-			if(l_bclk='0' and i_i2s_bclk='1') then
-				shift_left<=shift_left(30 downto 0) & i_i2s_d_in;
-				shift_right<=shift_right;
-				if(i_i2s_lr='1') then
-					NS<=3;
-				end if;
-
+				cs <= ns;
+				l_bclk <= i_i2s_bclk;
+				i_i2s_bclk <= i2s_bclk;
+				i_i2s_d_in <= i2s_d_in;
+				i_i2s_lr <= i2s_lr;
 			end if;
-		
-		when 3=>
-			if(l_bclk='0' and i_i2s_bclk='1') then
-				shift_right<=shift_right(30 downto 0) & i_i2s_d_in;
-				if(i_i2s_lr='0') then
-					NS<=4;
-				
-				end if;
-			end if;
-
-		when 4=>
-				audio_l_out<=shift_left;
-				audio_r_out<=shift_right;
-				new_sample<='1';
-			NS<=5;
-			
-		when 5=>
-				shift_left<=(others=>'0');
-				shift_right<=(others=>'0');
-				new_sample<='0';
-			NS<=2;
-
-		when others =>
-			NS<=0;
-	end case;
-	
-	cs<=ns;
-	l_bclk<=i_i2s_bclk;
-	i_i2s_bclk<=i2s_bclk;
-	i_i2s_d_in<=i2s_d_in;
-	i_i2s_lr<=i2s_lr;
-			
-end if;
-end process;
---
---process(clk, rst, ns,shift_left,shift_right,i2s_bclk,i2s_lr)
---begin
---	if(clk='1' and clk'event) then
---		if (rst='0') then
---
---			l_bclk<=i2s_bclk;
---			l_lr<=i2s_lr;
---		else
---
---			if(NS=6) then
---				audio_l_out<=shift_left;
---				audio_r_out<=shift_right;
---				new_sample<='1';
---			else
---				new_sample<='0';
---			end if;
---			
---			l_bclk<=i2s_bclk;
---			
---			if(l_bclk='0' and i2s_bclk='1')  then
---				l_lr<=i2s_lr;
---			end if;
---			
---		end if;
---	end if;
---end process;
+					
+		end process;
 
 end Behavioral;
 

@@ -124,10 +124,7 @@ namespace OpenNAS_App.NASComponents
                 textWriter.WriteEndElement();
             }
             textWriter.WriteEndElement();
-
-
         }
-
 
         private List<UInt16> nBits;
         private List<UInt16> freqDiv;
@@ -183,41 +180,45 @@ namespace OpenNAS_App.NASComponents
             string entity = "PFBank_" + nCH + "CH";
 
             sw.WriteLine("entity " + entity + " is");
-            sw.WriteLine("  port(");
-            sw.WriteLine("  clock     : in std_logic;");
-            sw.WriteLine("   rst             : in std_logic;");
-            sw.WriteLine("  spikes_in: in std_logic_vector(1 downto 0);");
-            sw.WriteLine("  spikes_out: out std_logic_vector(" + (nCH * 2 - 1) + " downto 0)");
-            sw.WriteLine(");");
+            sw.WriteLine("    Port (");
+            sw.WriteLine("        clock      : in  STD_LOGIC;");
+            sw.WriteLine("        rst        : in  STD_LOGIC;");
+            sw.WriteLine("        spikes_in  : in  STD_LOGIC_VECTOR(1 downto 0);");
+            sw.WriteLine("        spikes_out : out STD_LOGIC_VECTOR(" + (nCH * 2 - 1) + " downto 0)");
+            sw.WriteLine("    );");
             sw.WriteLine("end " + entity + ";");
             sw.WriteLine("");
 
             sw.WriteLine("architecture PFBank_arq of " + entity + " is");
             sw.WriteLine("");
 
-            sw.WriteLine("  component spikes_BPF_HQ is");
-            sw.WriteLine("  generic (GL: in integer:= 11; SAT: in integer:= 1023);");
-            sw.WriteLine("  Port(CLK: in  STD_LOGIC;");
-            sw.WriteLine("      RST: in  STD_LOGIC;");
-            sw.WriteLine("      FREQ_DIV: in STD_LOGIC_VECTOR(7 downto 0);");
-            sw.WriteLine("      SPIKES_DIV: in STD_LOGIC_VECTOR(15 downto 0);");
-            sw.WriteLine("      SPIKES_DIV_FB: in STD_LOGIC_VECTOR(15 downto 0);");
-            sw.WriteLine("      SPIKES_DIV_OUT: in STD_LOGIC_VECTOR(15 downto 0);");
-            sw.WriteLine("      spike_in_p: in  STD_LOGIC;");
-            sw.WriteLine("      spike_in_n: in  STD_LOGIC;");
-            sw.WriteLine("      spike_out_p: out  STD_LOGIC;");
-            sw.WriteLine("      spike_out_n: out  STD_LOGIC);");
-            sw.WriteLine("  end component;");
-
-
+            sw.WriteLine("    component spikes_BPF_HQ is");
+            sw.WriteLine("        Generic (");
+            sw.WriteLine("            GL             : INTEGER := 11;");
+            sw.WriteLine("            SAT            : INTEGER := 1023");
+            sw.WriteLine("        );");
+            sw.WriteLine("        Port (");
+            sw.WriteLine("            CLK            : in  STD_LOGIC;");
+            sw.WriteLine("            RST            : in  STD_LOGIC;");
+            sw.WriteLine("            FREQ_DIV       : in  STD_LOGIC_VECTOR(7 downto 0);");
+            sw.WriteLine("            SPIKES_DIV     : in  STD_LOGIC_VECTOR(15 downto 0);");
+            sw.WriteLine("            SPIKES_DIV_FB  : in  STD_LOGIC_VECTOR(15 downto 0);");
+            sw.WriteLine("            SPIKES_DIV_OUT : in  STD_LOGIC_VECTOR(15 downto 0);");
+            sw.WriteLine("            spike_in_p     : in  STD_LOGIC;");
+            sw.WriteLine("            spike_in_n     : in  STD_LOGIC;");
+            sw.WriteLine("            spike_out_p    : out STD_LOGIC;");
+            sw.WriteLine("            spike_out_n    : out STD_LOGIC");
+            sw.WriteLine("        );");
+            sw.WriteLine("    end component;");
             sw.WriteLine("");
 
-            sw.WriteLine("  signal not_rst: std_logic;");
-
-            sw.WriteLine("begin");
+            sw.WriteLine("    signal not_rst: std_logic;");
             sw.WriteLine("");
 
-            sw.WriteLine("not_rst <= not rst;");
+            sw.WriteLine("    begin");
+            sw.WriteLine("");
+
+            sw.WriteLine("        not_rst <= not rst;");
             sw.WriteLine("");
 
 
@@ -226,20 +227,24 @@ namespace OpenNAS_App.NASComponents
                 double realFreq = (OpenNasUtils.kSIG(clk, nBits[k], freqDiv[k]) * OpenNasUtils.kDiv(igDiv[k])) / (2 * Math.PI);
                 double freqError = 100 * ((midFreq[k] - realFreq) / midFreq[k]);
                 string filterInfo = "--Ideal cutoff: " + midFreq[k].ToString("0.0000") + "Hz - Real cutoff: " + realFreq.ToString("0.0000") + "Hz - Error: " + freqError.ToString("0.0000") + "%";
-                sw.WriteLine(filterInfo);
-                sw.WriteLine("U_BPF_" + k + ": spikes_BPF_HQ");
-                sw.WriteLine("generic map(GL => " + nBits[k] + ", SAT => " + (int)(Math.Pow(2, nBits[k] - 1) - 1) + ")");
-                sw.WriteLine("Port map(CLK => clock,");
-                sw.WriteLine("  RST => not_rst,");
-                sw.WriteLine("  FREQ_DIV => x\"" + freqDiv[k].ToString("X2") + "\",");
-                sw.WriteLine("  SPIKES_DIV => x\"" + igDiv[k].ToString("X4") + "\",");
-                sw.WriteLine("  SPIKES_DIV_FB => x\"" + fbDiv[k].ToString("X4") + "\",");
-                sw.WriteLine("  SPIKES_DIV_OUT => x\"" + attDiv[k].ToString("X4") + "\",");
-                sw.WriteLine("  spike_in_p => spikes_in(1),");
-                sw.WriteLine("  spike_in_n => spikes_in(0),");
-                sw.WriteLine("  spike_out_p => spikes_out(" + (2 * (k) + 1) + "),");
-                sw.WriteLine("  spike_out_n => spikes_out(" + (2 * (k)) + ") ");
-                sw.WriteLine(");");
+                sw.WriteLine("        " + filterInfo);
+                sw.WriteLine("        U_BPF_" + k + ": spikes_BPF_HQ");
+                sw.WriteLine("        Generic Map (");
+                sw.WriteLine("            GL             => " + nBits[k] + ",");
+                sw.WriteLine("            SAT            => " + (int)(Math.Pow(2, nBits[k] - 1) - 1));
+                sw.WriteLine("        )");
+                sw.WriteLine("        Port Map (");
+                sw.WriteLine("            CLK            => clock,");
+                sw.WriteLine("            RST            => not_rst,");
+                sw.WriteLine("            FREQ_DIV       => x\"" + freqDiv[k].ToString("X2") + "\",");
+                sw.WriteLine("            SPIKES_DIV     => x\"" + igDiv[k].ToString("X4") + "\",");
+                sw.WriteLine("            SPIKES_DIV_FB  => x\"" + fbDiv[k].ToString("X4") + "\",");
+                sw.WriteLine("            SPIKES_DIV_OUT => x\"" + attDiv[k].ToString("X4") + "\",");
+                sw.WriteLine("            spike_in_p     => spikes_in(1),");
+                sw.WriteLine("            spike_in_n     => spikes_in(0),");
+                sw.WriteLine("            spike_out_p    => spikes_out(" + (2 * (k) + 1) + "),");
+                sw.WriteLine("            spike_out_n    => spikes_out(" + (2 * (k)) + ") ");
+                sw.WriteLine("        );");
                 sw.WriteLine("");
             }
 
@@ -285,15 +290,15 @@ namespace OpenNAS_App.NASComponents
         {
 
             string entity = "PFBank_" + nCH + "CH";
-            sw.WriteLine("--Parallel Filter Bank");
-            sw.WriteLine("component " + entity + " is");
-            sw.WriteLine("  port(");
-            sw.WriteLine("  clock     : in std_logic;");
-            sw.WriteLine("   rst             : in std_logic;");
-            sw.WriteLine("  spikes_in: in std_logic_vector(1 downto 0);");
-            sw.WriteLine("  spikes_out: out std_logic_vector(" + (nCH * 2 - 1) + " downto 0)");
-            sw.WriteLine(");");
-            sw.WriteLine("end component;");
+            sw.WriteLine("    --Parallel Filter Bank");
+            sw.WriteLine("    component " + entity + " is");
+            sw.WriteLine("        Port (");
+            sw.WriteLine("            clock      : in  STD_LOGIC;");
+            sw.WriteLine("            rst        : in  STD_LOGIC;");
+            sw.WriteLine("            spikes_in  : in  STD_LOGIC_VECTOR(1 downto 0);");
+            sw.WriteLine("            spikes_out : out STD_LOGIC_VECTOR(" + (nCH * 2 - 1) + " downto 0)");
+            sw.WriteLine("        );");
+            sw.WriteLine("    end component;");
             sw.WriteLine("");
         }
 
@@ -304,26 +309,26 @@ namespace OpenNAS_App.NASComponents
         public override void WriteComponentInvocation(StreamWriter sw)
         {
             string entity = "PFBank_" + nCH + "CH";
-            sw.WriteLine("--Parallel Filter Bank");
-            sw.WriteLine("U_" + entity + "_Left: " + entity);
-            sw.WriteLine("  port map(");
-            sw.WriteLine("  clock =>clock,");
-            sw.WriteLine("   rst  => reset,");
-            sw.WriteLine("  spikes_in=> spikes_in_left,");
-            sw.WriteLine("  spikes_out=>spikes_out_left");
-            sw.WriteLine(");");
+            sw.WriteLine("        --Parallel Filter Bank");
+            sw.WriteLine("        U_" + entity + "_Left: " + entity);
+            sw.WriteLine("        Port Map (");
+            sw.WriteLine("            clock      => clock,");
+            sw.WriteLine("            rst        => reset,");
+            sw.WriteLine("            spikes_in  => spikes_in_left,");
+            sw.WriteLine("            spikes_out => spikes_out_left");
+            sw.WriteLine("        );");
             sw.WriteLine("");
 
             if (nasType == NASTYPE.STEREO)
             {
-                sw.WriteLine("--Parallel Filter Bank");
-                sw.WriteLine("U_" + entity + "_Rigth: " + entity);
-                sw.WriteLine("  port map(");
-                sw.WriteLine("  clock =>clock,");
-                sw.WriteLine("   rst  => reset,");
-                sw.WriteLine("  spikes_in=> spikes_in_rigth,");
-                sw.WriteLine("  spikes_out=>spikes_out_rigth");
-                sw.WriteLine(");");
+                sw.WriteLine("        --Parallel Filter Bank");
+                sw.WriteLine("        U_" + entity + "_Rigth: " + entity);
+                sw.WriteLine("        Port Map(");
+                sw.WriteLine("            clock      => clock,");
+                sw.WriteLine("            rst        => reset,");
+                sw.WriteLine("            spikes_in  => spikes_in_rigth,");
+                sw.WriteLine("            spikes_out => spikes_out_rigth");
+                sw.WriteLine("        );");
                 sw.WriteLine("");
             }
         }

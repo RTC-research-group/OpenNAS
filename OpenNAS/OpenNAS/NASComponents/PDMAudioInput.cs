@@ -1,6 +1,6 @@
 ﻿/////////////////////////////////////////////////////////////////////////////////
 //                                                                             //
-//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                     //
+//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                      //
 //                                                                             //
 //    This file is part of OpenNAS.                                            //
 //                                                                             //
@@ -114,26 +114,31 @@ namespace OpenNAS_App.NASComponents
         /// <param name="sw">NAS Top file handler</param>
         public override void WriteComponentArchitecture(StreamWriter sw)
         {
-            sw.WriteLine("--PDM interface");
-            sw.WriteLine("component PDM2Spikes is");
-            sw.WriteLine("generic (SLPF_GL: in integer; SLPF_SAT: in integer; SHPF_GL: in integer; SHPF_SAT: in integer);");
-            sw.WriteLine("port (");
-            sw.WriteLine("  clk: in std_logic;");
-            sw.WriteLine("  rst: in std_logic;");
-            sw.WriteLine("  clock_div: in std_logic_vector(7 downto 0);");
-            sw.WriteLine("--PDM Signals");
-            sw.WriteLine("  PDM_CLK  : out std_logic;");
-            sw.WriteLine("  PDM_DAT: in std_logic;");
-            sw.WriteLine("--Anti-Offset SHPF");
-            sw.WriteLine("  SHPF_FREQ_DIV: in STD_LOGIC_VECTOR(7 downto 0);");
-            sw.WriteLine("--Anti-Aliasing SLPF");
-            sw.WriteLine("  SLPF_FREQ_DIV: in STD_LOGIC_VECTOR(7 downto 0);");
-            sw.WriteLine("  SLPF_SPIKES_DIV_FB: in STD_LOGIC_VECTOR(15 downto 0);");
-            sw.WriteLine("  SLPF_SPIKES_DIV_OUT: in STD_LOGIC_VECTOR(15 downto 0);");
-            sw.WriteLine("--Spikes Output");
-            sw.WriteLine("  SPIKES_OUT: out std_logic_vector(1 downto 0)");
-            sw.WriteLine(");");
-            sw.WriteLine("end component;");
+            sw.WriteLine("    --PDM interface");
+            sw.WriteLine("    component PDM2Spikes is");
+            sw.WriteLine("        Generic (");
+            sw.WriteLine("            SLPF_GL             : in integer;");
+            sw.WriteLine("            SLPF_SAT            : in integer;");
+            sw.WriteLine("            SHPF_GL             : in integer;");
+            sw.WriteLine("            SHPF_SAT            : in integer");
+            sw.WriteLine("        );");
+            sw.WriteLine("        Port (");
+            sw.WriteLine("            clk                 : in  STD_LOGIC;");
+            sw.WriteLine("            rst                 : in  STD_LOGIC;");
+            sw.WriteLine("            clock_div           : in  STD_LOGIC_VECTOR(7 downto 0);");
+            sw.WriteLine("            --PDM Signals");
+            sw.WriteLine("            PDM_CLK             : out STD_LOGIC;");
+            sw.WriteLine("            PDM_DAT             : in  STD_LOGIC;");
+            sw.WriteLine("            --Anti-Offset SHPF");
+            sw.WriteLine("            SHPF_FREQ_DIV       : in  STD_LOGIC_VECTOR(7 downto 0);");
+            sw.WriteLine("            --Anti-Aliasing SLPF");
+            sw.WriteLine("            SLPF_FREQ_DIV       : in  STD_LOGIC_VECTOR(7 downto 0);");
+            sw.WriteLine("            SLPF_SPIKES_DIV_FB  : in  STD_LOGIC_VECTOR(15 downto 0);");
+            sw.WriteLine("            SLPF_SPIKES_DIV_OUT : in  STD_LOGIC_VECTOR(15 downto 0);");
+            sw.WriteLine("            --Spikes Output");
+            sw.WriteLine("            SPIKES_OUT          : out STD_LOGIC_VECTOR(1 downto 0)");
+            sw.WriteLine("        );");
+            sw.WriteLine("    end component;");
             sw.WriteLine("");
 
         }
@@ -151,60 +156,67 @@ namespace OpenNAS_App.NASComponents
 
             double pdmClock = clk / (clkDiv * 2);
             sw.WriteLine("");
-            sw.WriteLine("--PDM interface");
+            sw.WriteLine("        --PDM interface");
 
             double realFreq = OpenNasUtils.kSIG(clk, shpf.nBits, shpf.freqDiv) / (2 * Math.PI);
             double freqError = 100 * ((shpfCutOff - realFreq) / shpfCutOff);
-            sw.WriteLine("--Anti-Offset SHPF");
+            sw.WriteLine("        --Anti-Offset SHPF");
             string filterInfo = "--Ideal cutoff: " + shpfCutOff.ToString("0.0000") + "Hz - Real cutoff: " + realFreq.ToString("0.0000") + "Hz - Error: " + freqError.ToString("0.0000") + "%";
-            sw.WriteLine(filterInfo);
+            sw.WriteLine("        " + filterInfo);
 
             realFreq = slpf.realFcut;
             freqError = 100 * ((slpfCutOff - realFreq) / slpfCutOff);
-            sw.WriteLine("--Anti-Aliasing SLPF");
+            sw.WriteLine("        --Anti-Aliasing SLPF");
             filterInfo = "--Ideal cutoff: " + slpfCutOff.ToString("0.0000") + "Hz - Real cutoff: " + realFreq.ToString("0.0000") + "Hz - Error: " + freqError.ToString("0.0000") + "%";
-            sw.WriteLine(filterInfo);
+            sw.WriteLine("    " + filterInfo);
             filterInfo = "--Ideal Gain: " + slpfGain.ToString("0.0000") + "dB - Real Gain: " + slpf.realGaindb.ToString("0.000") + "dB (" + slpf.realGain.ToString("0.000") + ")";
-            sw.WriteLine(filterInfo);
-            sw.WriteLine("");
+            sw.WriteLine("    " + filterInfo);
 
-            sw.WriteLine("U_PDM2Spikes_Left: PDM2Spikes");
-            sw.WriteLine("generic map(SLPF_GL => " + slpf.nBits + ", SLPF_SAT => " + (int)(Math.Pow(2, slpf.nBits - 1) - 1) + ", SHPF_GL => " + shpf.nBits + ", SHPF_SAT => " + (int)(Math.Pow(2, shpf.nBits - 1) - 1) + " )");
-            sw.WriteLine("port map (");
-            sw.WriteLine("clk => clock,");
-            sw.WriteLine("rst => reset,");
-            sw.WriteLine("clock_div => x\"" + (this.clkDiv - 1).ToString("X2") + "\", --PDM clock: +" + pdmClock.ToString("0.000") + "MHz");
-            sw.WriteLine("PDM_CLK => PDM_CLK_LEFT,");
-            sw.WriteLine("PDM_DAT => PDM_DAT_LEFT,");
-            sw.WriteLine("SHPF_FREQ_DIV => x\"" + shpf.freqDiv.ToString("X2") + "\",");
-            sw.WriteLine("SLPF_FREQ_DIV => x\"" + slpf.freqDiv.ToString("X2") + "\",");
-            sw.WriteLine("SLPF_SPIKES_DIV_FB => x\"" + slpf.fbDiv.ToString("X4") + "\",");
-            sw.WriteLine("SLPF_SPIKES_DIV_OUT => x\"" + slpf.outDiv.ToString("X4") + "\",");
-            sw.WriteLine("--Spikes Output");
-            sw.WriteLine("spikes_out => spikes_in_left");
-            sw.WriteLine(");");
+            sw.WriteLine("        U_PDM2Spikes_Left: PDM2Spikes");
+            sw.WriteLine("        Generic Map (");
+            sw.WriteLine("            SLPF_GL             => " + slpf.nBits + ",");
+            sw.WriteLine("            SLPF_SAT            => " + (int)(Math.Pow(2, slpf.nBits - 1) - 1) + ",");
+            sw.WriteLine("            SHPF_GL             => " + shpf.nBits + ",");
+            sw.WriteLine("            SHPF_SAT            => " + (int)(Math.Pow(2, shpf.nBits - 1) - 1));
+            sw.WriteLine("        )");
+            sw.WriteLine("        Port Map (");
+            sw.WriteLine("            clk                 => clock,");
+            sw.WriteLine("            rst                 => reset,");
+            sw.WriteLine("            clock_div           => x\"" + (this.clkDiv - 1).ToString("X2") + "\", --PDM clock: +" + pdmClock.ToString("0.000") + "MHz");
+            sw.WriteLine("            PDM_CLK             => PDM_CLK_LEFT,");
+            sw.WriteLine("            PDM_DAT             => PDM_DAT_LEFT,");
+            sw.WriteLine("            SHPF_FREQ_DIV       => x\"" + shpf.freqDiv.ToString("X2") + "\",");
+            sw.WriteLine("            SLPF_FREQ_DIV       => x\"" + slpf.freqDiv.ToString("X2") + "\",");
+            sw.WriteLine("            SLPF_SPIKES_DIV_FB  => x\"" + slpf.fbDiv.ToString("X4") + "\",");
+            sw.WriteLine("            SLPF_SPIKES_DIV_OUT => x\"" + slpf.outDiv.ToString("X4") + "\",");
+            sw.WriteLine("            --Spikes Output");
+            sw.WriteLine("            spikes_out          => spikes_in_left");
+            sw.WriteLine("        );");
             sw.WriteLine("");
 
             if (nasType == NASTYPE.STEREO)
             {
-
-                sw.WriteLine("U_PDM2Spikes_Rigth: PDM2Spikes");
-                sw.WriteLine("generic map(SLPF_GL => " + slpf.nBits + ", SLPF_SAT => " + (int)(Math.Pow(2, slpf.nBits - 1) - 1) + ", SHPF_GL => " + shpf.nBits + ", SHPF_SAT => " + (int)(Math.Pow(2, shpf.nBits - 1) - 1) + " )");
-                sw.WriteLine("port map (");
-                sw.WriteLine("clk => clock,");
-                sw.WriteLine("rst => reset,");
-                sw.WriteLine("clock_div => x\"" + (this.clkDiv - 1).ToString("X2") + "\", --PDM clock: +" + pdmClock.ToString("0.000") + "MHz");
-                sw.WriteLine("PDM_CLK => PDM_CLK_RIGTH,");
-                sw.WriteLine("PDM_DAT => PDM_DAT_RIGTH,");
-                sw.WriteLine("SHPF_FREQ_DIV => x\"" + shpf.freqDiv.ToString("X2") + "\",");
-                sw.WriteLine("SLPF_FREQ_DIV => x\"" + slpf.freqDiv.ToString("X2") + "\",");
-                sw.WriteLine("SLPF_SPIKES_DIV_FB => x\"" + slpf.fbDiv.ToString("X4") + "\",");
-                sw.WriteLine("SLPF_SPIKES_DIV_OUT => x\"" + slpf.outDiv.ToString("X4") + "\",");
-                sw.WriteLine("--Spikes Output");
-                sw.WriteLine("spikes_out => spikes_in_rigth");
-                sw.WriteLine(");");
+                sw.WriteLine("        U_PDM2Spikes_Rigth: PDM2Spikes");
+                sw.WriteLine("        Generic Map (");
+                sw.WriteLine("            SLPF_GL             => " + slpf.nBits + ",");
+                sw.WriteLine("            SLPF_SAT            => " + (int)(Math.Pow(2, slpf.nBits - 1) - 1) + ",");
+                sw.WriteLine("            SHPF_GL             => " + shpf.nBits + ",");
+                sw.WriteLine("            SHPF_SAT            => " + (int)(Math.Pow(2, shpf.nBits - 1) - 1));
+                sw.WriteLine("        )");
+                sw.WriteLine("        Port Map (");
+                sw.WriteLine("            clk                 => clock,");
+                sw.WriteLine("            rst                 => reset,");
+                sw.WriteLine("            clock_div           => x\"" + (this.clkDiv - 1).ToString("X2") + "\", --PDM clock: +" + pdmClock.ToString("0.000") + "MHz");
+                sw.WriteLine("            PDM_CLK             => PDM_CLK_RIGTH,");
+                sw.WriteLine("            PDM_DAT             => PDM_DAT_RIGTH,");
+                sw.WriteLine("            SHPF_FREQ_DIV       => x\"" + shpf.freqDiv.ToString("X2") + "\",");
+                sw.WriteLine("            SLPF_FREQ_DIV       => x\"" + slpf.freqDiv.ToString("X2") + "\",");
+                sw.WriteLine("            SLPF_SPIKES_DIV_FB  => x\"" + slpf.fbDiv.ToString("X4") + "\",");
+                sw.WriteLine("            SLPF_SPIKES_DIV_OUT => x\"" + slpf.outDiv.ToString("X4") + "\",");
+                sw.WriteLine("            --Spikes Output");
+                sw.WriteLine("            spikes_out          => spikes_in_rigth");
+                sw.WriteLine("        );");
                 sw.WriteLine("");
-
             }
 
         }
@@ -214,13 +226,13 @@ namespace OpenNAS_App.NASComponents
         /// <param name="sw">NAS Top file handler</param>
         public override void WriteTopSignals(StreamWriter sw)
         {
-            sw.WriteLine("--PDM Interface");
-            sw.WriteLine("  PDM_CLK_LEFT  : out std_logic;");
-            sw.WriteLine("  PDM_DAT_LEFT  : in std_logic;");
+            sw.WriteLine("        --PDM Interface");
+            sw.WriteLine("        PDM_CLK_LEFT  : out std_logic;");
+            sw.WriteLine("        PDM_DAT_LEFT  : in std_logic;");
             if (nasType == NASTYPE.STEREO)
             {
-                sw.WriteLine("  PDM_CLK_RIGTH  : out std_logic;");
-                sw.WriteLine("  PDM_DAT_RIGTH  : in std_logic;");
+                sw.WriteLine("        PDM_CLK_RIGTH  : out std_logic;");
+                sw.WriteLine("        PDM_DAT_RIGTH  : in std_logic;");
             }
         }
     }

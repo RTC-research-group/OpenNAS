@@ -1,6 +1,6 @@
 ﻿/////////////////////////////////////////////////////////////////////////////////
 //                                                                             //
-//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                     //
+//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                      //
 //                                                                             //
 //    This file is part of OpenNAS.                                            //
 //                                                                             //
@@ -132,8 +132,8 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("use IEEE.STD_LOGIC_1164.ALL;");
             sw.WriteLine("use IEEE.STD_LOGIC_ARITH.ALL;");
             sw.WriteLine("use IEEE.STD_LOGIC_UNSIGNED.ALL;");
-
             sw.WriteLine("");
+
             string entity = "PFBank_";
             if (slpfType == SLPFType.Order2)
             {
@@ -146,12 +146,12 @@ namespace OpenNAS_App.NASComponents
             entity += "or_" + nCH + "CH";
 
             sw.WriteLine("entity " + entity + " is");
-            sw.WriteLine("  port(");
-            sw.WriteLine("  clock     : in std_logic;");
-            sw.WriteLine("   rst             : in std_logic;");
-            sw.WriteLine("  spikes_in: in std_logic_vector(1 downto 0);");
-            sw.WriteLine("  spikes_out: out std_logic_vector(" + (nCH * 2 - 1) + " downto 0)");
-            sw.WriteLine(");");
+            sw.WriteLine("    Port (");
+            sw.WriteLine("        clock      : in std_logic;");
+            sw.WriteLine("        rst        : in std_logic;");
+            sw.WriteLine("        spikes_in  : in std_logic_vector(1 downto 0);");
+            sw.WriteLine("        spikes_out : out std_logic_vector(" + (nCH * 2 - 1) + " downto 0)");
+            sw.WriteLine("    );");
             sw.WriteLine("end " + entity + ";");
             sw.WriteLine("");
 
@@ -168,60 +168,67 @@ namespace OpenNAS_App.NASComponents
                 filterName = "spikes_4BPF_fullGain";
             }
 
-            sw.WriteLine("  component " + filterName + " is");
-
-            sw.WriteLine("  generic (GL: in integer:= 11; SAT: in integer:= 1023);");
-            sw.WriteLine("  Port(CLK: in  STD_LOGIC;");
-            sw.WriteLine("      RST: in  STD_LOGIC;");
-            sw.WriteLine("      FREQ_DIV: in STD_LOGIC_VECTOR(7 downto 0);");
-            sw.WriteLine("      SPIKES_DIV_FB: in STD_LOGIC_VECTOR(15 downto 0);");
-            sw.WriteLine("      SPIKES_DIV_OUT: in STD_LOGIC_VECTOR(15 downto 0);");
-            sw.WriteLine("      SPIKES_DIV_BPF: in STD_LOGIC_VECTOR(15 downto 0);");
-            sw.WriteLine("      spike_in_slpf_p: in  STD_LOGIC;");
-            sw.WriteLine("      spike_in_slpf_n: in  STD_LOGIC;");
-            sw.WriteLine("      spike_in_shf_p: in  STD_LOGIC;");
-            sw.WriteLine("      spike_in_shf_n: in  STD_LOGIC;");
-            sw.WriteLine("      spike_out_p: out  STD_LOGIC;");
-            sw.WriteLine("      spike_out_n: out  STD_LOGIC;");
-            sw.WriteLine("      spike_out_lpf_p: out  STD_LOGIC;");
-            sw.WriteLine("      spike_out_lpf_n: out  STD_LOGIC);");
-            sw.WriteLine("  end component;");
-
-
+            sw.WriteLine("    component " + filterName + " is");
+            sw.WriteLine("        Generic (");
+            sw.WriteLine("            GL              : INTEGER := 11;");
+            sw.WriteLine("            SAT             : INTEGER := 1023");
+            sw.WriteLine("        );");
+            sw.WriteLine("        Port (");
+            sw.WriteLine("            CLK             : in  STD_LOGIC;");
+            sw.WriteLine("            RST             : in  STD_LOGIC;");
+            sw.WriteLine("            FREQ_DIV        : in  STD_LOGIC_VECTOR(7 downto 0);");
+            sw.WriteLine("            SPIKES_DIV_FB   : in  STD_LOGIC_VECTOR(15 downto 0);");
+            sw.WriteLine("            SPIKES_DIV_OUT  : in  STD_LOGIC_VECTOR(15 downto 0);");
+            sw.WriteLine("            SPIKES_DIV_BPF  : in  STD_LOGIC_VECTOR(15 downto 0);");
+            sw.WriteLine("            spike_in_slpf_p : in  STD_LOGIC;");
+            sw.WriteLine("            spike_in_slpf_n : in  STD_LOGIC;");
+            sw.WriteLine("            spike_in_shf_p  : in  STD_LOGIC;");
+            sw.WriteLine("            spike_in_shf_n  : in  STD_LOGIC;");
+            sw.WriteLine("            spike_out_p     : out STD_LOGIC;");
+            sw.WriteLine("            spike_out_n     : out STD_LOGIC;");
+            sw.WriteLine("            spike_out_lpf_p : out STD_LOGIC;");
+            sw.WriteLine("            spike_out_lpf_n : out STD_LOGIC);");
+            sw.WriteLine("        ");
+            sw.WriteLine("    end component;");
             sw.WriteLine("");
 
-            sw.WriteLine("  signal not_rst: std_logic;");
+            sw.WriteLine("    signal not_rst : STD_LOGIC;");
             for (int i = 0; i < nCH + 1; i++)
             {
-                sw.WriteLine("  signal lpf_spikes_" + i + " : std_logic_vector(1 downto 0);");
+                sw.WriteLine("    signal lpf_spikes_" + i + " : STD_LOGIC_VECTOR(1 downto 0);");
             }
-
-            sw.WriteLine("begin");
             sw.WriteLine("");
 
-            sw.WriteLine("not_rst <= not rst;");
+            sw.WriteLine("    begin");
+            sw.WriteLine("");
+
+            sw.WriteLine("        not_rst <= not rst;");
             sw.WriteLine("");
 
             double realFreq = slpfParam[0].realFcut;
             double freqError = 100 * ((cutoffFreq[0] - realFreq) / cutoffFreq[0]);
             string filterInfo = "--Ideal cutoff: " + cutoffFreq[0].ToString("0.0000") + "Hz - Real cutoff: " + realFreq.ToString("0.0000") + "Hz - Error: " + freqError.ToString("0.0000") + "%";
-            sw.WriteLine(filterInfo);
-            sw.WriteLine("U_BPF_0: " + filterName);
-            sw.WriteLine("generic map(GL => " + slpfParam[0].nBits + ", SAT => " + (int)(Math.Pow(2, slpfParam[0].nBits - 1) - 1) + ")");
-            sw.WriteLine("Port map(CLK => clock,");
-            sw.WriteLine("  RST => not_rst,");
-            sw.WriteLine("  FREQ_DIV => x\"" + slpfParam[0].freqDiv.ToString("X2") + "\",");
-            sw.WriteLine("  SPIKES_DIV_FB => x\"" + slpfParam[0].fbDiv.ToString("X4") + "\",");
-            sw.WriteLine("  SPIKES_DIV_OUT => x\"" + slpfParam[0].outDiv.ToString("X4") + "\",");
-            sw.WriteLine("  SPIKES_DIV_BPF => x\"" + attDiv[0].ToString("X4") + "\",");
-            sw.WriteLine("  spike_in_slpf_p => spikes_in(1),");
-            sw.WriteLine("  spike_in_slpf_n => spikes_in(0),");
-            sw.WriteLine("  spike_in_shf_p => '0',");
-            sw.WriteLine("  spike_in_shf_n => '0',");
-            sw.WriteLine("  spike_out_p => open,");
-            sw.WriteLine("  spike_out_n => open, ");
-            sw.WriteLine("  spike_out_lpf_p => lpf_spikes_0(1),");
-            sw.WriteLine("  spike_out_lpf_n => lpf_spikes_0(0)");
+            sw.WriteLine("        " + filterInfo);
+            sw.WriteLine("        U_BPF_0: " + filterName);
+            sw.WriteLine("        Generic Map( ");
+            sw.WriteLine("            GL              => " + slpfParam[0].nBits + ",");
+            sw.WriteLine("            SAT             => " + (int)(Math.Pow(2, slpfParam[0].nBits - 1) - 1));
+            sw.WriteLine("        )");
+            sw.WriteLine("        Port Map(");
+            sw.WriteLine("            CLK             => clock,");
+            sw.WriteLine("            RST             => not_rst,");
+            sw.WriteLine("            FREQ_DIV        => x\"" + slpfParam[0].freqDiv.ToString("X2") + "\",");
+            sw.WriteLine("            SPIKES_DIV_FB   => x\"" + slpfParam[0].fbDiv.ToString("X4") + "\",");
+            sw.WriteLine("            SPIKES_DIV_OUT  => x\"" + slpfParam[0].outDiv.ToString("X4") + "\",");
+            sw.WriteLine("            SPIKES_DIV_BPF  => x\"" + attDiv[0].ToString("X4") + "\",");
+            sw.WriteLine("            spike_in_slpf_p => spikes_in(1),");
+            sw.WriteLine("            spike_in_slpf_n => spikes_in(0),");
+            sw.WriteLine("            spike_in_shf_p  => '0',");
+            sw.WriteLine("            spike_in_shf_n  => '0',");
+            sw.WriteLine("            spike_out_p     => open,");
+            sw.WriteLine("            spike_out_n     => open, ");
+            sw.WriteLine("            spike_out_lpf_p => lpf_spikes_0(1),");
+            sw.WriteLine("            spike_out_lpf_n => lpf_spikes_0(0)");
             sw.WriteLine(");");
             sw.WriteLine("");
 
@@ -234,32 +241,28 @@ namespace OpenNAS_App.NASComponents
                 realFreq = slpfParam[k].realFcut;
                 freqError = 100 * ((cutoffFreq[k] - realFreq) / cutoffFreq[k]);
                 filterInfo = "--Ideal cutoff: " + cutoffFreq[k].ToString("0.0000") + "Hz - Real cutoff: " + realFreq.ToString("0.0000") + "Hz - Error: " + freqError.ToString("0.0000") + "%";
-                sw.WriteLine(filterInfo);
-                sw.WriteLine("U_BPF_" + k + ": " + filterName);
-                sw.WriteLine("generic map(GL => " + slpfParam[k].nBits + ", SAT => " + (int)(Math.Pow(2, slpfParam[k].nBits - 1) - 1) + ")");
-                sw.WriteLine("Port map(CLK => clock,");
-                sw.WriteLine("  RST => not_rst,");
-                sw.WriteLine("  FREQ_DIV => x\"" + slpfParam[k].freqDiv.ToString("X2") + "\",");
-                sw.WriteLine("  SPIKES_DIV_FB => x\"" + slpfParam[k].fbDiv.ToString("X4") + "\",");
-                sw.WriteLine("  SPIKES_DIV_OUT => x\"" + slpfParam[k].outDiv.ToString("X4") + "\",");
-                sw.WriteLine("  SPIKES_DIV_BPF => x\"" + attDiv[k - 1].ToString("X4") + "\",");
-                sw.WriteLine("  spike_in_slpf_p => lpf_spikes_" + (k - 1) + "(1),");
-                sw.WriteLine("  spike_in_slpf_n => lpf_spikes_" + (k - 1) + "(0),");
-
-                //Cascade Arch
-                /* sw.WriteLine("  spike_in_shf_p => lpf_spikes_" + (k - 1) + "(1),");
-                 sw.WriteLine("  spike_in_shf_n => lpf_spikes_" + (k - 1) + "(0),");*/
-
-                //Parallel Arch
-                sw.WriteLine("  spike_in_shf_p => spikes_in(1),");
-                sw.WriteLine("  spike_in_shf_n => spikes_in(0),");
-
-
-                sw.WriteLine("  spike_out_p => spikes_out(" + (2 * (k - 1) + 1) + "),");
-                sw.WriteLine("  spike_out_n => spikes_out(" + (2 * (k - 1)) + "), ");
-                sw.WriteLine("  spike_out_lpf_p => lpf_spikes_" + (k) + "(1),");
-                sw.WriteLine("  spike_out_lpf_n => lpf_spikes_" + (k) + "(0)");
-                sw.WriteLine(");");
+                sw.WriteLine("        " + filterInfo);
+                sw.WriteLine("        U_BPF_" + k + ": " + filterName);
+                sw.WriteLine("        Generic Map (");
+                sw.WriteLine("            GL              => " + slpfParam[k].nBits + ",");
+                sw.WriteLine("            SAT             => " + (int)(Math.Pow(2, slpfParam[k].nBits - 1) - 1));
+                sw.WriteLine("        )");
+                sw.WriteLine("        Port Map (");
+                sw.WriteLine("            CLK             => clock,");
+                sw.WriteLine("            RST             => not_rst,");
+                sw.WriteLine("            FREQ_DIV        => x\"" + slpfParam[k].freqDiv.ToString("X2") + "\",");
+                sw.WriteLine("            SPIKES_DIV_FB   => x\"" + slpfParam[k].fbDiv.ToString("X4") + "\",");
+                sw.WriteLine("            SPIKES_DIV_OUT  => x\"" + slpfParam[k].outDiv.ToString("X4") + "\",");
+                sw.WriteLine("            SPIKES_DIV_BPF  => x\"" + attDiv[k - 1].ToString("X4") + "\",");
+                sw.WriteLine("            spike_in_slpf_p => lpf_spikes_" + (k - 1) + "(1),");
+                sw.WriteLine("            spike_in_slpf_n => lpf_spikes_" + (k - 1) + "(0),");
+                sw.WriteLine("            spike_in_shf_p  => spikes_in(1),");
+                sw.WriteLine("            spike_in_shf_n  => spikes_in(0),");
+                sw.WriteLine("            spike_out_p     => spikes_out(" + (2 * (k - 1) + 1) + "),");
+                sw.WriteLine("            spike_out_n     => spikes_out(" + (2 * (k - 1)) + "), ");
+                sw.WriteLine("            spike_out_lpf_p => lpf_spikes_" + (k) + "(1),");
+                sw.WriteLine("            spike_out_lpf_n => lpf_spikes_" + (k) + "(0)");
+                sw.WriteLine("        );");
                 sw.WriteLine("");
             }
 
@@ -356,15 +359,15 @@ namespace OpenNAS_App.NASComponents
                 entity += "4";
             }
             entity += "or_" + nCH + "CH";
-            sw.WriteLine("--Parallel SLPF Filter Bank");
-            sw.WriteLine("component " + entity + " is");
-            sw.WriteLine("  port(");
-            sw.WriteLine("  clock     : in std_logic;");
-            sw.WriteLine("   rst             : in std_logic;");
-            sw.WriteLine("  spikes_in: in std_logic_vector(1 downto 0);");
-            sw.WriteLine("  spikes_out: out std_logic_vector(" + (nCH * 2 - 1) + " downto 0)");
-            sw.WriteLine(");");
-            sw.WriteLine("end component;");
+            sw.WriteLine("    --Parallel SLPF Filter Bank");
+            sw.WriteLine("    component " + entity + " is");
+            sw.WriteLine("        Port (");
+            sw.WriteLine("            clock      : in  STD_LOGIC;");
+            sw.WriteLine("            rst        : in  STD_LOGIC;");
+            sw.WriteLine("            spikes_in  : in  STD_LOGIC_VECTOR(1 downto 0);");
+            sw.WriteLine("            spikes_out : out STD_LOGIC_VECTOR(" + (nCH * 2 - 1) + " downto 0)");
+            sw.WriteLine("        );");
+            sw.WriteLine("    end component;");
             sw.WriteLine("");
         }
 
@@ -380,25 +383,25 @@ namespace OpenNAS_App.NASComponents
                 entity += "4";
             }
             entity += "or_" + nCH + "CH";
-            sw.WriteLine("--Parallel SLPF Bank");
-            sw.WriteLine("U_" + entity + "_Left: " + entity);
-            sw.WriteLine("  port map(");
-            sw.WriteLine("  clock =>clock,");
-            sw.WriteLine("   rst  => reset,");
-            sw.WriteLine("  spikes_in=> spikes_in_left,");
-            sw.WriteLine("  spikes_out=>spikes_out_left");
-            sw.WriteLine(");");
+            sw.WriteLine("        --Parallel SLPF Bank");
+            sw.WriteLine("        U_" + entity + "_Left: " + entity);
+            sw.WriteLine("        Port Map(");
+            sw.WriteLine("            clock      => clock,");
+            sw.WriteLine("            rst        => reset,");
+            sw.WriteLine("            spikes_in  => spikes_in_left,");
+            sw.WriteLine("            spikes_out => spikes_out_left");
+            sw.WriteLine("        );");
             sw.WriteLine("");
 
             if (nasType == NASTYPE.STEREO)
             {
-                sw.WriteLine("U_" + entity + "_Rigth: " + entity);
-                sw.WriteLine("  port map(");
-                sw.WriteLine("  clock =>clock,");
-                sw.WriteLine("   rst  => reset,");
-                sw.WriteLine("  spikes_in=> spikes_in_rigth,");
-                sw.WriteLine("  spikes_out=>spikes_out_rigth");
-                sw.WriteLine(");");
+                sw.WriteLine("        U_" + entity + "_Rigth: " + entity);
+                sw.WriteLine("        Port Map(");
+                sw.WriteLine("            clock      => clock,");
+                sw.WriteLine("            rst        => reset,");
+                sw.WriteLine("            spikes_in  => spikes_in_rigth,");
+                sw.WriteLine("            spikes_out => spikes_out_rigth");
+                sw.WriteLine("        );");
                 sw.WriteLine("");
             }
         }

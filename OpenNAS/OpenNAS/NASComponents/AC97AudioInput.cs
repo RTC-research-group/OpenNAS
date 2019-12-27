@@ -1,6 +1,6 @@
 ﻿/////////////////////////////////////////////////////////////////////////////////
 //                                                                             //
-//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                     //
+//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                      //
 //                                                                             //
 //    This file is part of OpenNAS.                                            //
 //                                                                             //
@@ -166,12 +166,12 @@ namespace OpenNAS_App.NASComponents
         public override void WriteTopSignals(StreamWriter sw)
         {
 
-            sw.WriteLine("--AC Link");
-            sw.WriteLine("  ac97_bit_clock  : in std_logic;");
-            sw.WriteLine("  ac97_sdata_in: in std_logic; --Serial data from AC'97");
-            sw.WriteLine("  ac97_sdata_out: out std_logic; --Serial data to AC'97");
-            sw.WriteLine("  ac97_synch: out std_logic; --Defines boundries of AC'97 frames, controls warm reset");
-            sw.WriteLine("  audio_reset_b: out std_logic; --AC'97 codec cold reset");
+            sw.WriteLine("        --AC Link");
+            sw.WriteLine("        ac97_bit_clock : in  std_logic;");
+            sw.WriteLine("        ac97_sdata_in  : in  std_logic; --Serial data from AC'97");
+            sw.WriteLine("        ac97_sdata_out : out std_logic; --Serial data to AC'97");
+            sw.WriteLine("        ac97_synch     : out std_logic; --Defines boundries of AC'97 frames, controls warm reset");
+            sw.WriteLine("        audio_reset_b  : out std_logic; --AC'97 codec cold reset");
         }
 
         /// <summary>
@@ -182,41 +182,41 @@ namespace OpenNAS_App.NASComponents
         {
             if (nasType == NASTYPE.MONO)
             {
-                sw.WriteLine("--AC97 interface Mono");
-                sw.WriteLine("component AC97InputComponentMono is");
-                sw.WriteLine("port (");
-                sw.WriteLine("  clock: in std_logic;");
-                sw.WriteLine("  reset: in std_logic;");
-                sw.WriteLine("--AC Link");
-                sw.WriteLine("  ac97_bit_clock  : in std_logic;");
-                sw.WriteLine("  ac97_sdata_in: in std_logic; --Serial data from AC'97");
-                sw.WriteLine("  ac97_sdata_out: out std_logic; --Serial data to AC'97");
-                sw.WriteLine("  ac97_synch: out std_logic; --Defines boundries of AC'97 frames, controls warm reset");
-                sw.WriteLine("  audio_reset_b: out std_logic; --AC'97 codec cold reset");
-                sw.WriteLine("--Spikes Output");
-                sw.WriteLine("  spikes_left: out std_logic_vector(1 downto 0)");
-                sw.WriteLine(");");
-                sw.WriteLine("end component;");
+                sw.WriteLine("    --AC97 interface Mono");
+                sw.WriteLine("    component AC97InputComponentMono is");
+                sw.WriteLine("        Port (");
+                sw.WriteLine("            clock: in std_logic;");
+                sw.WriteLine("            reset: in std_logic;");
+                sw.WriteLine("            --AC Link");
+                sw.WriteLine("            ac97_bit_clock  : in std_logic;");
+                sw.WriteLine("            ac97_sdata_in: in std_logic; --Serial data from AC'97");
+                sw.WriteLine("            ac97_sdata_out: out std_logic; --Serial data to AC'97");
+                sw.WriteLine("            ac97_synch: out std_logic; --Defines boundries of AC'97 frames, controls warm reset");
+                sw.WriteLine("            audio_reset_b: out std_logic; --AC'97 codec cold reset");
+                sw.WriteLine("            --Spikes Output");
+                sw.WriteLine("            spikes_left: out std_logic_vector(1 downto 0)");
+                sw.WriteLine("        );");
+                sw.WriteLine("    end component;");
 
             }
             else
             {
-                sw.WriteLine("--AC97 interface Stereo");
-                sw.WriteLine("component AC97InputComponentStereo is");
-                sw.WriteLine("port (");
-                sw.WriteLine("  clock: in std_logic;");
-                sw.WriteLine("  reset: in std_logic;");
-                sw.WriteLine("--AC Link");
-                sw.WriteLine("  ac97_bit_clock  : in std_logic;");
-                sw.WriteLine("  ac97_sdata_in: in std_logic; --Serial data from AC'97");
-                sw.WriteLine("  ac97_sdata_out: out std_logic; --Serial data to AC'97");
-                sw.WriteLine("  ac97_synch: out std_logic; --Defines boundries of AC'97 frames, controls warm reset");
-                sw.WriteLine("  audio_reset_b: out std_logic; --AC'97 codec cold reset");
-                sw.WriteLine("--Spikes Output");
-                sw.WriteLine("  spikes_left: out std_logic_vector(1 downto 0);");
-                sw.WriteLine("  spikes_rigth: out std_logic_vector(1 downto 0)");
-                sw.WriteLine(");");
-                sw.WriteLine("end component;");
+                sw.WriteLine("    --AC97 interface Stereo");
+                sw.WriteLine("    component AC97InputComponentStereo is");
+                sw.WriteLine("        Port (");
+                sw.WriteLine("            clock          : in std_logic;");
+                sw.WriteLine("            reset          : in std_logic;");
+                sw.WriteLine("            --AC Link");
+                sw.WriteLine("            ac97_bit_clock : in std_logic;");
+                sw.WriteLine("            ac97_sdata_in  : in std_logic; --Serial data from AC'97");
+                sw.WriteLine("            ac97_sdata_out : out std_logic; --Serial data to AC'97");
+                sw.WriteLine("            ac97_synch     : out std_logic; --Defines boundries of AC'97 frames, controls warm reset");
+                sw.WriteLine("            audio_reset_b  : out std_logic; --AC'97 codec cold reset");
+                sw.WriteLine("            --Spikes Output");
+                sw.WriteLine("            spikes_left    : out std_logic_vector(1 downto 0);");
+                sw.WriteLine("            spikes_rigth   : out std_logic_vector(1 downto 0)");
+                sw.WriteLine("        );");
+                sw.WriteLine("    end component;");
             }
         }
         /// <summary>
@@ -227,38 +227,38 @@ namespace OpenNAS_App.NASComponents
         {
             if (nasType == NASTYPE.MONO)
             {
-                sw.WriteLine("--AC97 interface Mono");
-                sw.WriteLine("U_AC97_Mono: AC97InputComponentMono");
-                sw.WriteLine("port map (");
-                sw.WriteLine("  clock=>clock,");
-                sw.WriteLine("  reset=>reset,");
-                sw.WriteLine("--AC Link");
-                sw.WriteLine("  ac97_bit_clock =>ac97_bit_clock,");
-                sw.WriteLine("  ac97_sdata_in=>ac97_sdata_in,");
-                sw.WriteLine("  ac97_sdata_out=>ac97_sdata_out,");
-                sw.WriteLine("  ac97_synch=>ac97_synch,");
-                sw.WriteLine("  audio_reset_b=>audio_reset_b,");
-                sw.WriteLine("--Spikes Output");
-                sw.WriteLine("  spikes_left=>spikes_in_left");
-                sw.WriteLine(");");
+                sw.WriteLine("        --AC97 interface Mono");
+                sw.WriteLine("        U_AC97_Mono: AC97InputComponentMono");
+                sw.WriteLine("        Port Map (");
+                sw.WriteLine("            clock          => clock,");
+                sw.WriteLine("            reset          => reset,");
+                sw.WriteLine("            --AC Link");
+                sw.WriteLine("            ac97_bit_clock => ac97_bit_clock,");
+                sw.WriteLine("            ac97_sdata_in  => ac97_sdata_in,");
+                sw.WriteLine("            ac97_sdata_out => ac97_sdata_out,");
+                sw.WriteLine("            ac97_synch     => ac97_synch,");
+                sw.WriteLine("            audio_reset_b  => audio_reset_b,");
+                sw.WriteLine("            --Spikes Output");
+                sw.WriteLine("            spikes_left    => spikes_in_left");
+                sw.WriteLine("        );");
             }
             else
             {
-                sw.WriteLine("--AC97 interface Stereo");
-                sw.WriteLine("U_AC97_Stereo: AC97InputComponentStereo");
-                sw.WriteLine("port map (");
-                sw.WriteLine("  clock=>clock,");
-                sw.WriteLine("  reset=>reset,");
-                sw.WriteLine("--AC Link");
-                sw.WriteLine("  ac97_bit_clock =>ac97_bit_clock,");
-                sw.WriteLine("  ac97_sdata_in=>ac97_sdata_in,");
-                sw.WriteLine("  ac97_sdata_out=>ac97_sdata_out,");
-                sw.WriteLine("  ac97_synch=>ac97_synch,");
-                sw.WriteLine("  audio_reset_b=>audio_reset_b,");
-                sw.WriteLine("--Spikes Output");
-                sw.WriteLine("  spikes_left=>spikes_in_left,");
-                sw.WriteLine("  spikes_rigth=>spikes_in_rigth");
-                sw.WriteLine(");");
+                sw.WriteLine("        --AC97 interface Stereo");
+                sw.WriteLine("        U_AC97_Stereo: AC97InputComponentStereo");
+                sw.WriteLine("        Port Map (");
+                sw.WriteLine("            clock          => clock,");
+                sw.WriteLine("            reset          => reset,");
+                sw.WriteLine("            --AC Link");
+                sw.WriteLine("            ac97_bit_clock => ac97_bit_clock,");
+                sw.WriteLine("            ac97_sdata_in  => ac97_sdata_in,");
+                sw.WriteLine("            ac97_sdata_out => ac97_sdata_out,");
+                sw.WriteLine("            ac97_synch     => ac97_synch,");
+                sw.WriteLine("            audio_reset_b  => audio_reset_b,");
+                sw.WriteLine("            --Spikes Output");
+                sw.WriteLine("            spikes_left    => spikes_in_left,");
+                sw.WriteLine("            spikes_rigth   => spikes_in_rigth");
+                sw.WriteLine("        );");
 
             }
             sw.WriteLine("");

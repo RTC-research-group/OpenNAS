@@ -1,6 +1,6 @@
 ﻿/////////////////////////////////////////////////////////////////////////////////
 //                                                                             //
-//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                     //
+//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                      //
 //                                                                             //
 //    This file is part of OpenNAS.                                            //
 //                                                                             //
@@ -118,13 +118,13 @@ namespace OpenNAS_App.NASComponents
             //Top component signals
             string entity = "OpenNas_" + audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + +nasCommons.nCh + "ch";
             sw.WriteLine("entity " + entity + " is");
-            sw.WriteLine("  port(");
-            sw.WriteLine("  clock     : in std_logic;");
-            sw.WriteLine("  rst_ext   : in std_logic;");
+            sw.WriteLine("    Port (");
+            sw.WriteLine("        clock   : in std_logic;");
+            sw.WriteLine("        rst_ext : in std_logic;");
             audioInput.WriteTopSignals(sw);
             spikesOutput.WriteTopSignals(sw);
 
-            sw.WriteLine(");");
+            sw.WriteLine("    );");
             sw.WriteLine("end " + entity + ";");
             sw.WriteLine("");
 
@@ -136,26 +136,31 @@ namespace OpenNAS_App.NASComponents
             audioProcessing.WriteComponentArchitecture(sw);
             spikesOutput.WriteComponentArchitecture(sw);
             sw.WriteLine("");
-            sw.WriteLine("--Reset signals");
-            sw.WriteLine("  signal reset : std_logic;");
+            sw.WriteLine("    --Reset signals");
+            sw.WriteLine("    signal reset : std_logic;");
+            sw.WriteLine("");
 
             AudioInputControl.NASAUDIOSOURCE nasInputIF = AudioInputControl.audioSource;
             if (nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2SPDM)
             {
-                sw.WriteLine("--Audio input modules reset signal");
-                sw.WriteLine("  signal pdm_reset : std_logic;");
-                sw.WriteLine("  signal i2s_reset: std_logic; ");
-                sw.WriteLine("--Inverted Source selector signal");
-                sw.WriteLine("  signal i_source_sel : std_logic;");
-                sw.WriteLine("--Audio input modules out spikes signal");
-                sw.WriteLine("  signal spikes_in_left_i2s : std_logic_vector(1 downto 0);");
-                sw.WriteLine("  signal spikes_in_left_pdm : std_logic_vector(1 downto 0);");
+                sw.WriteLine("    --Audio input modules reset signal");
+                sw.WriteLine("    signal pdm_reset : std_logic;");
+                sw.WriteLine("    signal i2s_reset: std_logic; ");
+                sw.WriteLine("");
+
+                sw.WriteLine("    --Inverted Source selector signal");
+                sw.WriteLine("    signal i_source_sel : std_logic;");
+                sw.WriteLine("");
+                sw.WriteLine("    --Audio input modules out spikes signal");
+                sw.WriteLine("    signal spikes_in_left_i2s : std_logic_vector(1 downto 0);");
+                sw.WriteLine("    signal spikes_in_left_pdm : std_logic_vector(1 downto 0);");
+                sw.WriteLine("");
             }
 
-            sw.WriteLine("--Left spikes");
-            sw.WriteLine("  signal spikes_in_left : std_logic_vector(1 downto 0);");
-            sw.WriteLine("  signal spikes_out_left : std_logic_vector(" + (nasCommons.nCh * 2 - 1) + " downto 0);");
-
+            sw.WriteLine("    --Left spikes");
+            sw.WriteLine("    signal spikes_in_left  : std_logic_vector(1 downto 0);");
+            sw.WriteLine("    signal spikes_out_left : std_logic_vector(" + (nasCommons.nCh * 2 - 1) + " downto 0);");
+            sw.WriteLine("");
 
             ///////////////////////////////////////spikes_out_left
 
@@ -163,48 +168,58 @@ namespace OpenNAS_App.NASComponents
             {
                 if (nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2SPDM)
                 {
-                    sw.WriteLine("--Audio input modules out spikes signal");
-                    sw.WriteLine("  signal spikes_in_right_i2s : std_logic_vector(1 downto 0);");
-                    sw.WriteLine("  signal spikes_in_right_pdm : std_logic_vector(1 downto 0);");
+                    sw.WriteLine("    --Audio input modules out spikes signal");
+                    sw.WriteLine("    signal spikes_in_right_i2s : std_logic_vector(1 downto 0);");
+                    sw.WriteLine("    signal spikes_in_right_pdm : std_logic_vector(1 downto 0);");
+                    sw.WriteLine("");
                 }
-                sw.WriteLine("--Rigth spikes");
-                sw.WriteLine("  signal spikes_in_rigth : std_logic_vector(1 downto 0);");
-                sw.WriteLine("  signal spikes_out_rigth : std_logic_vector(" + (nasCommons.nCh * 2 - 1) + " downto 0);");
+                sw.WriteLine("    --Rigth spikes");
+                sw.WriteLine("    signal spikes_in_rigth  : std_logic_vector(1 downto 0);");
+                sw.WriteLine("    signal spikes_out_rigth : std_logic_vector(" + (nasCommons.nCh * 2 - 1) + " downto 0);");
+                sw.WriteLine("");
             }
 
             if (nasCommons.monoStereo == NASTYPE.STEREO)
             {
-                sw.WriteLine("--Output spikes");
-                sw.WriteLine("  signal spikes_out: std_logic_vector(" + (nasCommons.nCh * 4 - 1) + " downto 0);");
+                sw.WriteLine("    --Output spikes");
+                sw.WriteLine("    signal spikes_out: std_logic_vector(" + (nasCommons.nCh * 4 - 1) + " downto 0);");
+                sw.WriteLine("");
             }
             else
             {
-                sw.WriteLine("--Output spikes");
-                sw.WriteLine("  signal spikes_out: std_logic_vector(" + (nasCommons.nCh * 2 - 1) + " downto 0);");
+                sw.WriteLine("    --Output spikes");
+                sw.WriteLine("    signal spikes_out: std_logic_vector(" + (nasCommons.nCh * 2 - 1) + " downto 0);");
+                sw.WriteLine("");
             }
 
             sw.WriteLine("");
 
-            sw.WriteLine("begin");
+            sw.WriteLine("    begin");
             sw.WriteLine("");
-            sw.WriteLine("reset<=rst_ext;");
-            sw.WriteLine("--Output spikes connection");
+            sw.WriteLine("        reset <= rst_ext;");
+            sw.WriteLine("");
+
+            sw.WriteLine("        --Output spikes connection");
             if (nasCommons.monoStereo == NASTYPE.STEREO)
             {
-                sw.WriteLine("spikes_out<= spikes_out_rigth & spikes_out_left ;");
+                sw.WriteLine("        spikes_out <= spikes_out_rigth & spikes_out_left ;");
             }
             else
             {
-                sw.WriteLine("spikes_out<= spikes_out_left ;");
+                sw.WriteLine("        spikes_out <= spikes_out_left ;");
             }
+            sw.WriteLine("");
 
             if (nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2SPDM)
             {
-                sw.WriteLine("--Inverted source selector signal");
-                sw.WriteLine("i_source_sel <= not source_sel;");
-                sw.WriteLine("--PDM / I2S reset signals");
-                sw.WriteLine("pdm_reset <= reset and source_sel;");
-                sw.WriteLine("i2s_reset <= reset and i_source_sel;");
+                sw.WriteLine("    --Inverted source selector signal");
+                sw.WriteLine("    i_source_sel <= not source_sel;");
+                sw.WriteLine("");
+
+                sw.WriteLine("    --PDM / I2S reset signals");
+                sw.WriteLine("    pdm_reset <= reset and source_sel;");
+                sw.WriteLine("    i2s_reset <= reset and i_source_sel;");
+                sw.WriteLine("");
             }
 
             audioInput.WriteComponentInvocation(sw);
@@ -268,7 +283,7 @@ namespace OpenNAS_App.NASComponents
 
             sw.WriteLine(HDLGenerable.copyLicense('C'));
 
-            sw.WriteLine("### External clock ###");
+            sw.WriteLine("#*** External clock ***");
             switch (nasCommons.nasChip)
             {
                 case NASchip.AERNODE:
@@ -288,7 +303,7 @@ namespace OpenNAS_App.NASComponents
             }
             sw.WriteLine("");
 
-            sw.WriteLine("### External reset button ###");
+            sw.WriteLine("#*** External reset button ***");
             switch (nasCommons.nasChip)
             {
                 case NASchip.AERNODE:
@@ -297,7 +312,7 @@ namespace OpenNAS_App.NASComponents
                     break;
                 case NASchip.ZTEX:
                     signal_name = isAERMonitor ? "rst_ext" : "i_ext_reset";
-                    sw.WriteLine("## Button PB2");
+                    sw.WriteLine("#** Button PB2");
                     sw.WriteLine("set_property PACKAGE_PIN P5 [get_ports " + signal_name + "]");
                     sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports " + signal_name + "]");
                     break;
@@ -308,10 +323,10 @@ namespace OpenNAS_App.NASComponents
             }
             sw.WriteLine("");
 
-            sw.WriteLine("### GP_1 connector: audio input source ###");
-            sw.WriteLine("#2:VDD | 4:SDOUT          | 6:SCLK          | 8:LRCK           | 10:SRC_SEL   #");
-            sw.WriteLine("#      |                  |                 |                  |              #");
-            sw.WriteLine("#1:GND | 3:PDM_DAT_LEFT   | 5:PDM_CLK_LEFT  | 7:PDM_CLK_RIGTH  | 9:PDM_DATA_R #");
+            sw.WriteLine("#*** GP_1 connector: audio input source ***");
+            sw.WriteLine("#*2:VDD | 4:SDOUT          | 6:SCLK          | 8:LRCK           | 10:SRC_SEL   *");
+            sw.WriteLine("#*      |                  |                 |                  |              *");
+            sw.WriteLine("#*1:GND | 3:PDM_DAT_LEFT   | 5:PDM_CLK_LEFT  | 7:PDM_CLK_RIGTH  | 9:PDM_DATA_R *");
             sw.WriteLine("");
 
             AudioInputControl.NASAUDIOSOURCE nasInputIF = AudioInputControl.audioSource;
@@ -319,7 +334,7 @@ namespace OpenNAS_App.NASComponents
             //AC'97
             if (nasInputIF == AudioInputControl.NASAUDIOSOURCE.AC97)
             {
-                sw.WriteLine("### AC97 ADC ###");
+                sw.WriteLine("#*** AC97 ADC ***");
                 switch (nasCommons.nasChip)
                 {
                     case NASchip.AERNODE:
@@ -334,7 +349,7 @@ namespace OpenNAS_App.NASComponents
             //I2S
             if ((nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2S) || (nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2SPDM))
             {
-                sw.WriteLine("### I2S interface ###");
+                sw.WriteLine("#*** I2S interface ***");
                 switch (nasCommons.nasChip)
                 {
                     case NASchip.AERNODE:
@@ -384,7 +399,7 @@ namespace OpenNAS_App.NASComponents
             //PDM
             if ((nasInputIF == AudioInputControl.NASAUDIOSOURCE.PDM) || (nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2SPDM))
             {
-                sw.WriteLine("### PDM interface ###");
+                sw.WriteLine("#*** PDM interface ***");
                 switch (nasCommons.nasChip)
                 {
                     case NASchip.AERNODE:
@@ -457,9 +472,9 @@ namespace OpenNAS_App.NASComponents
             //I2S + PDM
             if (nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2SPDM)
             {
-                sw.WriteLine("### Source selector pin (I2S or PDM micr.) ###");
-                sw.WriteLine("# With jumper: I2S");
-                sw.WriteLine("# Without jumper: PDM");
+                sw.WriteLine("*** Source selector pin (I2S or PDM micr.) ***");
+                sw.WriteLine("#* With jumper: I2S");
+                sw.WriteLine("#* Without jumper: PDM");
                 switch (nasCommons.nasChip)
                 {
                     case NASchip.AERNODE:
@@ -484,7 +499,7 @@ namespace OpenNAS_App.NASComponents
             //AER interface
             if(nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.AERMONITOR || nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.AERNSPINN)
             {
-                sw.WriteLine("### AER out bus & protocol handshake ###");
+                sw.WriteLine("#*** AER out bus & protocol handshake ***");
                 switch (nasCommons.nasChip)
                 {
                     case NASchip.AERNODE:
@@ -630,7 +645,7 @@ namespace OpenNAS_App.NASComponents
             }
             else if(nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV1 || nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV2 || nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.AERNSPINN)
             {
-                sw.WriteLine("### SpiNNaker link data bus from FPGA & ack from SpiNNaker ###");
+                sw.WriteLine("#*** SpiNNaker link data bus from FPGA & ack from SpiNNaker ***");
                 switch (nasCommons.nasChip)
                 {
                     case NASchip.AERNODE:
@@ -704,7 +719,7 @@ namespace OpenNAS_App.NASComponents
 
                 if (nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV2)
                 {
-                    sw.WriteLine("### SpiNNaker link data bus from SpiNNaker & ack from FPGA ###");
+                    sw.WriteLine("#*** SpiNNaker link data bus from SpiNNaker & ack from FPGA ***");
                     switch (nasCommons.nasChip)
                     {
                         case NASchip.AERNODE:
@@ -720,7 +735,7 @@ namespace OpenNAS_App.NASComponents
                             sw.WriteLine("NET \"o_ack_in_to_spinnaker\" LOC = \"G1\" | pulldown;");
                             sw.WriteLine("");
 
-                            sw.WriteLine("### SpiNN-AER interface status LEDs");
+                            sw.WriteLine("#*** SpiNN-AER interface status LEDs");
                             sw.WriteLine("NET \"o_spinn_ui_status_active\" LOC = \"F20\"; #active");
                             sw.WriteLine("NET \"o_spinn_ui_status_reset\" LOC = \"N22\"; #reset");
                             sw.WriteLine("NET \"o_spinn_ui_status_dump\" LOC = \"R22\"; #dump");
@@ -754,7 +769,7 @@ namespace OpenNAS_App.NASComponents
                             sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports o_ack_in_to_spinnaker]");
                             sw.WriteLine("");
 
-                            sw.WriteLine("### SpiNN-AER interface status LEDs");
+                            sw.WriteLine("*** SpiNN-AER interface status LEDs");
                             sw.WriteLine("set_property PACKAGE_PIN U8 [get_ports o_spinn_ui_status_error]");
                             sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports o_spinn_ui_status_error]");
                             sw.WriteLine("");
@@ -804,7 +819,7 @@ namespace OpenNAS_App.NASComponents
                             sw.WriteLine("");
                             sw.WriteLine("");
 
-                            sw.WriteLine("### SpiNN-AER interface status LEDs");
+                            sw.WriteLine("#*** SpiNN-AER interface status LEDs");
                             sw.WriteLine("set_property PACKAGE_PIN XX [get_ports o_spinn_ui_status_error]");
                             sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports o_spinn_ui_status_error]");
                             sw.WriteLine("");
@@ -1285,9 +1300,9 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("# Remember: set variable_name value for user variables");
 
                 sw.WriteLine("# implement the design");
-                sw.WriteLine("#########################################################################");
-                sw.WriteLine("# Set cableserver host");
-                sw.WriteLine("#########################################################################");
+                sw.WriteLine("#////////////////////////////////////////////////////////////////////////");
+                sw.WriteLine("#// Set cableserver host                                               //");
+                sw.WriteLine("#////////////////////////////////////////////////////////////////////////");
                 sw.WriteLine("");
 
                 sw.WriteLine("# If your starter kit is connected to a remote machine, edit the following");
@@ -1297,9 +1312,9 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("set cableserver_host {}");
                 sw.WriteLine("");
 
-                sw.WriteLine("#########################################################################");
-                sw.WriteLine("# Set Tcl Variables");
-                sw.WriteLine("#########################################################################");
+                sw.WriteLine("#////////////////////////////////////////////////////////////////////////");
+                sw.WriteLine("#// Set Tcl Variables                                                  //");
+                sw.WriteLine("#////////////////////////////////////////////////////////////////////////");
                 sw.WriteLine("");
 
                 sw.WriteLine("set version_number \"1.0\"");
@@ -1307,9 +1322,9 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("set proj $top_name");
                 sw.WriteLine("");
 
-                sw.WriteLine("#########################################################################");
-                sw.WriteLine("# Welcome");
-                sw.WriteLine("#########################################################################");
+                sw.WriteLine("#////////////////////////////////////////////////////////////////////////");
+                sw.WriteLine("#// Welcome                                                            //");
+                sw.WriteLine("#////////////////////////////////////////////////////////////////////////");
                 sw.WriteLine("");
                 sw.WriteLine("puts \"Running Xilinx Tcl script \\\"NAS_projectgen.tcl\\\" from OpenNAS, version $version_number.\"");
                 sw.WriteLine("");
@@ -1321,9 +1336,9 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("}");
                 sw.WriteLine("");
 
-                sw.WriteLine("#########################################################################");
-                sw.WriteLine("# Create a directory in which to run");
-                sw.WriteLine("#########################################################################");
+                sw.WriteLine("#////////////////////////////////////////////////////////////////////////");
+                sw.WriteLine("#// Create a directory in which to run                                 //");
+                sw.WriteLine("#////////////////////////////////////////////////////////////////////////");
                 sw.WriteLine("");
 
                 sw.WriteLine("#");
@@ -1344,9 +1359,9 @@ namespace OpenNAS_App.NASComponents
             }
             
 
-            sw.WriteLine("#########################################################################");
-            sw.WriteLine("# Create a new project or open project");
-            sw.WriteLine("#########################################################################");
+            sw.WriteLine("#////////////////////////////////////////////////////////////////////////");
+            sw.WriteLine("#// Create a new project or open project                               //");
+            sw.WriteLine("#////////////////////////////////////////////////////////////////////////");
 
             if (isISEtcl)
             {
@@ -1404,12 +1419,12 @@ namespace OpenNAS_App.NASComponents
 
             if (isISEtcl)
             {
-                sw.WriteLine("#########################################################################");
+                sw.WriteLine("#////////////////////////////////////////////////////////////////////////");
                 sw.WriteLine("# Implementation Properties");
                 sw.WriteLine("# See TCL chapter of the Xilinx Development System Reference Guide for");
                 sw.WriteLine("# how to set controls on the various processes.");
                 sw.WriteLine("# These are included as examples.");
-                sw.WriteLine("#########################################################################");
+                sw.WriteLine("#////////////////////////////////////////////////////////////////////////");
                 sw.WriteLine("# MAP");
                 sw.WriteLine("#project set \"Map Effort Level\" Medium -process map");
                 sw.WriteLine("#project set \"Perform Timing-Driven Packing and Placement\" true -process map");
@@ -1422,9 +1437,9 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("");
                 sw.WriteLine("");
 
-                sw.WriteLine("#########################################################################");
-                sw.WriteLine("# Implement Design");
-                sw.WriteLine("#########################################################################");
+                sw.WriteLine("#////////////////////////////////////////////////////////////////////////");
+                sw.WriteLine("#// Implement Design                                                   //");
+                sw.WriteLine("#////////////////////////////////////////////////////////////////////////");
                 sw.WriteLine("");
 
                 sw.WriteLine("#");
@@ -1450,9 +1465,9 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("}");
                 sw.WriteLine("");
 
-                sw.WriteLine("#########################################################################");
-                sw.WriteLine("# Close Project");
-                sw.WriteLine("#########################################################################");
+                sw.WriteLine("#////////////////////////////////////////////////////////////////////////");
+                sw.WriteLine("#// Close Project                                                      //");
+                sw.WriteLine("#////////////////////////////////////////////////////////////////////////");
                 sw.WriteLine("project close");
                 sw.WriteLine("");
             }
@@ -1462,11 +1477,11 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("launch_runs impl_1 -to_step write_bitstream");
                 sw.WriteLine("");
             }
-            
+
             /*
-            sw.WriteLine("#########################################################################");
-            sw.WriteLine("# Download");
-            sw.WriteLine("#########################################################################");
+            sw.WriteLine("#////////////////////////////////////////////////////////////////////////");
+            sw.WriteLine("#// Download                                                           //");
+            sw.WriteLine("#////////////////////////////////////////////////////////////////////////");
             sw.WriteLine("");
 
             sw.WriteLine("#");
@@ -1577,7 +1592,7 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("");
 
             sw.WriteLine("entity "+ moduleName + " is");
-            sw.WriteLine("    port(");
+            sw.WriteLine("    Port (");
             sw.WriteLine("        ----Clock and external reset button----");
             sw.WriteLine("        i_ext_clock : in std_logic;");
             sw.WriteLine("        i_ext_reset : in std_logic;");
@@ -1641,53 +1656,53 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("architecture " + moduleName + "_arch of " + moduleName + " is");
             sw.WriteLine("");
 
-            sw.WriteLine("-- Component declarations");
+            sw.WriteLine("    -- Component declarations");
             sw.WriteLine("");
 
             sw.WriteLine("    ---------------------------");
             sw.WriteLine("    ----------- NAS -----------");
             sw.WriteLine("    ---------------------------");
             sw.WriteLine("    component OpenNas_" + audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + nasCommons.nCh + "ch is");
-            sw.WriteLine("    port(");
-            sw.WriteLine("        clock : in std_logic;");
-            sw.WriteLine("        rst_ext : in std_logic;");
+            sw.WriteLine("        Port (");
+            sw.WriteLine("            clock : in std_logic;");
+            sw.WriteLine("            rst_ext : in std_logic;");
             if (nasInputIF == AudioInputControl.NASAUDIOSOURCE.AC97)
             {
-                sw.WriteLine("        --AC Link");
-                sw.WriteLine("        ac97_bit_clock  : in std_logic;");
-                sw.WriteLine("        ac97_sdata_in : in std_logic;");
-                sw.WriteLine("        ac97_sdata_out : out std_logic;");
-                sw.WriteLine("        ac97_synch : out std_logic;");
-                sw.WriteLine("        audio_reset_b : out std_logic;");
+                sw.WriteLine("            --AC Link");
+                sw.WriteLine("            ac97_bit_clock  : in std_logic;");
+                sw.WriteLine("            ac97_sdata_in : in std_logic;");
+                sw.WriteLine("            ac97_sdata_out : out std_logic;");
+                sw.WriteLine("            ac97_synch : out std_logic;");
+                sw.WriteLine("            audio_reset_b : out std_logic;");
             }
             if ((nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2S) || (nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2SPDM))
             {
-                sw.WriteLine("        --I2S Bus");
-                sw.WriteLine("        i2s_bclk : in  std_logic;");
-                sw.WriteLine("        i2s_d_in : in  std_logic;");
-                sw.WriteLine("        i2s_lr : in  std_logic;");
+                sw.WriteLine("            --I2S Bus");
+                sw.WriteLine("            i2s_bclk : in  std_logic;");
+                sw.WriteLine("            i2s_d_in : in  std_logic;");
+                sw.WriteLine("            i2s_lr : in  std_logic;");
             }
             if ((nasInputIF == AudioInputControl.NASAUDIOSOURCE.PDM) || (nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2SPDM))
             {
-                sw.WriteLine("        --PDM");
-                sw.WriteLine("        pdm_clk_left : out std_logic;");
-                sw.WriteLine("        pdm_dat_left : in std_logic;");
+                sw.WriteLine("            --PDM");
+                sw.WriteLine("            pdm_clk_left : out std_logic;");
+                sw.WriteLine("            pdm_dat_left : in std_logic;");
                 if(nasCommons.monoStereo == NASTYPE.STEREO)
                 {
-                    sw.WriteLine("        pdm_clk_rigth : out std_logic;");
-                    sw.WriteLine("        pdm_dat_rigth : in std_logic;");
+                    sw.WriteLine("            pdm_clk_rigth : out std_logic;");
+                    sw.WriteLine("            pdm_dat_rigth : in std_logic;");
                 }
             }
             if (nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2SPDM)
             {
-                sw.WriteLine("        --Spikes source selector");
-                sw.WriteLine("        source_sel : in std_logic;");
+                sw.WriteLine("            --Spikes source selector");
+                sw.WriteLine("            source_sel : in std_logic;");
             }
 
-            sw.WriteLine("        --AER Output");
-            sw.WriteLine("        AER_DATA_OUT : out std_logic_vector(15 downto 0);");
-            sw.WriteLine("        AER_REQ : out std_logic;");
-            sw.WriteLine("        AER_ACK : in std_logic");
+            sw.WriteLine("            --AER Output");
+            sw.WriteLine("            AER_DATA_OUT : out std_logic_vector(15 downto 0);");
+            sw.WriteLine("            AER_REQ : out std_logic;");
+            sw.WriteLine("            AER_ACK : in std_logic");
             sw.WriteLine("        );");
             sw.WriteLine("    end component;");
             sw.WriteLine("");
@@ -1698,51 +1713,51 @@ namespace OpenNAS_App.NASComponents
             if(version == 2)
             {
                 sw.WriteLine("    component raggedstone_spinn_aer_if_top is");
-                sw.WriteLine("    port(");
-                sw.WriteLine("        ext_nreset: in std_logic;");
-                sw.WriteLine("        ext_clk: in std_logic;");
-                sw.WriteLine("        --// display interface (7-segment and leds)");
-                sw.WriteLine("        ext_mode_sel: in std_logic;");
-                sw.WriteLine("        ext_7seg: out std_logic_vector(7 downto 0);");
-                sw.WriteLine("        ext_strobe: out std_logic_vector(3 downto 0);");
-                sw.WriteLine("        ext_led2: out std_logic;");
-                sw.WriteLine("        ext_led3: out std_logic;");
-                sw.WriteLine("        ext_led4: out std_logic;");
-                sw.WriteLine("        ext_led5: out std_logic;");
-                sw.WriteLine("        --// input from SpiNNaker link interface");
-                sw.WriteLine("        data_2of7_from_spinnaker: in std_logic_vector(6 downto 0);");
-                sw.WriteLine("        ack_to_spinnaker: out std_logic;");
-                sw.WriteLine("        --// output to SpiNNaker link interface");
-                sw.WriteLine("        data_2of7_to_spinnaker: out std_logic_vector(6 downto 0);");
-                sw.WriteLine("        ack_from_spinnaker: in std_logic;");
-                sw.WriteLine("        --// input from AER device interface");
-                sw.WriteLine("        iaer_data: in std_logic_vector(15 downto 0);");
-                sw.WriteLine("        iaer_req: in std_logic;");
-                sw.WriteLine("        iaer_ack: out std_logic;");
-                sw.WriteLine("        --// output to AER device interface");
-                sw.WriteLine("        oaer_data: out std_logic_vector(15 downto 0);");
-                sw.WriteLine("        oaer_req: out std_logic;");
-                sw.WriteLine("        oaer_ack: in std_logic");
+                sw.WriteLine("        Port (");
+                sw.WriteLine("            ext_nreset: in std_logic;");
+                sw.WriteLine("            ext_clk: in std_logic;");
+                sw.WriteLine("            --// display interface (7-segment and leds)");
+                sw.WriteLine("            ext_mode_sel: in std_logic;");
+                sw.WriteLine("            ext_7seg: out std_logic_vector(7 downto 0);");
+                sw.WriteLine("            ext_strobe: out std_logic_vector(3 downto 0);");
+                sw.WriteLine("            ext_led2: out std_logic;");
+                sw.WriteLine("            ext_led3: out std_logic;");
+                sw.WriteLine("            ext_led4: out std_logic;");
+                sw.WriteLine("            ext_led5: out std_logic;");
+                sw.WriteLine("            --// input from SpiNNaker link interface");
+                sw.WriteLine("            data_2of7_from_spinnaker: in std_logic_vector(6 downto 0);");
+                sw.WriteLine("            ack_to_spinnaker: out std_logic;");
+                sw.WriteLine("            --// output to SpiNNaker link interface");
+                sw.WriteLine("            data_2of7_to_spinnaker: out std_logic_vector(6 downto 0);");
+                sw.WriteLine("            ack_from_spinnaker: in std_logic;");
+                sw.WriteLine("            --// input from AER device interface");
+                sw.WriteLine("            iaer_data: in std_logic_vector(15 downto 0);");
+                sw.WriteLine("            iaer_req: in std_logic;");
+                sw.WriteLine("            iaer_ack: out std_logic;");
+                sw.WriteLine("            --// output to AER device interface");
+                sw.WriteLine("            oaer_data: out std_logic_vector(15 downto 0);");
+                sw.WriteLine("            oaer_req: out std_logic;");
+                sw.WriteLine("            oaer_ack: in std_logic");
                 
             }
             else if (version == 1)
             {
                 sw.WriteLine("    component spinn_aer_if is");
-                sw.WriteLine("    port (");
-                sw.WriteLine("        clk: in  STD_LOGIC;");
-                sw.WriteLine("        data_2of7_to_spinnaker: out STD_LOGIC_VECTOR(6 downto 0);");
-                sw.WriteLine("        ack_from_spinnaker: in STD_LOGIC;");
-                sw.WriteLine("        aer_req: in STD_LOGIC;");
-                sw.WriteLine("        aer_data: in STD_LOGIC_VECTOR(15 downto 0);");
-                sw.WriteLine("        aer_ack: out STD_LOGIC;");
-                sw.WriteLine("        reset: in STD_LOGIC");
+                sw.WriteLine("        Port (");
+                sw.WriteLine("            clk: in  STD_LOGIC;");
+                sw.WriteLine("            data_2of7_to_spinnaker: out STD_LOGIC_VECTOR(6 downto 0);");
+                sw.WriteLine("            ack_from_spinnaker: in STD_LOGIC;");
+                sw.WriteLine("            aer_req: in STD_LOGIC;");
+                sw.WriteLine("            aer_data: in STD_LOGIC_VECTOR(15 downto 0);");
+                sw.WriteLine("            aer_ack: out STD_LOGIC;");
+                sw.WriteLine("            reset: in STD_LOGIC");
             }
             else
             {
 
             }
 
-            sw.WriteLine("    );");
+            sw.WriteLine("        );");
             sw.WriteLine("    end component;");
             sw.WriteLine("");
 
@@ -1752,16 +1767,16 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("    ----------- AER In module -----------");
                 sw.WriteLine("    -------------------------------------");
                 sw.WriteLine("    component AER_IN is");
-                sw.WriteLine("    port(");
-                sw.WriteLine("        i_clk : in  std_logic;");
-                sw.WriteLine("        i_rst : in  std_logic;");
-                sw.WriteLine("        --AER handshake");
-                sw.WriteLine("        i_aer_in : in  std_logic_vector (15 downto 0);");
-                sw.WriteLine("        i_req_in : in  std_logic;");
-                sw.WriteLine("        o_ack_in : out  std_logic;");
-                sw.WriteLine("        --AER data output to be processed");
-                sw.WriteLine("        o_aer_data : out std_logic_vector(15 downto 0);");
-                sw.WriteLine("        o_new_aer_data : out std_logic");
+                sw.WriteLine("        Port (");
+                sw.WriteLine("            i_clk : in  std_logic;");
+                sw.WriteLine("            i_rst : in  std_logic;");
+                sw.WriteLine("                --AER handshake");
+                sw.WriteLine("            i_aer_in : in  std_logic_vector (15 downto 0);");
+                sw.WriteLine("            i_req_in : in  std_logic;");
+                sw.WriteLine("            o_ack_in : out  std_logic;");
+                sw.WriteLine("            --AER data output to be processed");
+                sw.WriteLine("            o_aer_data : out std_logic_vector(15 downto 0);");
+                sw.WriteLine("            o_new_aer_data : out std_logic");
                 sw.WriteLine("        );");
                 sw.WriteLine("    end component;");
                 sw.WriteLine("");
@@ -1774,53 +1789,53 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("");
 
             sw.WriteLine("    --Reset signals");
-            sw.WriteLine("    signal reset : std_logic;");
+            sw.WriteLine("    signal reset   : std_logic;");
             sw.WriteLine("    signal n_reset : std_logic;");
             sw.WriteLine("");
 
             sw.WriteLine("    --Signals to connect AER interface from OpenNAS module to SpiNN-AER interface module");
             sw.WriteLine("    signal aer_data_NAS_to_spinn : std_logic_vector(15 downto 0);");
-            sw.WriteLine("    signal aer_req_NAS_to_spinn : std_logic;");
-            sw.WriteLine("    signal aer_ack_NAS_to_spinn : std_logic;");
+            sw.WriteLine("    signal aer_req_NAS_to_spinn  : std_logic;");
+            sw.WriteLine("    signal aer_ack_NAS_to_spinn  : std_logic;");
             sw.WriteLine("");
 
             if(version == 2)
             {
                 sw.WriteLine("    --Signals to connect AER interface from SpiNN-AER interface module with AER processing module");
                 sw.WriteLine("    signal aer_data_spinn_to_fpga : std_logic_vector(15 downto 0);");
-                sw.WriteLine("    signal aer_req_spinn_to_fpga : std_logic;");
-                sw.WriteLine("    signal aer_ack_spinn_to_fpga : std_logic;");
+                sw.WriteLine("    signal aer_req_spinn_to_fpga  : std_logic;");
+                sw.WriteLine("    signal aer_ack_spinn_to_fpga  : std_logic;");
                 sw.WriteLine("");
 
                 sw.WriteLine("    --AER events from SpiNNaker to be processed");
-                sw.WriteLine("    signal aer_data_from_spinn : std_logic_vector(15 downto 0);");
+                sw.WriteLine("    signal aer_data_from_spinn     : std_logic_vector(15 downto 0);");
                 sw.WriteLine("    signal new_aer_data_from_spinn : std_logic;");
                 sw.WriteLine("");
 
                 sw.WriteLine("    --Unconnected signals");
-                sw.WriteLine("    signal modesel: std_logic;");
-                sw.WriteLine("    signal d_7seg: std_logic_vector(7 downto 0);");
-                sw.WriteLine("    signal strobe: std_logic_vector(3 downto 0);");
+                sw.WriteLine("    signal modesel : std_logic;");
+                sw.WriteLine("    signal d_7seg  : std_logic_vector(7 downto 0);");
+                sw.WriteLine("    signal strobe  : std_logic_vector(3 downto 0);");
                 sw.WriteLine("");
             }
 
             sw.WriteLine("    begin");
             sw.WriteLine("");
 
-            sw.WriteLine("        reset <= i_ext_reset;");
+            sw.WriteLine("        reset   <= i_ext_reset;");
             sw.WriteLine("        n_reset <= not i_ext_reset;");
             sw.WriteLine("");
 
             if(version == 2)
             {
                 sw.WriteLine("        --TEMP");
-                sw.WriteLine("        modesel<= n_reset;");
+                sw.WriteLine("        modesel <= n_reset;");
                 sw.WriteLine("");
             }
 
             sw.WriteLine("        U_NAS: OpenNas_" + audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + nasCommons.nCh + "ch");
-            sw.WriteLine("        port map(");
-            sw.WriteLine("            clock => i_ext_clock,");
+            sw.WriteLine("        Port Map(");
+            sw.WriteLine("            clock   => i_ext_clock,");
             sw.WriteLine("            rst_ext => reset,");
             if (nasInputIF == AudioInputControl.NASAUDIOSOURCE.AC97)
             {
@@ -1874,44 +1889,44 @@ namespace OpenNAS_App.NASComponents
 
             }
 
-            sw.WriteLine("        port map(");
+            sw.WriteLine("        Port Map (");
             if(version == 2)
             {
-                sw.WriteLine("            ext_nreset => reset,");
-                sw.WriteLine("            ext_clk => i_ext_clock,");
+                sw.WriteLine("            ext_nreset               => reset,");
+                sw.WriteLine("            ext_clk                  => i_ext_clock,");
                 sw.WriteLine("            --// display interface (7-segment and leds)");
-                sw.WriteLine("            ext_mode_sel => modesel,");
-                sw.WriteLine("            ext_7seg => d_7seg,");
-                sw.WriteLine("            ext_strobe => strobe,");
-                sw.WriteLine("            ext_led2 => o_spinn_ui_status_active,");
-                sw.WriteLine("            ext_led3 => o_spinn_ui_status_reset,");
-                sw.WriteLine("            ext_led4 => o_spinn_ui_status_dump,");
-                sw.WriteLine("            ext_led5 => o_spinn_ui_status_error,");
+                sw.WriteLine("            ext_mode_sel             => modesel,");
+                sw.WriteLine("            ext_7seg                 => d_7seg,");
+                sw.WriteLine("            ext_strobe               => strobe,");
+                sw.WriteLine("            ext_led2                 => o_spinn_ui_status_active,");
+                sw.WriteLine("            ext_led3                 => o_spinn_ui_status_reset,");
+                sw.WriteLine("            ext_led4                 => o_spinn_ui_status_dump,");
+                sw.WriteLine("            ext_led5                 => o_spinn_ui_status_error,");
                 sw.WriteLine("            --// input from SpiNNaker link interface");
                 sw.WriteLine("            data_2of7_from_spinnaker => i_data_in_from_spinnaker,");
-                sw.WriteLine("            ack_to_spinnaker => o_ack_in_to_spinnaker,");
+                sw.WriteLine("            ack_to_spinnaker         => o_ack_in_to_spinnaker,");
                 sw.WriteLine("            --// output to SpiNNaker link interface");
-                sw.WriteLine("            data_2of7_to_spinnaker => o_data_out_to_spinnaker,");
-                sw.WriteLine("            ack_from_spinnaker => i_ack_out_from_spinnaker,");
+                sw.WriteLine("            data_2of7_to_spinnaker   => o_data_out_to_spinnaker,");
+                sw.WriteLine("            ack_from_spinnaker       => i_ack_out_from_spinnaker,");
                 sw.WriteLine("            --// input from AER device interface");
-                sw.WriteLine("            iaer_data => aer_data_NAS_to_spinn,");
-                sw.WriteLine("            iaer_req => aer_req_NAS_to_spinn,");
-                sw.WriteLine("            iaer_ack => aer_ack_NAS_to_spinn,");
+                sw.WriteLine("            iaer_data                => aer_data_NAS_to_spinn,");
+                sw.WriteLine("            iaer_req                 => aer_req_NAS_to_spinn,");
+                sw.WriteLine("            iaer_ack                 => aer_ack_NAS_to_spinn,");
                 sw.WriteLine("            --// output to AER device interface");
-                sw.WriteLine("            oaer_data => aer_data_spinn_to_fpga,");
-                sw.WriteLine("            oaer_req => aer_req_spinn_to_fpga,");
-                sw.WriteLine("            oaer_ack => aer_ack_spinn_to_fpga");
+                sw.WriteLine("            oaer_data                => aer_data_spinn_to_fpga,");
+                sw.WriteLine("            oaer_req                 => aer_req_spinn_to_fpga,");
+                sw.WriteLine("            oaer_ack                 => aer_ack_spinn_to_fpga");
                 sw.WriteLine("        );");
             }
             else if (version == 1)
             {
-                sw.WriteLine("            clk => i_ext_clock,");
+                sw.WriteLine("            clk                    => i_ext_clock,");
                 sw.WriteLine("            data_2of7_to_spinnaker => o_data_out_to_spinnaker,");
-                sw.WriteLine("            ack_from_spinnaker => i_ack_out_from_spinnaker,");
-                sw.WriteLine("            aer_req => aer_req_NAS_to_spinn,");
-                sw.WriteLine("            aer_data => aer_data_NAS_to_spinn,");
-                sw.WriteLine("            aer_ack => aer_ack_NAS_to_spinn,");
-                sw.WriteLine("            reset => n_reset");
+                sw.WriteLine("            ack_from_spinnaker     => i_ack_out_from_spinnaker,");
+                sw.WriteLine("            aer_req                => aer_req_NAS_to_spinn,");
+                sw.WriteLine("            aer_data               => aer_data_NAS_to_spinn,");
+                sw.WriteLine("            aer_ack                => aer_ack_NAS_to_spinn,");
+                sw.WriteLine("            reset                  => n_reset");
                 sw.WriteLine("        );");
                 sw.WriteLine("");
             }
@@ -1924,7 +1939,7 @@ namespace OpenNAS_App.NASComponents
             if(version == 2)
             {
                 sw.WriteLine("        U_AER_in: AER_IN");
-                sw.WriteLine("        port map(");
+                sw.WriteLine("        Port Map (");
                 sw.WriteLine("            i_clk => i_ext_clock,");
                 sw.WriteLine("            i_rst => reset,");
                 sw.WriteLine("            --AER handshake");

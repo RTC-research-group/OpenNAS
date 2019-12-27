@@ -1,6 +1,6 @@
 --/////////////////////////////////////////////////////////////////////////////////
 --//                                                                             //
---//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                     //
+--//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                      //
 --//                                                                             //
 --//    This file is part of OpenNAS.                                            //
 --//                                                                             //
@@ -25,83 +25,100 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity ramfifo is
-generic (TAM: in integer:= 2048; IL: in integer:=11; WL: in integer:=16);
- port (clk  : in std_logic; 
- 	wr   : in std_logic; 
-	rd	: in std_logic;
-	rst: in std_logic;
-	empty: out std_logic;
-	full: out std_logic;
- 	data_in   : in std_logic_vector(WL-1 downto 0); 
- 	data_out  : out std_logic_vector(WL-1 downto 0); 
-	mem_used : out std_logic_vector(IL-1 downto 0));
+	Generic (
+		TAM      : INTEGER := 2048; 
+		IL       : INTEGER := 11; 
+		WL       : INTEGER := 16
+	);
+	Port (
+		clk      : in  STD_LOGIC; 
+		wr       : in  STD_LOGIC; 
+		rd	     : in  STD_LOGIC;
+		rst      : in  STD_LOGIC;
+		empty    : out STD_LOGIC;
+		full     : out STD_LOGIC;
+		data_in  : in  STD_LOGIC_VECTOR(WL-1 downto 0); 
+		data_out : out STD_LOGIC_VECTOR(WL-1 downto 0); 
+		mem_used : out STD_LOGIC_VECTOR(IL-1 downto 0)
+	);
 end ramfifo;
 
 
  
 architecture syn of ramfifo is 
 
-	COMPONENT dualram
-	generic (TAM: in integer:= TAM; IL: in integer:=IL; WL: in integer:=WL);
-	PORT(
-		clk : IN std_logic;
-	 	wr   : in std_logic; 
- 		index_i : in std_logic_vector(IL-1 downto 0); 
- 		index_o : in std_logic_vector(IL-1 downto 0); 
- 		word_i   : in std_logic_vector(WL-1 downto 0); 
- 		word_o  : out std_logic_vector(WL-1 downto 0) 
+	component dualram
+		Generic (
+			TAM     : INTEGER := TAM; 
+			IL      : INTEGER :=IL; 
+			WL      : INTEGER :=WL
 		);
-	END COMPONENT;
+		Port(
+			clk     : in  STD_LOGIC;
+			wr      : in  STD_LOGIC; 
+			index_i : in  STD_LOGIC_VECTOR(IL-1 downto 0); 
+			index_o : in  STD_LOGIC_VECTOR(IL-1 downto 0); 
+			word_i  : in  STD_LOGIC_VECTOR(WL-1 downto 0); 
+			word_o  : out STD_LOGIC_VECTOR(WL-1 downto 0) 
+		);
+	end component;
 
-	SIGNAL index_i :  std_logic_vector(IL-1 downto 0):=(others=>'0');
-	SIGNAL index_o :  std_logic_vector(IL-1 downto 0):=(others=>'0');
-	SIGNAL iempty: std_logic;
-	SIGNAL ifull: std_logic;
-	SIGNAL ramwr: std_logic;
-	SIGNAL memused: std_logic_vector(IL-1 downto 0):=(others=>'0');
-	SIGNAL dout: std_logic_vector(WL-1 downto 0);
+	signal index_i : STD_LOGIC_VECTOR(IL-1 downto 0);
+	signal index_o : STD_LOGIC_VECTOR(IL-1 downto 0);
+	signal iempty  : STD_LOGIC;
+	signal ifull   : STD_LOGIC;
+	signal ramwr   : STD_LOGIC;
+	signal memused : STD_LOGIC_VECTOR(IL-1 downto 0);
+	signal dout    : STD_LOGIC_VECTOR(WL-1 downto 0);
 
 
-BEGIN
+	begin
 
-	uut: dualram generic map (TAM,IL,WL)
-	PORT MAP(
-		clk => clk,
-		wr => ramwr,
-		index_i => index_i,
-		index_o => index_o,
-		word_i => data_in,
-		word_o => dout
+		uut: dualram 
+		Generic map (
+			TAM     => TAM,
+			IL      => IL,
+			WL      => WL
+		)
+		Port map(
+			clk     => clk,
+			wr      => ramwr,
+			index_i => index_i,
+			index_o => index_o,
+			word_i  => data_in,
+			word_o  => dout
 		);
 
-process (clk, wr, rd, rst, ifull, iempty, index_i, index_o, memused) 
-begin 
- 	if (rst ='0') then
-		index_i <= (others=>'0');
-		index_o <= (others=>'0');
-		memused <= (others=>'0');
-	elsif (clk'event and clk = '1') then
-   	if (wr = '1' and rd = '1') then
-			index_i <= index_i + 1;
-			index_o <= index_o + 1;
-			--memused <= memused; -- Al ser proceso sincrono y no cambiar memused no es necesaria esta linea.
-		elsif (wr = '1' and ifull = '0') then 
-			index_i <= index_i + 1;
-			memused <= memused + 1;
- 		elsif (rd = '1' and iempty = '0') then
-			index_o <= index_o + 1;
-			memused <= memused - 1;
-		end if;
- 	end if; 
- end process;
+		process (clk, wr, rd, rst, ifull, iempty, index_i, index_o, memused) 
+		begin 
+			if (rst = '0') then
+				index_i <= (others=>'0');
+				index_o <= (others=>'0');
+				memused <= (others=>'0');
+			elsif (clk'event and clk = '1') then
+				if (wr = '1' and rd = '1') then
+					index_i <= index_i + 1;
+					index_o <= index_o + 1;
+					--memused <= memused; -- Al ser proceso sincrono y no cambiar memused no es necesaria esta linea.
+				elsif (wr = '1' and ifull = '0') then 
+					index_i <= index_i + 1;
+					memused <= memused + 1;
+				elsif (rd = '1' and iempty = '0') then
+					index_o <= index_o + 1;
+					memused <= memused - 1;
+				else
+				
+				end if;
+			end if; 
+		end process;
 
- iempty <= '1' when memused = 0 else '0';
- ifull <= '1' when  memused = TAM-1  else '0';
- empty <= iempty;
- full <= ifull;
- ramwr <= wr and not ifull;
- data_out <= dout when (iempty='0') else (others => 'Z'); -- Puede eliminarse y puentearse la salida de dualram con la salida de la fifo.
- mem_used <= memused; 
- end syn;
+		iempty   <= '1' when memused = 0 else '0';
+		ifull    <= '1' when memused = TAM-1  else '0';
+		empty    <= iempty;
+		full     <= ifull;
+		ramwr    <= wr and not ifull;
+		data_out <= dout when (iempty = '0') else (others => 'Z'); -- Puede eliminarse y puentearse la salida de dualram con la salida de la fifo.
+		mem_used <= memused; 
+end syn;
  
 

@@ -108,57 +108,53 @@ namespace OpenNAS_App.NASComponents
             if (moduleVersion == 2.0)
             {
                 sw.WriteLine("");
-                sw.WriteLine("-- SpiNNaer-AER interface v2");
-                sw.WriteLine("component raggedstone_spinn_aer_if_top is");
-                sw.WriteLine("	port(");
-                sw.WriteLine("		ext_nreset: in STD_LOGIC;");
-                sw.WriteLine("		ext_clk: in std_logic;");
-                sw.WriteLine("		");
-                sw.WriteLine("		--// display interface (7-segment and leds)");
-                sw.WriteLine("		ext_mode_sel: in std_logic;");
-                sw.WriteLine("		ext_7seg: out std_logic_vector(7 downto 0);");
-                sw.WriteLine("		ext_strobe: out std_logic_vector(3 downto 0);");
-                sw.WriteLine("		ext_led2: out std_logic;");
-                sw.WriteLine("		ext_led3: out std_logic;");
-                sw.WriteLine("		ext_led4: out std_logic;");
-                sw.WriteLine("		ext_led5: out std_logic;");
-                sw.WriteLine("		--// input from SpiNNaker link interface");
-                sw.WriteLine("		data_2of7_from_spinnaker: in std_logic_vector(6 downto 0);");
-                sw.WriteLine("		ack_to_spinnaker: out std_logic;");
-                sw.WriteLine("		");
-                sw.WriteLine("		--// output to SpiNNaker link interface");
-                sw.WriteLine("		data_2of7_to_spinnaker: out std_logic_vector(6 downto 0);");
-                sw.WriteLine("		ack_from_spinnaker: in std_logic;");
-                sw.WriteLine("		");
-                sw.WriteLine("		--// input from AER device interface");
-                sw.WriteLine("		iaer_data: in std_logic_vector(15 downto 0);");
-                sw.WriteLine("		iaer_req: in std_logic;");
-                sw.WriteLine("		iaer_ack: out std_logic;");
-                sw.WriteLine("		");
-                sw.WriteLine("		--// output to AER device interface");
-                sw.WriteLine("		oaer_data: out std_logic_vector(15 downto 0);");
-                sw.WriteLine("		oaer_req: out std_logic;");
-                sw.WriteLine("		oaer_ack: in std_logic");
-                sw.WriteLine("	);");
-                sw.WriteLine("end component;");
+                sw.WriteLine("    -- SpiNNaer-AER interface v2");
+                sw.WriteLine("    component raggedstone_spinn_aer_if_top is");
+                sw.WriteLine("        Port (");
+                sw.WriteLine("            ext_nreset               : in  std_logic;");
+                sw.WriteLine("            ext_clk                  : in  std_logic;");
+                sw.WriteLine("            --// display interface (7-segment and leds)");
+                sw.WriteLine("            ext_mode_sel             : in  std_logic;");
+                sw.WriteLine("            ext_7seg                 : out std_logic_vector(7 downto 0);");
+                sw.WriteLine("            ext_strobe               : out std_logic_vector(3 downto 0);");
+                sw.WriteLine("            ext_led2                 : out std_logic;");
+                sw.WriteLine("            ext_led3                 : out std_logic;");
+                sw.WriteLine("            ext_led4                 : out std_logic;");
+                sw.WriteLine("            ext_led5                 : out std_logic;");
+                sw.WriteLine("            --// input from SpiNNaker link interface");
+                sw.WriteLine("            data_2of7_from_spinnaker : in  std_logic_vector(6 downto 0);");
+                sw.WriteLine("            ack_to_spinnaker         : out std_logic;");
+                sw.WriteLine("            --// output to SpiNNaker link interface");
+                sw.WriteLine("            data_2of7_to_spinnaker   : out std_logic_vector(6 downto 0);");
+                sw.WriteLine("            ack_from_spinnaker       : in  std_logic;");
+                sw.WriteLine("            --// input from AER device interface");
+                sw.WriteLine("            iaer_data                : in  std_logic_vector(15 downto 0);");
+                sw.WriteLine("            iaer_req                 : in  std_logic;");
+                sw.WriteLine("            iaer_ack                 : out std_logic;");
+                sw.WriteLine("            --// output to AER device interface");
+                sw.WriteLine("            oaer_data                : out std_logic_vector(15 downto 0);");
+                sw.WriteLine("            oaer_req                 : out std_logic;");
+                sw.WriteLine("            oaer_ack                 : in  std_logic");
+                sw.WriteLine("        );");
+                sw.WriteLine("    end component;");
                 sw.WriteLine("");
 
             }
             else //por defecto sera la 1.0
             {
                 sw.WriteLine("");
-                sw.WriteLine("-- SpiNNaer-AER interface v1");
-                sw.WriteLine("component spinn_aer_if is");
-                sw.WriteLine("port (");
-                sw.WriteLine("    CLK: in  STD_LOGIC;");
-                sw.WriteLine("    data_2of7_to_spinnaker: out STD_LOGIC_VECTOR(6 downto 0);");
-                sw.WriteLine("    ack_from_spinnaker: in STD_LOGIC;");
-                sw.WriteLine("    aer_req: in STD_LOGIC;");
-                sw.WriteLine("    aer_data: in STD_LOGIC_VECTOR (15 downto 0);");
-                sw.WriteLine("    aer_ack: out STD_LOGIC;");
-                sw.WriteLine("    reset: in STD_LOGIC");
-                sw.WriteLine(");");
-                sw.WriteLine("end component;");
+                sw.WriteLine("    -- SpiNNaer-AER interface v1");
+                sw.WriteLine("    component spinn_aer_if is");
+                sw.WriteLine("        Port (");
+                sw.WriteLine("            CLK                    : in  STD_LOGIC;");
+                sw.WriteLine("            data_2of7_to_spinnaker : out STD_LOGIC_VECTOR(6 downto 0);");
+                sw.WriteLine("            ack_from_spinnaker     : in  STD_LOGIC;");
+                sw.WriteLine("            aer_req                : in  STD_LOGIC;");
+                sw.WriteLine("            aer_data               : in  STD_LOGIC_VECTOR (15 downto 0);");
+                sw.WriteLine("            aer_ack                : out STD_LOGIC;");
+                sw.WriteLine("            reset                  : in  STD_LOGIC");
+                sw.WriteLine("        );");
+                sw.WriteLine("    end component;");
                 sw.WriteLine("");
             }
         }

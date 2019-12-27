@@ -1,6 +1,6 @@
 ﻿/////////////////////////////////////////////////////////////////////////////////
 //                                                                             //
-//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                     //
+//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                      //
 //                                                                             //
 //    This file is part of OpenNAS.                                            //
 //                                                                             //
@@ -97,17 +97,22 @@ namespace OpenNAS_App.NASComponents
         /// <param name="sw">NAS Top file handler</param>              
         public override void WriteComponentArchitecture(StreamWriter sw)
         {
-            sw.WriteLine("--Spikes Distributed Monitor");
-            sw.WriteLine("component AER_DISTRIBUTED_MONITOR is");
-            sw.WriteLine("generic(N_SPIKES: integer:=128; LOG_2_N_SPIKES: integer:=7; TAM_AER: in integer; IL_AER: in integer);");
-            sw.WriteLine("Port(");
-            sw.WriteLine("  CLK: in  STD_LOGIC;");
-            sw.WriteLine("  RST: in  STD_LOGIC;");
-            sw.WriteLine("  SPIKES_IN: in  STD_LOGIC_VECTOR(N_SPIKES - 1 downto 0);");
-            sw.WriteLine("  AER_DATA_OUT: out  STD_LOGIC_VECTOR(15 downto 0);");
-            sw.WriteLine("  AER_REQ: out  STD_LOGIC;");
-            sw.WriteLine("  AER_ACK: in  STD_LOGIC);");
-            sw.WriteLine("end component;");
+            sw.WriteLine("    --Spikes Distributed Monitor");
+            sw.WriteLine("    component AER_DISTRIBUTED_MONITOR is");
+            sw.WriteLine("        Generic (   ");
+            sw.WriteLine("            N_SPIKES       : INTEGER := 128;");
+            sw.WriteLine("            LOG_2_N_SPIKES : INTEGER := 7;");
+            sw.WriteLine("            TAM_AER        : INTEGER := 512;");
+            sw.WriteLine("            IL_AER         : INTEGER := 11");
+            sw.WriteLine("        );");
+            sw.WriteLine("        Port (");
+            sw.WriteLine("            CLK            : in  STD_LOGIC;");
+            sw.WriteLine("            RST            : in  STD_LOGIC;");
+            sw.WriteLine("            SPIKES_IN      : in  STD_LOGIC_VECTOR(N_SPIKES - 1 downto 0);");
+            sw.WriteLine("            AER_DATA_OUT   : out STD_LOGIC_VECTOR(15 downto 0);");
+            sw.WriteLine("            AER_REQ        : out STD_LOGIC;");
+            sw.WriteLine("            AER_ACK        : in  STD_LOGIC);");
+            sw.WriteLine("    end component;");
         }
 
         /// <summary>
@@ -116,16 +121,22 @@ namespace OpenNAS_App.NASComponents
         /// <param name="sw">NAS Top file handler</param>
         public override void WriteComponentInvocation(StreamWriter sw)
         {
-            sw.WriteLine("--Spikes Distributed Monitor");
-            sw.WriteLine(" U_AER_DISTRIBUTED_MONITOR: AER_DISTRIBUTED_MONITOR");
-            sw.WriteLine("generic map (N_SPIKES=>" + (2 * nCh) + ", LOG_2_N_SPIKES=>" + ((int)Math.Log(2 * nCh, 2)) + ", TAM_AER=>" + ((int)Math.Pow(2, aerFifoDepth)) + ", IL_AER=>" + aerFifoDepth + ")");
-            sw.WriteLine("Port map (");
-            sw.WriteLine("  CLK=>clock,");
-            sw.WriteLine("  RST=> reset,");
-            sw.WriteLine("  SPIKES_IN=>spikes_out,");
-            sw.WriteLine("  AER_DATA_OUT=>AER_DATA_OUT,");
-            sw.WriteLine("  AER_REQ=>AER_REQ,");
-            sw.WriteLine("  AER_ACK=>AER_ACK);");
+            sw.WriteLine("        --Spikes Distributed Monitor");
+            sw.WriteLine("        U_AER_DISTRIBUTED_MONITOR: AER_DISTRIBUTED_MONITOR");
+            sw.WriteLine("        Generic Map (");
+            sw.WriteLine("            N_SPIKES       =>" + (2 * nCh) + ",");
+            sw.WriteLine("            LOG_2_N_SPIKES =>" + ((int)Math.Log(2 * nCh, 2)) + ",");
+            sw.WriteLine("            TAM_AER        =>" + ((int)Math.Pow(2, aerFifoDepth)) + ",");
+            sw.WriteLine("            IL_AER         =>" + aerFifoDepth);
+            sw.WriteLine("        )");
+            sw.WriteLine("        Port Map (");
+            sw.WriteLine("            CLK            => clock,");
+            sw.WriteLine("            RST            => reset,");
+            sw.WriteLine("            SPIKES_IN      => spikes_out,");
+            sw.WriteLine("            AER_DATA_OUT   => AER_DATA_OUT,");
+            sw.WriteLine("            AER_REQ        => AER_REQ,");
+            sw.WriteLine("            AER_ACK        => AER_ACK");
+            sw.WriteLine("        );");
             sw.WriteLine("");
         }
 
@@ -136,10 +147,10 @@ namespace OpenNAS_App.NASComponents
         public override void WriteTopSignals(StreamWriter sw)
         {
 
-            sw.WriteLine("--AER Output");
-            sw.WriteLine("  AER_DATA_OUT: out  STD_LOGIC_VECTOR(15 downto 0);");
-            sw.WriteLine("  AER_REQ: out  STD_LOGIC;");
-            sw.WriteLine("  AER_ACK: in  STD_LOGIC");
+            sw.WriteLine("        --AER Output");
+            sw.WriteLine("        AER_DATA_OUT : out STD_LOGIC_VECTOR(15 downto 0);");
+            sw.WriteLine("        AER_REQ      : out STD_LOGIC;");
+            sw.WriteLine("        AER_ACK      : in  STD_LOGIC");
 
         }
     }

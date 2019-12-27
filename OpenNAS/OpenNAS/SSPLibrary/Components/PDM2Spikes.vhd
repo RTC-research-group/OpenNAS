@@ -1,6 +1,6 @@
 --/////////////////////////////////////////////////////////////////////////////////
 --//                                                                             //
---//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                     //
+--//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                      //
 --//                                                                             //
 --//    This file is part of OpenNAS.                                            //
 --//                                                                             //
@@ -44,112 +44,140 @@ use IEEE.NUMERIC_STD.ALL;
 
 
 entity PDM2Spikes is
-generic (SLPF_GL: in integer:=11; SLPF_SAT: in integer:=1023; SHPF_GL: in integer:=17; SHPF_SAT: in integer:=65535);
-port (
-	clk				: in std_logic;		
-	rst				: in std_logic;
-	clock_div : in std_logic_vector(7 downto 0);
-	PDM_CLK		: out std_logic;
-	PDM_DAT		: in std_logic;
-	SHPF_FREQ_DIV: in STD_LOGIC_VECTOR(7 downto 0);
-	SLPF_FREQ_DIV: in STD_LOGIC_VECTOR(7 downto 0);
-	SLPF_SPIKES_DIV_FB: in STD_LOGIC_VECTOR(15 downto 0);
-   SLPF_SPIKES_DIV_OUT: in STD_LOGIC_VECTOR(15 downto 0);
-	SPIKES_OUT			: out std_logic_vector(1 downto 0)
+	Generic (
+		SLPF_GL             : INTEGER := 11; 
+		SLPF_SAT            : INTEGER := 1023; 
+		SHPF_GL             : INTEGER := 17; 
+		SHPF_SAT            : INTEGER := 65535
+	);
+	Port (
+		CLK                 : in  STD_LOGIC;		
+		RST                 : in  STD_LOGIC;
+		CLOCK_DIV           : in  STD_LOGIC_VECTOR(7 downto 0);
+		PDM_CLK             : out STD_LOGIC;
+		PDM_DAT             : in  STD_LOGIC;
+		SHPF_FREQ_DIV       : in  STD_LOGIC_VECTOR(7 downto 0);
+		SLPF_FREQ_DIV       : in  STD_LOGIC_VECTOR(7 downto 0);
+		SLPF_SPIKES_DIV_FB  : in  STD_LOGIC_VECTOR(15 downto 0);
+		SLPF_SPIKES_DIV_OUT : in  STD_LOGIC_VECTOR(15 downto 0);
+		SPIKES_OUT          : out STD_LOGIC_VECTOR(1 downto 0)
 	);
 end PDM2Spikes;
 
 architecture Behavioral of PDM2Spikes is
 	
 	component PDM_Interface is
-port (
-	clk				: in std_logic;		
-	rst				: in std_logic;
-	clock_div : in std_logic_vector(7 downto 0);
-	PDM_CLK		: out std_logic;
-	PDM_DAT		: in std_logic;
-	SPIKES_OUT			: out std_logic_vector(1 downto 0)
-	);
-end component;
-
-	component spikes_2LPF_fullGain is
-	generic (GL: in integer:=16; SAT: in integer:=32536);
-    Port ( CLK : in  STD_LOGIC;
-           RST : in  STD_LOGIC;
-           FREQ_DIV: in STD_LOGIC_VECTOR(7 downto 0);
-           SPIKES_DIV_FB: in STD_LOGIC_VECTOR(15 downto 0);
-           SPIKES_DIV_OUT: in STD_LOGIC_VECTOR(15 downto 0);
-           spike_in_p : in  STD_LOGIC;
-           spike_in_n : in  STD_LOGIC;
-           spike_out_p : out  STD_LOGIC;
-           spike_out_n : out  STD_LOGIC);
+		Port (
+			CLK        : in  STD_LOGIC;		
+			RST        : in  STD_LOGIC;
+			CLOCK_DIV  : in  STD_LOGIC_VECTOR(7 downto 0);
+			PDM_CLK    : out STD_LOGIC;
+			PDM_DAT    : in  STD_LOGIC;
+			SPIKES_OUT : out STD_LOGIC_VECTOR(1 downto 0)
+		);
 	end component;
 
-component spikes_HPF is
-generic (GL: in integer:=16; SAT: in integer:=32536);
-	 Port ( CLK : in  STD_LOGIC;
-           RST : in  STD_LOGIC;
-           FREQ_DIV: in STD_LOGIC_VECTOR(7 downto 0);
-           spike_in_p : in  STD_LOGIC;
-           spike_in_n : in  STD_LOGIC;
-           spike_out_p : out  STD_LOGIC;
-           spike_out_n : out  STD_LOGIC);
-end component;
+	component spikes_2LPF_fullGain is
+		Generic (
+			GL             : INTEGER := 16; 
+			SAT            : INTEGER := 32536
+		);
+		Port ( 
+			CLK            : in  STD_LOGIC;
+			RST            : in  STD_LOGIC;
+			FREQ_DIV       : in  STD_LOGIC_VECTOR(7 downto 0);
+			SPIKES_DIV_FB  : in  STD_LOGIC_VECTOR(15 downto 0);
+			SPIKES_DIV_OUT : in  STD_LOGIC_VECTOR(15 downto 0);
+			spike_in_p     : in  STD_LOGIC;
+			spike_in_n     : in  STD_LOGIC;
+			spike_out_p    : out STD_LOGIC;
+			spike_out_n    : out STD_LOGIC
+		);
+	end component;
 
-signal spikes_pdm: std_logic_vector(1 downto 0);
-signal spikes_hpf_int: std_logic_vector(1 downto 0);
-signal spikes_hpf_int2: std_logic_vector(1 downto 0);
-signal spikes_int: std_logic_vector(1 downto 0);
+	component spikes_HPF is
+		Generic (
+			GL          : in INTEGER := 16; 
+			SAT         : in INTEGER := 32536
+		);
+		Port ( 
+			CLK         : in  STD_LOGIC;
+			RST         : in  STD_LOGIC;
+			FREQ_DIV    : in  STD_LOGIC_VECTOR(7 downto 0);
+			spike_in_p  : in  STD_LOGIC;
+			spike_in_n  : in  STD_LOGIC;
+			spike_out_p : out STD_LOGIC;
+			spike_out_n : out STD_LOGIC
+		);
+	end component;
 
-begin
+	signal spikes_pdm      : STD_LOGIC_VECTOR(1 downto 0);
+	signal spikes_hpf_int  : STD_LOGIC_VECTOR(1 downto 0);
+	signal spikes_hpf_int2 : STD_LOGIC_VECTOR(1 downto 0);
+	signal spikes_int      : STD_LOGIC_VECTOR(1 downto 0);
+	signal n_rst           : STD_LOGIC;
 
-U_PDM_Interface: PDM_Interface
-port map (
-  clk=>clk,
-  rst=>rst,
-	clock_div =>clock_div,
-	PDM_CLK	=>	PDM_CLK,	
-	PDM_DAT	=>PDM_DAT,	
---Spikes Output
-  spikes_out =>spikes_pdm
-);
+	begin
 
-U_SHPF1: 	spikes_HPF
-	generic map (GL=>SHPF_GL, SAT=>SHPF_SAT)
-    Port map ( CLK =>CLK,
-			RST=> (not RST),
-			FREQ_DIV=>SHPF_FREQ_DIV,
-			spike_in_p=>spikes_pdm(1),
-			spike_in_n =>spikes_pdm(0),
+		n_rst <= not RST;
+
+		U_PDM_Interface: PDM_Interface
+		Port Map (
+			CLK        => clk,
+			RST        => rst,
+			CLOCK_DIV  => clock_div,
+			PDM_CLK    => PDM_CLK,	
+			PDM_DAT    => PDM_DAT,	
+			spikes_out => spikes_pdm
+		);
+
+		U_SHPF1: spikes_HPF
+		Generic Map (
+			GL          => SHPF_GL, 
+			SAT         => SHPF_SAT
+		)
+		Port Map ( 
+			CLK         => CLK,
+			RST         => n_rst,
+			FREQ_DIV    => SHPF_FREQ_DIV,
+			spike_in_p  => spikes_pdm(1),
+			spike_in_n  => spikes_pdm(0),
 			spike_out_p => spikes_hpf_int(1),
-			spike_out_n => spikes_hpf_int(0));
+			spike_out_n => spikes_hpf_int(0)
+		);
 
-U_SHPF2: 	spikes_HPF
-	generic map (GL=>SHPF_GL, SAT=>SHPF_SAT)
-    Port map ( CLK =>CLK,
-			RST=> (not RST),
-			FREQ_DIV=>SHPF_FREQ_DIV,
-			spike_in_p=>spikes_hpf_int(1),
-			spike_in_n =>spikes_hpf_int(0),
+		U_SHPF2: spikes_HPF
+		Generic Map (
+			GL          => SHPF_GL, 
+			SAT         => SHPF_SAT
+		)
+		Port Map ( 
+			CLK         => CLK,
+			RST         => n_rst,
+			FREQ_DIV    => SHPF_FREQ_DIV,
+			spike_in_p  => spikes_hpf_int(1),
+			spike_in_n  => spikes_hpf_int(0),
 			spike_out_p => spikes_hpf_int2(1),
-			spike_out_n => spikes_hpf_int2(0));
-	
-			  
-U_LPF1: 	spikes_2LPF_fullGain
- 	generic map (GL=>SLPF_GL, SAT=>SLPF_SAT)
-    Port map ( CLK =>CLK,
-           RST=> (not RST),
-		   FREQ_DIV=>SLPF_FREQ_DIV,
-		   SPIKES_DIV_FB=>SLPF_SPIKES_DIV_FB,
-		   SPIKES_DIV_OUT=>SLPF_SPIKES_DIV_OUT,
-           spike_in_p=>spikes_hpf_int2(1),
-           spike_in_n =>spikes_hpf_int2(0),
-           spike_out_p => spikes_int(1),
-           spike_out_n => spikes_int(0));
+			spike_out_n => spikes_hpf_int2(0)
+		);
+			
+		U_LPF1: spikes_2LPF_fullGain
+		generic Map (
+			GL             => SLPF_GL, 
+			SAT            => SLPF_SAT
+		)
+		Port Map ( 
+			CLK            => CLK,
+			RST            => n_rst,
+			FREQ_DIV       => SLPF_FREQ_DIV,
+			SPIKES_DIV_FB  => SLPF_SPIKES_DIV_FB,
+			SPIKES_DIV_OUT => SLPF_SPIKES_DIV_OUT,
+			spike_in_p     => spikes_hpf_int2(1),
+			spike_in_n     => spikes_hpf_int2(0),
+			spike_out_p    => spikes_int(1),
+			spike_out_n    => spikes_int(0)
+		);
 
-SPIKES_OUT<=spikes_int;
-
-
-
+		SPIKES_OUT <= spikes_int;
 
 end Behavioral;

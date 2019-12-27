@@ -1,6 +1,6 @@
 --/////////////////////////////////////////////////////////////////////////////////
 --//                                                                             //
---//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                      //
+--//    Copyright Ã¯Â¿Â½ 2016  Angel Francisco Jimenez-Fernandez                      //
 --//                                                                             //
 --//    This file is part of OpenNAS.                                            //
 --//                                                                             //
@@ -19,54 +19,39 @@
 --//                                                                             //
 --/////////////////////////////////////////////////////////////////////////////////
 
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 22.03.2017 16:12:19
--- Design Name: 
--- Module Name: SpikesSource_Selector - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
-
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
-use IEEE.NUMERIC_STD.ALL;
-
-
-entity SpikesSource_Selector is
-    Port ( 
-		source_sel  : in  std_logic;
-		i2s_data    : in  std_logic_vector(1 downto 0);
-		pdm_data    : in  std_logic_vector(1 downto 0);
-		spikes_data : out std_logic_vector(1 downto 0)
+ENTITY c_element IS
+	PORT (
+		i_reset : IN STD_LOGIC;
+		i_src1_aer_ack : IN STD_LOGIC;
+		i_src2_aer_ack : IN STD_LOGIC;
+		o_global_aer_ack : OUT STD_LOGIC
 	);
-end SpikesSource_Selector;
+END c_element;
 
-architecture Behavioral of SpikesSource_Selector is
+ARCHITECTURE Behavioral OF c_element IS
+	
+	SIGNAL r_ack_state : STD_LOGIC;
+	
+BEGIN
 
-	begin
-		process (source_sel, i2s_data, pdm_data)
-		begin
-			case source_sel is
-				when '0'    => spikes_data <= i2s_data;
-				when '1'    => spikes_data <= pdm_data;
-				when others => spikes_data <= (others => '0');
-			end case;
-		end process;
+	main_process : process(i_reset, i_src1_aer_ack, i_src2_aer_ack)
+	BEGIN
+		IF (i_reset = '0') THEN
+			r_ack_state <= '0';
+		ELSE
+			IF ((i_src1_aer_ack = '1') AND (i_src2_aer_ack = '1')) THEN
+				r_ack_state <= '1';
+			ELSIF ((i_src1_aer_ack = '0') AND (i_src2_aer_ack = '0')) THEN
+				r_ack_state <= '0';
+			ELSE
+				
+			END IF;
+		END IF;
+	END PROCESS main_process;
+	
+	o_global_aer_ack <= r_ack_state;
 
-end Behavioral;
+END Behavioral;
