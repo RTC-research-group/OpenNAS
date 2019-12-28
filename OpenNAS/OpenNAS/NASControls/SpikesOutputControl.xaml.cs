@@ -50,21 +50,25 @@ namespace OpenNAS_App.NASControls
             spikesOutputPanel.Children.Add(spikesDistributedMonitor);
             currentControl = spikesDistributedMonitor;
 
+            checkBox_Monitor_plus_SpiNN.IsChecked = false;
+
             if (comboBox.SelectedIndex == Convert.ToInt32(NASAUDIOOUTPUT.AERMONITOR))
             {
                 ACK_SpiNN_label.Visibility = System.Windows.Visibility.Hidden;
+                checkBox_Monitor_plus_SpiNN.Visibility = System.Windows.Visibility.Collapsed;
+                spikesOutputPanel.Visibility = System.Windows.Visibility.Visible;
             }
             else if(comboBox.SelectedIndex == Convert.ToInt32(NASAUDIOOUTPUT.SPINNAKERV1))
             {
                 ACK_SpiNN_label.Visibility = System.Windows.Visibility.Visible;
+                checkBox_Monitor_plus_SpiNN.Visibility = System.Windows.Visibility.Visible;
+                spikesOutputPanel.Visibility = System.Windows.Visibility.Collapsed;
             }
             else if (comboBox.SelectedIndex == Convert.ToInt32(NASAUDIOOUTPUT.SPINNAKERV2))
             {
                 ACK_SpiNN_label.Visibility = System.Windows.Visibility.Visible;
-            }
-            else if (comboBox.SelectedIndex == Convert.ToInt32(NASAUDIOOUTPUT.AERNSPINN))
-            {
-                ACK_SpiNN_label.Visibility = System.Windows.Visibility.Visible;
+                checkBox_Monitor_plus_SpiNN.Visibility = System.Windows.Visibility.Visible;
+                spikesOutputPanel.Visibility = System.Windows.Visibility.Collapsed;
             }
             InitializeControlValues(commons);
         }
@@ -90,6 +94,20 @@ namespace OpenNAS_App.NASControls
         {
             this.commons = commons;
             currentControl.InitializeControlValues(commons);
+        }
+
+        private void CheckBox_Monitor_plus_SpiNN_Checked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if( checkBox_Monitor_plus_SpiNN.IsChecked == true)
+            {
+                audioOutput = NASAUDIOOUTPUT.AERNSPINN;
+                spikesOutputPanel.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+            {
+                audioOutput = (NASAUDIOOUTPUT)comboBox.SelectedIndex;
+                spikesOutputPanel.Visibility = System.Windows.Visibility.Collapsed;
+            }
         }
     }
 }

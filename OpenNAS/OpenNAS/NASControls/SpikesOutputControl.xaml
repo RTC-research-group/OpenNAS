@@ -34,12 +34,13 @@
                 <ComboBoxItem Content="Spikes Distributed Monitor"/>
                 <ComboBoxItem Content="Spinnaker-AER Interface v1"/>
                 <ComboBoxItem Content="Spinnaker-AER Interface v2"/>
-                <ComboBoxItem Content="AER Monitor and Spinnaker Interface"/>
                 <!--<ComboBoxItem Content="USB Interface"/>-->
             </ComboBox>
             <Label x:Name="ACK_SpiNN_label" Visibility="Hidden">Developed by APT Group (University of Manchester)</Label>
         </DockPanel>
-        <DockPanel x:Name="spikesOutputPanel" HorizontalAlignment="Left"   VerticalAlignment="Top" Margin="0 20 0 0"/>
-
+        <DockPanel HorizontalAlignment="Left"   VerticalAlignment="Top" Margin="0 20 0 0">
+            <DockPanel x:Name="spikesOutputPanel" Visibility="Collapsed" DockPanel.Dock="Bottom"/>
+            <CheckBox x:Name="checkBox_Monitor_plus_SpiNN" DockPanel.Dock="Top" Margin="0 0 0 20" Visibility="Collapsed" Checked="CheckBox_Monitor_plus_SpiNN_Checked" Unchecked="CheckBox_Monitor_plus_SpiNN_Checked">Add AER-Monitor output</CheckBox>
+        </DockPanel>
     </DockPanel>
 </UserControl>
