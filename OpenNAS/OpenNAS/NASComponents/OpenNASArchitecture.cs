@@ -231,15 +231,17 @@ namespace OpenNAS_App.NASComponents
             sw.Close();
 
             SpikesOutputControl.NASAUDIOOUTPUT nasOutputIF = SpikesOutputControl.audioOutput;
+            bool isMixedOutput = SpikesOutputControl.isMixedOutput.Value;
+
             //SpiNNaker v1
             if (nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV1)
             {
-                WriteSpiNNakerIF(1, route);
+                WriteSpiNNakerIF(1, isMixedOutput, route);
             }
             //SpiNNaker v2
             if (nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV2)
             {
-                WriteSpiNNakerIF(2, route);
+                WriteSpiNNakerIF(2, isMixedOutput, route);
             }
 
         }
@@ -335,6 +337,7 @@ namespace OpenNAS_App.NASComponents
             if (nasInputIF == AudioInputControl.NASAUDIOSOURCE.AC97)
             {
                 sw.WriteLine("#*** AC97 ADC ***");
+                sw.WriteLine("# NOT IMPLEMENTED YET!");
                 switch (nasCommons.nasChip)
                 {
                     case NASchip.AERNODE:
@@ -497,153 +500,200 @@ namespace OpenNAS_App.NASComponents
             //Output interfaces
 
             //AER interface
-            if(nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.AERMONITOR || nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.AERNSPINN)
+            if(nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.AERMONITOR || SpikesOutputControl.isMixedOutput == true)
             {
+                bool isMixed = SpikesOutputControl.isMixedOutput == true;
+                signal_name = isMixed ? "o_nas_aer_data_out" : "AER_DATA_OUT";
+
                 sw.WriteLine("#*** AER out bus & protocol handshake ***");
                 switch (nasCommons.nasChip)
                 {
                     case NASchip.AERNODE:
-                        sw.WriteLine("NET \"AER_DATA_OUT<0>\" LOC = \"M2\"; ");
-                        sw.WriteLine("NET \"AER_DATA_OUT<1>\" LOC = \"K1\"; ");
-                        sw.WriteLine("NET \"AER_DATA_OUT<2>\" LOC = \"J1\"; ");
-                        sw.WriteLine("NET \"AER_DATA_OUT<3>\" LOC = \"H2\"; ");
-                        sw.WriteLine("NET \"AER_DATA_OUT<4>\" LOC = \"F1\"; ");
-                        sw.WriteLine("NET \"AER_DATA_OUT<5>\" LOC = \"E1\"; ");
-                        sw.WriteLine("NET \"AER_DATA_OUT<6>\" LOC = \"D2\"; ");
-                        sw.WriteLine("NET \"AER_DATA_OUT<7>\" LOC = \"B1\"; ");
-                        sw.WriteLine("NET \"AER_DATA_OUT<8>\" LOC = \"C1\"; ");
-                        sw.WriteLine("NET \"AER_DATA_OUT<9>\" LOC = \"D1\"; ");
-                        sw.WriteLine("NET \"AER_DATA_OUT<10>\" LOC = \"F2\"; ");
-                        sw.WriteLine("NET \"AER_DATA_OUT<11>\" LOC = \"G1\"; ");
-                        sw.WriteLine("NET \"AER_DATA_OUT<12>\" LOC = \"H1\"; ");
-                        sw.WriteLine("NET \"AER_DATA_OUT<13>\" LOC = \"K2\"; ");
-                        sw.WriteLine("NET \"AER_DATA_OUT<14>\" LOC = \"L1\"; ");
-                        sw.WriteLine("NET \"AER_DATA_OUT<15>\" LOC = \"M1\"; ");
+                        string pin_id = isMixed ? "\"M21\"" : "\"M2\"";
+                        sw.WriteLine("NET " + signal_name + "\"<0>\" LOC = " + pin_id + "; ");
+
+                        pin_id = isMixed ? "\"K22\"" : "\"K1\"";
+                        sw.WriteLine("NET " + signal_name + "\"<1>\" LOC = " + pin_id + "; ");
+
+                        pin_id = isMixed ? "\"J22\"" : "\"J1\"";
+                        sw.WriteLine("NET " + signal_name + "\"<2>\" LOC = " + pin_id + "; ");
+
+                        pin_id = isMixed ? "\"H21\"" : "\"H2\"";
+                        sw.WriteLine("NET " + signal_name + "\"<3>\" LOC = " + pin_id + "; ");
+
+                        pin_id = isMixed ? "\"F22\"" : "\"F1\"";
+                        sw.WriteLine("NET " + signal_name + "\"<4>\" LOC = " + pin_id + "; ");
+
+                        pin_id = isMixed ? "\"E22\"" : "\"E1\"";
+                        sw.WriteLine("NET " + signal_name + "\"<5>\" LOC = " + pin_id + "; ");
+
+                        pin_id = isMixed ? "\"D21\"" : "\"D2\"";
+                        sw.WriteLine("NET " + signal_name + "\"<6>\" LOC = " + pin_id + "; ");
+
+                        pin_id = isMixed ? "\"B22\"" : "\"B1\"";
+                        sw.WriteLine("NET " + signal_name + "\"<7>\" LOC = " + pin_id + "; ");
+
+                        pin_id = isMixed ? "\"B21\"" : "\"C1\"";
+                        sw.WriteLine("NET " + signal_name + "\"<8>\" LOC = " + pin_id + "; ");
+
+                        pin_id = isMixed ? "\"C22\"" : "\"D1\"";
+                        sw.WriteLine("NET " + signal_name + "\"<9>\" LOC = " + pin_id + "; ");
+
+                        pin_id = isMixed ? "\"D22\"" : "\"F2\"";
+                        sw.WriteLine("NET " + signal_name + "\"<10>\" LOC = " + pin_id + "; ");
+
+                        pin_id = isMixed ? "\"F21\"" : "\"G1\"";
+                        sw.WriteLine("NET " + signal_name + "\"<11>\" LOC = " + pin_id + "; ");
+
+                        pin_id = isMixed ? "\"G22\"" : "\"H1\"";
+                        sw.WriteLine("NET " + signal_name + "\"<12>\" LOC = " + pin_id + "; ");
+
+                        pin_id = isMixed ? "\"H22\"" : "\"K2\"";
+                        sw.WriteLine("NET " + signal_name + "\"<13>\" LOC = " + pin_id + "; ");
+
+                        pin_id = isMixed ? "\"K21\"" : "\"L1\"";
+                        sw.WriteLine("NET " + signal_name + "\"<14>\" LOC = " + pin_id + "; ");
+
+                        pin_id = isMixed ? "\"L22\"" : "\"M1\"";
+                        sw.WriteLine("NET " + signal_name + "\"<15>\" LOC = " + pin_id + "; ");
+
                         sw.WriteLine("");
-                        sw.WriteLine("NET \"AER_REQ\" LOC = \"N3\"; ");
-                        sw.WriteLine("NET \"AER_ACK\" LOC = \"U3\"; ");
+
+                        pin_id = isMixed ? "\"N20\"" : "\"N3\"";
+                        signal_name = isMixed ? "o_nas_aer_req_out" : "AER_REQ";
+                        sw.WriteLine("NET "+ signal_name + " LOC = " + pin_id + "; ");
+
+                        pin_id = isMixed ? "\"Y21\"" : "\"U3\"";
+                        signal_name = isMixed ? "i_nas_aer_ack_out" : "AER_ACK";
+                        sw.WriteLine("NET " + signal_name + " LOC = " + pin_id + "; ");
+
                         sw.WriteLine("");
                         break;
                     case NASchip.ZTEX:
-                        sw.WriteLine("set_property PACKAGE_PIN M6 [get_ports {AER_DATA_OUT[0]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[0]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN M6 [get_ports {" + signal_name + "[0]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[0]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN N5 [get_ports {AER_DATA_OUT[1]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[1]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN N5 [get_ports {" + signal_name + "[1]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[1]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN L6 [get_ports {AER_DATA_OUT[2]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[2]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN L6 [get_ports {" + signal_name + "[2]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[2]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN P4 [get_ports {AER_DATA_OUT[3]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[3]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN P4 [get_ports {" + signal_name + "[3]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[3]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN L5 [get_ports {AER_DATA_OUT[4]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[4]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN L5 [get_ports {" + signal_name + "[4]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[4]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN P3 [get_ports {AER_DATA_OUT[5]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[5]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN P3 [get_ports {" + signal_name + "[5]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[5]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN N4 [get_ports {AER_DATA_OUT[6]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[6]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN N4 [get_ports {" + signal_name + "[6]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[6]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN T1 [get_ports {AER_DATA_OUT[7]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[7]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN T1 [get_ports {" + signal_name + "[7]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[7]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN M4 [get_ports {AER_DATA_OUT[8]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[8]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN M4 [get_ports {" + signal_name + "[8]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[8]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN R1 [get_ports {AER_DATA_OUT[9]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[9]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN R1 [get_ports {" + signal_name + "[9]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[9]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN M3 [get_ports {AER_DATA_OUT[10]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[10]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN M3 [get_ports {" + signal_name + "[10]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[10]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN R2 [get_ports {AER_DATA_OUT[11]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[11]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN R2 [get_ports {" + signal_name + "[11]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[11]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN M2 [get_ports {AER_DATA_OUT[12]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[12]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN M2 [get_ports {" + signal_name + "[12]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[12]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN P2 [get_ports {AER_DATA_OUT[13]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[13]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN P2 [get_ports {" + signal_name + "[13]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[13]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN K5 [get_ports {AER_DATA_OUT[14]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[14]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN K5 [get_ports {" + signal_name + "[14]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[14]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN N2 [get_ports {AER_DATA_OUT[15]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[15]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN N2 [get_ports {" + signal_name + "[15]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[15]}]");
                         sw.WriteLine("");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN L4 [get_ports AER_REQ]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports AER_REQ]");
+                        signal_name = isMixed ? "o_nas_aer_req_out" : "AER_REQ";
+                        sw.WriteLine("set_property PACKAGE_PIN L4 [get_ports " + signal_name + "]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports " + signal_name + "]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN N1 [get_ports AER_ACK]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports AER_ACK]");
+                        signal_name = isMixed ? "i_nas_aer_ack_out" : "AER_ACK";
+                        sw.WriteLine("set_property PACKAGE_PIN N1 [get_ports " + signal_name + "]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports " + signal_name + "]");
                         sw.WriteLine("");
 
                         break;
                     default:
-                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {AER_DATA_OUT[0]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[0]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {" + signal_name + "[0]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[0]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {AER_DATA_OUT[1]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[1]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {" + signal_name + "[1]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[1]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {AER_DATA_OUT[2]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[2]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {" + signal_name + "[2]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[2]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {AER_DATA_OUT[3]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[3]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {" + signal_name + "[3]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[3]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {AER_DATA_OUT[4]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[4]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {" + signal_name + "[4]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[4]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {AER_DATA_OUT[5]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[5]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {" + signal_name + "[5]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[5]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {AER_DATA_OUT[6]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[6]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {" + signal_name + "[6]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[6]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {AER_DATA_OUT[7]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[7]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {" + signal_name + "[7]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[7]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {AER_DATA_OUT[8]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[8]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {" + signal_name + "[8]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[8]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {AER_DATA_OUT[9]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[9]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {" + signal_name + "[9]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[9]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {AER_DATA_OUT[10]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[10]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {" + signal_name + "[10]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[10]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {AER_DATA_OUT[11]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[11]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {" + signal_name + "[11]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[11]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {AER_DATA_OUT[12]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[12]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {" + signal_name + "[12]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[12]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {AER_DATA_OUT[13]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[13]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {" + signal_name + "[13]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[13]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {AER_DATA_OUT[14]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[14]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {" + signal_name + "[14]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[14]}]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {AER_DATA_OUT[15]}]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {AER_DATA_OUT[15]}]");
+                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports {" + signal_name + "[15]}]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports {" + signal_name + "[15]}]");
                         sw.WriteLine("");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports AER_REQ]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports AER_REQ]");
+                        signal_name = isMixed ? "o_nas_aer_req_out" : "AER_REQ";
+                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports " + signal_name + "]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports " + signal_name + "]");
                         sw.WriteLine("");
-                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports AER_ACK]");
-                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports AER_ACK]");
+                        signal_name = isMixed ? "i_nas_aer_ack_out" : "AER_ACK";
+                        sw.WriteLine("set_property PACKAGE_PIN XX [get_ports " + signal_name + "]");
+                        sw.WriteLine("set_property IOSTANDARD LVCMOS33 [get_ports " + signal_name + "]");
                         sw.WriteLine("");
-                        
+
                         break;
                 }
                 sw.WriteLine("");
             }
-            else if(nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV1 || nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV2 || nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.AERNSPINN)
+
+            if (nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV1 || nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV2)
             {
                 sw.WriteLine("#*** SpiNNaker link data bus from FPGA & ack from SpiNNaker ***");
                 switch (nasCommons.nasChip)
@@ -657,7 +707,9 @@ namespace OpenNAS_App.NASComponents
                         sw.WriteLine("NET \"o_data_out_to_spinnaker<5>\" LOC = \"C1\" ;");
                         sw.WriteLine("NET \"o_data_out_to_spinnaker<6>\" LOC = \"B1\" ; ");
                         sw.WriteLine("");
+
                         sw.WriteLine("NET \"i_ack_out_from_spinnaker\" LOC = \"H1\" | pulldown;");
+                        sw.WriteLine("");
 
                         break;
                     case NASchip.ZTEX:
@@ -1570,8 +1622,9 @@ namespace OpenNAS_App.NASComponents
         /// Writes a VHDL file for interfacing NAS with SpiNNaker
         /// </summary>
         /// <param name="version">Interface version. 1 for unidirectional communication, 2 for bidirectional communication</param>
+        /// <param name="mixed">If true, it adds the Muller-C element for having both AER and SpiNNaker outputs</param>
         /// <param name="route">Destination file route</param>
-        private void WriteSpiNNakerIF(int version, string route)
+        private void WriteSpiNNakerIF(int version, bool mixed, string route)
         {
             string moduleName = "SpiNNakerNAS_if" + version.ToString();
             string fileExtension = ".vhd";
@@ -1634,9 +1687,16 @@ namespace OpenNAS_App.NASComponents
             }
 
             sw.WriteLine("        ----Processing interface----");
+            if(mixed == true)
+            {
+                sw.WriteLine("        --Data: FPGA to jAER");
+                sw.WriteLine("        o_nas_aer_data_out : out std_logic_vector(15 downto 0);");
+                sw.WriteLine("        o_nas_aer_req_out : out std_logic;");
+                sw.WriteLine("        i_nas_aer_ack_out : in std_logic;");
+            }
             sw.WriteLine("        --Data: FPGA to SpiNNaker");
-            sw.WriteLine("        o_data_out_to_spinnaker: out std_logic_vector(6 downto 0);");
-            sw.WriteLine("        i_ack_out_from_spinnaker: in std_logic"+(version == 1?"":";"));
+            sw.WriteLine("        o_data_out_to_spinnaker : out std_logic_vector(6 downto 0);");
+            sw.WriteLine("        i_ack_out_from_spinnaker : in std_logic"+(version == 1?"":";"));
             if(version == 2)
             {
                 sw.WriteLine("        --Data: SpiNNaker to FPGA");
@@ -1770,13 +1830,30 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("        Port (");
                 sw.WriteLine("            i_clk : in  std_logic;");
                 sw.WriteLine("            i_rst : in  std_logic;");
-                sw.WriteLine("                --AER handshake");
+                sw.WriteLine("            --AER handshake");
                 sw.WriteLine("            i_aer_in : in  std_logic_vector (15 downto 0);");
                 sw.WriteLine("            i_req_in : in  std_logic;");
                 sw.WriteLine("            o_ack_in : out  std_logic;");
                 sw.WriteLine("            --AER data output to be processed");
                 sw.WriteLine("            o_aer_data : out std_logic_vector(15 downto 0);");
                 sw.WriteLine("            o_new_aer_data : out std_logic");
+                sw.WriteLine("        );");
+                sw.WriteLine("    end component;");
+                sw.WriteLine("");
+            }
+
+            if (mixed == true){
+                sw.WriteLine("    -------------------------------------");
+                sw.WriteLine("    --------- Muller-C element ----------");
+                sw.WriteLine("    -------------------------------------");
+                sw.WriteLine("    component c_element is");
+                sw.WriteLine("        Port (");
+                sw.WriteLine("            i_reset : in  std_logic;");
+                sw.WriteLine("            --Input ACKs");
+                sw.WriteLine("            i_src1_aer_ack : in  std_logic;");
+                sw.WriteLine("            i_src2_aer_ack : in  std_logic;");
+                sw.WriteLine("            --Output ack");
+                sw.WriteLine("            o_global_aer_ack : out std_logic");
                 sw.WriteLine("        );");
                 sw.WriteLine("    end component;");
                 sw.WriteLine("");
@@ -1816,6 +1893,13 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("    signal modesel : std_logic;");
                 sw.WriteLine("    signal d_7seg  : std_logic_vector(7 downto 0);");
                 sw.WriteLine("    signal strobe  : std_logic_vector(3 downto 0);");
+                sw.WriteLine("");
+            }
+
+            if (mixed == true)
+            {
+                sw.WriteLine("    --Output signal from C-element for ACKs merging");
+                sw.WriteLine("    signal global_aer_ack  : std_logic;");
                 sw.WriteLine("");
             }
 
@@ -1872,7 +1956,15 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine("            --AER Output");
             sw.WriteLine("            AER_DATA_OUT => aer_data_NAS_to_spinn,");
             sw.WriteLine("            AER_REQ => aer_req_NAS_to_spinn,");
-            sw.WriteLine("            AER_ACK => aer_ack_NAS_to_spinn");
+            
+            if(mixed == true)
+            {
+                sw.WriteLine("            AER_ACK => global_aer_ack");
+            }
+            else{
+                sw.WriteLine("            AER_ACK => aer_ack_NAS_to_spinn");
+            }
+            
             sw.WriteLine("        );");
             sw.WriteLine("");
 
@@ -1953,6 +2045,20 @@ namespace OpenNAS_App.NASComponents
                 sw.WriteLine("");
             }
 
+            if (mixed == true)
+            {
+                sw.WriteLine("        U_celem : c_element");
+                sw.WriteLine("        Port Map (");
+                sw.WriteLine("            i_reset        => reset,");
+                sw.WriteLine("            --Input ACKs");
+                sw.WriteLine("            i_src1_aer_ack   => i_nas_aer_ack_out,");
+                sw.WriteLine("            i_src2_aer_ack   => aer_ack_NAS_to_spinn,");
+                sw.WriteLine("            --Output ack");
+                sw.WriteLine("            o_global_aer_ack => global_aer_ack");
+                sw.WriteLine("        );");
+                sw.WriteLine("");
+            }
+
 
             sw.WriteLine("end " + moduleName + "_arch; ");
 
@@ -1982,6 +2088,11 @@ namespace OpenNAS_App.NASComponents
             else
             {
                 dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\spinn_aer_if.v");
+            }
+
+            if(mixed == true)
+            {
+                dependencies.Add(@"SSPLibrary\SpikesOutputInterfaces\c_element.vhd");
             }
 
             for (int i = 0; i < dependencies.Count; i++)

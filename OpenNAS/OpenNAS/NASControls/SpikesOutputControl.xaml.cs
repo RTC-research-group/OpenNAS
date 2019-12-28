@@ -30,15 +30,17 @@ namespace OpenNAS_App.NASControls
     /// </summary>
     public partial class SpikesOutputControl : UserControl, SpikesOutputControlInterface
     {
-        public enum NASAUDIOOUTPUT { AERMONITOR = 0, SPINNAKERV1 = 1, SPINNAKERV2 = 2, AERNSPINN = 3 };
+        public enum NASAUDIOOUTPUT { AERMONITOR = 0, SPINNAKERV1 = 1, SPINNAKERV2 = 2};
         SpikesOutputControlInterface currentControl;
         public static NASAUDIOOUTPUT audioOutput;
+        public static bool? isMixedOutput;
         public OpenNASCommons commons;
 
         public SpikesOutputControl()
         {
             InitializeComponent();
             comboBox.SelectedIndex = 0;
+            isMixedOutput = false;
             updateControl();
         }
 
@@ -77,6 +79,7 @@ namespace OpenNAS_App.NASControls
         {
             updateControl();
 
+            isMixedOutput = checkBox_Monitor_plus_SpiNN.IsChecked;
             audioOutput = (NASAUDIOOUTPUT)comboBox.SelectedIndex;
         }
 
@@ -98,14 +101,16 @@ namespace OpenNAS_App.NASControls
 
         private void CheckBox_Monitor_plus_SpiNN_Checked(object sender, System.Windows.RoutedEventArgs e)
         {
-            if( checkBox_Monitor_plus_SpiNN.IsChecked == true)
+            isMixedOutput = checkBox_Monitor_plus_SpiNN.IsChecked;
+
+            if ( checkBox_Monitor_plus_SpiNN.IsChecked == true)
             {
-                audioOutput = NASAUDIOOUTPUT.AERNSPINN;
+                //audioOutput = NASAUDIOOUTPUT.AERNSPINN;
                 spikesOutputPanel.Visibility = System.Windows.Visibility.Visible;
             }
             else
             {
-                audioOutput = (NASAUDIOOUTPUT)comboBox.SelectedIndex;
+                //audioOutput = (NASAUDIOOUTPUT)comboBox.SelectedIndex;
                 spikesOutputPanel.Visibility = System.Windows.Visibility.Collapsed;
             }
         }

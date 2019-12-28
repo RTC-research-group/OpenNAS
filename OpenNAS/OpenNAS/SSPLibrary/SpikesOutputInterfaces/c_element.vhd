@@ -1,6 +1,6 @@
 --/////////////////////////////////////////////////////////////////////////////////
 --//                                                                             //
---//    Copyright ï¿½ 2016  Angel Francisco Jimenez-Fernandez                      //
+--//    Copyright � 2016  Angel Francisco Jimenez-Fernandez                      //
 --//                                                                             //
 --//    This file is part of OpenNAS.                                            //
 --//                                                                             //

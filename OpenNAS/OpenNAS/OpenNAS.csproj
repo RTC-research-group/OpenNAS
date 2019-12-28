@@ -306,6 +306,9 @@
     <None Include="SSPLibrary\SpikesOutputInterfaces\AER_OUT.vhd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SSPLibrary\SpikesOutputInterfaces\c_element.vhd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SSPLibrary\SpikesOutputInterfaces\DualPortRAM.vhd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
