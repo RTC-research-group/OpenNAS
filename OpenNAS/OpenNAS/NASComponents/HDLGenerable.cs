@@ -91,7 +91,7 @@ namespace OpenNAS_App.NASComponents
             }
             license = commentFormat + "///////////////////////////////////////////////////////////////////////////////\n";
             license += commentFormat + "//                                                                           //\n";
-            license += commentFormat + "//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                    //\n";
+            license += commentFormat + "//    Copyright © 2016  Angel Francisco Jimenez-Fernandez                    //\n";
             license += commentFormat + "//                                                                           //\n";
             license += commentFormat + "//    This file is part of OpenNAS.                                          //\n";
             license += commentFormat + "//                                                                           //\n";
