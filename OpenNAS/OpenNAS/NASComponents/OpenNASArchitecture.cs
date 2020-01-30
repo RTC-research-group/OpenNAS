@@ -311,6 +311,7 @@ namespace OpenNAS_App.NASComponents
                 case NASchip.AERNODE:
                     signal_name = isAERMonitor ? "\"rst_ext\"" : "\"i_ext_reset\"";
                     sw.WriteLine("NET " + signal_name + " LOC = \"A20\";");
+                    sw.WriteLine("NET " + signal_name + " CLOCK_DEDICATED_ROUTE = FALSE;");
                     break;
                 case NASchip.ZTEX:
                     signal_name = isAERMonitor ? "rst_ext" : "i_ext_reset";
