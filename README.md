@@ -154,7 +154,7 @@ Thank you for contributing in the OpenN@S project!
 
 <h2 name="Credits">Credits</h2>
 <p align="justify">
-The author of the OpenN@S' original idea is Angel F. Jimenez-Fernandez, and its mainly based on the paper <a href="https://ieeexplore.ieee.org/document/7523402/">"A Binaural Neuromorphic Auditory Sensor for FPGA: A Spike Signal Processing Approach"</a>, which was published in 2016 in the journal Transactions on Neural Networks and Learning Systems.
+The author of the OpenN@S' original idea is Angel F. Jimenez-Fernandez, and it is mainly based on the paper <a href="https://ieeexplore.ieee.org/document/7523402/">"A Binaural Neuromorphic Auditory Sensor for FPGA: A Spike Signal Processing Approach"</a>, which was published in 2016 in the journal Transactions on Neural Networks and Learning Systems.
 </p>
 <p align="justify">
 The author would like to thank and give credit to:
