@@ -133,9 +133,6 @@ Finally, when all previous steps have been done, the destination folder in which
 A new message will appear if the generation process was done successfully, indicating the destination folder. Click on the Ok button to close the message. At this point, the process of the NAS generation has finished. Navigating to the destination folder, the user can find all the VHDL files needed to synthetize and generate the NAS .bit file and run it using an FPGA. Apart from VHDL files, OpenNAS also generates an XML file summarizing the parameters selection made by the user. 
 </p>
 
-<h2 name="Hardware">Hardware deployment</h2>
-
-
 <h2 name="Contributing">Contributing</h2>
 <p align="justify">
 New functionalities or improvements to the existing project are welcome. To contribute to this project please follow these guidelines:
@@ -162,7 +159,8 @@ The author of the OpenN@S' original idea is Angel F. Jimenez-Fernandez, and its 
 <p align="justify">
 The author would like to thank and give credit to:
 <ul align="justify">
-<li>Robotics and Technology of Computers Lab.</li>
+<li>Robotics and Technology of Computers Lab. from the University of Sevilla (Spain).</li>
+<li>Advanced Processor Technologies group from the University of Manchester (UK), for letting us include the SpiNNaker-AER interface in this project.</li>
 <li>Gabriel Jimenez-Moreno, for his support and contribution.
 </ul>
 </p>
