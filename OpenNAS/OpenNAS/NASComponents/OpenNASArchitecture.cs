@@ -511,62 +511,62 @@ namespace OpenNAS_App.NASComponents
                 {
                     case NASchip.AERNODE:
                         string pin_id = isMixed ? "\"M21\"" : "\"M2\"";
-                        sw.WriteLine("NET " + signal_name + "\"<0>\" LOC = " + pin_id + "; ");
+                        sw.WriteLine("NET \"" + signal_name + "<0>\" LOC = " + pin_id + "; ");
 
                         pin_id = isMixed ? "\"K22\"" : "\"K1\"";
-                        sw.WriteLine("NET " + signal_name + "\"<1>\" LOC = " + pin_id + "; ");
+                        sw.WriteLine("NET \"" + signal_name + "<1>\" LOC = " + pin_id + "; ");
 
                         pin_id = isMixed ? "\"J22\"" : "\"J1\"";
-                        sw.WriteLine("NET " + signal_name + "\"<2>\" LOC = " + pin_id + "; ");
+                        sw.WriteLine("NET \"" + signal_name + "<2>\" LOC = " + pin_id + "; ");
 
                         pin_id = isMixed ? "\"H21\"" : "\"H2\"";
-                        sw.WriteLine("NET " + signal_name + "\"<3>\" LOC = " + pin_id + "; ");
+                        sw.WriteLine("NET \"" + signal_name + "<3>\" LOC = " + pin_id + "; ");
 
                         pin_id = isMixed ? "\"F22\"" : "\"F1\"";
-                        sw.WriteLine("NET " + signal_name + "\"<4>\" LOC = " + pin_id + "; ");
+                        sw.WriteLine("NET \"" + signal_name + "<4>\" LOC = " + pin_id + "; ");
 
                         pin_id = isMixed ? "\"E22\"" : "\"E1\"";
-                        sw.WriteLine("NET " + signal_name + "\"<5>\" LOC = " + pin_id + "; ");
+                        sw.WriteLine("NET \"" + signal_name + "<5>\" LOC = " + pin_id + "; ");
 
                         pin_id = isMixed ? "\"D21\"" : "\"D2\"";
-                        sw.WriteLine("NET " + signal_name + "\"<6>\" LOC = " + pin_id + "; ");
+                        sw.WriteLine("NET \"" + signal_name + "<6>\" LOC = " + pin_id + "; ");
 
                         pin_id = isMixed ? "\"B22\"" : "\"B1\"";
-                        sw.WriteLine("NET " + signal_name + "\"<7>\" LOC = " + pin_id + "; ");
+                        sw.WriteLine("NET \"" + signal_name + "<7>\" LOC = " + pin_id + "; ");
 
                         pin_id = isMixed ? "\"B21\"" : "\"C1\"";
-                        sw.WriteLine("NET " + signal_name + "\"<8>\" LOC = " + pin_id + "; ");
+                        sw.WriteLine("NET \"" + signal_name + "<8>\" LOC = " + pin_id + "; ");
 
                         pin_id = isMixed ? "\"C22\"" : "\"D1\"";
-                        sw.WriteLine("NET " + signal_name + "\"<9>\" LOC = " + pin_id + "; ");
+                        sw.WriteLine("NET \"" + signal_name + "<9>\" LOC = " + pin_id + "; ");
 
                         pin_id = isMixed ? "\"D22\"" : "\"F2\"";
-                        sw.WriteLine("NET " + signal_name + "\"<10>\" LOC = " + pin_id + "; ");
+                        sw.WriteLine("NET \"" + signal_name + "<10>\" LOC = " + pin_id + "; ");
 
                         pin_id = isMixed ? "\"F21\"" : "\"G1\"";
-                        sw.WriteLine("NET " + signal_name + "\"<11>\" LOC = " + pin_id + "; ");
+                        sw.WriteLine("NET \"" + signal_name + "<11>\" LOC = " + pin_id + "; ");
 
                         pin_id = isMixed ? "\"G22\"" : "\"H1\"";
-                        sw.WriteLine("NET " + signal_name + "\"<12>\" LOC = " + pin_id + "; ");
+                        sw.WriteLine("NET \"" + signal_name + "<12>\" LOC = " + pin_id + "; ");
 
                         pin_id = isMixed ? "\"H22\"" : "\"K2\"";
-                        sw.WriteLine("NET " + signal_name + "\"<13>\" LOC = " + pin_id + "; ");
+                        sw.WriteLine("NET \"" + signal_name + "<13>\" LOC = " + pin_id + "; ");
 
                         pin_id = isMixed ? "\"K21\"" : "\"L1\"";
-                        sw.WriteLine("NET " + signal_name + "\"<14>\" LOC = " + pin_id + "; ");
+                        sw.WriteLine("NET \"" + signal_name + "<14>\" LOC = " + pin_id + "; ");
 
                         pin_id = isMixed ? "\"L22\"" : "\"M1\"";
-                        sw.WriteLine("NET " + signal_name + "\"<15>\" LOC = " + pin_id + "; ");
+                        sw.WriteLine("NET \"" + signal_name + "<15>\" LOC = " + pin_id + "; ");
 
                         sw.WriteLine("");
 
                         pin_id = isMixed ? "\"N20\"" : "\"N3\"";
                         signal_name = isMixed ? "o_nas_aer_req_out" : "AER_REQ";
-                        sw.WriteLine("NET "+ signal_name + " LOC = " + pin_id + "; ");
+                        sw.WriteLine("NET \"" + signal_name + "\" LOC = " + pin_id + "; ");
 
                         pin_id = isMixed ? "\"Y21\"" : "\"U3\"";
                         signal_name = isMixed ? "i_nas_aer_ack_out" : "AER_ACK";
-                        sw.WriteLine("NET " + signal_name + " LOC = " + pin_id + "; ");
+                        sw.WriteLine("NET \"" + signal_name + "\" LOC = " + pin_id + "; ");
 
                         sw.WriteLine("");
                         break;
