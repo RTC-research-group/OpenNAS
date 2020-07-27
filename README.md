@@ -47,7 +47,7 @@ OpenNAS has several software dependencies which needs to be solved before execut
 </p>
   <ul>
     <li>Microsoft .NET Framework 4.5</li>By clicking in this link you will be redirected to the Microsoft .NET Framework download website. You only need to select the desired language and then click on the "Download" button. Once the download has finished, execute the Microsoft .NET Framework installation file. 
-	<li>Xilinx ISE 14.7</li>OpenNAS offers the posibility of generating the .bit file automatically without creating an ISE project manually. For being able to use this feature, Xilinx software tool needs to be installed. Depending of the target FPGA chip, the user will need Xilinx ISE or Xilinx Vivado.
+	<li>FPGA Synthesis or simulation Suite</li>After HDL generation, users can use FPGA vendors specific tools for synthesis and/or simulation, depending on target hardware paltform.
   </ul>
 </p>
 <h3>Installation</h3>
