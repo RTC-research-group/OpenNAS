@@ -176,7 +176,9 @@ Also, the author would like to thank to the research groups which supports the O
 
 <p align="justify">
 This project is licensed under the GPL License - see the <a href="https://raw.githubusercontent.com/RTC-research-group/OpenNAS/master/LICENSE">LICENSE.md</a> file for details.
+Third party software components are under <a href = "https://opensource.org/licenses/MS-PL>MSPL license >/a>
 </p>
+
 <p align="justify">
 Copyright © 2016 Ángel F. Jiménez-Fernández<br>  
 <a href="mailto:ajimenez@atc.us.es">ajimenez@atc.us.es</a>
