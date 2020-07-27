@@ -29,62 +29,62 @@
              mc:Ignorable="d"              
             >
     <!--:DesignHeight="160" d:DesignWidth="720"-->
-        <DockPanel>
+    <DockPanel>
 
-            <DockPanel MinWidth="210" Margin="0 5 0 0" DockPanel.Dock="Left" LastChildFill="False">
+        <DockPanel MinWidth="210" Margin="0 5 0 0" DockPanel.Dock="Left" LastChildFill="False">
 
-                <DockPanel DockPanel.Dock="Top">
-                    <Label Content="SLPF Filter:"/>
-                    <ComboBox x:Name="slpfTypecomboBox" IsEnabled="False" HorizontalAlignment="Right" Width="120" Height="22" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionChanged="SlpfTypecomboBox_SelectionChanged"/>
-                </DockPanel>
-
-                <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
-                    <Label Content="Number of Channels"/>
-                    <TextBox x:Name="nChTextBox" HorizontalAlignment="Right" Height="23" TextWrapping="Wrap" Text="16" VerticalAlignment="Center" Width="60" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                </DockPanel>
-                <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
-                    <Label Content="Start Freq. (Hz)"/>
-                    <xctk:SingleUpDown x:Name="startFreqUpDowm" Width="60" Height="20" Value="20" Minimum="20" HorizontalAlignment="Right" TextAlignment="Center" ValueChanged="StartFreqUpDowm_ValueChanged" PreviewTextInput="StartFreqUpDowm_PreviewTextInput"/>
-
-                </DockPanel>
-                <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
-                    <Label Content="Stop Freq. (Hz)"/>
-                    <xctk:SingleUpDown x:Name="stopFreqUpDowm" Width="60" Height="20" Value="22000" Minimum="20" Maximum="22000"  HorizontalAlignment="Right" TextAlignment="Center" ValueChanged="StopFreqUpDowm_ValueChanged" PreviewTextInput="StopFreqUpDowm_PreviewTextInput"/>
-                </DockPanel>
-                <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
-                    <Label Content="SLPF Output Att. (dB)"/>
-                    <xctk:SingleUpDown x:Name="attUpDowm" Width="60" Height="20" Value="-12" Maximum="0"  HorizontalAlignment="Right" TextAlignment="Center" ValueChanged="AttUpDowm_ValueChanged" PreviewTextInput="AttUpDowm_PreviewTextInput"/>
-                </DockPanel>
-            </DockPanel>
-            
-            
-            <DockPanel Margin="50 0 0 0" DockPanel.Dock="Right">
-                <GroupBox Header="Target Mid Frequencies (Hz)" BorderBrush="Black">
-                    <DataGrid x:Name="midFreqDataGrid" Margin="0 5 0 0" IsEnabled="False">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Ch."/>
-                            <DataGridTextColumn Header="Value (Hz)"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </GroupBox>
-                <GroupBox Header="SLPF Cut-off Frequencies (Hz)" Margin="20 0 0 0" BorderBrush="Black">
-                    <DataGrid x:Name="cutOffFreqDataGrid" Margin="0 5 0 0">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Ch."/>
-                            <DataGridTextColumn Header="Value (Hz)"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </GroupBox>
-                <GroupBox Header="SLPF Attenuation (dB)" Margin="20 0 0 0" BorderBrush="Black">
-                    <DataGrid x:Name="attDataGrid" Margin="0 5 0 0">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Ch."/>
-                            <DataGridTextColumn Header="Value (dB)"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </GroupBox>
+            <DockPanel DockPanel.Dock="Top">
+                <Label Content="SLPF Filter:"/>
+                <ComboBox x:Name="slpfTypecomboBox" IsEnabled="False" HorizontalAlignment="Right" Width="120" Height="22" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionChanged="SlpfTypecomboBox_SelectionChanged"/>
             </DockPanel>
 
+            <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
+                <Label Content="Number of Channels"/>
+                <TextBox x:Name="nChTextBox" HorizontalAlignment="Right" Height="23" TextWrapping="Wrap" Text="16" VerticalAlignment="Center" Width="60" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
+                <Label Content="Start Freq. (Hz)"/>
+                <xctk:SingleUpDown x:Name="startFreqUpDowm" Width="60" Height="20" Value="20" Minimum="20" HorizontalAlignment="Right" TextAlignment="Center" ValueChanged="StartFreqUpDowm_ValueChanged" PreviewTextInput="StartFreqUpDowm_PreviewTextInput"/>
+
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
+                <Label Content="Stop Freq. (Hz)"/>
+                <xctk:SingleUpDown x:Name="stopFreqUpDowm" Width="60" Height="20" Value="22000" Minimum="20" Maximum="22000"  HorizontalAlignment="Right" TextAlignment="Center" ValueChanged="StopFreqUpDowm_ValueChanged" PreviewTextInput="StopFreqUpDowm_PreviewTextInput"/>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Top" Margin="0 15 0 0">
+                <Label Content="SLPF Output Att. (dB)"/>
+                <xctk:SingleUpDown x:Name="attUpDowm" Width="60" Height="20" Value="-12" Maximum="0"  HorizontalAlignment="Right" TextAlignment="Center" ValueChanged="AttUpDowm_ValueChanged" PreviewTextInput="AttUpDowm_PreviewTextInput"/>
+            </DockPanel>
         </DockPanel>
+
+
+        <DockPanel Margin="50 0 0 0" DockPanel.Dock="Right">
+            <GroupBox Header="Target Mid Frequencies (Hz)" BorderBrush="Black">
+                <DataGrid x:Name="midFreqDataGrid" Margin="0 5 0 0" IsEnabled="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Ch."/>
+                        <DataGridTextColumn Header="Value (Hz)"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+            <GroupBox Header="SLPF Cut-off Frequencies (Hz)" Margin="20 0 0 0" BorderBrush="Black">
+                <DataGrid x:Name="cutOffFreqDataGrid" Margin="0 5 0 0" IsEnabled="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Ch."/>
+                        <DataGridTextColumn Header="Value (Hz)"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+            <GroupBox Header="SLPF Attenuation (dB)" Margin="20 0 0 0" BorderBrush="Black">
+                <DataGrid x:Name="attDataGrid" Margin="0 5 0 0" IsEnabled="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Ch."/>
+                        <DataGridTextColumn Header="Value (dB)"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+        </DockPanel>
+
+    </DockPanel>
 
 </UserControl>
