@@ -79,7 +79,9 @@ namespace OpenNAS_App
 
             nas.Generate(sourceRoute, constrainRoute, projectRoute);
 
-            MessageBox.Show("OpenN@S successfully generated at: " + route);
+            string finalMessage = "OpenN@S successfully generated at: " + route + "\r\n Elapsed Time: " + nas.generationTime+" mSeconds";
+
+            MessageBox.Show(finalMessage);
 
             if (openFolderCheckBox.IsChecked == true)
                 System.Diagnostics.Process.Start("explorer.exe", route);

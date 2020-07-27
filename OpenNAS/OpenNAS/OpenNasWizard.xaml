@@ -28,9 +28,13 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:OpenNAS_App"
         mc:Ignorable="d"
-        Title="OpenN@S" Height="520" Width="850" WindowStartupLocation="CenterScreen">
+        Title="OpenN@S 1.1.34" Height="520" Width="850" WindowStartupLocation="CenterScreen">
     <Grid>
-        <xctk:Wizard x:Name="wizardControl" FinishButtonClosesWindow="True" Finish="Wizard_Finish" Next="Wizard_Next" Help="Wizard_Help" CanCancel="False" CancelButtonVisibility="Hidden">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="71*"/>
+            <ColumnDefinition Width="350*"/>
+        </Grid.ColumnDefinitions>
+        <xctk:Wizard x:Name="wizardControl" FinishButtonClosesWindow="True" Finish="Wizard_Finish" Next="Wizard_Next" Help="Wizard_Help" CanCancel="False" CancelButtonVisibility="Hidden" Grid.ColumnSpan="2">
 
             <xctk:WizardPage x:Name="IntroPage" 
                                    Title="Welcome to OpenN@S wizard."

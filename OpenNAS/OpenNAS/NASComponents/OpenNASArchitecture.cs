@@ -21,7 +21,9 @@
 
 
 using OpenNAS_App.NASControls;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Xml;
@@ -52,6 +54,12 @@ namespace OpenNAS_App.NASComponents
         /// NAS events output interface <see cref="SpikesOutputInterface"/>
         /// </summary>
         public SpikesOutputInterface spikesOutput;
+
+        /// <summary>
+        /// Logs elapsed time for full NAS generation in miliseconds
+        /// </summary>
+        public double generationTime;
+
         /// <summary>
         /// Basic Open NAS Architecture class constructor
         /// </summary>
@@ -69,6 +77,7 @@ namespace OpenNAS_App.NASComponents
             audioInput = ai;
             audioProcessing = ap;
             spikesOutput = soi;
+            generationTime = 0.0f;
         }
 
         /// <summary>
@@ -79,6 +88,8 @@ namespace OpenNAS_App.NASComponents
         /// <param name="projectRoute">Destination of tcl file for automatic project generation</param>
         public void Generate(string sourceRoute, string constraintsRoute, string projectRoute)
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             //Generate HDL componets
             audioInput.generateHDL(sourceRoute);
             audioProcessing.generateHDL(sourceRoute);
@@ -93,7 +104,8 @@ namespace OpenNAS_App.NASComponents
             //{
                 WriteProjectTCL(projectRoute);
             //}
-
+            sw.Stop();
+            generationTime = sw.Elapsed.TotalMilliseconds;
         }
 
         /// <summary>
