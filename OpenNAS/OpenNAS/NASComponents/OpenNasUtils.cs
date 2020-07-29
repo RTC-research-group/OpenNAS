@@ -208,5 +208,26 @@ namespace OpenNAS_App.NASComponents
             return result;
 
         }
+
+        /// <summary>
+        /// Computes normalized error between two list of values
+        /// </summary>
+        /// <param name="desired">Desired Values</param>
+        /// <param name="real">Real values</param>
+        /// <returns></returns>
+        public static double computeNomalizedError(List<double> desired, List<double> real)
+        {
+            double normErrorAcum = 0.0f;
+
+            double freqDiff;
+
+            for (int i = 0; i < desired.Count; i++)
+            {
+                freqDiff = Math.Abs(desired[i] - real[i]);
+                normErrorAcum += freqDiff / real[i];
+            }
+
+            return normErrorAcum / desired.Count;
+        }
     }
 }

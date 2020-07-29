@@ -32,17 +32,61 @@ namespace OpenNAS_App.NASComponents
 
     public class ParallelSLPFBank : AudioProcessingArchitecture
     {
-
+        /// <summary>
+        /// Number of channels
+        /// </summary>
         public int nCH = 0;
+        /// <summary>
+        /// Clock frequency in Hz
+        /// </summary>
         public float clk;
+        /// <summary>
+        /// NAS mono or stereo
+        /// </summary>
         public NASTYPE nasType;
+        /// <summary>
+        /// SLPF order
+        /// </summary>
         public SLPFType slpfType;
+        /// <summary>
+        /// List of channels mid frequencies
+        /// </summary>
         public List<double> midFreq;
-        public List<double> cutoffFreq;
-        public List<double> attenuation;
-        private CultureInfo ci = new CultureInfo("en-us");
+        /// <summary>
+        /// List of channels real mid frequencies
+        /// </summary>
+        public List<double> realMidFreq;
 
+        /// <summary>
+        /// List of individual SLPF filters cut-off frequency
+        /// </summary>
+        public List<double> cutoffFreq;
+        /// <summary>
+        /// Indivicual channel ouput attenuation, as an absolute value
+        /// </summary>
+        public List<double> attenuation;
+        /// <summary>
+        /// Normalized error after filter bank adjustement.
+        /// </summary>
+        public double nomalizedError;
+
+        private CultureInfo ci = new CultureInfo("en-us");
+        
+        /// <summary>
+        /// Basic CascadeSLPFBank constructor
+        /// </summary>
         public ParallelSLPFBank() { }
+
+        /// <summary>
+        /// Main ParallelSLPFBank constructor
+        /// </summary>
+        /// <param name="nCH">Number of channels</param>
+        /// <param name="clk">Clock frequency in Hz</param>
+        /// <param name="nasType">NAS mono or stereo</param>
+        /// <param name="slpfType">SLPF order</param>
+        /// <param name="startFreq">Start mid frequency, in Hz</param>
+        /// <param name="stopFreq">Last mid frequency, in Hz</param>
+        /// <param name="att">Cascade output attenuation, as an absolute value</param>
         public ParallelSLPFBank(int nCH, float clk, NASTYPE nasType, SLPFType slpfType, double startFreq, double stopFreq, double att)
         {
             double start, stop;
@@ -71,7 +115,11 @@ namespace OpenNAS_App.NASComponents
             this.midFreq.Reverse();
             this.cutoffFreq.Reverse();
         }
-
+        /// <summary>
+        /// Computes SLPF cut-off requencies from target mid frequencies
+        /// </summary>
+        /// <param name="centerFreq">List of target mid frequencies, in Hz</param>
+        /// <returns>List of SLPF cut-off frequencies in Hz</returns>
         public List<double> computeCutOffFreq(List<double> centerFreq)
         {
             List<double> cutOffFreq = new List<double>();
@@ -101,6 +149,7 @@ namespace OpenNAS_App.NASComponents
 
         private void computeFiltersParameters()
         {
+            List<double> realCutoffFreq = new List<double>();
             slpfParam = new List<SLPFParameters>();
             attDiv = new List<UInt16>();
 
@@ -109,7 +158,7 @@ namespace OpenNAS_App.NASComponents
             {
                 SLPFParameters slpf = new SLPFParameters(clk, cutoffFreq[i], 0, 2);
                 slpfParam.Add(slpf);
-
+                realCutoffFreq.Add(slpf.realFcut);
             }
             for (int k = 0; k < attenuation.Count; k++)
             {
@@ -117,8 +166,34 @@ namespace OpenNAS_App.NASComponents
 
                 attDiv.Add(OpenNasUtils.revkDiv(tempAtt));
             }
+
+            realMidFreq = new List<double>();
+
+            for (int i = 0; i < realCutoffFreq.Count - 1; i++)
+            {
+                double midFreq;
+                midFreq = Math.Sqrt(realCutoffFreq[i] * realCutoffFreq[i + 1]);
+                realMidFreq.Add(midFreq);
+            }
+
+            nomalizedError = OpenNasUtils.computeNomalizedError(midFreq, realMidFreq);
         }
 
+        /// <summary>
+        /// Gets normalized Eror after parameters setup
+        /// </summary>
+        /// <returns>Normalized Error </returns>
+        public override double getNormalizedError()
+        {
+            if (midFreq == null || realMidFreq == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return nomalizedError;
+            }
+        }
         private void generatePFB(string route)
         {
             computeFiltersParameters();
@@ -306,7 +381,7 @@ namespace OpenNAS_App.NASComponents
             textWriter.WriteStartElement("ParallelSLPFBank");
             textWriter.WriteAttributeString("nCH", nCH.ToString());
             textWriter.WriteAttributeString("SLPFType", slpfType.ToString());
-
+            textWriter.WriteAttributeString("normError", nomalizedError.ToString(ci));
             textWriter.WriteStartElement("midFreq");
             foreach (double d in midFreq)
             {

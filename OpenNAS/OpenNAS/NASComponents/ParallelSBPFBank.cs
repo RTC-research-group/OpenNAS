@@ -51,6 +51,10 @@ namespace OpenNAS_App.NASComponents
         /// </summary>
         public List<double> midFreq;
         /// <summary>
+        /// List of channels real mid frequencies
+        /// </summary>
+        public List<double> realMidFreq;
+        /// <summary>
         /// List of channels Q factor
         /// </summary>
         public List<double> Q;
@@ -58,6 +62,11 @@ namespace OpenNAS_App.NASComponents
         /// Indivicual channel ouput attenuation, as an absolute value
         /// </summary>
         public List<double> attenuation;
+        /// <summary>
+        /// Normalized error after filter bank adjustement.
+        /// </summary>
+        public double nomalizedError;
+
         private CultureInfo ci = new CultureInfo("en-us");
 
         /// <summary>
@@ -99,6 +108,7 @@ namespace OpenNAS_App.NASComponents
                 this.attenuation.Add(att);
             }
 
+            realMidFreq = new List<double>();
         }
 
         /// <summary>
@@ -111,6 +121,7 @@ namespace OpenNAS_App.NASComponents
 
             textWriter.WriteStartElement("ParallelSBPFBank");
             textWriter.WriteAttributeString("nCH", nCH.ToString());
+            textWriter.WriteAttributeString("normError", nomalizedError.ToString(ci));
 
             textWriter.WriteStartElement("midFreq");
             foreach (double d in midFreq)
@@ -142,6 +153,7 @@ namespace OpenNAS_App.NASComponents
             attDiv = new List<UInt16>();
             realFcut = new List<double>();
 
+            realMidFreq.Clear();
 
             for (int i = 0; i < midFreq.Count; i++)
             {
@@ -153,13 +165,36 @@ namespace OpenNAS_App.NASComponents
                 igDiv.Add(OpenNasUtils.revkDiv(wrelation));
 
                 fbDiv.Add((UInt16)(OpenNasUtils.revkDiv(1.0 / Q[i])));
+
+                double realWcut = (OpenNasUtils.kSIG(clk, nBits[i], freqDiv[i]) * OpenNasUtils.kDiv(igDiv[i])) / (2 * Math.PI);
+                realMidFreq.Add(realWcut);
             }
+
+            nomalizedError = OpenNasUtils.computeNomalizedError(midFreq, realMidFreq);
 
             for (int k = 0; k < attenuation.Count; k++)
             {
                 double tempAtt = (1.0 / Q[k]) * Math.Pow(10, attenuation[k] / 20);
 
                 attDiv.Add(OpenNasUtils.revkDiv(tempAtt));
+            }
+
+            
+        }
+
+        /// <summary>
+        /// Gets normalized Eror after parameters setup
+        /// </summary>
+        /// <returns>Normalized Error </returns>
+        public override double getNormalizedError()
+        {
+            if (midFreq == null || realMidFreq == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return nomalizedError;
             }
         }
 
@@ -266,7 +301,7 @@ namespace OpenNAS_App.NASComponents
             dependencies.Add(@"SSPLibrary\SpikeBuildingBlocks\AER_DIF.vhd");
             dependencies.Add(@"SSPLibrary\SpikeBuildingBlocks\AER_HOLDER_AND_FIRE.vhd");
             dependencies.Add(@"SSPLibrary\SpikeBuildingBlocks\spikes_div_BW.vhd");
-            dependencies.Add(@"SSPLibrary\SpikeBuildingBlocks\spikes_BPF_HQ_Div.vhd");
+            dependencies.Add(@"SSPLibrary\SpikeBuildingBlocks\spikes_BPF_HQ.vhd");
 
             copyDependencies(route, dependencies);
 

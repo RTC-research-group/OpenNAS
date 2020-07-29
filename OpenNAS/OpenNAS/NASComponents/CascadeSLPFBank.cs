@@ -69,6 +69,12 @@ namespace OpenNAS_App.NASComponents
         /// List of channels mid frequencies
         /// </summary>
         public List<double> midFreq;
+
+        /// <summary>
+        /// List of channels real mid frequencies
+        /// </summary>
+        public List<double> realMidFreq;
+
         /// <summary>
         /// List of individual SLPF filters cut-off frequency
         /// </summary>
@@ -77,6 +83,12 @@ namespace OpenNAS_App.NASComponents
         /// Indivicual channel ouput attenuation, as an absolute value
         /// </summary>
         public List<double> attenuation;
+
+        /// <summary>
+        /// Normalized error after filter bank adjustement.
+        /// </summary>
+        public double nomalizedError;
+
         private CultureInfo ci = new CultureInfo("en-us");
 
         /// <summary>
@@ -156,6 +168,9 @@ namespace OpenNAS_App.NASComponents
 
         private void computeFiltersParameters()
         {
+            List<double> realCutoffFreq = new List<double>();
+   
+
             slpfParam = new List<SLPFParameters>();
             attDiv = new List<UInt16>();
 
@@ -164,13 +179,39 @@ namespace OpenNAS_App.NASComponents
             {
                 SLPFParameters slpf = new SLPFParameters(clk, cutoffFreq[i], 0, 2);
                 slpfParam.Add(slpf);
-
+                realCutoffFreq.Add(slpf.realFcut);
             }
             for (int k = 0; k < attenuation.Count; k++)
             {
                 double tempAtt = Math.Pow(10, attenuation[k] / 20);
 
                 attDiv.Add(OpenNasUtils.revkDiv(tempAtt));
+            }
+
+            realMidFreq = new List<double>();
+
+            for (int i = 0; i < realCutoffFreq.Count-1; i++)
+            {
+                double midFreq;
+                midFreq = Math.Sqrt(realCutoffFreq[i] * realCutoffFreq[i + 1]);
+                realMidFreq.Add(midFreq);
+            }
+
+            nomalizedError = OpenNasUtils.computeNomalizedError(midFreq, realMidFreq);
+
+        }
+
+        /// <summary>
+        /// Gets normalized Eror after parameters setup
+        /// </summary>
+        /// <returns>Normalized Error </returns>
+        public override double getNormalizedError()
+        {
+            if(midFreq == null || realMidFreq == null){
+                return 0;
+            } else
+            {
+                return nomalizedError;
             }
         }
 
@@ -367,7 +408,7 @@ namespace OpenNAS_App.NASComponents
             textWriter.WriteStartElement("CascadeSLPFBank");
             textWriter.WriteAttributeString("nCH", nCH.ToString());
             textWriter.WriteAttributeString("SLPFType", slpfType.ToString());
-
+            textWriter.WriteAttributeString("normError", nomalizedError.ToString(ci));
             textWriter.WriteStartElement("midFreq");
             foreach (double d in midFreq)
             {
@@ -486,6 +527,8 @@ namespace OpenNAS_App.NASComponents
         {
             return "Cascade";
         }
+
+
     }
 
 }

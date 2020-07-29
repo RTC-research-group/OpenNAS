@@ -46,6 +46,8 @@ namespace OpenNAS_App.NASComponents
     {
         public abstract string getShortDescription();
         public abstract void toXML(XmlTextWriter textWriter);
+
+        public abstract double getNormalizedError();
     }
 
     public abstract class SpikesOutputInterface : HDLGenerable, XMLSeriarizableElement

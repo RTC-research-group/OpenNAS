@@ -75,11 +75,15 @@ namespace OpenNAS_App
             string projectRoute = route + "\\project";
             CheckFolders(route);
 
-            nas.ToXML(route);
-
             nas.Generate(sourceRoute, constrainRoute, projectRoute);
 
-            string finalMessage = "OpenN@S successfully generated at: " + route + "\r\n Elapsed Time: " + nas.generationTime+" mSeconds";
+            nas.ToXML(route);
+
+            string finalMessage = "OpenN@S successfully generated at: " + route;
+            finalMessage += "\n Normalized Error = " + (100.0*nas.audioProcessing.getNormalizedError()) + " %";
+            finalMessage += "\n Elapsed Time: " + nas.generationTime + " mSeconds";
+
+
 
             MessageBox.Show(finalMessage);
 
