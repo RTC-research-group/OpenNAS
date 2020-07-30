@@ -88,6 +88,7 @@ As OpenNAS is concieved to be synthetised in any FPGA, has been tested in our la
 	<li>Xilinx Artix 7</li>
 	<li>Xilinx Kintex 7</li>
 	<li>Xilinx Zynq-7000 SoC</li>
+	<li>Intel Cyclone IV</li>
 	<li>Intel Cyclone V</li>
 	<li>Intel Arria 10</li>
 </p>
