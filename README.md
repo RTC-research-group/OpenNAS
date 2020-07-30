@@ -13,7 +13,7 @@ OpenNAS is an open source VHDL-based Neuromorphic Auditory Sensor (NAS) code gen
 <ul>
 <li><a href="#Description">Description</a></li>
 <li><a href="#GettingStarted">Getting started</a></li>
-<li><a href="#SupportedDevices">Supported devices</a></li>
+<li><a href="#SupportedDevices">Supported IDE/Simulators/devices</a></li>
 <li><a href="#Usage">Usage</a></li>
 <li><a href="#Contributing">Contributing</a></li>
 <li><a href="#Credits">Credits</a></li>
@@ -69,7 +69,7 @@ When downloaded, extract the project. There is a main folder, OpenNAS, which con
 </p>
 
 
-<h2 name="SupportedDevices">Supported devices</h2>
+<h2 name="SupportedDevices">Supported IDE/Simulators/devices</h2>
 
 <!--Add supported devices and IDEs-->
 <p align="justify">
@@ -77,7 +77,7 @@ OpenNAS generated files are currently compatible from VHDL93 in advance, also su
 </p>
 
 <p align="justify">
-OpenNAS has been tested with Xilinx ISE 14.1, Xilinx Vivado 2020.1 in several editions (WebPack, Systems Edition, HLS...), and Intel Quartus Prime is also supported. 
+OpenNAS has been tested with Xilinx ISE 14.1, Xilinx Vivado 2020.1 in several editions (WebPack, Systems Edition, HLS...), and Intel Quartus Prime is also supported. OpenNAS can be simulated using ModelSim PE 9.2b.
 </p>
 
 <p align="justify">
