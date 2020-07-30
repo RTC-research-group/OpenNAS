@@ -13,6 +13,7 @@ OpenNAS is an open source VHDL-based Neuromorphic Auditory Sensor (NAS) code gen
 <ul>
 <li><a href="#Description">Description</a></li>
 <li><a href="#GettingStarted">Getting started</a></li>
+<li><a href="#SupportedDevices">Supported devices</a></li>
 <li><a href="#Usage">Usage</a></li>
 <li><a href="#Contributing">Contributing</a></li>
 <li><a href="#Credits">Credits</a></li>
@@ -68,6 +69,28 @@ When downloaded, extract the project. There is a main folder, OpenNAS, which con
 </p>
 
 
+<h2 name="SupportedDevices">Supported devices</h2>
+
+<!--Add supported devices and IDEs-->
+<p align="justify">
+OpenNAS generated files are currently compatible from VHDL93 in advance, also support Verilog 95 and Verilog 2001. 
+</p>
+
+<p align="justify">
+OpenNAS has been tested with Xilinx ISE 14.1, Xilinx Vivado 2020.1 in several editions (WebPack, Systems Edition, HLS...), and Intel Quartus Prime is also supported. 
+</p>
+
+<p align="justify">
+As OpenNAS is concieved to be synthetised in any FPGA, has been tested in our labs with the next FPGAs:
+	<li>Xilinx Spartan 3</li>
+	<li>Xilinx Virtex 5</li>
+	<li>Xilinx Spartan 6</li>
+	<li>Xilinx Artix 7</li>
+	<li>Xilinx Kintex 7</li>
+	<li>Xilinx Zynq-7000 SoC</li>
+	<li>Intel Cyclone V</li>
+	<li>Intel Arria 10</li>
+</p>
 
 <h2 name="Usage">Usage</h2>
 <!--Add a brief tutorial or user manual in order to make it easy and understandable to work with OpenN@S for a user that has not tried it yet. Add images and stuff. This could easily be the transcription of the videotutorial and some screenshots from it.-->
