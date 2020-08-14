@@ -80,8 +80,13 @@ namespace OpenNAS_App
             nas.ToXML(route);
 
             string finalMessage = "OpenN@S successfully generated at: " + route;
-            finalMessage += "\n Normalized Error = " + (100.0*nas.audioProcessing.getNormalizedError()) + " %";
-            finalMessage += "\n Elapsed Time: " + nas.generationTime + " mSeconds";
+            finalMessage += "\n\n-------- Generation statistics --------";
+            double normalizedError = nas.audioProcessing.getNormalizedError();
+            normalizedError = normalizedError * 100.0;
+            //normalizedError = (float)System.Math.Round(normalizedError, 6);
+            finalMessage += "\n- Normalized Error = " + normalizedError.ToString("0.######") + "%";
+            finalMessage += "\n- Elapsed Time: " + nas.generationTime + " ms";
+            finalMessage += "\n--------------------------------------------";
 
 
 
