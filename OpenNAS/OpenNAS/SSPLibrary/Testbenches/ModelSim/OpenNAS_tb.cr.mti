@@ -1,0 +1,383 @@
+D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_DISTRIBUTED_MONITOR_MODULE.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_DISTRIBUTED_MONITOR_MODULE.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity AER_DISTRIBUTED_MONITOR_MODULE
+-- Compiling architecture Behavioral of AER_DISTRIBUTED_MONITOR_MODULE
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/handsakeOut.vhd {2 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/handsakeOut.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity handshakeOut
+-- Compiling architecture handout of handshakeOut
+** Warning: D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/handsakeOut.vhd(47): (vcom-1445) Duplicate signal "estado" found in sensitivity list.
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_OUT.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_OUT.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity AER_OUT
+-- Compiling architecture Behavioral of AER_OUT
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_4BPF_fullGain.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_4BPF_fullGain.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity spikes_4BPF_fullGain
+-- Compiling architecture Behavioral of spikes_4BPF_fullGain
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_HPF.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_HPF.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity spikes_HPF
+-- Compiling architecture Behavioral of spikes_HPF
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/Spike_Int_n_Gen_BW.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/Spike_Int_n_Gen_BW.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity Spike_Int_n_Gen_BW
+-- Compiling architecture Behavioral of Spike_Int_n_Gen_BW
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/AER_HOLDER_AND_FIRE.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/AER_HOLDER_AND_FIRE.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity AER_HOLDER_AND_FIRE
+-- Compiling architecture Behavioral of AER_HOLDER_AND_FIRE
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinnaker_link_sync.v {1 {vlog -work work -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinnaker_link_sync.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+-- Compiling module spio_spinnaker_link_sync
+
+Top level modules:
+	spio_spinnaker_link_sync
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_BPF_HQ.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_BPF_HQ.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity spikes_BPF_HQ
+-- Compiling architecture Behavioral of spikes_BPF_HQ
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/SpikesSource_Selector.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/SpikesSource_Selector.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity SpikesSource_Selector
+-- Compiling architecture Behavioral of SpikesSource_Selector
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/PDM_Interface.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/PDM_Interface.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity PDM_Interface
+-- Compiling architecture PDM_Interface_arq of PDM_Interface
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinnaker_link_synchronous_receiver.v {1 {vlog -work work -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinnaker_link_synchronous_receiver.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+-- Compiling module spio_spinnaker_link_synchronous_receiver
+-- Compiling module flit_input_if
+-- Compiling module pkt_deserializer
+
+Top level modules:
+	spio_spinnaker_link_synchronous_receiver
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/ramfifo.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/ramfifo.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity ramfifo
+-- Compiling architecture syn of ramfifo
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/c_element.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/c_element.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity c_element
+-- Compiling architecture Behavioral of c_element
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_BPF_HQ_Div.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_BPF_HQ_Div.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity spikes_BPF_HQ
+-- Compiling architecture Behavioral of spikes_BPF_HQ
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_top.v {1 {vlog -work work -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_top.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+-- Compiling module raggedstone_spinn_aer_if_top
+
+Top level modules:
+	raggedstone_spinn_aer_if_top
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_LPF_fullGain.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_LPF_fullGain.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity spikes_LPF_fullGain
+-- Compiling architecture Behavioral of spikes_LPF_fullGain
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_IN.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_IN.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package NUMERIC_STD
+-- Compiling entity AER_IN
+-- Compiling architecture Behavioral of AER_IN
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/AER_DIF.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/AER_DIF.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity AER_DIF
+-- Compiling architecture Behavioral of AER_DIF
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/spikes_HPF.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/spikes_HPF.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity spikes_HPF
+-- Compiling architecture Behavioral of spikes_HPF
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_2LPF_fullGain.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_2LPF_fullGain.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity spikes_2LPF_fullGain
+-- Compiling architecture Behavioral of spikes_2LPF_fullGain
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinnaker_link_synchronous_sender.v {1 {vlog -work work -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinnaker_link_synchronous_sender.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+-- Compiling module spio_spinnaker_link_synchronous_sender
+-- Compiling module pkt_serializer
+-- Compiling module flit_output_if
+
+Top level modules:
+	spio_spinnaker_link_synchronous_sender
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_dump.v {1 {vlog -work work -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_dump.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+-- Compiling module raggedstone_spinn_aer_if_dump
+
+Top level modules:
+	raggedstone_spinn_aer_if_dump
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_switch.v {1 {vlog -work work -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_switch.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+-- Compiling module spio_switch
+
+Top level modules:
+	spio_switch
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_debouncer.v {1 {vlog -work work -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_debouncer.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+-- Compiling module raggedstone_spinn_aer_if_debouncer
+
+Top level modules:
+	raggedstone_spinn_aer_if_debouncer
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_DISTRIBUTED_MONITOR.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_DISTRIBUTED_MONITOR.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity AER_DISTRIBUTED_MONITOR
+-- Compiling architecture Behavioral of AER_DISTRIBUTED_MONITOR
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_4LPF_fullGain.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_4LPF_fullGain.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity spikes_4LPF_fullGain
+-- Compiling architecture Behavioral of spikes_4LPF_fullGain
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/i2s_to_spikes_stereo.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/i2s_to_spikes_stereo.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity i2s_to_spikes_stereo
+-- Compiling architecture Behavioral of i2s_to_spikes_stereo
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Testbenches/PDM_Interface_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Testbenches/PDM_Interface_tb.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_textio
+-- Loading package NUMERIC_STD
+-- Compiling entity PDM_Interface_tb
+-- Compiling architecture Behavioral of PDM_Interface_tb
+-- Compiling configuration PDM_Interface_tb_Behavioral_cfg
+-- Loading entity PDM_Interface_tb
+-- Loading architecture Behavioral of PDM_Interface_tb
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading entity PDM_Interface
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/Spikes_Generator_signed_BW.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/Spikes_Generator_signed_BW.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity Spikes_Generator_signed_BW
+-- Compiling architecture Behavioral of Spikes_Generator_signed_BW
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/I2S_inteface_sync.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/I2S_inteface_sync.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity I2S_inteface
+-- Compiling architecture Behavioral of I2S_inteface
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Testbenches/PDM2Spikes_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Testbenches/PDM2Spikes_tb.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_textio
+-- Loading package NUMERIC_STD
+-- Compiling entity PDM2Spikes_tb
+-- Compiling architecture Behavioral of PDM2Spikes_tb
+-- Compiling configuration PDM2Spikes_tb_Behavioral_cfg
+-- Loading entity PDM2Spikes_tb
+-- Loading architecture Behavioral of PDM2Spikes_tb
+-- Loading entity PDM2Spikes
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_user_int.v {1 {vlog -work work -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_user_int.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+-- Compiling module raggedstone_spinn_aer_if_user_int
+
+Top level modules:
+	raggedstone_spinn_aer_if_user_int
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_router.v {1 {vlog -work work -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_router.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+-- Compiling module raggedstone_spinn_aer_if_router
+
+Top level modules:
+	raggedstone_spinn_aer_if_router
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_control.v {1 {vlog -work work -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_control.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+-- Compiling module raggedstone_spinn_aer_if_control
+
+Top level modules:
+	raggedstone_spinn_aer_if_control
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/DualPortRAM.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/DualPortRAM.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity dualram
+-- Compiling architecture syn of dualram
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinn2aer_mapper.v {1 {vlog -work work -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinn2aer_mapper.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+-- Compiling module spio_spinn2aer_mapper
+
+Top level modules:
+	spio_spinn2aer_mapper
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_aer2spinn_mapper.v {1 {vlog -work work -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_aer2spinn_mapper.v
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5c Compiler 2017.01 Jan 23 2017
+-- Compiling module spio_aer2spinn_mapper
+
+Top level modules:
+	spio_aer2spinn_mapper
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/PDM2Spikes.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/PDM2Spikes.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity PDM2Spikes
+-- Compiling architecture Behavioral of PDM2Spikes
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_div_BW.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_div_BW.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity spikes_div_BW
+-- Compiling architecture Behavioral of spikes_div_BW
+
+} {} {}} D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_2BPF_fullGain.vhd {1 {vcom -work work -2002 -explicit -stats=none D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_2BPF_fullGain.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5c Compiler 2017.01 Jan 23 2017
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity spikes_2BPF_fullGain
+-- Compiling architecture Behavioral of spikes_2BPF_fullGain
+
+} {} {}}
