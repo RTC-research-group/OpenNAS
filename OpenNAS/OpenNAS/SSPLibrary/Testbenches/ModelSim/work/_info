@@ -1,0 +1,1574 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dD:/Universidad/Repositorios/GitHub/Doctorado/TDE_vhdl/TDE/Testbench/Results/Project
+Eac97controller
+Z0 w1578392168
+Z1 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z2 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z5 dD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Testbenches/ModelSim
+8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/AC97Controller.vhd
+FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/AC97Controller.vhd
+l0
+L29
+V<hW5<N6U[VA1P`gR1F4cD1
+!s100 H7E6gkcX4`>>z>BRAT@OZ0
+Z6 OV;C;10.5c;63
+32
+!s110 1581508948
+!i10b 1
+!s108 1581508948.000000
+!s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/AC97Controller.vhd|
+!s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/AC97Controller.vhd|
+!i113 1
+Z7 o-work work -2002 -explicit
+Z8 tExplicit 1 CvgOpt 0
+Eaer_dif
+R0
+R1
+R2
+R3
+R4
+R5
+Z9 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/AER_DIF.vhd
+Z10 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/AER_DIF.vhd
+l0
+L28
+VhiL[fF@=IfEiOe3JO>OWW1
+!s100 RX>NjFbkU=LczCo8DS:J_2
+R6
+32
+Z11 !s110 1582650037
+!i10b 1
+Z12 !s108 1582650037.000000
+Z13 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/AER_DIF.vhd|
+Z14 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/AER_DIF.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R1
+R2
+R3
+R4
+DEx4 work 7 aer_dif 0 22 hiL[fF@=IfEiOe3JO>OWW1
+l61
+L41
+V?R]OD=1JgTMG:I4CNm0TU1
+!s100 fDPL:T15mFib17mZX4HXB2
+R6
+32
+R11
+!i10b 1
+R12
+R13
+R14
+!i113 1
+R7
+R8
+Eaer_distributed_monitor
+R0
+R1
+R2
+R3
+R4
+R5
+Z15 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_DISTRIBUTED_MONITOR.vhd
+Z16 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_DISTRIBUTED_MONITOR.vhd
+l0
+L28
+V<R6l[JLfdcn4WHSM`J52K0
+!s100 5]RMlnCO]4o^zD0_05RHT0
+R6
+32
+Z17 !s110 1582650038
+!i10b 1
+Z18 !s108 1582650038.000000
+Z19 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_DISTRIBUTED_MONITOR.vhd|
+Z20 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_DISTRIBUTED_MONITOR.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R1
+R2
+R3
+R4
+DEx4 work 23 aer_distributed_monitor 0 22 <R6l[JLfdcn4WHSM`J52K0
+l99
+L47
+Vnho9YZMG@Wd_YDTOSY=h=2
+!s100 030=d3Fo[@k]`TOPfLD_^3
+R6
+32
+R17
+!i10b 1
+R18
+R19
+R20
+!i113 1
+R7
+R8
+Eaer_distributed_monitor_module
+R0
+R1
+R2
+R3
+R4
+R5
+Z21 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_DISTRIBUTED_MONITOR_MODULE.vhd
+Z22 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_DISTRIBUTED_MONITOR_MODULE.vhd
+l0
+L27
+Vgnd82odePK:A8S37bA7E:0
+!s100 H]nkW6Q5=c2AO1]Xl30AU2
+R6
+32
+R17
+!i10b 1
+R18
+Z23 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_DISTRIBUTED_MONITOR_MODULE.vhd|
+Z24 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_DISTRIBUTED_MONITOR_MODULE.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R1
+R2
+R3
+R4
+DEx4 work 30 aer_distributed_monitor_module 0 22 gnd82odePK:A8S37bA7E:0
+l70
+L43
+V0I8<UclA:K2I3TX2hLR8^1
+!s100 gbU]=6Lkd0RK4be7WW<eo1
+R6
+32
+R17
+!i10b 1
+R18
+R23
+R24
+!i113 1
+R7
+R8
+Eaer_holder_and_fire
+R0
+R1
+R2
+R3
+R4
+R5
+Z25 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/AER_HOLDER_AND_FIRE.vhd
+Z26 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/AER_HOLDER_AND_FIRE.vhd
+l0
+L46
+V6nYmhlDV3o>F78lgb7Ple2
+!s100 ZSYjZQ3j=G>GXLIDBBF6k0
+R6
+32
+R11
+!i10b 1
+R12
+Z27 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/AER_HOLDER_AND_FIRE.vhd|
+Z28 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/AER_HOLDER_AND_FIRE.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R1
+R2
+R3
+R4
+DEx4 work 19 aer_holder_and_fire 0 22 6nYmhlDV3o>F78lgb7Ple2
+l61
+L55
+Vg7>fPl2YNgb<CYj=80E;^0
+!s100 XVMYA^VKRP@S7I;oD@LA63
+R6
+32
+R11
+!i10b 1
+R12
+R27
+R28
+!i113 1
+R7
+R8
+Eaer_in
+R0
+Z29 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+R1
+R2
+R3
+R4
+R5
+Z30 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_IN.vhd
+Z31 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_IN.vhd
+l0
+L29
+Vgj@kH=Q;2TgmVzf[hNV_n2
+!s100 X^Vd2;hTRVK;L:PmEL5[@3
+R6
+32
+Z32 !s110 1582650039
+!i10b 1
+Z33 !s108 1582650039.000000
+Z34 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_IN.vhd|
+Z35 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_IN.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R29
+R1
+R2
+R3
+R4
+DEx4 work 6 aer_in 0 22 gj@kH=Q;2TgmVzf[hNV_n2
+l49
+L43
+VkT60gIclW:QAen=68E4AR0
+!s100 z>@DnoXn;=b=Oo7lPbn:82
+R6
+32
+R32
+!i10b 1
+R33
+R34
+R35
+!i113 1
+R7
+R8
+Eaer_out
+R0
+R1
+R2
+R3
+R4
+R5
+Z36 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_OUT.vhd
+Z37 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_OUT.vhd
+l0
+L28
+V6RY29a8_OUz4lz1Cc`e`<2
+!s100 H@OiT=B@NdTOGBP=^lQ6_0
+R6
+32
+R32
+!i10b 1
+R33
+Z38 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_OUT.vhd|
+Z39 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/AER_OUT.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R1
+R2
+R3
+R4
+DEx4 work 7 aer_out 0 22 6RY29a8_OUz4lz1Cc`e`<2
+l86
+L45
+V>EGPiP^OR5@8`cg>Oa5^:2
+!s100 oH8emOSg9a^8EH7G92W_E0
+R6
+32
+R32
+!i10b 1
+R33
+R38
+R39
+!i113 1
+R7
+R8
+Ec_element
+R0
+R3
+R4
+R5
+Z40 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/c_element.vhd
+Z41 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/c_element.vhd
+l0
+L25
+V5nA0?UYzE8[ffcTU2fJ7j1
+!s100 QNY?K>m;n@6_>0AjRom1>3
+R6
+32
+R32
+!i10b 1
+R33
+Z42 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/c_element.vhd|
+Z43 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/c_element.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R3
+R4
+DEx4 work 9 c_element 0 22 5nA0?UYzE8[ffcTU2fJ7j1
+l38
+L34
+VnCaBDoZjQUBH`GKo[nJA_3
+!s100 gNWYRe[JdGgIDYc?LgOZ41
+R6
+32
+R32
+!i10b 1
+R33
+R42
+R43
+!i113 1
+R7
+R8
+Edualram
+R0
+R1
+R2
+R3
+R4
+R5
+Z44 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/DualPortRAM.vhd
+Z45 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/DualPortRAM.vhd
+l0
+L27
+VdAl;cm>4gmTUgOAKfF=Xi2
+!s100 dii[>km?zBHBPU@jGKj_j0
+R6
+32
+R32
+!i10b 1
+R33
+Z46 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/DualPortRAM.vhd|
+Z47 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/DualPortRAM.vhd|
+!i113 1
+R7
+R8
+Asyn
+R1
+R2
+R3
+R4
+DEx4 work 7 dualram 0 22 dAl;cm>4gmTUgOAKfF=Xi2
+l51
+L46
+V8fXZU=XbIN:POS>`a>mMO2
+!s100 iKL[4J[jTF^CnKgXikW[?2
+R6
+32
+R32
+!i10b 1
+R33
+R46
+R47
+!i113 1
+R7
+R8
+vflit_input_if
+Z48 !s110 1582650040
+!i10b 1
+!s100 :EMVb16jB<G_Ue^aB6;nj3
+IVO:dR4DlkcFo9HQbYMEh_3
+Z49 VDg1SIo80bB@j0V0VzS_@n1
+R5
+Z50 w1557756806
+Z51 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinnaker_link_synchronous_receiver.v
+Z52 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinnaker_link_synchronous_receiver.v
+L0 113
+Z53 OV;L;10.5c;63
+r1
+!s85 0
+31
+Z54 !s108 1582650040.000000
+Z55 !s107 D:\Universidad\Repositorios\GitHub\RTC-research-group\OpenNAS\OpenNAS\OpenNAS\OpenNAS\SSPLibrary\SpikesOutputInterfaces\spio_spinnaker_link.h|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinnaker_link_synchronous_receiver.v|
+Z56 !s90 -reportprogress|300|-work|work|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinnaker_link_synchronous_receiver.v|
+!i113 1
+Z57 o-work work
+Z58 tCvgOpt 0
+vflit_output_if
+R48
+!i10b 1
+!s100 bIVLnJB_13JcRR_[cM`Pf1
+I6C@?aznk6CjJ<`QB@^k>80
+R49
+R5
+R50
+Z59 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinnaker_link_synchronous_sender.v
+Z60 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinnaker_link_synchronous_sender.v
+L0 316
+R53
+r1
+!s85 0
+31
+R54
+Z61 !s107 D:\Universidad\Repositorios\GitHub\RTC-research-group\OpenNAS\OpenNAS\OpenNAS\OpenNAS\SSPLibrary\SpikesOutputInterfaces\spio_spinnaker_link.h|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinnaker_link_synchronous_sender.v|
+Z62 !s90 -reportprogress|300|-work|work|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinnaker_link_synchronous_sender.v|
+!i113 1
+R57
+R58
+Ehandshakeout
+R0
+R1
+R2
+R3
+R4
+R5
+Z63 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/handsakeOut.vhd
+Z64 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/handsakeOut.vhd
+l0
+L27
+VP[0L;:M;[aE7DBG9?z;Ok0
+!s100 Nk`Wb1IadfB]T^_G6CKJi2
+R6
+32
+R32
+!i10b 1
+R33
+Z65 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/handsakeOut.vhd|
+Z66 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/handsakeOut.vhd|
+!i113 1
+R7
+R8
+Ahandout
+R1
+R2
+R3
+R4
+DEx4 work 12 handshakeout 0 22 P[0L;:M;[aE7DBG9?z;Ok0
+l45
+L40
+Vd;JIUB7U6iVY@::?7Eok>3
+!s100 kY8CZm@maKX0dli;Oc5Pc0
+R6
+32
+R32
+!i10b 1
+R33
+R65
+R66
+!i113 1
+R7
+R8
+Ei2s_inteface
+R0
+R3
+R4
+R5
+Z67 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/I2S_inteface_sync.vhd
+Z68 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/I2S_inteface_sync.vhd
+l0
+L49
+VHOEURVM_`jGRTDXebC2:k0
+!s100 C6Jo2UFfi<5gUb6GeF28K3
+R6
+32
+R11
+!i10b 1
+R12
+Z69 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/I2S_inteface_sync.vhd|
+Z70 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/I2S_inteface_sync.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R3
+R4
+DEx4 work 12 i2s_inteface 0 22 HOEURVM_`jGRTDXebC2:k0
+l75
+L64
+Vld_EREG`LPiDDSTVf@GkI2
+!s100 H:lE56WCF@d1KWl1:fZ:K2
+R6
+32
+R11
+!i10b 1
+R12
+R69
+R70
+!i113 1
+R7
+R8
+Ei2s_to_spikes_stereo
+R0
+R3
+R4
+R5
+Z71 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/i2s_to_spikes_stereo.vhd
+Z72 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/i2s_to_spikes_stereo.vhd
+l0
+L53
+V3D2M5k78eT6GS0d@Ji>:Y0
+!s100 <`:12n7H^`UXKOhFWLnak3
+R6
+32
+R11
+!i10b 1
+R12
+Z73 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/i2s_to_spikes_stereo.vhd|
+Z74 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/i2s_to_spikes_stereo.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R3
+R4
+DEx4 work 20 i2s_to_spikes_stereo 0 22 3D2M5k78eT6GS0d@Ji>:Y0
+l99
+L67
+VI`A6f<ZEcT3QnP3oi>TN_0
+!s100 :IEaG779:d3z19?KRZEak1
+R6
+32
+R11
+!i10b 1
+R12
+R73
+R74
+!i113 1
+R7
+R8
+Epdm2spikes
+R0
+R29
+R3
+R4
+R5
+Z75 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/PDM2Spikes.vhd
+Z76 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/PDM2Spikes.vhd
+l0
+L46
+VTZM@WkEzJMZ=^D=IbFEiV1
+!s100 I=HMUL1d?9?nQnf]_IL3l1
+R6
+32
+R11
+!i10b 1
+Z77 !s108 1582650036.000000
+Z78 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/PDM2Spikes.vhd|
+Z79 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/PDM2Spikes.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R29
+R3
+R4
+Z80 DEx4 work 10 pdm2spikes 0 22 TZM@WkEzJMZ=^D=IbFEiV1
+l120
+L67
+VAI;PWchj7GT>]SnFjN2NX2
+!s100 @07<hGE28UKKgFN2cFA4o3
+R6
+32
+R11
+!i10b 1
+R77
+R78
+R79
+!i113 1
+R7
+R8
+Epdm2spikes_tb
+Z81 w1582650028
+R29
+Z82 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
+R3
+R4
+R5
+Z83 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Testbenches/PDM2Spikes_tb.vhd
+Z84 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Testbenches/PDM2Spikes_tb.vhd
+l0
+L55
+Vbj_=z[?:XK`9>i;@T@<e03
+!s100 N=YFimm[omRA;bAm]?D[R2
+R6
+32
+Z85 !s110 1582650036
+!i10b 1
+R77
+Z86 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Testbenches/PDM2Spikes_tb.vhd|
+Z87 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Testbenches/PDM2Spikes_tb.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R29
+R82
+R3
+R4
+Z88 DEx4 work 13 pdm2spikes_tb 0 22 bj_=z[?:XK`9>i;@T@<e03
+l149
+L62
+Vc_2BE6aUXgUfRg7ooOgN81
+!s100 UM9M?CNG@m;5QXb2Cjn]B2
+R6
+32
+R85
+!i10b 1
+R77
+R86
+R87
+!i113 1
+R7
+R8
+Cpdm2spikes_tb_behavioral_cfg
+ePDM2Spikes_tb
+Z89 aBehavioral
+R80
+DAx4 work 13 pdm2spikes_tb 10 behavioral 22 c_2BE6aUXgUfRg7ooOgN81
+R29
+R82
+R3
+R4
+R88
+R81
+R5
+R83
+R84
+l0
+L356
+VlLj7m^>CAdJWWR9THdBiM1
+!s100 5ceNncgh]WRGW^jYOKBjm0
+R6
+32
+R85
+!i10b 0
+R77
+R86
+R87
+!i113 1
+R7
+R8
+Epdm_interface
+R0
+R1
+R2
+R3
+R4
+R5
+Z90 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/PDM_Interface.vhd
+Z91 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/PDM_Interface.vhd
+l0
+L46
+Vfo<d8Z313GZ1N2c@MMKQQ2
+!s100 <MJCg=lX^4R3_llDY:FMj2
+R6
+32
+R85
+!i10b 1
+R77
+Z92 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/PDM_Interface.vhd|
+Z93 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/PDM_Interface.vhd|
+!i113 1
+R7
+R8
+Apdm_interface_arq
+R1
+R2
+R3
+R4
+Z94 DEx4 work 13 pdm_interface 0 22 fo<d8Z313GZ1N2c@MMKQQ2
+l64
+L57
+VF2i5DzSlj=BWS9cJL:b8V1
+!s100 obEz^=ocgzTO::VN_:JFY0
+R6
+32
+R85
+!i10b 1
+R77
+R92
+R93
+!i113 1
+R7
+R8
+Epdm_interface_tb
+Z95 w1581509315
+R29
+R82
+R3
+R4
+R5
+Z96 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Testbenches/PDM_Interface_tb.vhd
+Z97 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Testbenches/PDM_Interface_tb.vhd
+l0
+L55
+VQoMQY64eS76`V@RZz3_Db2
+!s100 ]^FfQ_SJmRdVb4h35F1SP3
+R6
+32
+R11
+!i10b 1
+R12
+Z98 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Testbenches/PDM_Interface_tb.vhd|
+Z99 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Testbenches/PDM_Interface_tb.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R29
+R82
+R3
+R4
+Z100 DEx4 work 16 pdm_interface_tb 0 22 QoMQY64eS76`V@RZz3_Db2
+l104
+L62
+VAoNdE?6PT@T<Pg^Z<N_ND0
+!s100 ;;`V77MYaNd]K6A_HKnX90
+R6
+32
+R11
+!i10b 1
+R12
+R98
+R99
+!i113 1
+R7
+R8
+Cpdm_interface_tb_behavioral_cfg
+ePDM_Interface_tb
+R89
+R2
+R1
+R94
+DAx4 work 16 pdm_interface_tb 10 behavioral 22 AoNdE?6PT@T<Pg^Z<N_ND0
+R29
+R82
+R3
+R4
+R100
+R95
+R5
+R96
+R97
+l0
+L252
+V;Y7K2AA;OQ9;mHe0@Lcm=2
+!s100 ;XNRF0oQj4e17:YM;WH4K0
+R6
+32
+R11
+!i10b 0
+R12
+R98
+R99
+!i113 1
+R7
+R8
+vpkt_deserializer
+R48
+!i10b 1
+!s100 AdEYlzA:STKCNzYZJ62:43
+I3RFbmUQDM>@8moF@kj4MG2
+R49
+R5
+R50
+R51
+R52
+L0 492
+R53
+r1
+!s85 0
+31
+R54
+R55
+R56
+!i113 1
+R57
+R58
+vpkt_serializer
+R48
+!i10b 1
+!s100 M8lXjH9I6KMJnkgkPn17`1
+I^7Ee>9jaZG9RiVWi?mGXb3
+R49
+R5
+R50
+R59
+R60
+L0 99
+R53
+r1
+!s85 0
+31
+R54
+R61
+R62
+!i113 1
+R57
+R58
+vraggedstone_spinn_aer_if_control
+R32
+!i10b 1
+!s100 F2AeV]DR3WlQ^j8Z7jbiL0
+I>78FF`9HVzB[UoFX9GJ;?2
+R49
+R5
+w1561804805
+8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_control.v
+FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_control.v
+Z101 L0 23
+R53
+r1
+!s85 0
+31
+R33
+!s107 D:\Universidad\Repositorios\GitHub\RTC-research-group\OpenNAS\OpenNAS\OpenNAS\OpenNAS\SSPLibrary\SpikesOutputInterfaces\spio_spinnaker_link.h|D:\Universidad\Repositorios\GitHub\RTC-research-group\OpenNAS\OpenNAS\OpenNAS\OpenNAS\SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_top.h|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_control.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_control.v|
+!i113 1
+R57
+R58
+vraggedstone_spinn_aer_if_debouncer
+R32
+!i10b 1
+!s100 UEQ90d:T?@FH4WSXn`ZCi2
+IK]ahXdVcDPMiTmi5Md0eV3
+R49
+R5
+Z102 w1557756805
+8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_debouncer.v
+FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_debouncer.v
+L0 27
+R53
+r1
+!s85 0
+31
+R33
+!s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_debouncer.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_debouncer.v|
+!i113 1
+R57
+R58
+vraggedstone_spinn_aer_if_dump
+R32
+!i10b 1
+!s100 JoeO6Ajm0ObJCfFdY[8Ai2
+Im8QUzXCiogcQbI=Nc9ize2
+R49
+R5
+w1561804798
+8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_dump.v
+FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_dump.v
+Z103 L0 28
+R53
+r1
+!s85 0
+31
+R33
+!s107 D:\Universidad\Repositorios\GitHub\RTC-research-group\OpenNAS\OpenNAS\OpenNAS\OpenNAS\SSPLibrary\SpikesOutputInterfaces\spio_spinnaker_link.h|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_dump.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_dump.v|
+!i113 1
+R57
+R58
+vraggedstone_spinn_aer_if_router
+R32
+!i10b 1
+!s100 B?@`6o;1YBjn:FT8SazaI3
+I6C?^bY>Hm>4?>7L@ZNRh91
+R49
+R5
+w1561804793
+8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_router.v
+FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_router.v
+R101
+R53
+r1
+!s85 0
+31
+R33
+!s107 D:\Universidad\Repositorios\GitHub\RTC-research-group\OpenNAS\OpenNAS\OpenNAS\OpenNAS\SSPLibrary\SpikesOutputInterfaces\spio_spinnaker_link.h|D:\Universidad\Repositorios\GitHub\RTC-research-group\OpenNAS\OpenNAS\OpenNAS\OpenNAS\SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_top.h|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_router.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_router.v|
+!i113 1
+R57
+R58
+vraggedstone_spinn_aer_if_top
+R32
+!i10b 1
+!s100 Z;kcS7:]G>9;=U1afF_Z_0
+IGTJQ8<Gd;`LY3eGOAVf:c3
+R49
+R5
+w1561804788
+8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_top.v
+FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_top.v
+L0 29
+R53
+r1
+!s85 0
+31
+R33
+!s107 D:\Universidad\Repositorios\GitHub\RTC-research-group\OpenNAS\OpenNAS\OpenNAS\OpenNAS\SSPLibrary\SpikesOutputInterfaces\spio_spinnaker_link.h|D:\Universidad\Repositorios\GitHub\RTC-research-group\OpenNAS\OpenNAS\OpenNAS\OpenNAS\SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_top.h|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_top.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_top.v|
+!i113 1
+R57
+R58
+vraggedstone_spinn_aer_if_user_int
+R32
+!i10b 1
+!s100 cf9G?A=WM2J5;n;g4;3A51
+Iz[X^n@YFWYVX21N;[Tb5N2
+R49
+R5
+R102
+8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_user_int.v
+FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_user_int.v
+R103
+R53
+r1
+!s85 0
+31
+R33
+!s107 D:\Universidad\Repositorios\GitHub\RTC-research-group\OpenNAS\OpenNAS\OpenNAS\OpenNAS\SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_top.h|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_user_int.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/raggedstone_spinn_aer_if_user_int.v|
+!i113 1
+R57
+R58
+Eramfifo
+R0
+R1
+R2
+R3
+R4
+R5
+Z104 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/ramfifo.vhd
+Z105 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/ramfifo.vhd
+l0
+L27
+V0=8]14Hhee8T:Y<KRGJGG0
+!s100 =m9P6PSdm^E?]ng[@_W>C0
+R6
+32
+R32
+!i10b 1
+R33
+Z106 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/ramfifo.vhd|
+Z107 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/ramfifo.vhd|
+!i113 1
+R7
+R8
+Asyn
+R1
+R2
+R3
+R4
+DEx4 work 7 ramfifo 0 22 0=8]14Hhee8T:Y<KRGJGG0
+l75
+L48
+VD@fadQ7YYjhDZcB5mncH_2
+!s100 B=M>=TWOjcEBBW]Ge0lAC3
+R6
+32
+R32
+!i10b 1
+R33
+R106
+R107
+!i113 1
+R7
+R8
+Espike_int_n_gen_bw
+R0
+R1
+R2
+R3
+R4
+R5
+Z108 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/Spike_Int_n_Gen_BW.vhd
+Z109 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/Spike_Int_n_Gen_BW.vhd
+l0
+L27
+V3Rz[N^>M=WCREfKie2e?e2
+!s100 ?3CA4S4gFYTA_K3aWcA6?0
+R6
+32
+R11
+!i10b 1
+R12
+Z110 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/Spike_Int_n_Gen_BW.vhd|
+Z111 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/Spike_Int_n_Gen_BW.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R1
+R2
+R3
+R4
+DEx4 work 18 spike_int_n_gen_bw 0 22 3Rz[N^>M=WCREfKie2e?e2
+l53
+L43
+V@;XAGR8<P?^X>6=i1AD@h2
+!s100 RFTLhZm7KoJ]h;k8TVSio0
+R6
+32
+R11
+!i10b 1
+R12
+R110
+R111
+!i113 1
+R7
+R8
+Espikes_2bpf_fullgain
+R0
+R1
+R2
+R3
+R4
+R5
+Z112 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_2BPF_fullGain.vhd
+Z113 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_2BPF_fullGain.vhd
+l0
+L28
+VL1gXE424<PDA^UbcK]Sec2
+!s100 SP^adHdjBmh[eCBDcI^P73
+R6
+32
+R11
+!i10b 1
+R12
+Z114 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_2BPF_fullGain.vhd|
+Z115 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_2BPF_fullGain.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R1
+R2
+R3
+R4
+DEx4 work 20 spikes_2bpf_fullgain 0 22 L1gXE424<PDA^UbcK]Sec2
+l107
+L51
+Vbj<cSb9A@V>OYQk]nQNGm0
+!s100 jN`8>KP;RFHS3UWZRMAX13
+R6
+32
+R11
+!i10b 1
+R12
+R114
+R115
+!i113 1
+R7
+R8
+Espikes_2lpf_fullgain
+R0
+R1
+R2
+R3
+R4
+R5
+Z116 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_2LPF_fullGain.vhd
+Z117 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_2LPF_fullGain.vhd
+l0
+L28
+V>fI@4[8jMnMWISAbfKcCi1
+!s100 j2N:>0Cl<5mf;D8ogP;CD0
+R6
+32
+R17
+!i10b 1
+R18
+Z118 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_2LPF_fullGain.vhd|
+Z119 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_2LPF_fullGain.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R1
+R2
+R3
+R4
+DEx4 work 20 spikes_2lpf_fullgain 0 22 >fI@4[8jMnMWISAbfKcCi1
+l73
+L46
+V8;;37DDzeNDY]1cF:5S7Z1
+!s100 LDId]3aEYgWM_jA0iJO7S1
+R6
+32
+R17
+!i10b 1
+R18
+R118
+R119
+!i113 1
+R7
+R8
+Espikes_4bpf_fullgain
+R0
+R1
+R2
+R3
+R4
+R5
+Z120 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_4BPF_fullGain.vhd
+Z121 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_4BPF_fullGain.vhd
+l0
+L28
+V1R`<kL]nXD5;_2M=Qkgzg0
+!s100 <`]nGL55ZHcM`dWW8ZPC@3
+R6
+32
+R17
+!i10b 1
+R18
+Z122 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_4BPF_fullGain.vhd|
+Z123 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_4BPF_fullGain.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R1
+R2
+R3
+R4
+DEx4 work 20 spikes_4bpf_fullgain 0 22 1R`<kL]nXD5;_2M=Qkgzg0
+l109
+L51
+V[Rk4R@=zC6=5GR0]IhFOY3
+!s100 85?ZjKkQgS<<k:Sl:YKGz1
+R6
+32
+R17
+!i10b 1
+R18
+R122
+R123
+!i113 1
+R7
+R8
+Espikes_4lpf_fullgain
+R0
+R1
+R2
+R3
+R4
+R5
+Z124 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_4LPF_fullGain.vhd
+Z125 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_4LPF_fullGain.vhd
+l0
+L28
+Vn[O2b6_jl3`Z_;c^B?e[`2
+!s100 f>eDJN4=>JBGl0bXQ0SdY1
+R6
+32
+R17
+!i10b 1
+R18
+Z126 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_4LPF_fullGain.vhd|
+Z127 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_4LPF_fullGain.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R1
+R2
+R3
+R4
+DEx4 work 20 spikes_4lpf_fullgain 0 22 n[O2b6_jl3`Z_;c^B?e[`2
+l78
+L46
+VY4?7F98WmF;?kA:Z^;BNe1
+!s100 @3G=Wjj7mLS>TRW0Bl<aB3
+R6
+32
+R17
+!i10b 1
+R18
+R126
+R127
+!i113 1
+R7
+R8
+Espikes_bpf_hq
+R0
+R1
+R2
+R3
+R4
+R5
+Z128 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_BPF_HQ_Div.vhd
+Z129 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_BPF_HQ_Div.vhd
+l0
+L28
+V;nz0cQ`zaPf6g?o;Y@;bj2
+!s100 O[nZRC5geE_X2oeQAASW[0
+R6
+32
+R17
+!i10b 1
+R18
+Z130 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_BPF_HQ_Div.vhd|
+Z131 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_BPF_HQ_Div.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R1
+R2
+R3
+R4
+DEx4 work 13 spikes_bpf_hq 0 22 ;nz0cQ`zaPf6g?o;Y@;bj2
+l112
+L47
+VUNN23zaFI`iM15`m[7Q9h1
+!s100 Jn1O]6jNfYzXdWgYD6Jg^1
+R6
+32
+R17
+!i10b 1
+R18
+R130
+R131
+!i113 1
+R7
+R8
+Espikes_div_bw
+R0
+R1
+R2
+R3
+R4
+R5
+Z132 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_div_BW.vhd
+Z133 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_div_BW.vhd
+l0
+L27
+ValE01T93eG0S3PeB>I4QN1
+!s100 QZ[JRe;haehZObj_e>kRD1
+R6
+32
+R17
+!i10b 1
+R18
+Z134 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_div_BW.vhd|
+Z135 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_div_BW.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R1
+R2
+R3
+R4
+DEx4 work 13 spikes_div_bw 0 22 alE01T93eG0S3PeB>I4QN1
+l49
+L41
+VkhRMWRT6_fBNM4^S^Ied:1
+!s100 ;d=0X9C^2ERX63D?Tgi^I1
+R6
+32
+R17
+!i10b 1
+R18
+R134
+R135
+!i113 1
+R7
+R8
+Espikes_generator_signed_bw
+R0
+R1
+R2
+R3
+R4
+R5
+Z136 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/Spikes_Generator_signed_BW.vhd
+Z137 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/Spikes_Generator_signed_BW.vhd
+l0
+L27
+VBk6T10CD?3O4PfB8EVW`21
+!s100 ;zYF;Aj]>PbadaJf:NDj^0
+R6
+32
+R17
+!i10b 1
+R18
+Z138 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/Spikes_Generator_signed_BW.vhd|
+Z139 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/Spikes_Generator_signed_BW.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R1
+R2
+R3
+R4
+DEx4 work 26 spikes_generator_signed_bw 0 22 Bk6T10CD?3O4PfB8EVW`21
+l49
+L39
+VkYB1oi?Ac423lOd0mC^Om3
+!s100 0NCHHYAz4QWDHlWP`C_c51
+R6
+32
+R17
+!i10b 1
+R18
+R138
+R139
+!i113 1
+R7
+R8
+Espikes_hpf
+R0
+R1
+R2
+R3
+R4
+R5
+Z140 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_HPF.vhd
+Z141 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_HPF.vhd
+l0
+L28
+V5e;X<CUHiGPNZ?ek>Qdce2
+!s100 EAM6T^2NcU2g2b7R0CLWh3
+R6
+32
+R17
+!i10b 1
+R18
+Z142 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_HPF.vhd|
+Z143 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_HPF.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R1
+R2
+R3
+R4
+DEx4 work 10 spikes_hpf 0 22 5e;X<CUHiGPNZ?ek>Qdce2
+l83
+L44
+VmN`LMh0ImY44ak]dM4cz_3
+!s100 7zzH>AiM[5Gj3d4mT3RY^1
+R6
+32
+R17
+!i10b 1
+R18
+R142
+R143
+!i113 1
+R7
+R8
+Espikes_lpf_fullgain
+R0
+R1
+R2
+R3
+R4
+R5
+Z144 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_LPF_fullGain.vhd
+Z145 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_LPF_fullGain.vhd
+l0
+L28
+VHZJ;KAVRFFU1b1UOfMlMo2
+!s100 _dEoe=Ji=O1c=azLVP=B70
+R6
+32
+R11
+!i10b 1
+R12
+Z146 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_LPF_fullGain.vhd|
+Z147 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikeBuildingBlocks/spikes_LPF_fullGain.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R1
+R2
+R3
+R4
+DEx4 work 19 spikes_lpf_fullgain 0 22 HZJ;KAVRFFU1b1UOfMlMo2
+l96
+L46
+Vka<Q:ZPZ^l2hPK]@RQ4o^1
+!s100 8P@P:Hf12;iZ]g9TQ9[i41
+R6
+32
+R11
+!i10b 1
+R12
+R146
+R147
+!i113 1
+R7
+R8
+Espikessource_selector
+R0
+R29
+R3
+R4
+R5
+Z148 8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/SpikesSource_Selector.vhd
+Z149 FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/SpikesSource_Selector.vhd
+l0
+L51
+VLS410UeSZ1WSL<z?WfGjS1
+!s100 KOdOz>0lKPIkcAN9F:8ba0
+R6
+32
+R11
+!i10b 1
+R12
+Z150 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/SpikesSource_Selector.vhd|
+Z151 !s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/Components/SpikesSource_Selector.vhd|
+!i113 1
+R7
+R8
+Abehavioral
+R29
+R3
+R4
+DEx4 work 21 spikessource_selector 0 22 LS410UeSZ1WSL<z?WfGjS1
+l62
+L60
+VBehH>Ba0aHkEV;Bfdm^=h0
+!s100 DSJHROXJoJYMDO^KZIL4a2
+R6
+32
+R11
+!i10b 1
+R12
+R150
+R151
+!i113 1
+R7
+R8
+vspio_aer2spinn_mapper
+R48
+!i10b 1
+!s100 hXoQLNaDKCQ6Bhi4ozHWD3
+Ik@>30UR?hA?gdnmI3R1HC1
+R49
+R5
+w1561804776
+8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_aer2spinn_mapper.v
+FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_aer2spinn_mapper.v
+Z152 L0 30
+R53
+r1
+!s85 0
+31
+R54
+!s107 D:\Universidad\Repositorios\GitHub\RTC-research-group\OpenNAS\OpenNAS\OpenNAS\OpenNAS\SSPLibrary\SpikesOutputInterfaces\spio_spinnaker_link.h|D:\Universidad\Repositorios\GitHub\RTC-research-group\OpenNAS\OpenNAS\OpenNAS\OpenNAS\SSPLibrary\SpikesOutputInterfaces\raggedstone_spinn_aer_if_top.h|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_aer2spinn_mapper.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_aer2spinn_mapper.v|
+!i113 1
+R57
+R58
+vspio_spinn2aer_mapper
+R48
+!i10b 1
+!s100 G4T_[1V?9]in04aG?b<UQ2
+IcbNWh6WHkQPT=WCi^lkV73
+R49
+R5
+w1561804764
+8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinn2aer_mapper.v
+FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinn2aer_mapper.v
+R103
+R53
+r1
+!s85 0
+31
+R54
+!s107 D:\Universidad\Repositorios\GitHub\RTC-research-group\OpenNAS\OpenNAS\OpenNAS\OpenNAS\SSPLibrary\SpikesOutputInterfaces\spio_spinnaker_link.h|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinn2aer_mapper.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinn2aer_mapper.v|
+!i113 1
+R57
+R58
+vspio_spinnaker_link_sync
+R48
+!i10b 1
+!s100 7I>^Xi0_h8:=S627nlTnR0
+ISPhe;ChjVPb09FcXDLQcg0
+R49
+R5
+R50
+8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinnaker_link_sync.v
+FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinnaker_link_sync.v
+R152
+R53
+r1
+!s85 0
+31
+R54
+!s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinnaker_link_sync.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_spinnaker_link_sync.v|
+!i113 1
+R57
+R58
+vspio_spinnaker_link_synchronous_receiver
+R48
+!i10b 1
+!s100 [b:F_T[n@a>XM938S5oe30
+IfkOmJ86nd=AH2M0DhzKSE2
+R49
+R5
+R50
+R51
+R52
+Z153 L0 34
+R53
+r1
+!s85 0
+31
+R54
+R55
+R56
+!i113 1
+R57
+R58
+vspio_spinnaker_link_synchronous_sender
+R48
+!i10b 1
+!s100 [3VbJaAVgnR]eYB8E0OGC2
+IeKVWZ?jj44Uc]PAc=`hf>1
+R49
+R5
+R50
+R59
+R60
+R153
+R53
+r1
+!s85 0
+31
+R54
+R61
+R62
+!i113 1
+R57
+R58
+vspio_switch
+R17
+!i10b 1
+!s100 BAcZ]=NL?GZhWSX^K@XPT2
+IH::U[GEDJ0D<Pac^XVJ>d2
+R49
+R5
+R50
+8D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_switch.v
+FD:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_switch.v
+L0 6
+R53
+r1
+!s85 0
+31
+R18
+!s107 D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_switch.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/OpenNAS/SSPLibrary/SpikesOutputInterfaces/spio_switch.v|
+!i113 1
+R57
+R58
