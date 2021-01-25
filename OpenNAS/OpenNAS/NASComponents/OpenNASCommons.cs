@@ -122,7 +122,7 @@ namespace OpenNAS_App.NASComponents
         public YamlMappingNode toYAML()
         {
             return new YamlMappingNode(
-                new YamlScalarNode("NASchip"), new YamlScalarNode(nCh.ToString()),
+                new YamlScalarNode("NASchip"), new YamlScalarNode(nasChip.ToString()),
                 new YamlScalarNode("NumChannels"), new YamlScalarNode(nCh.ToString()),
                 new YamlScalarNode("MonoStereo"), new YamlScalarNode(monoStereo.ToString()),
                 new YamlScalarNode("ClockValue"), new YamlScalarNode(clockValue.ToString(ci))
