@@ -23,6 +23,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using YamlDotNet.RepresentationModel;
 
 namespace OpenNAS_App.NASComponents
 {
@@ -89,6 +90,22 @@ namespace OpenNAS_App.NASComponents
             textWriter.WriteAttributeString("aerFifoDepth", aerFifoDepth.ToString());
             textWriter.WriteAttributeString("spikeFifoDepth", spikeFifoDepth.ToString());
             textWriter.WriteEndElement();
+        }
+
+        /// <summary>
+        /// Writes SpikesDistributedMonitor output settings in a YAML file
+        /// </summary>
+        public override YamlSequenceNode toYAML()
+        {
+            YamlSequenceNode audioout = new YamlSequenceNode();
+
+            audioout.Add(new YamlMappingNode(
+                new YamlScalarNode("Interface"), new YamlScalarNode("SpikesDistributedMonitor"),
+                new YamlScalarNode("AERFifoDepth"), new YamlScalarNode(aerFifoDepth.ToString()),
+                new YamlScalarNode("SpikeFifoDepth"), new YamlScalarNode(spikeFifoDepth.ToString())
+            ));
+
+            return audioout;
         }
 
         /// <summary>

@@ -27,6 +27,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Xml;
+using YamlDotNet.RepresentationModel;
 
 /// <summary>
 /// This namespace groups all the classes for NAS representation and generation, performing components library
@@ -2144,6 +2145,37 @@ namespace OpenNAS_App.NASComponents
             textWriter.WriteEndDocument();
             textWriter.Close();
 
+        }
+
+        public void ToYAML(string route)
+        {
+            string nasName = "OpenNas_TOP_" + audioProcessing.getShortDescription() + "_" + nasCommons.monoStereo.ToString("G") + "_" + nasCommons.nCh + "ch";
+
+            string filename = route + "\\" + nasName + ".yaml";
+
+
+            YamlSequenceNode audioin = new YamlSequenceNode();
+            YamlSequenceNode spikesout = new YamlSequenceNode();
+
+            var stream = new YamlStream(
+            new YamlDocument(
+                    new YamlMappingNode(
+                        new YamlScalarNode("NASCommons"), nasCommons.toYAML(),
+                        new YamlScalarNode("AudioInput"), new YamlMappingNode(
+                            new YamlScalarNode("Interfaces"), audioInput.toYAML()
+                        ),
+                        new YamlScalarNode("AudioProcessing"), audioProcessing.toYAML(),
+                        new YamlScalarNode("SpikesOutput"), new YamlMappingNode(
+                            new YamlScalarNode("Interfaces"), spikesOutput.toYAML()
+                        )
+                    )
+                )
+            );
+
+            using (TextWriter writer = File.CreateText(filename))
+            {
+                stream.Save(writer, false);
+            }
         }
     }
 }

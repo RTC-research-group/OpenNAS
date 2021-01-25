@@ -23,6 +23,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using YamlDotNet.RepresentationModel;
 
 namespace OpenNAS_App.NASComponents
 {
@@ -144,6 +145,29 @@ namespace OpenNAS_App.NASComponents
             textWriter.WriteEndElement();
 
             textWriter.WriteEndElement();
+        }
+
+
+        /// <summary>
+        /// Writes Hybrid I2S-PDM input interface settings in a TAML file
+        /// </summary>
+        public override YamlSequenceNode toYAML()
+        {
+            YamlSequenceNode ysm = new YamlSequenceNode();
+            ysm.Add(new YamlMappingNode(
+                    new YamlScalarNode("Interface"), new YamlScalarNode("PDM"),
+                    new YamlScalarNode("ClkDiv"), new YamlScalarNode(clkDiv.ToString()),
+                    new YamlScalarNode("ShpfCutOff"), new YamlScalarNode(shpfCutOff.ToString()),
+                    new YamlScalarNode("SlpfCutOff"), new YamlScalarNode(slpfCutOff.ToString()),
+                    new YamlScalarNode("SlpfGain"), new YamlScalarNode(slpfGain.ToString())
+                ));
+            ysm.Add(new YamlMappingNode(
+                    new YamlScalarNode("Interface"), new YamlScalarNode("I2S"),
+                    new YamlScalarNode("GenNbits"), new YamlScalarNode(genNbits.ToString()),
+                    new YamlScalarNode("GenFreqDiv"), new YamlScalarNode(genFreqDiv.ToString())
+                )
+            );
+            return ysm;
         }
 
         /// <summary>

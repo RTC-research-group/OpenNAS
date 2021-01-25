@@ -25,6 +25,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Xml;
+using YamlDotNet.RepresentationModel;
 
 namespace OpenNAS_App.NASComponents
 {
@@ -415,6 +416,53 @@ namespace OpenNAS_App.NASComponents
             textWriter.WriteEndElement();
 
             textWriter.WriteEndElement();
+        }
+
+
+        public override YamlSequenceNode toYAML()
+        {
+            YamlSequenceNode res = new YamlSequenceNode();
+
+            YamlSequenceNode ysm_mid = new YamlSequenceNode();
+            YamlMappingNode ymn_mid = new YamlMappingNode();
+            int i = 0;
+            foreach (double d in midFreq)
+            {
+                ymn_mid.Add(new YamlScalarNode(i.ToString()), new YamlScalarNode(d.ToString()));
+                i++;
+            }
+            ysm_mid.Add(ymn_mid);
+
+            YamlSequenceNode ysm_cut = new YamlSequenceNode();
+            YamlMappingNode ymn_cut = new YamlMappingNode();
+            i = 0;
+            foreach (double d in cutoffFreq)
+            {
+                ymn_cut.Add(new YamlScalarNode(i.ToString()), new YamlScalarNode(d.ToString()));
+                i++;
+            }
+            ysm_cut.Add(ymn_cut);
+
+            YamlSequenceNode ysm_att = new YamlSequenceNode();
+            YamlMappingNode ymn_att = new YamlMappingNode();
+            i = 0;
+            foreach (double d in attenuation)
+            {
+                ymn_att.Add(new YamlScalarNode(i.ToString()), new YamlScalarNode(d.ToString(ci)));
+                i++;
+            }
+            ysm_att.Add(ymn_att);
+
+            res.Add(new YamlMappingNode(
+                new YamlScalarNode("SLPFType"), new YamlScalarNode(slpfType.ToString()),
+                new YamlScalarNode("NormError"), new YamlScalarNode(nomalizedError.ToString()),
+                new YamlScalarNode("MidFreqs"), ysm_mid,
+                new YamlScalarNode("CutoffFreqs"), ysm_cut,
+                new YamlScalarNode("Attenuation"), ysm_att
+
+            ));
+
+            return res;
         }
 
         public override void WriteTopSignals(StreamWriter sw)

@@ -19,7 +19,9 @@
 //                                                                             //
 /////////////////////////////////////////////////////////////////////////////////
 
+using System.Collections.Generic;
 using System.Xml;
+using YamlDotNet.RepresentationModel;
 
 namespace OpenNAS_App.NASComponents
 {
@@ -33,11 +35,13 @@ namespace OpenNAS_App.NASComponents
         /// </summary>
         /// <param name="textWriter">XML text writer handler</param>
         void toXML(XmlTextWriter textWriter);
+        //List<YamlMappingNode> toYAML();
     }
 
     public abstract class AudioInput : HDLGenerable, XMLSeriarizableElement
     {
         public abstract void toXML(XmlTextWriter textWriter);
+        public abstract YamlSequenceNode toYAML();
     }
 
 
@@ -46,6 +50,7 @@ namespace OpenNAS_App.NASComponents
     {
         public abstract string getShortDescription();
         public abstract void toXML(XmlTextWriter textWriter);
+        public abstract YamlSequenceNode toYAML();
 
         public abstract double getNormalizedError();
     }
@@ -53,6 +58,7 @@ namespace OpenNAS_App.NASComponents
     public abstract class SpikesOutputInterface : HDLGenerable, XMLSeriarizableElement
     {
         public abstract void toXML(XmlTextWriter textWriter);
+        public abstract YamlSequenceNode toYAML();
     }
 
 

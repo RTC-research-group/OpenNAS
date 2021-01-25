@@ -78,6 +78,7 @@ namespace OpenNAS_App
             nas.Generate(sourceRoute, constrainRoute, projectRoute);
 
             nas.ToXML(route);
+            nas.ToYAML(route);
 
             string finalMessage = "OpenN@S successfully generated at: " + route;
             finalMessage += "\n\n-------- Generation statistics --------";

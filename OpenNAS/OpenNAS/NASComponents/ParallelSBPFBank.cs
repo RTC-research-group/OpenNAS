@@ -25,6 +25,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Xml;
+using YamlDotNet.RepresentationModel;
 
 namespace OpenNAS_App.NASComponents
 {
@@ -136,6 +137,58 @@ namespace OpenNAS_App.NASComponents
             }
             textWriter.WriteEndElement();
         }
+
+
+
+        /// <summary>
+        /// Writes SBPF bank features in a YAML file
+        /// </summary>
+        public override YamlSequenceNode toYAML()
+        {
+            YamlSequenceNode res = new YamlSequenceNode();
+
+            YamlSequenceNode ysm_mid = new YamlSequenceNode();
+            YamlMappingNode ymn_mid = new YamlMappingNode();
+            int i = 0;
+            foreach (double d in midFreq)
+            {
+                ymn_mid.Add(new YamlScalarNode(i.ToString()), new YamlScalarNode(d.ToString()));
+                i++;
+            }
+            ysm_mid.Add(ymn_mid);
+
+            YamlSequenceNode ysm_q = new YamlSequenceNode();
+            YamlMappingNode ymn_q = new YamlMappingNode();
+            i = 0;
+            foreach (double d in Q)
+            {
+                ymn_q.Add(new YamlScalarNode(i.ToString()), new YamlScalarNode(d.ToString(ci)));
+                i++;
+            }
+            ysm_q.Add(ymn_q);
+
+            YamlSequenceNode ysm_att = new YamlSequenceNode();
+            YamlMappingNode ymn_att = new YamlMappingNode();
+            i = 0;
+            foreach (double d in attenuation)
+            {
+                ymn_att.Add(new YamlScalarNode(i.ToString()), new YamlScalarNode(d.ToString(ci)));
+                i++;
+            }
+            ysm_att.Add(ymn_att);
+
+            res.Add(new YamlMappingNode(                
+                new YamlScalarNode("NormError"), new YamlScalarNode(nomalizedError.ToString()),
+                new YamlScalarNode("MidFreqs"), ysm_mid,
+                new YamlScalarNode("FilterOrder"), ysm_q,
+                new YamlScalarNode("Attenuation"), ysm_att
+
+            ));
+
+            return res;
+        }
+
+
 
         private List<UInt16> nBits;
         private List<UInt16> freqDiv;

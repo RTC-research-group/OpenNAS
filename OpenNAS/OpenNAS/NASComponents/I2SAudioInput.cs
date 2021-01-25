@@ -24,6 +24,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using YamlDotNet.RepresentationModel;
 
 namespace OpenNAS_App.NASComponents
 {
@@ -86,6 +87,20 @@ namespace OpenNAS_App.NASComponents
             textWriter.WriteAttributeString("genNbits", genNbits.ToString());
             textWriter.WriteAttributeString("genFreqDiv", genFreqDiv.ToString());
             textWriter.WriteEndElement();
+        }
+
+        /// <summary>
+        /// Writes I2S input interface settings in a YAML file
+        /// </summary>
+        public override YamlSequenceNode toYAML()
+        {
+            YamlSequenceNode ysm = new YamlSequenceNode();
+            ysm.Add(new YamlMappingNode(
+                new YamlScalarNode("Interface"), new YamlScalarNode("I2S"),
+                new YamlScalarNode("GenNbits"), new YamlScalarNode(genNbits.ToString()),
+                new YamlScalarNode("GenFreqDiv"), new YamlScalarNode(genFreqDiv.ToString())
+            ));
+            return ysm;
         }
 
         /// <summary>

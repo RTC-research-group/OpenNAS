@@ -22,6 +22,7 @@
 using System;
 using System.Globalization;
 using System.Xml;
+using YamlDotNet.RepresentationModel;
 
 namespace OpenNAS_App.NASComponents
 {
@@ -113,6 +114,19 @@ namespace OpenNAS_App.NASComponents
             textWriter.WriteAttributeString("clockValue", clockValue.ToString(ci));
 
             textWriter.WriteEndElement();
+        }
+
+        /// <summary>
+        /// Writes NAS common settings in a YAML file
+        /// </summary>
+        public YamlMappingNode toYAML()
+        {
+            return new YamlMappingNode(
+                new YamlScalarNode("NASchip"), new YamlScalarNode(nCh.ToString()),
+                new YamlScalarNode("NumChannels"), new YamlScalarNode(nCh.ToString()),
+                new YamlScalarNode("MonoStereo"), new YamlScalarNode(monoStereo.ToString()),
+                new YamlScalarNode("ClockValue"), new YamlScalarNode(clockValue.ToString(ci))
+            );
         }
     }
 }

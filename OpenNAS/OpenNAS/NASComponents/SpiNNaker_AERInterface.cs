@@ -23,6 +23,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using YamlDotNet.RepresentationModel;
 
 namespace OpenNAS_App.NASComponents
 {
@@ -99,6 +100,28 @@ namespace OpenNAS_App.NASComponents
             // End SpiNNaker version
             textWriter.WriteEndElement();
             // End SpiNNaker-AER interface element
+        }
+
+        public override YamlSequenceNode toYAML()
+        {
+            /*
+            // Start SpiNNaker-AER interface element
+            textWriter.WriteStartElement("SpiNNakerAERInterface");
+            // Start SpiNNaker version
+            textWriter.WriteAttributeString("moduleVersion", moduleVersion.ToString());
+            // End SpiNNaker version
+            textWriter.WriteEndElement();
+            // End SpiNNaker-AER interface element
+            */
+
+            YamlSequenceNode audioout = new YamlSequenceNode();
+
+            audioout.Add(new YamlMappingNode(
+                new YamlScalarNode("Interface"), new YamlScalarNode("SpiNNakerAER"),
+                new YamlScalarNode("ModuleVersion"), new YamlScalarNode(moduleVersion.ToString())
+            ));
+
+            return audioout;
         }
 
 
