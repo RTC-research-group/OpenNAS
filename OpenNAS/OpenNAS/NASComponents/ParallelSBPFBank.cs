@@ -146,7 +146,7 @@ namespace OpenNAS_App.NASComponents
         public override YamlSequenceNode toYAML()
         {
             YamlSequenceNode res = new YamlSequenceNode();
-
+            /*
             YamlSequenceNode ysm_mid = new YamlSequenceNode();
             YamlMappingNode ymn_mid = new YamlMappingNode();
             int i = 0;
@@ -176,13 +176,31 @@ namespace OpenNAS_App.NASComponents
                 i++;
             }
             ysm_att.Add(ymn_att);
+            */
+
+
+            YamlSequenceNode ysm_slpf = new YamlSequenceNode();
+
+            int i = 0;
+            for (i = 0; i < nCH; i++)
+            {
+                ysm_slpf.Add(new YamlMappingNode(
+                    new YamlScalarNode("CH"), new YamlScalarNode(i.ToString()),
+                    new YamlScalarNode("FREQ_DIV"), new YamlScalarNode("0x" + freqDiv[i].ToString("X2")),
+                    new YamlScalarNode("SPIKES_DIV"), new YamlScalarNode("0x" + igDiv[i].ToString("X4")),
+                    new YamlScalarNode("SPIKES_DIV_FB"), new YamlScalarNode("0x" + fbDiv[i].ToString("X4")),
+                    new YamlScalarNode("SPIKES_DIV_OUT"), new YamlScalarNode("0x" + attDiv[i].ToString("X4"))
+                    
+                    )
+                );
+            }
 
             res.Add(new YamlMappingNode(                
                 new YamlScalarNode("NormError"), new YamlScalarNode(nomalizedError.ToString()),
-                new YamlScalarNode("MidFreqs"), ysm_mid,
-                new YamlScalarNode("FilterOrder"), ysm_q,
-                new YamlScalarNode("Attenuation"), ysm_att
-
+                new YamlScalarNode("Channels"), ysm_slpf
+                //new YamlScalarNode("MidFreqs"), ysm_mid,
+                //new YamlScalarNode("FilterOrder"), ysm_q,
+                //new YamlScalarNode("Attenuation"), ysm_att
             ));
 
             return res;
