@@ -48,8 +48,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity I2S_inteface is
     Port ( 
-		clk           : STD_LOGIC;
-		rst           : STD_LOGIC;
+		clk           : in  STD_LOGIC;
+		rst           : in  STD_LOGIC;
         -- I2S signals   
 		i2s_bclk      : in  STD_LOGIC;
 		i2s_d_in      : in  STD_LOGIC;
