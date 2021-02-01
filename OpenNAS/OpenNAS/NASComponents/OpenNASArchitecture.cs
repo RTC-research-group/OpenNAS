@@ -488,7 +488,7 @@ namespace OpenNAS_App.NASComponents
             //I2S + PDM
             if (nasInputIF == AudioInputControl.NASAUDIOSOURCE.I2SPDM)
             {
-                sw.WriteLine("*** Source selector pin (I2S or PDM micr.) ***");
+                sw.WriteLine("#*** Source selector pin (I2S or PDM micr.) ***");
                 sw.WriteLine("#* With jumper: I2S");
                 sw.WriteLine("#* Without jumper: PDM");
                 switch (nasCommons.nasChip)
