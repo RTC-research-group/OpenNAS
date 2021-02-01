@@ -2115,6 +2115,21 @@ namespace OpenNAS_App.NASComponents
             }
         }
 
+        /// <sumary>
+        /// Write SpiNNaker interface information within the XML file
+        /// </sumary>
+        /// <param name="textWriter">XML text writer handler</param>
+        /// <param name="version">Interface version. 1 for unidirectional communication, 2 for bidirectional communication</param>
+        /// /// <param name="mixed">If true, it adds the Muller-C element for having both AER and SpiNNaker outputs</param>
+        private void SpiNNakerIFtoXML(XmlTextWriter textWriter, int version, bool mixed)
+        {
+            textWriter.WriteStartElement("SpiNNakerIF");
+            textWriter.WriteAttributeString("version", version.ToString());
+            textWriter.WriteAttributeString("mixed", mixed.ToString());
+
+            textWriter.WriteEndElement();
+        }
+
         /// <summary>
         /// Writes NAS architecture and settings as a XML file
         /// </summary>
@@ -2139,6 +2154,15 @@ namespace OpenNAS_App.NASComponents
             audioInput.toXML(textWriter);
             audioProcessing.toXML(textWriter);
             spikesOutput.toXML(textWriter);
+
+            
+            SpikesOutputControl.NASAUDIOOUTPUT nasOutputIF = SpikesOutputControl.audioOutput;
+
+            if((nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV1) || (nasOutputIF == SpikesOutputControl.NASAUDIOOUTPUT.SPINNAKERV2))
+            {
+                bool isMixedOutput = SpikesOutputControl.isMixedOutput.Value;
+                SpiNNakerIFtoXML(textWriter, (int)nasOutputIF, isMixedOutput);
+            }
 
             textWriter.WriteEndElement();
             textWriter.WriteEndDocument();
