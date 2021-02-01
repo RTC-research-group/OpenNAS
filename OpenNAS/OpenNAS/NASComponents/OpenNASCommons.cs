@@ -110,7 +110,7 @@ namespace OpenNAS_App.NASComponents
             textWriter.WriteAttributeString("nasChip", nasChip.ToString());
             textWriter.WriteAttributeString("numChannels", nCh.ToString());
             textWriter.WriteAttributeString("monoStereo", monoStereo.ToString());
-            textWriter.WriteAttributeString("clockValue", clockValue.ToString(ci));
+            textWriter.WriteAttributeString("clockValueMHz", clockValue.ToString(ci));
 
             textWriter.WriteEndElement();
         }
