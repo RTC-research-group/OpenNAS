@@ -1,6 +1,6 @@
 --/////////////////////////////////////////////////////////////////////////////////
 --//                                                                             //
---//    Copyright � 2016  �ngel Francisco Jim��nez-Fern�ndez                     //
+--//    Copyright (c) 2016  Angel Francisco Jimenez-Fernandez                    //
 --//                                                                             //
 --//    This file is part of OpenNAS.                                            //
 --//                                                                             //
@@ -34,6 +34,7 @@ entity spikes_BPF_HQ is
 		CLK            : in  STD_LOGIC;
 		RST            : in  STD_LOGIC;
 		FREQ_DIV       : in  STD_LOGIC_VECTOR(7 downto 0);
+		SPIKES_DIV     : in  STD_LOGIC_VECTOR(15 downto 0);
 		SPIKES_DIV_FB  : in  STD_LOGIC_VECTOR(15 downto 0);
 		SPIKES_DIV_OUT : in  STD_LOGIC_VECTOR(15 downto 0);
 		spike_in_p     : in  STD_LOGIC;
@@ -94,6 +95,12 @@ architecture Behavioral of spikes_BPF_HQ is
 	signal spikes_e_p      : STD_LOGIC;
 	signal spikes_e_n      : STD_LOGIC;
 
+	signal spikes_div1_p      : STD_LOGIC;
+	signal spikes_div1_n      : STD_LOGIC;
+	
+	signal spikes_div2_p      : STD_LOGIC;
+	signal spikes_div2_n      : STD_LOGIC;
+
 	signal spikes_fb_p     : STD_LOGIC;
 	signal spikes_fb_n     : STD_LOGIC;
 
@@ -117,6 +124,17 @@ architecture Behavioral of spikes_BPF_HQ is
 			SPIKES_OUT_N => spikes_e_n
 		);		
 
+		U_DIV_INT_1: spikes_div_BW
+		Port Map (
+			CLK         => clk,
+			RST         => RST,
+			spikes_div  => SPIKES_DIV,
+			spike_in_p  => spikes_e_p,
+			spike_in_n  => spikes_e_n,
+			spike_out_p => spikes_div1_p,
+			spike_out_n => spikes_div1_n
+		);
+
 		U_INT_1: Spike_Int_n_Gen_BW 
 		Generic Map (
 			GL          => GL, 
@@ -126,11 +144,23 @@ architecture Behavioral of spikes_BPF_HQ is
 			CLK         => clk,
 			RST         => rst,
 			FREQ_DIV    => FREQ_DIV,
-			spike_in_p  => spikes_e_p,
-			spike_in_n  => spikes_e_n,
+			spike_in_p  => spikes_div1_p,
+			spike_in_n  => spikes_div1_n,
 			spike_out_p => spike_out_tmp_p,
 			spike_out_n => spike_out_tmp_n
 		);
+
+		U_DIV_INT_2: spikes_div_BW
+		Port Map (
+			CLK         => clk,
+			RST         => RST,
+			spikes_div  => SPIKES_DIV,
+			spike_in_p  => spike_out_tmp_p,
+			spike_in_n  => spike_out_tmp_n,
+			spike_out_p => spikes_div2_p,
+			spike_out_n => spikes_div2_n
+		);
+
 
 		U_INT_2: Spike_Int_n_Gen_BW 
 		Generic Map (
@@ -141,11 +171,15 @@ architecture Behavioral of spikes_BPF_HQ is
 			CLK         => clk,
 			RST         => rst,
 			FREQ_DIV    => FREQ_DIV,
-			spike_in_p  => spike_out_tmp_p,
-			spike_in_n  => spike_out_tmp_n,
+			spike_in_p  => spikes_div2_p,
+			spike_in_n  => spikes_div2_n,
 			spike_out_p => spikes_fbi_p,
 			spike_out_n => spikes_fbi_n
 		);	 
+
+
+
+
 
 		U_DIV_FB: spikes_div_BW
 		Port Map (
