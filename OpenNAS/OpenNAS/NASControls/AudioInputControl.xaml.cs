@@ -36,7 +36,7 @@ namespace OpenNAS_App.NASControls
         public AudioInputControl()
         {
             InitializeComponent();
-            comboBox.SelectedIndex = 0;
+            comboBox.SelectedIndex = 1;
             updateControl();
         }
 
@@ -44,28 +44,28 @@ namespace OpenNAS_App.NASControls
         {
             audioInputPanel.Children.Clear();
 
-            if (comboBox.SelectedIndex == 0)
+            if (comboBox.SelectedIndex == (int)NASAUDIOSOURCE.AC97)
             {
                 AC97CodecControl ac97Control = new AC97CodecControl();
                 audioInputPanel.Children.Add(ac97Control);
                 currentControl = ac97Control;
 
             }
-            else if (comboBox.SelectedIndex == 1)
+            else if (comboBox.SelectedIndex == (int)NASAUDIOSOURCE.I2S)
             {
                 I2SAudioControl i2sControl = new I2SAudioControl();
                 audioInputPanel.Children.Add(i2sControl);
                 currentControl = i2sControl;
 
             }
-            else if (comboBox.SelectedIndex == 2)
+            else if (comboBox.SelectedIndex == (int)NASAUDIOSOURCE.PDM)
             {
                 PDMInputControl pdmControl = new PDMInputControl();
                 audioInputPanel.Children.Add(pdmControl);
                 currentControl = pdmControl;
 
             }
-            else if (comboBox.SelectedIndex == 3)
+            else if (comboBox.SelectedIndex == (int)NASAUDIOSOURCE.I2SPDM)
             {
                 I2SPDMInputControl i2spdmControl = new I2SPDMInputControl();
                 audioInputPanel.Children.Add(i2spdmControl);
