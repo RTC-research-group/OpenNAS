@@ -1188,11 +1188,11 @@ namespace OpenNAS_App.NASComponents
             {
                 if(isISEtcl)
                 {
-                    sw.WriteLine("  ../../sources/spikes_BPF_HQ_Div.vhd \\");
+                    sw.WriteLine("  ../../sources/spikes_BPF_HQ.vhd \\");
                 }
                 else
                 {
-                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/spikes_BPF_HQ_Div.vhd\"] \\");
+                    sw.WriteLine(" [file normalize \"${origin_dir}/../sources/spikes_BPF_HQ.vhd\"] \\");
                 }
                 
                 nasFBankFileName += "P";
