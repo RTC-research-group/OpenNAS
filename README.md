@@ -228,6 +228,26 @@ Copyright © 2016 Ángel F. Jiménez-Fernández<br>
 
 <h2 name="Cite">Cite this work</h2>
 <p align="justify">
+<b>APA</b>: Gutierrez-Galan, D., Dominguez-Morales, J. P., Jimenez-Fernandez, A., Linares-Barranco, A., & Jimenez-Moreno, G. (2021). OpenNAS: Open Source Neuromorphic Auditory Sensor HDL code generator for FPGA implementations. Neurocomputing.
+</p>
+<p align="justify">
+<b>ISO 690</b>: GUTIERREZ-GALAN, D., et al. OpenNAS: Open Source Neuromorphic Auditory Sensor HDL code generator for FPGA implementations. Neurocomputing, 2021.
+</p>
+<p align="justify">
+<b>MLA</b>: Gutierrez-Galan, D., et al. "OpenNAS: Open Source Neuromorphic Auditory Sensor HDL code generator for FPGA implementations." Neurocomputing (2021).
+</p>
+<p align="justify">
+<b>BibTeX</b>: @article{gutierrez2021opennas,
+  title={OpenNAS: Open Source Neuromorphic Auditory Sensor HDL code generator for FPGA implementations},
+  author={Gutierrez-Galan, D and Dominguez-Morales, JP and Jimenez-Fernandez, A and Linares-Barranco, A and Jimenez-Moreno, G},
+  journal={Neurocomputing},
+  year={2021},
+  publisher={Elsevier}
+}
+</p>
+
+<h2 name="CiteNAS">Cite NAS work</h2>
+<p align="justify">
 <b>APA</b>: Jiménez-Fernández, A., Cerezuela-Escudero, E., Miró-Amarante, L., Domínguez-Morales, M. J., Gomez-Rodriguez, F., Linares-Barranco, A., & Jiménez-Moreno, G. (2017). A Binaural Neuromorphic Auditory Sensor for FPGA: A Spike Signal Processing Approach. IEEE Trans. Neural Netw. Learning Syst., 28(4), 804-818.
 </p>
 <p align="justify">
