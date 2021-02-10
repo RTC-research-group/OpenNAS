@@ -14,6 +14,7 @@ OpenNAS is an open source VHDL-based Neuromorphic Auditory Sensor (NAS) code gen
 <li><a href="#Description">Description</a></li>
 <li><a href="#GettingStarted">Getting started</a></li>
 <li><a href="#Usage">Usage</a></li>
+<li><a href="#Postprocessing">Post-processing</a></li>
 <li><a href="#Contributing">Contributing</a></li>
 <li><a href="#Credits">Credits</a></li>
 <li><a href="#License">License</a></li>
@@ -171,6 +172,16 @@ Finally, when all previous steps have been done, the destination folder in which
 
 <p align="justify">
 A new message will appear if the generation process was done successfully, indicating the destination folder. Click on the Ok button to close the message. At this point, the process of the NAS generation has finished. Navigating to the destination folder, the user can find all the VHDL files needed to synthetize and generate the NAS .bit file and run it using an FPGA. Apart from VHDL files, OpenNAS also generates an XML file summarizing the parameters selection made by the user. 
+</p>
+
+<h2 name="Postprocessing">Post-processing</h2>
+<p align="justify">
+A set of post-processing tools are available to open, analyze, and post-process the output spikes of the NAS. The NAS' output can be logged into a file by using jAER. Then, the spikes file (with .aedat format) can be loaded using one of those tools:
+<ol align="justify">
+<li><a href="https://github.com/jpdominguez/NAVIS-Tool">NAVIS</a>: C# based desktop application (Windows only)</li>
+<li><a href="https://github.com/jpdominguez/pyNAVIS">pyNAVIS</a>: python package (multiplatform)</li>
+</ol>
+Take a look to those repositories to learn more about neuromorphic audio processing!
 </p>
 
 <h2 name="Contributing">Contributing</h2>
