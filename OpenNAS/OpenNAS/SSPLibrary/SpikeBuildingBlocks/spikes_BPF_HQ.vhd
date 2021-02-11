@@ -1,6 +1,6 @@
 --/////////////////////////////////////////////////////////////////////////////////
 --//                                                                             //
---//    Copyright (c) 2016  Angel Francisco Jimenez-Fernandez                    //
+--//    (c) 2016  Angel Francisco Jimenez-Fernandez                              //
 --//                                                                             //
 --//    This file is part of OpenNAS.                                            //
 --//                                                                             //
@@ -92,6 +92,9 @@ architecture Behavioral of spikes_BPF_HQ is
 	signal spike_out_tmp_p : STD_LOGIC;
 	signal spike_out_tmp_n : STD_LOGIC;
 
+	signal spike_out_tmp2_p : STD_LOGIC;
+	signal spike_out_tmp2_n : STD_LOGIC;
+
 	signal spikes_e_p      : STD_LOGIC;
 	signal spikes_e_n      : STD_LOGIC;
 
@@ -150,6 +153,7 @@ architecture Behavioral of spikes_BPF_HQ is
 			spike_out_n => spike_out_tmp_n
 		);
 
+
 		U_DIV_INT_2: spikes_div_BW
 		Port Map (
 			CLK         => clk,
@@ -204,16 +208,55 @@ architecture Behavioral of spikes_BPF_HQ is
 			SPIKES_OUT_N => spikes_fb_n
 		);
 
+-- Spontaneus activity filter Low
+		U_HF_OUT: AER_DIF
+		Port Map (
+			CLK          => clk,
+			RST          => RST,
+			SPIKES_IN_UP => spike_out_tmp_p,
+			SPIKES_IN_UN => spike_out_tmp_n,
+			SPIKES_IN_YP => '0', 
+			SPIKES_IN_YN => '0', 
+			SPIKES_OUT_P => spike_out_tmp2_p,
+			SPIKES_OUT_N => spike_out_tmp2_n
+		);	
+
 		U_DIV_OUT: spikes_div_BW
 		Port Map (
 			CLK         => clk,
 			RST         => RST,
 			spikes_div  => SPIKES_DIV_OUT,
-			spike_in_p  => spike_out_tmp_p,
-			spike_in_n  => spike_out_tmp_n,
+			spike_in_p  => spike_out_tmp2_p,
+			spike_in_n  => spike_out_tmp2_n,
 			spike_out_p => spike_out_p,
 			spike_out_n => spike_out_n
 		);
+
+
+-- Spontaneus activity filter High
+--		U_DIV_OUT: spikes_div_BW
+--		Port Map (
+--			CLK         => clk,
+--			RST         => RST,
+--			spikes_div  => SPIKES_DIV_OUT,
+--			spike_in_p  => spike_out_tmp_p,
+--			spike_in_n  => spike_out_tmp_n,
+--			spike_out_p => spike_out_tmp2_p,
+--			spike_out_n => spike_out_tmp2_n
+--		);
+--
+--		U_HF_OUT: AER_DIF
+--		Port Map (
+--			CLK          => clk,
+--			RST          => RST,
+--			SPIKES_IN_UP => spike_out_tmp2_p ,
+--			SPIKES_IN_UN => spike_out_tmp2_n,
+--			SPIKES_IN_YP => '0', 
+--			SPIKES_IN_YN => '0', 
+--			SPIKES_OUT_P => spike_out_p,
+--			SPIKES_OUT_N => spike_out_n
+--		);	
+
 
 end Behavioral;
 
