@@ -31,7 +31,7 @@ OpenNAS is a five-steps wizard which helps you to design and configurate a NAS i
 
 <p align="justify">
 This video shows how it works if different architectures.
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QucFjyErXgc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	<a href="https://www.youtube.com/watch?v=QucFjyErXgc"><img align="center" src="http://img.youtube.com/vi/QucFjyErXgc/0.jpg"><
 </p>
 
 <p align="justify">
