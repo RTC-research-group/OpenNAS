@@ -42,13 +42,15 @@
                                    BackButtonVisibility="Hidden"
                                    FinishButtonVisibility="Collapsed">
 
-                <DockPanel Margin="0 20 0 0" LastChildFill="True" VerticalAlignment="Top">
+                <DockPanel Margin="0 10 0 0" LastChildFill="True" VerticalAlignment="Top">
                     <DockPanel DockPanel.Dock="Top">
-                        <DockPanel DockPanel.Dock="Left" Width="450" Height="200">
+                        <DockPanel DockPanel.Dock="Left" Width="450" Height="250">
                             <TextBlock TextAlignment="Justify" TextWrapping="Wrap" DockPanel.Dock="Top">You can find more information about NAS in <Hyperlink NavigateUri="https://ieeexplore.ieee.org/abstract/document/7523402/" RequestNavigate="Hyperlink_RequestNavigate">this paper</Hyperlink>:</TextBlock>
                             <TextBlock TextAlignment="Justify" TextWrapping="Wrap" Margin="0 10 0 0" DockPanel.Dock="Top">Jiménez-Fernández, Angel, et al. "A binaural neuromorphic auditory sensor for FPGA: a spike signal processing approach." IEEE transactions on neural networks and learning systems 28.4 (2017): 804-818.</TextBlock>
                             <TextBlock TextAlignment="Justify" TextWrapping="Wrap" Margin="0 10 0 0" DockPanel.Dock="Top">And also in <Hyperlink NavigateUri="https://github.com/RTC-research-group/OpenNAS" RequestNavigate="Hyperlink_RequestNavigate">the Github page</Hyperlink> and <Hyperlink NavigateUri="https://github.com/RTC-research-group/OpenNAS/wiki" RequestNavigate="Hyperlink_RequestNavigate">the Wiki</Hyperlink>.</TextBlock>
-                            <TextBlock TextAlignment="Justify" TextWrapping="Wrap" Margin="0 30 0 0" DockPanel.Dock="Top">OpenNAS has been developed by the <Hyperlink NavigateUri="https://rtc.us.es/" RequestNavigate="Hyperlink_RequestNavigate">Robotics and Technology of Computers Lab.</Hyperlink> from the <Hyperlink NavigateUri="http://www.atc.us.es/" RequestNavigate="Hyperlink_RequestNavigate">Dept. of Arquitectura y Tecnologia de Computadores</Hyperlink> in the University of Seville, Spain.</TextBlock>
+                            <TextBlock TextAlignment="Justify" TextWrapping="Wrap" Margin="0 10 0 0" DockPanel.Dock="Top">OpenNAS has been developed by the <Hyperlink NavigateUri="https://rtc.us.es/" RequestNavigate="Hyperlink_RequestNavigate">Robotics and Technology of Computers Lab.</Hyperlink> from the <Hyperlink NavigateUri="http://www.atc.us.es/" RequestNavigate="Hyperlink_RequestNavigate">Dept. of Arquitectura y Tecnologia de Computadores</Hyperlink> in the University of Seville, Spain.</TextBlock>
+                            <TextBlock TextAlignment="Justify" TextWrapping="Wrap" Margin="0 10 0 0" DockPanel.Dock="Top"><Hyperlink NavigateUri="https://doi.org/10.1016/j.neucom.2020.12.062" RequestNavigate="Hyperlink_RequestNavigate">Cite this work!:</Hyperlink></TextBlock>
+                            <TextBlock TextAlignment="Justify" TextWrapping="Wrap" Margin="0 10 0 0" DockPanel.Dock="Top">Gutierrez-Galan, D., Dominguez-Morales, J. P., Jimenez-Fernandez, A., Linares-Barranco, A., and Jimenez-Moreno, G. (2021). OpenNAS: Open Source Neuromorphic Auditory Sensor HDL code generator for FPGA implementations. Neurocomputing.</TextBlock>
                         </DockPanel>
                         <DockPanel DockPanel.Dock="Right" Height="200">
                             <Image x:Name="img_OpenNAS_logo" Width="Auto" Height="Auto" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10"/>
