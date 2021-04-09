@@ -3,8 +3,7 @@
   <Mappings Location="Common Libraries/IEEE" Library="ieee"/>
   <Mappings Location="Common Libraries/IEEE Synopsys" Library="ieee"/>
   <Mappings Location="Common Libraries" Library="not mapped"/>
-  <Mappings Location="constraints" Library="not mapped"/>
-  <Mappings Location="project" Library="not mapped"/>
+  <Mappings Location="pdmantonio" Library="not mapped"/>
   <Mappings Location="Common Libraries/STD" Library="std"/>
   <Mappings Location="" Library="work"/>
 </com.sigasi.hdt.shared.librarymapping.model:LibraryMappings>

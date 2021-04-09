@@ -24,76 +24,81 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;           -- @suppress "Deprecated package"
 use ieee.std_logic_unsigned.all;        -- @suppress "Deprecated package"
 
-entity spikes_div_BW is
+entity Ram_Fifo is
 	Generic(
-		GL : integer := 16
+		TAM : integer := 2048;
+		IL  : integer := 11;
+		WL  : integer := 16
 	);
 	Port(
-		clk         : in  std_logic;
-		rst         : in  std_logic;
-		spikes_div  : in  std_logic_vector(GL - 1 downto 0);
-		spike_in_p  : in  std_logic;
-		spike_in_n  : in  std_logic;
-		spike_out_p : out std_logic;
-		spike_out_n : out std_logic);
-end spikes_div_BW;
+		clk      : in  std_logic;
+		wr       : in  std_logic;
+		rd       : in  std_logic;
+		rst      : in  std_logic;
+		empty    : out std_logic;
+		full     : out std_logic;
+		data_in  : in  std_logic_vector(WL - 1 downto 0);
+		data_out : out std_logic_vector(WL - 1 downto 0);
+		mem_used : out std_logic_vector(IL - 1 downto 0)
+	);
+end Ram_Fifo;
 
-architecture Behavioral of spikes_div_BW is
+architecture syn of Ram_Fifo is
 
-	signal ciclo      : std_logic_vector(GL - 2 downto 0);
-	signal ciclo_wise : std_logic_vector(GL - 2 downto 0);
-
-	signal data_int  : std_logic_vector(GL - 1 downto 0);
-	signal data_temp : std_logic_vector(GL - 2 downto 0);
+	signal index_i : std_logic_vector(IL - 1 downto 0);
+	signal index_o : std_logic_vector(IL - 1 downto 0);
+	signal iempty  : std_logic;
+	signal ifull   : std_logic;
+	signal ramwr   : std_logic;
+	signal memused : std_logic_vector(IL - 1 downto 0);
+	signal dout    : std_logic_vector(WL - 1 downto 0);
 
 begin
-	--SIN SIGNO!
-	data_temp <= data_int(GL - 2 downto 0);
 
-	process(clk, rst, ciclo)
-	begin
-		if (rst = '1') then
-			data_int   <= (others => '0');
-			ciclo_wise <= (others => '0');
-		elsif (clk = '1' and clk'event) then
-			data_int <= spikes_div(GL - 1 downto 0);
-		else
-			
-			end if;
-
-		for i in 0 to GL - 2 loop
-			ciclo_wise(GL - 2 - i) <= ciclo(i);
-		end loop;
-
-	end process;
+	uut : entity work.DualPort_Ram
+		Generic map(
+			TAM => TAM,
+			IL  => IL,
+			WL  => WL
+		)
+		Port map(
+			clk     => clk,
+			wr      => ramwr,
+			index_i => index_i,
+			index_o => index_o,
+			word_i  => data_in,
+			word_o  => dout
+		);
 
 	process(clk, rst)
 	begin
-		if (rst = '1') then
-			ciclo       <= (others => '0');
-			spike_out_p <= '0';
-			spike_out_n <= '0';
-		elsif (clk = '1' and clk'event) then
-			if (spike_in_n = '1' or spike_in_p = '1') then
-				ciclo <= ciclo + 1;
+		if (rst = '0') then
+			index_i <= (others => '0');
+			index_o <= (others => '0');
+			memused <= (others => '0');
+		elsif (clk'event and clk = '1') then
+			if (wr = '1' and rd = '1') then
+				index_i <= index_i + 1;
+				index_o <= index_o + 1;
+			--memused <= memused; -- Al ser proceso sincrono y no cambiar memused no es necesaria esta linea.
+			elsif (wr = '1' and ifull = '0') then
+				index_i <= index_i + 1;
+				memused <= memused + 1;
+			elsif (rd = '1' and iempty = '0') then
+				index_o <= index_o + 1;
+				memused <= memused - 1;
 			else
-				ciclo <= ciclo;
-			end if;
-
-			if ((conv_integer(data_temp) > conv_integer(ciclo_wise))) then
-				if (data_int(GL - 1) = '1') then
-					spike_out_p <= spike_in_n;
-					spike_out_n <= spike_in_p;
-				else
-					spike_out_p <= spike_in_p;
-					spike_out_n <= spike_in_n;
+				
 				end if;
-			else
-				spike_out_p <= '0';
-				spike_out_n <= '0';
-			end if;
 		end if;
 	end process;
 
-end Behavioral;
+	iempty   <= '1' when memused = 0 else '0';
+	ifull    <= '1' when memused = TAM - 1 else '0';
+	empty    <= iempty;
+	full     <= ifull;
+	ramwr    <= wr and not ifull;
+	data_out <= dout when (iempty = '0') else (others => 'Z'); -- Puede eliminarse y puentearse la salida de dualram con la salida de la fifo.
+	mem_used <= memused;
+end syn;
 

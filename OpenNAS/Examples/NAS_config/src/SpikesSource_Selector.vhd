@@ -19,47 +19,49 @@
 --//                                                                             //
 --/////////////////////////////////////////////////////////////////////////////////
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
+----------------------------------------------------------------------------------
+-- Company: 
+-- Engineer: 
+-- 
+-- Create Date: 22.03.2017 16:12:19
+-- Design Name: 
+-- Module Name: SpikesSource_Selector - Behavioral
+-- Project Name: 
+-- Target Devices: 
+-- Tool Versions: 
+-- Description: 
+-- 
+-- Dependencies: 
+-- 
+-- Revision:
+-- Revision 0.01 - File Created
+-- Additional Comments:
+-- 
+----------------------------------------------------------------------------------
 
-entity dualram is
-	Generic (
-		TAM     : INTEGER  := 64; 
-		IL      : INTEGER  := 6; 
-		WL      : INTEGER  := 32
+library ieee;
+use ieee.std_logic_1164.all;
+use IEEE.numeric_std.all;
+
+entity SpikesSource_Selector is
+	Port(
+		source_sel  : in  std_logic;
+		i2s_data    : in  std_logic_vector(1 downto 0);
+		pdm_data    : in  std_logic_vector(1 downto 0);
+		spikes_data : out std_logic_vector(1 downto 0)
 	);
-	Port (
-		clk     : in  STD_LOGIC; 
-		wr      : in  STD_LOGIC; 
-		index_i : in  STD_LOGIC_VECTOR(IL-1 downto 0); 
-		index_o : in  STD_LOGIC_VECTOR(IL-1 downto 0); 
-		word_i  : in  STD_LOGIC_VECTOR(WL-1 downto 0); 
-		word_o  : out STD_LOGIC_VECTOR(WL-1 downto 0)); 
-end dualram;
+end SpikesSource_Selector;
 
+architecture Behavioral of SpikesSource_Selector is
 
--- Only XST supports RAM inference
--- Infers Dual Port Distributed Ram 
- 
- architecture syn of dualram is 
-	
-	type ram_type is array (TAM-1 downto 0) of STD_LOGIC_VECTOR (WL-1 downto 0); 
-	signal RAM : ram_type; 
- 
-	begin 
-	process (clk, index_i, word_i, wr) 
-	begin 
-		if (clk'event and clk = '1') then  
-			if (wr = '1') then 
-				RAM(conv_integer(index_i)) <= word_i; 
-			end if; 
-		end if; 
+begin
+	process(source_sel, i2s_data, pdm_data)
+	begin
+		case source_sel is
+			when '0'    => spikes_data <= i2s_data;
+			when '1'    => spikes_data <= pdm_data;
+			when others => spikes_data <= (others => '0');
+		end case;
 	end process;
- 
-	word_o <= RAM(conv_integer(index_o)); 
- 
- end syn;
- 
 
+end Behavioral;

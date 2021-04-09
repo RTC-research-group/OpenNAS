@@ -1,6 +1,6 @@
 --/////////////////////////////////////////////////////////////////////////////////
 --//                                                                             //
---//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                      //
+--//    Copyright ï¿½ 2016  ï¿½ngel Francisco Jimï¿½nez-Fernï¿½ndez                      //
 --//                                                                             //
 --//    This file is part of OpenNAS.                                            //
 --//                                                                             //
@@ -19,32 +19,32 @@
 --//                                                                             //
 --/////////////////////////////////////////////////////////////////////////////////
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all; -- @suppress "Deprecated package"
+use ieee.std_logic_unsigned.all; -- @suppress "Deprecated package"
 
-entity handshakeOut is
+entity Handshake_Out is
 	Port (
-		rst     : in STD_LOGIC;
-		clk     : in STD_LOGIC;
-		ack     : in STD_LOGIC;
-		dataIn  : in STD_LOGIC_VECTOR (15 downto 0);
-		load    : in STD_LOGIC;
-		req     : out STD_LOGIC;
-		dataOut : out STD_LOGIC_VECTOR (15 downto 0);
-		busy    : out STD_LOGIC
+		rst     : in std_logic;
+		clk     : in std_logic;
+		ack     : in std_logic;
+		dataIn  : in std_logic_vector (15 downto 0);
+		load    : in std_logic;
+		req     : out std_logic;
+		dataOut : out std_logic_vector (15 downto 0);
+		busy    : out std_logic
 	);
-end handshakeOut;
+end Handshake_Out;
 
-architecture handout of handshakeOut is
+architecture handout of Handshake_Out is
 	
-	signal estado   : INTEGER range 0 to 5;
-	signal sestado  : INTEGER range 0 to 5;
+	signal estado   : integer range 0 to 5;
+	signal sestado  : integer range 0 to 5;
 
 	begin
 
-		process(load, ack, estado, datain, estado)
+		process(load, ack, estado)
 		begin
 			case estado is
 				when 0 =>

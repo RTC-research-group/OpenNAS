@@ -24,76 +24,40 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;           -- @suppress "Deprecated package"
 use ieee.std_logic_unsigned.all;        -- @suppress "Deprecated package"
 
-entity spikes_div_BW is
+entity DualPort_Ram is
 	Generic(
-		GL : integer := 16
+		TAM : integer := 64;
+		IL  : integer := 6;
+		WL  : integer := 32
 	);
 	Port(
-		clk         : in  std_logic;
-		rst         : in  std_logic;
-		spikes_div  : in  std_logic_vector(GL - 1 downto 0);
-		spike_in_p  : in  std_logic;
-		spike_in_n  : in  std_logic;
-		spike_out_p : out std_logic;
-		spike_out_n : out std_logic);
-end spikes_div_BW;
+		clk     : in  std_logic;
+		wr      : in  std_logic;
+		index_i : in  std_logic_vector(IL - 1 downto 0);
+		index_o : in  std_logic_vector(IL - 1 downto 0);
+		word_i  : in  std_logic_vector(WL - 1 downto 0);
+		word_o  : out std_logic_vector(WL - 1 downto 0));
+end DualPort_Ram;
 
-architecture Behavioral of spikes_div_BW is
+-- Only XST supports RAM inference
+-- Infers Dual Port Distributed Ram 
 
-	signal ciclo      : std_logic_vector(GL - 2 downto 0);
-	signal ciclo_wise : std_logic_vector(GL - 2 downto 0);
+architecture syn of DualPort_Ram is
 
-	signal data_int  : std_logic_vector(GL - 1 downto 0);
-	signal data_temp : std_logic_vector(GL - 2 downto 0);
+	type ram_type is array (TAM - 1 downto 0) of std_logic_vector(WL - 1 downto 0);
+	signal RAM : ram_type;
 
 begin
-	--SIN SIGNO!
-	data_temp <= data_int(GL - 2 downto 0);
-
-	process(clk, rst, ciclo)
+	process(clk)
 	begin
-		if (rst = '1') then
-			data_int   <= (others => '0');
-			ciclo_wise <= (others => '0');
-		elsif (clk = '1' and clk'event) then
-			data_int <= spikes_div(GL - 1 downto 0);
-		else
-			
-			end if;
-
-		for i in 0 to GL - 2 loop
-			ciclo_wise(GL - 2 - i) <= ciclo(i);
-		end loop;
-
-	end process;
-
-	process(clk, rst)
-	begin
-		if (rst = '1') then
-			ciclo       <= (others => '0');
-			spike_out_p <= '0';
-			spike_out_n <= '0';
-		elsif (clk = '1' and clk'event) then
-			if (spike_in_n = '1' or spike_in_p = '1') then
-				ciclo <= ciclo + 1;
-			else
-				ciclo <= ciclo;
-			end if;
-
-			if ((conv_integer(data_temp) > conv_integer(ciclo_wise))) then
-				if (data_int(GL - 1) = '1') then
-					spike_out_p <= spike_in_n;
-					spike_out_n <= spike_in_p;
-				else
-					spike_out_p <= spike_in_p;
-					spike_out_n <= spike_in_n;
-				end if;
-			else
-				spike_out_p <= '0';
-				spike_out_n <= '0';
+		if (clk'event and clk = '1') then
+			if (wr = '1') then
+				RAM(conv_integer(index_i)) <= word_i;
 			end if;
 		end if;
 	end process;
 
-end Behavioral;
+	word_o <= RAM(conv_integer(index_o));
+
+end syn;
 
