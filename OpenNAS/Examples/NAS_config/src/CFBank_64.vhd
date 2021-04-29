@@ -66,7 +66,7 @@ begin
 		elsif rising_edge(clock) then
 			if config_wren = '1' then
 				for c_idx in 0 to CONFIG_OFFSET loop
-					if to_integer(unsigned(config_addr)) = CONFIG_ADDRESS + c_idx then
+					if config_addr = std_logic_vector(to_unsigned(CONFIG_ADDRESS + c_idx, CONFIG_BUS_BIT_WIDTH)) then
 						config_mem(c_idx) <= config_data;
 					end if;
 				end loop;
