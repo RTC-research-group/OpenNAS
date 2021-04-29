@@ -54,9 +54,6 @@ architecture Behavioral of spikes_LPF_fullGain is
 begin
 
 	U_OUT_DIV_out : entity work.spikes_div_BW
-		generic map(
-			GL => GL
-		)
 		Port Map(
 			clk         => clk,
 			rst         => rst,
@@ -68,9 +65,6 @@ begin
 		);
 
 	U_FB_DIV : entity work.spikes_div_BW
-		generic map(
-			GL => GL
-		)
 		Port Map(
 			clk         => clk,
 			rst         => rst,
