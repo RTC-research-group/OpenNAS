@@ -26,7 +26,7 @@ package OpenNas_top_pkg is
 		4095, 8191, 8191, 8191, 8191, 8191, 8191, 16383, 16383, 16383, 16383, 16383, 16383, 32767, 32767, 32767, 32767, 32767, 32767,
 		32767, 65535, 65535, 65535, 65535, 65535, 65535, 131071);
 		
-	type filter_default_parameter_array is array (0 to (NUM_CHANNELS)*4) of integer range 0 to 65535;
+	type filter_default_parameter_array is array (0 to ((NUM_CHANNELS+1)*4)-1) of integer range 0 to 65535;
 	constant FILTER_DEFAULT_parameter : filter_default_parameter_array := (16#04#, 16#77B4#, 16#77B4#, 16#2025#, 16#04#, 16#6B1C#, 16#6B1C#, 16#2025#,
 		16#02#, 16#7303#, 16#7303#, 16#2025#, 16#02#, 16#66E9#, 16#66E9#, 16#2025#, 16#03#, 16#7AC8#, 16#7AC8#, 16#2025#, 16#03#, 16#6DDD#, 16#6DDD#, 
 		16#2025#, 16#04#, 16#7AE1#, 16#7AE1#, 16#2025#, 16#04#, 16#6DF4#, 16#6DF4#, 16#2025#, 16#02#, 16#02#, 16#7610#, 16#2025#, 16#02#, 16#69A4#, 
