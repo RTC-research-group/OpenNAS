@@ -25,7 +25,7 @@ use ieee.std_logic_arith.all;           -- @suppress "Deprecated package"
 use ieee.std_logic_unsigned.all;        -- @suppress "Deprecated package"
 use work.OpenNas_top_pkg.all;
 
-entity OpenNas_Cascade_STEREO_8ch is
+entity OpenNas_Cascade_STEREO_64ch is
 	Port(
 		clock         : in  std_logic;
 		rst_ext       : in  std_logic;
@@ -49,9 +49,9 @@ entity OpenNas_Cascade_STEREO_8ch is
 		aer_req       : out std_logic;
 		aer_ack       : in  std_logic
 	);
-end OpenNas_Cascade_STEREO_8ch;
+end OpenNas_Cascade_STEREO_64ch;
 
-architecture OpenNas_arq of OpenNas_Cascade_STEREO_8ch is
+architecture OpenNas_arq of OpenNas_Cascade_STEREO_64ch is
 
 	--Reset signals
 	signal reset : std_logic;
@@ -69,7 +69,7 @@ architecture OpenNas_arq of OpenNas_Cascade_STEREO_8ch is
 
 	--Left spikes
 	signal spikes_in_left  : std_logic_vector(1 downto 0);
-	signal spikes_out_left : std_logic_vector(15 downto 0);
+	signal spikes_out_left : std_logic_vector(SPIKE_OUT_FILTER_BUS_BIT_WIDTH-1 downto 0);
 
 	--Audio input modules out spikes signal
 	signal spikes_in_right_i2s : std_logic_vector(1 downto 0);
@@ -77,10 +77,10 @@ architecture OpenNas_arq of OpenNas_Cascade_STEREO_8ch is
 
 	--Rigth spikes
 	signal spikes_in_rigth  : std_logic_vector(1 downto 0);
-	signal spikes_out_rigth : std_logic_vector(15 downto 0);
+	signal spikes_out_rigth : std_logic_vector(SPIKE_OUT_FILTER_BUS_BIT_WIDTH-1 downto 0);
 
 	--Output spikes
-	signal spikes_out : std_logic_vector((AER_DATA_BUS_BIT_WIDTH * 2) - 1 downto 0);
+	signal spikes_out : std_logic_vector((SPIKE_OUT_FILTER_BUS_BIT_WIDTH * 2) - 1 downto 0);
 
 begin
 
@@ -183,10 +183,10 @@ begin
 		);
 
 	--Cascade Filter Bank
-	U_CFBank_2or_8CH_Left : entity work.CFBank_2or_8CH
+	U_CFBank_2or_8CH_Left : entity work.CFBank_2or_64
 		generic map(
 			CONFIG_ADDRESS => 16#0009#,
-			CONFIG_OFFSET  => 35        -- Don't change this value
+			CONFIG_OFFSET  => 259        -- Don't change this value
 		)
 		Port Map(
 			clock       => clock,
@@ -200,10 +200,10 @@ begin
 			spikes_out  => spikes_out_left
 		);
 
-	U_CFBank_2or_8CH_Rigth : entity work.CFBank_2or_8CH
+	U_CFBank_2or_8CH_Rigth : entity work.CFBank_2or_64
 		generic map(
-			CONFIG_ADDRESS => 16#002D#,
-			CONFIG_OFFSET  => 35        -- Don't change this value
+			CONFIG_ADDRESS => 16#010D#,
+			CONFIG_OFFSET  => 259        -- Don't change this value
 		)
 		Port Map(
 			clock       => clock,
@@ -220,8 +220,8 @@ begin
 	--Spikes Distributed Monitor
 	U_AER_Distributed_Monitor : entity work.AER_Distributed_Monitor
 		Generic Map(
-			N_SPIKES       => 32,
-			LOG_2_N_SPIKES => 5,
+			N_SPIKES       => 256,
+			LOG_2_N_SPIKES => 8,
 			TAM_AER        => 2048,
 			IL_AER         => 11
 		)

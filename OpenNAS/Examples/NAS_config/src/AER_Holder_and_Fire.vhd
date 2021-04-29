@@ -83,7 +83,7 @@ begin
 				else
 					ns <= IDLE;
 				end if;
-			when HOLD =>
+			when HOLD => -- TODO este estado nunca sale de aquí a no ser que haya un reset
 				hold_pulse <= '1';
 				ns         <= HOLD;
 			when others =>
