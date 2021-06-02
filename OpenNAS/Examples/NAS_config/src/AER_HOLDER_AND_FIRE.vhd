@@ -38,59 +38,60 @@
 -- Additional Comments: 
 --
 ----------------------------------------------------------------------------------
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.std_logic_arith.all;           -- @suppress "Deprecated package"
-use ieee.std_logic_unsigned.all;        -- @suppress "Deprecated package"
-
-entity AER_Holder_and_Fire is
-	Port(
-		clk        : in  std_logic;
-		rst        : in  std_logic;
-		set        : in  std_logic;
-		hold_pulse : out std_logic
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+ 
+entity AER_HOLDER_AND_FIRE is
+    Port ( 
+		CLK        : in  STD_LOGIC;
+		RST        : in  STD_LOGIC;
+		SET        : in  STD_LOGIC;
+		HOLD_PULSE : out  STD_LOGIC
 	);
-end AER_Holder_and_Fire;
+end AER_HOLDER_AND_FIRE;
 
-architecture Behavioral of AER_Holder_and_Fire is
+architecture Behavioral of AER_HOLDER_AND_FIRE is
 
-	type state_type is (IDLE, HOLD);
-	signal cs : state_type := IDLE;
-	signal ns : state_type;
-
-begin
-
-	process(clk)
+	type STATE_TYPE is (IDLE,HOLD);
+	signal CS : STATE_TYPE := IDLE;
+	signal NS : STATE_TYPE;
+	
 	begin
-		if (clk = '1' and clk'event) then
-			if (rst = '1') then
-				cs <= IDLE;
-			else
-				cs <= ns;
-			end if;
-		else
-		
-		end if;
-	end process;
 
-	process(set, cs)
-	begin
-		case cs is
-			when IDLE =>
-				hold_pulse <= '0';
-				if (set = '1') then
-					ns <= HOLD;
+		process(RST, SET, CS, NS)
+		begin
+			case CS is
+				when IDLE =>
+					HOLD_PULSE <= '0';
+					if(SET = '1') then
+						NS <= HOLD;
+					else
+						NS <= IDLE;
+					end if;
+				when HOLD =>
+					HOLD_PULSE <= '1';
+					NS         <= HOLD;
+				when others =>
+					HOLD_PULSE <= '0';		
+					NS         <= IDLE;
+			end case;
+		end process;
+
+		process(CLK, RST, CS, NS)
+		begin
+
+			if(CLK = '1' and CLK'event) then
+				if(RST = '1') then
+					CS <= IDLE;
 				else
-					ns <= IDLE;
+					CS <= NS;
 				end if;
-			when HOLD => -- TODO este estado nunca sale de aquí a no ser que haya un reset
-				hold_pulse <= '1';
-				ns         <= HOLD;
-			when others =>
-				hold_pulse <= '0';
-				ns         <= IDLE;
-		end case;
-	end process;
-
+			else
+			
+			end if;
+		end process;
+		
 end Behavioral;
 

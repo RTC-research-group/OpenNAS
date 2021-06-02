@@ -16,7 +16,7 @@ package OpenNas_top_pkg is
 	
 	-- Filter parameters
 	constant NUM_CHANNELS : integer := 64;
-	type lpf_bus is array (0 to NUM_CHANNELS-1) of std_logic_vector(1 downto 0);
+	type lpf_bus is array (0 to NUM_CHANNELS) of std_logic_vector(1 downto 0);
 	type filter_generic_array is array (0 to NUM_CHANNELS) of integer range 0 to 131072;
 	constant GL_parameter : filter_generic_array := (7, 7, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 11, 11, 11, 11,
 		11, 11, 12, 12, 12, 12, 12, 12, 12, 13, 13, 13, 13, 13, 13, 14, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15, 15, 16, 16, 16,

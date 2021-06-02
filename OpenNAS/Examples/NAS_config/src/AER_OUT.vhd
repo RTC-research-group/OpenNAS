@@ -21,89 +21,59 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;           -- @suppress "Deprecated package"
-use IEEE.STD_LOGIC_UNSIGNED.ALL;        -- @suppress "Deprecated package"
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
-entity AER_Out is
-	Generic(
-		TAM : integer := 2048;
-		IL  : integer := 11
+
+entity AER_OUT is
+	Generic (
+		TAM      : integer := 2048; 
+		IL       : integer  := 11
 	);
-	Port(
+    Port ( 
 		clk      : in  STD_LOGIC;
 		rst      : in  STD_LOGIC;
-		dataIn   : in  STD_LOGIC_VECTOR(15 downto 0);
+		dataIn   : in  STD_LOGIC_VECTOR (15 downto 0);
 		newData  : in  STD_LOGIC;
 		fifofull : out STD_LOGIC;
-		AEROUT   : out STD_LOGIC_VECTOR(15 downto 0);
+		AEROUT   : out STD_LOGIC_VECTOR (15 downto 0);
 		REQ_OUT  : out STD_LOGIC;
 		ACK_OUT  : in  STD_LOGIC
 	);
-end AER_Out;
+end AER_OUT;
 
-architecture Behavioral of AER_Out is
-
-	component Ram_Fifo is
-		Generic(
-			TAM : integer := 2048;
-			IL  : integer := 11;
-			WL  : integer := 16
-		);
-		Port(
-			clk      : in  STD_LOGIC;
-			wr       : in  STD_LOGIC;
-			rd       : in  STD_LOGIC;
-			rst      : in  STD_LOGIC;
-			empty    : out STD_LOGIC;
-			full     : out STD_LOGIC;
-			data_in  : in  STD_LOGIC_VECTOR(WL - 1 downto 0);
-			data_out : out STD_LOGIC_VECTOR(WL - 1 downto 0);
-			mem_used : out STD_LOGIC_VECTOR(IL - 1 downto 0));
-	end component;
-
-	component Handshake_Out is
-		Port(
-			rst     : in  STD_LOGIC;
-			clk     : in  STD_LOGIC;
-			ack     : in  STD_LOGIC;
-			dataIn  : in  STD_LOGIC_VECTOR(15 downto 0);
-			load    : in  STD_LOGIC;
-			req     : out STD_LOGIC;
-			dataOut : out STD_LOGIC_VECTOR(15 downto 0);
-			busy    : out STD_LOGIC
-		);
-	end component;
+architecture Behavioral of AER_OUT is
 
 	signal fifo_wr      : STD_LOGIC;
 	signal fifo_rd      : STD_LOGIC;
 	signal fifo_empty   : STD_LOGIC;
 	signal fifo_full    : STD_LOGIC;
-	signal aer_data_out : STD_LOGIC_VECTOR(15 downto 0);
+	signal aer_data_out : STD_LOGIC_VECTOR (15 downto 0);
 	signal aer_load     : STD_LOGIC;
 	signal aer_busy     : STD_LOGIC;
 
-begin
+	begin
 
-	U_fifo : Ram_Fifo
-		Generic Map(
-			TAM => TAM,
-			IL  => IL,
-			WL  => 16
-		)                               --512 AER events in FIFO
-		Port Map(
-			clk      => clk,
+		U_fifo: entity work.ramfifo 
+		Generic Map (
+			TAM      => TAM, 
+			IL       => IL, 
+			WL       => 16
+		) --512 AER events in FIFO
+		Port Map (
+			clk      => CLK,
 			wr       => fifo_wr,
-			rd       => fifo_rd,
+			rd	     => fifo_rd,
 			rst      => rst,
 			empty    => fifo_empty,
 			full     => fifo_full,
-			data_in  => dataIn,
-			data_out => aer_data_out,
+			data_in  => dataIn, 
+			data_out => aer_data_out, 
 			mem_used => open
 		);
 
-	U_handshakeOut : Handshake_Out
-		Port Map(
+		U_handshakeOut: entity work.handshakeOut
+		Port Map (
 			rst     => rst,
 			clk     => clk,
 			ack     => ACK_OUT,
@@ -114,12 +84,13 @@ begin
 			busy    => aer_busy
 		);
 
-	fifofull <= fifo_full;
+		fifofull <= fifo_full;
 
-	fifo_wr <= (newData and (not fifo_full));
+		fifo_wr  <= (newData and (not fifo_full));
 
-	aer_load <= (not fifo_empty) and (not aer_busy);
-	fifo_rd  <= (not fifo_empty) and (not aer_busy);
+		aer_load <= (not fifo_empty) and (not aer_busy);
+		fifo_rd  <= (not fifo_empty) and (not aer_busy);
 
+	
 end Behavioral;
 

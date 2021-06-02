@@ -1,6 +1,6 @@
 --/////////////////////////////////////////////////////////////////////////////////
 --//                                                                             //
---//    Copyright ï¿½ 2016  ï¿½ngel Francisco Jimï¿½nez-Fernï¿½ndez                      //
+--//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                      //
 --//                                                                             //
 --//    This file is part of OpenNAS.                                            //
 --//                                                                             //
@@ -38,71 +38,71 @@
 -- Additional Comments: 
 --
 ----------------------------------------------------------------------------------
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.std_logic_arith.all; -- @suppress "Deprecated package"
-use ieee.std_logic_unsigned.all; -- @suppress "Deprecated package"
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity PDM_Interface is
-	port(
-		clk        : in  std_logic;
-		rst        : in  std_logic;
-		clock_div  : in  std_logic_vector(7 downto 0);
-		pdm_clk    : out std_logic;
-		pdm_dat    : in  std_logic;
-		spikes_out : out std_logic_vector(1 downto 0)
+	port (
+		CLK        : in std_logic;		
+		RST        : in std_logic;
+		CLOCK_DIV  : in std_logic_vector(7 downto 0);
+		PDM_CLK	   : out std_logic;
+		PDM_DAT    : in std_logic;
+		SPIKES_OUT : out std_logic_vector(1 downto 0)
 	);
 end PDM_Interface;
 
 architecture PDM_Interface_arq of PDM_Interface is
 
-	signal clock_counter : std_logic_vector(7 downto 0);
-	signal int_counter   : std_logic_vector(7 downto 0);
-	signal pdm_clk_int   : std_logic;
-	signal pdm_int       : std_logic;
+	signal clock_counter : std_logic_vector (7 downto 0);
+	signal int_counter   : std_logic_vector (7 downto 0);
+	signal PDM_CLK_INT   : std_logic;
+	signal PDM_INT       : std_logic;
 
-begin
-
-	pdm_clk <= pdm_clk_int;
-
-	process(clk, rst)
 	begin
-		if (rst = '0') then
-			clock_counter <= (others => '0');
-			int_counter   <= (others => '0');
-			pdm_clk_int   <= '0';
-			pdm_int       <= '0';
-			spikes_out    <= (others => '0');
 
-		elsif (rising_edge(clk)) then
-			clock_counter <= clock_counter + 1;
+		PDM_CLK <= PDM_CLK_INT;
 
-			if (clock_counter = clock_div) then
-				pdm_clk_int   <= not pdm_clk_int;
-				clock_counter <= (others => '0');
+		process (CLK, RST, PDM_INT, PDM_DAT, clock_counter)
+		begin
+			if(RST = '0') then
+				clock_counter <= (others=>'0');
+				int_counter   <= (others=>'0');
+				PDM_CLK_INT	  <= '0';
+				PDM_INT	      <= '0';
+				SPIKES_OUT    <= (others=>'0');
 
-				if (pdm_clk_int = '1') then
-					pdm_int     <= pdm_dat;
-					int_counter <= (others => '0');
+			elsif (rising_edge(CLK)) then
+				clock_counter <= clock_counter + 1;
+
+				if(clock_counter = CLOCK_DIV) then
+					PDM_CLK_INT   <= not PDM_CLK_INT;
+					clock_counter <= (others=>'0');
+					
+					if(PDM_CLK_INT = '1') then
+						PDM_INT     <= PDM_DAT;
+						int_counter	<= (others=>'0');
+					end if;
 				end if;
-			end if;
 
-			if (int_counter < x"01") then -- la condiciï¿½n serï¿½a equivalente a (int_counter = "00")
-				int_counter <= int_counter + 1;
+				if(int_counter < x"01") then -- la condición sería equivalente a (int_counter = "00")
+					int_counter <= int_counter + 1;
 
-				if (pdm_int = '1') then
-					spikes_out(1) <= '1';
-					spikes_out(0) <= '0';
+					if(PDM_INT = '1') then
+						SPIKES_OUT(1) <='1';
+						SPIKES_OUT(0) <='0';
+					else
+						SPIKES_OUT(1) <='0';
+						SPIKES_OUT(0) <='1';
+					end if;
 				else
-					spikes_out(1) <= '0';
-					spikes_out(0) <= '1';
+					SPIKES_OUT(1) <= '0';
+					SPIKES_OUT(0) <= '0';
 				end if;
-			else
-				spikes_out(1) <= '0';
-				spikes_out(0) <= '0';
 			end if;
-		end if;
-	end process;
+		end process;
 
 end PDM_Interface_arq;
 

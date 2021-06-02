@@ -19,74 +19,76 @@
 --//                                                                             //
 --/////////////////////////////////////////////////////////////////////////////////
 
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.std_logic_arith.all;           -- @suppress "Deprecated package"
-use ieee.std_logic_unsigned.all;        -- @suppress "Deprecated package"
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
 
 entity spikes_2LPF_fullGain is
-	Generic(
-		GL  : integer := 16;
-		SAT : integer := 32535
+	Generic (
+		GL             : integer := 16; 
+		SAT            : integer := 32535
 	);
-	Port(
-		clk            : in  std_logic;
-		rst            : in  std_logic;
-		freq_div       : in  std_logic_vector(7 downto 0);
-		spikes_div_fb  : in  std_logic_vector(15 downto 0);
-		spikes_div_out : in  std_logic_vector(15 downto 0);
-		spike_in_p     : in  std_logic;
-		spike_in_n     : in  std_logic;
-		spike_out_p    : out std_logic;
-		spike_out_n    : out std_logic
+    Port ( 
+		CLK            : in  STD_LOGIC;
+		RST            : in  STD_LOGIC;
+		FREQ_DIV       : in  STD_LOGIC_VECTOR(7 downto 0);
+		SPIKES_DIV_FB  : in  STD_LOGIC_VECTOR(15 downto 0);
+		SPIKES_DIV_OUT : in  STD_LOGIC_VECTOR(15 downto 0);				
+		spike_in_p     : in  STD_LOGIC;
+		spike_in_n     : in  STD_LOGIC;
+		spike_out_p    : out STD_LOGIC;
+		spike_out_n    : out STD_LOGIC
 	);
 end spikes_2LPF_fullGain;
 
 architecture Behavioral of spikes_2LPF_fullGain is
+	
+	signal int_spikes_p       : STD_LOGIC;
+	signal int_spikes_n       : STD_LOGIC;
+	signal spikes_out_tmp_p   : STD_LOGIC;
+	signal spikes_out_tmp_n   : STD_LOGIC;
+	signal spikes_div_fb_int  : STD_LOGIC_VECTOR(15 downto 0);
+	signal spikes_div_out_int : STD_LOGIC_VECTOR(15 downto 0);
 
-	signal int_spikes_p       : std_logic;
-	signal int_spikes_n       : std_logic;
-	signal spikes_out_tmp_p   : std_logic;
-	signal spikes_out_tmp_n   : std_logic;
-	signal spikes_div_fb_int  : std_logic_vector(15 downto 0);
-	signal spikes_div_out_int : std_logic_vector(15 downto 0);
+	begin
 
-begin
+		spike_out_p<=spikes_out_tmp_p;
+		spike_out_n<=spikes_out_tmp_n;
 
-	spike_out_p <= spikes_out_tmp_p;
-	spike_out_n <= spikes_out_tmp_n;
 
-	U_LPF1 : entity work.spikes_LPF_fullGain
-		Generic Map(
-			GL  => GL,
-			SAT => SAT
+		U_LPF1: entity work.spikes_LPF_fullGain
+		Generic Map (
+			GL             => GL, 
+			SAT            => SAT
 		)
-		Port Map(
-			clk            => clk,
-			rst            => rst,
-			freq_div       => freq_div,
-			spikes_div_fb  => spikes_div_fb,
-			spikes_div_out => spikes_div_out,
+		Port Map ( 
+			CLK            => CLK,
+			RST            => RST,
+			FREQ_DIV       => FREQ_DIV,
+			SPIKES_DIV_FB  => SPIKES_DIV_FB,
+			SPIKES_DIV_OUT => SPIKES_DIV_OUT,
 			spike_in_p     => spike_in_p,
 			spike_in_n     => spike_in_n,
 			spike_out_p    => int_spikes_p,
 			spike_out_n    => int_spikes_n
 		);
 
-	spikes_div_fb_int  <= spikes_div_fb + x"0000";
-	spikes_div_out_int <= spikes_div_out + x"0000";
+		spikes_div_fb_int  <= SPIKES_DIV_FB  + x"0000";
+		spikes_div_out_int <= SPIKES_DIV_OUT + x"0000";
 
-	U_LPF2 : entity work.spikes_LPF_fullGain
-		Generic Map(
-			GL  => GL,
-			SAT => SAT
+		U_LPF2: entity work.spikes_LPF_fullGain 
+		Generic Map (
+			GL             => GL, 
+			SAT            => SAT
 		)
-		Port Map(
-			clk            => clk,
-			rst            => rst,
-			freq_div       => freq_div,
-			spikes_div_fb  => spikes_div_fb_int,
-			spikes_div_out => spikes_div_out_int,
+		Port Map( 
+			CLK            => CLK,
+			RST            => RST,
+			FREQ_DIV       => FREQ_DIV,	
+			SPIKES_DIV_FB  => spikes_div_fb_int,
+			SPIKES_DIV_OUT => spikes_div_out_int,		
 			spike_in_p     => int_spikes_p,
 			spike_in_n     => int_spikes_n,
 			spike_out_p    => spikes_out_tmp_p,

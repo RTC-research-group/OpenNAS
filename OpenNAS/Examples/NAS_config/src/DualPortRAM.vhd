@@ -19,45 +19,47 @@
 --//                                                                             //
 --/////////////////////////////////////////////////////////////////////////////////
 
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.std_logic_arith.all;           -- @suppress "Deprecated package"
-use ieee.std_logic_unsigned.all;        -- @suppress "Deprecated package"
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
-entity DualPort_Ram is
-	Generic(
-		TAM : integer := 64;
-		IL  : integer := 6;
-		WL  : integer := 32
+entity dualram is
+	Generic (
+		TAM     : INTEGER  := 64; 
+		IL      : INTEGER  := 6; 
+		WL      : INTEGER  := 32
 	);
-	Port(
-		clk     : in  std_logic;
-		wr      : in  std_logic;
-		index_i : in  std_logic_vector(IL - 1 downto 0);
-		index_o : in  std_logic_vector(IL - 1 downto 0);
-		word_i  : in  std_logic_vector(WL - 1 downto 0);
-		word_o  : out std_logic_vector(WL - 1 downto 0));
-end DualPort_Ram;
+	Port (
+		clk     : in  STD_LOGIC; 
+		wr      : in  STD_LOGIC; 
+		index_i : in  STD_LOGIC_VECTOR(IL-1 downto 0); 
+		index_o : in  STD_LOGIC_VECTOR(IL-1 downto 0); 
+		word_i  : in  STD_LOGIC_VECTOR(WL-1 downto 0); 
+		word_o  : out STD_LOGIC_VECTOR(WL-1 downto 0)); 
+end dualram;
+
 
 -- Only XST supports RAM inference
 -- Infers Dual Port Distributed Ram 
-
-architecture syn of DualPort_Ram is
-
-	type ram_type is array (TAM - 1 downto 0) of std_logic_vector(WL - 1 downto 0);
-	signal RAM : ram_type;
-
-begin
-	process(clk)
-	begin
-		if (clk'event and clk = '1') then
-			if (wr = '1') then
-				RAM(conv_integer(index_i)) <= word_i;
-			end if;
-		end if;
+ 
+ architecture syn of dualram is 
+	
+	type ram_type is array (TAM-1 downto 0) of STD_LOGIC_VECTOR (WL-1 downto 0); 
+	signal RAM : ram_type; 
+ 
+	begin 
+	process (clk, index_i, word_i, wr) 
+	begin 
+		if (clk'event and clk = '1') then  
+			if (wr = '1') then 
+				RAM(conv_integer(index_i)) <= word_i; 
+			end if; 
+		end if; 
 	end process;
-
-	word_o <= RAM(conv_integer(index_o));
-
-end syn;
+ 
+	word_o <= RAM(conv_integer(index_o)); 
+ 
+ end syn;
+ 
 

@@ -1,6 +1,6 @@
 --/////////////////////////////////////////////////////////////////////////////////
 --//                                                                             //
---//    Copyright ï¿½ 2016  ï¿½ngel Francisco Jimï¿½nez-Fernï¿½ndez                      //
+--//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                      //
 --//                                                                             //
 --//    This file is part of OpenNAS.                                            //
 --//                                                                             //
@@ -39,12 +39,17 @@
 -- 
 ----------------------------------------------------------------------------------
 
-library ieee;
-use ieee.std_logic_1164.all;
-use IEEE.numeric_std.all;
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+use IEEE.NUMERIC_STD.ALL;
+
 
 entity SpikesSource_Selector is
-	Port(
+    Port ( 
 		source_sel  : in  std_logic;
 		i2s_data    : in  std_logic_vector(1 downto 0);
 		pdm_data    : in  std_logic_vector(1 downto 0);
@@ -54,14 +59,14 @@ end SpikesSource_Selector;
 
 architecture Behavioral of SpikesSource_Selector is
 
-begin
-	process(source_sel, i2s_data, pdm_data)
 	begin
-		case source_sel is
-			when '0'    => spikes_data <= i2s_data;
-			when '1'    => spikes_data <= pdm_data;
-			when others => spikes_data <= (others => '0');
-		end case;
-	end process;
+		process (source_sel, i2s_data, pdm_data)
+		begin
+			case source_sel is
+				when '0'    => spikes_data <= i2s_data;
+				when '1'    => spikes_data <= pdm_data;
+				when others => spikes_data <= (others => '0');
+			end case;
+		end process;
 
 end Behavioral;
