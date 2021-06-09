@@ -19,21 +19,21 @@
 --//                                                                           //
 --///////////////////////////////////////////////////////////////////////////////
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;           -- @suppress "Deprecated package"
-use IEEE.STD_LOGIC_UNSIGNED.ALL;        -- @suppress "Deprecated package"
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;           -- @suppress "Deprecated package"
+use ieee.std_logic_unsigned.all;        -- @suppress "Deprecated package"
 use work.OpenNas_top_pkg.all;
 
 entity OpenNas_Cascade_STEREO_64ch is
 	Port(
 		clock         : in  std_logic;
-		rst_ext       : in  std_logic;
+		rst_ext_n     : in  std_logic;
 		--PDM Interface
-		PDM_CLK_LEFT  : out std_logic;
-		PDM_DAT_LEFT  : in  std_logic;
-		PDM_CLK_RIGTH : out std_logic;
-		PDM_DAT_RIGTH : in  std_logic;
+		pdm_clk_left  : out std_logic;
+		pdm_dat_lef   : in  std_logic;
+		pdm_clk_right : out std_logic;
+		pdm_dat_right : in  std_logic;
 		--I2S Bus
 		i2s_bclk      : in  STD_LOGIC;
 		i2s_d_in      : in  STD_LOGIC;
@@ -45,20 +45,17 @@ entity OpenNas_Cascade_STEREO_64ch is
 		--Spikes Source Selector
 		source_sel    : in  std_logic;
 		--AER Output
-		AER_DATA_OUT  : out STD_LOGIC_VECTOR(15 downto 0);
-		AER_REQ       : out STD_LOGIC;
-		AER_ACK       : in  STD_LOGIC
+		aer_data_out  : out STD_LOGIC_VECTOR(15 downto 0);
+		aer_req       : out STD_LOGIC;
+		aer_ack       : in  STD_LOGIC
 	);
 end OpenNas_Cascade_STEREO_64ch;
 
 architecture OpenNas_arq of OpenNas_Cascade_STEREO_64ch is
 
-	--Reset signals
-	signal reset : std_logic;
-
 	--Audio input modules reset signal
-	signal pdm_reset : std_logic;
-	signal i2s_reset : std_logic;
+	signal pdm_reset_n : std_logic;
+	signal i2s_reset_n : std_logic;
 
 	--Inverted Source selector signal
 	signal i_source_sel : std_logic;
@@ -84,8 +81,6 @@ architecture OpenNas_arq of OpenNas_Cascade_STEREO_64ch is
 
 begin
 
-	reset <= rst_ext;
-
 	--Output spikes connection
 	spikes_out <= spikes_out_rigth & spikes_out_left;
 
@@ -93,8 +88,8 @@ begin
 	i_source_sel <= not source_sel;
 
 	--PDM / I2S reset signals
-	pdm_reset <= reset and source_sel;
-	i2s_reset <= reset and i_source_sel;
+	pdm_reset_n <= rst_ext_n and source_sel;
+	i2s_reset_n <= rst_ext_n and i_source_sel;
 
 	--PDM interface
 	--Anti-Offset SHPF
@@ -113,10 +108,10 @@ begin
 		)
 		Port Map(
 			clk         => clock,
-			rst         => pdm_reset,
+			rst         => pdm_reset_n,
 			clock_div   => x"07",       --PDM clock: +3,125MHz
-			pdm_clk     => PDM_CLK_LEFT,
-			pdm_dat     => PDM_DAT_LEFT,
+			pdm_clk     => pdm_clk_left,
+			pdm_dat     => pdm_dat_lef,
 			--Config Bus
 			config_data => config_data,
 			config_addr => config_addr,
@@ -136,10 +131,10 @@ begin
 		)
 		Port Map(
 			clk         => clock,
-			rst         => pdm_reset,
+			rst         => pdm_reset_n,
 			clock_div   => x"07",       --PDM clock: +3,125MHz
-			pdm_clk     => PDM_CLK_RIGTH,
-			pdm_dat     => PDM_DAT_RIGTH,
+			pdm_clk     => pdm_clk_right,
+			pdm_dat     => pdm_dat_right,
 			--Config Bus
 			config_data => config_data,
 			config_addr => config_addr,
@@ -152,7 +147,7 @@ begin
 	U_I2S_Stereo : entity work.i2s_to_spikes_stereo
 		Port Map(
 			clock        => clock,
-			reset        => i2s_reset,
+			reset        => i2s_reset_n,
 			--I2S Bus
 			i2s_bclk     => i2s_bclk,
 			i2s_d_in     => i2s_d_in,
@@ -161,7 +156,7 @@ begin
 			spikes_left  => spikes_in_left_i2s,
 			spikes_rigth => spikes_in_right_i2s
 		);
-		
+
 	--Spikes source selector left
 	U_SpikesSrcSel_Left : entity work.SpikesSource_Selector
 		Port Map(
@@ -179,40 +174,40 @@ begin
 			pdm_data    => spikes_in_right_pdm,
 			spikes_data => spikes_in_rigth
 		);
-		
+
 	--Cascade Filter Bank
 	U_CFBank_2or_64CH_Left : entity work.CFBank_2or_64CH
 		generic map(
 			CONFIG_ADDRESS => 16#0009#,
-			CONFIG_OFFSET  => 259        -- Don't change this value
+			CONFIG_OFFSET  => 259       -- Don't change this value
 		)
 		Port Map(
-			clock      => clock,
-			rst        => reset,
+			clock       => clock,
+			rst         => rst_ext_n,
 			--Config Bus
 			config_data => config_data,
 			config_addr => config_addr,
 			config_wren => config_wren,
 			--Output
-			spikes_in  => spikes_in_left,
-			spikes_out => spikes_out_left
+			spikes_in   => spikes_in_left,
+			spikes_out  => spikes_out_left
 		);
 
 	U_CFBank_2or_64CH_Rigth : entity work.CFBank_2or_64CH
 		generic map(
 			CONFIG_ADDRESS => 16#010D#,
-			CONFIG_OFFSET  => 259        -- Don't change this value
+			CONFIG_OFFSET  => 259       -- Don't change this value
 		)
 		Port Map(
-			clock      => clock,
-			rst        => reset,
+			clock       => clock,
+			rst         => rst_ext_n,
 			--Config Bus
 			config_data => config_data,
 			config_addr => config_addr,
 			config_wren => config_wren,
 			--Output
-			spikes_in  => spikes_in_rigth,
-			spikes_out => spikes_out_rigth
+			spikes_in   => spikes_in_rigth,
+			spikes_out  => spikes_out_rigth
 		);
 
 	--Spikes Distributed Monitor
@@ -224,12 +219,12 @@ begin
 			IL_AER         => 11
 		)
 		Port Map(
-			CLK          => clock,
-			RST          => reset,
-			SPIKES_IN    => spikes_out,
-			AER_DATA_OUT => AER_DATA_OUT,
-			AER_REQ      => AER_REQ,
-			AER_ACK      => AER_ACK
+			clk          => clock,
+			rst_n        => rst_ext_n,
+			spikes_in    => spikes_out,
+			aer_data_out => aer_data_out,
+			aer_req      => aer_req,
+			aer_ack      => aer_ack
 		);
 
 end OpenNas_arq;

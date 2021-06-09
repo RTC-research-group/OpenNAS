@@ -33,12 +33,12 @@ entity AER_DISTRIBUTED_MONITOR is
 		IL_AER         : INTEGER := 11
 	);
     Port ( 
-		CLK           : in  STD_LOGIC;
-		RST           : in  STD_LOGIC;
-		SPIKES_IN     : in  STD_LOGIC_VECTOR (N_SPIKES-1 downto 0);
-		AER_DATA_OUT  : out STD_LOGIC_VECTOR (15 downto 0);
-		AER_REQ       : out STD_LOGIC;
-		AER_ACK       : in  STD_LOGIC
+		clk           : in  STD_LOGIC;
+		rst_n           : in  STD_LOGIC;
+		spikes_in     : in  STD_LOGIC_VECTOR (N_SPIKES-1 downto 0);
+		aer_data_out  : out STD_LOGIC_VECTOR (15 downto 0);
+		aer_req       : out STD_LOGIC;
+		aer_ack       : in  STD_LOGIC
 	);
 end AER_DISTRIBUTED_MONITOR;
 
@@ -72,8 +72,8 @@ architecture Behavioral of AER_DISTRIBUTED_MONITOR is
 		)
 		Port Map( 
 			clk               => clk,
-			rst               => rst,
-			SPIKES_IN         => SPIKES_IN(N_SPIKES/4-1 downto 0),
+			rst               => rst_n,
+			SPIKES_IN         => spikes_in(N_SPIKES/4-1 downto 0),
 			AER_FIFO_RD       => fifo_rd_0,
 			AER_FIFO_DATA_OUT => aer_fifo_data_out_0,
 			AER_FIFO_MEM_USED => open,
@@ -87,8 +87,8 @@ architecture Behavioral of AER_DISTRIBUTED_MONITOR is
 		)
 		Port Map( 
 			clk               => clk,
-			rst               => rst,
-			SPIKES_IN         => SPIKES_IN(N_SPIKES/2-1 downto N_SPIKES/4),
+			rst               => rst_n,
+			SPIKES_IN         => spikes_in(N_SPIKES/2-1 downto N_SPIKES/4),
 			AER_FIFO_RD       => fifo_rd_1,
 			AER_FIFO_DATA_OUT => aer_fifo_data_out_1,
 			AER_FIFO_MEM_USED => open,
@@ -102,8 +102,8 @@ architecture Behavioral of AER_DISTRIBUTED_MONITOR is
 		)
 		Port Map( 
 			clk               => clk,
-			rst               => rst,
-			SPIKES_IN         => SPIKES_IN(3*N_SPIKES/4-1 downto N_SPIKES/2),
+			rst               => rst_n,
+			SPIKES_IN         => spikes_in(3*N_SPIKES/4-1 downto N_SPIKES/2),
 			AER_FIFO_RD       => fifo_rd_2,
 			AER_FIFO_DATA_OUT => aer_fifo_data_out_2,
 			AER_FIFO_MEM_USED => open,
@@ -117,8 +117,8 @@ architecture Behavioral of AER_DISTRIBUTED_MONITOR is
 		)
 		Port Map( 
 			clk               => clk,
-			rst               => rst,
-			SPIKES_IN         => SPIKES_IN(N_SPIKES-1 downto 3*N_SPIKES/4),
+			rst               => rst_n,
+			SPIKES_IN         => spikes_in(N_SPIKES-1 downto 3*N_SPIKES/4),
 			AER_FIFO_RD       => fifo_rd_3,
 			AER_FIFO_DATA_OUT => aer_fifo_data_out_3,
 			AER_FIFO_MEM_USED => open,
@@ -132,19 +132,19 @@ architecture Behavioral of AER_DISTRIBUTED_MONITOR is
 		)
 		Port Map( 
 			clk      => clk,
-			rst      => rst,
+			rst      => rst_n,
 			dataIn   => aer_out_data_in,
 			newData  => aer_out_wr,
 			fifofull => aer_out_full,
-			AEROUT   => AER_DATA_OUT,
-			REQ_OUT  => AER_REQ,
-			ACK_OUT  => AER_ACK
+			AEROUT   => aer_data_out,
+			REQ_OUT  => aer_req,
+			ACK_OUT  => aer_ack
 		);
 
-		process(clk, rst, fifo_empty_0, fifo_empty_1, fifo_empty_2, fifo_empty_3, aer_out_full, aer_fifo_data_out_0, aer_fifo_data_out_1, aer_fifo_data_out_2, aer_fifo_data_out_3)
+		process(clk, rst_n, fifo_empty_0, fifo_empty_1, fifo_empty_2, fifo_empty_3, aer_out_full, aer_fifo_data_out_0, aer_fifo_data_out_1, aer_fifo_data_out_2, aer_fifo_data_out_3)
 		begin
 
-			if(rst = '0') then
+			if(rst_n = '0') then
 				state           <= b"00";
 				aer_out_wr      <= '0';
 				fifo_rd_0       <= '0';

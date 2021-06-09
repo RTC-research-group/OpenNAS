@@ -70,12 +70,12 @@ ARCHITECTURE Behavioral OF NAS_SOC_top_tb IS
 		PORT (
 			-- Clock and reset
 			clock         : IN  STD_LOGIC;
-			rst_ext       : IN  STD_LOGIC;
+			rst_ext_n       : IN  STD_LOGIC;
 			-- Input interface: PDM
-			PDM_CLK_LEFT  : OUT STD_LOGIC;
-			PDM_DAT_LEFT  : IN  STD_LOGIC;
-			PDM_CLK_RIGTH : OUT STD_LOGIC;
-			PDM_DAT_RIGTH : IN  STD_LOGIC;
+			pdm_clk_left  : OUT STD_LOGIC;
+			pdm_dat_lef  : IN  STD_LOGIC;
+			pdm_clk_right : OUT STD_LOGIC;
+			pdm_dat_right : IN  STD_LOGIC;
 			-- Input interface: I2S
 			i2s_bclk      : IN  STD_LOGIC;
 			i2s_d_in      : IN  STD_LOGIC;
@@ -87,9 +87,9 @@ ARCHITECTURE Behavioral OF NAS_SOC_top_tb IS
 			--Spikes Source Selector
 			source_sel    : IN  STD_LOGIC;
 			-- Output interface
-			AER_DATA_OUT  : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-			AER_REQ       : OUT STD_LOGIC;
-			AER_ACK       : IN  STD_LOGIC
+			aer_data_out  : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+			aer_req       : OUT STD_LOGIC;
+			aer_ack       : IN  STD_LOGIC
 		);
 	END COMPONENT;
 
@@ -136,7 +136,7 @@ ARCHITECTURE Behavioral OF NAS_SOC_top_tb IS
 	-- Testbench files
 	TYPE t_integer_file IS FILE OF INTEGER;
 
-	CONSTANT c_tb_absolute_path         : STRING := "D:/Universidad/Repositorios/GitHub/RTC-research-group/OpenNAS/OpenNAS/OpenNAS/Examples/NAS_config/tb/"; -- Absolute path to the testbench files
+	CONSTANT c_tb_absolute_path         : STRING := "/home/arios/Projects/OpenNAS/OpenNAS/Examples/NAS_config/tb/"; -- Absolute path to the testbench files
 
 	FILE tb_input_left_samples_file  : t_integer_file OPEN read_mode IS c_tb_absolute_path & "stimuli/sin_96e3fs_0_5d_1000a_700Hz_left.bin";
 	FILE tb_input_right_samples_file : t_integer_file OPEN read_mode IS c_tb_absolute_path & "stimuli/sin_96e3fs_0_5d_1000a_700Hz_right.bin";
@@ -152,12 +152,12 @@ BEGIN  -- architecture Behavioral
 		PORT MAP (
 			--// Clock and reset
 			clock => clock,
-			rst_ext => rst_ext,
+			rst_ext_n => rst_ext,
 			--// Input PDM interface
-			PDM_CLK_LEFT => PDM_CLK_LEFT,
-			PDM_DAT_LEFT => PDM_DAT_LEFT,
-			PDM_CLK_RIGTH => PDM_CLK_RIGTH,
-			PDM_DAT_RIGTH => PDM_DAT_RIGTH,
+			pdm_clk_left => PDM_CLK_LEFT,
+			pdm_dat_lef => PDM_DAT_LEFT,
+			pdm_clk_right => PDM_CLK_RIGTH,
+			pdm_dat_right => PDM_DAT_RIGTH,
 			--// Input I2S interface
 			i2s_bclk    => i2s_bclk,
 			i2s_d_in   => i2s_d_in,
@@ -169,9 +169,9 @@ BEGIN  -- architecture Behavioral
 			--// Spikes source selector
 			source_sel => source_sel,
 			--// Output AER interface
-			AER_DATA_OUT  => AER_DATA_OUT,
-			AER_REQ   => AER_REQ,
-			AER_ACK   => AER_ACK
+			aer_data_out  => AER_DATA_OUT,
+			aer_req   => AER_REQ,
+			aer_ack   => AER_ACK
 		);
 
     ---------------------------------------------------------------------------
