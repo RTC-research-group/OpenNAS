@@ -31,11 +31,11 @@ entity spikes_LPF_fullGain is
 		SAT            : INTEGER := 32536
 	);
     Port ( 
-		CLK            : in  STD_LOGIC;
-		RST            : in  STD_LOGIC;
-		FREQ_DIV       : in  STD_LOGIC_VECTOR(7 downto 0);
-		SPIKES_DIV_FB  : in  STD_LOGIC_VECTOR(15 downto 0);
-		SPIKES_DIV_OUT : in  STD_LOGIC_VECTOR(15 downto 0);
+		clk            : in  STD_LOGIC;
+		rst_n            : in  STD_LOGIC;
+		freq_div       : in  STD_LOGIC_VECTOR(7 downto 0);
+		spikes_div_fb  : in  STD_LOGIC_VECTOR(15 downto 0);
+		spikes_div_out : in  STD_LOGIC_VECTOR(15 downto 0);
 		spike_in_p     : in  STD_LOGIC;
 		spike_in_n     : in  STD_LOGIC;
 		spike_out_p    : out STD_LOGIC;
@@ -56,9 +56,9 @@ architecture Behavioral of spikes_LPF_fullGain is
 
 		U_OUT_DIV_out: entity work.spikes_div_BW
 		Port Map (
-			CLK         => clk,
-			RST         => RST,
-			spikes_div  => SPIKES_DIV_OUT,
+			clk         => clk,
+			rst_n         => rst_n,
+			spikes_div  => spikes_div_out,
 			spike_in_p  => spikes_out_tmp_p,
 			spike_in_n  => spikes_out_tmp_n,
 			spike_out_p => spike_out_p,
@@ -67,9 +67,9 @@ architecture Behavioral of spikes_LPF_fullGain is
 
 		U_FB_DIV: entity work.spikes_div_BW
 		Port Map (
-			CLK         => clk,
-			RST         => RST,
-			spikes_div  => SPIKES_DIV_FB,
+			clk         => clk,
+			rst_n         => rst_n,
+			spikes_div  => spikes_div_fb,
 			spike_in_p  => spikes_out_tmp_p,
 			spike_in_n  => spikes_out_tmp_n,
 			spike_out_p => spikes_fb_div_p,
@@ -78,14 +78,14 @@ architecture Behavioral of spikes_LPF_fullGain is
 
 		U_DIF: entity work.AER_DIF
 		Port Map (
-			CLK          =>clk,
-			RST          =>RST,
-			SPIKES_IN_UP =>spike_in_p,
-			SPIKES_IN_UN =>spike_in_n,
-			SPIKES_IN_YP =>spikes_fb_div_p, 
-			SPIKES_IN_YN =>spikes_fb_div_n, 
-			SPIKES_OUT_P =>int_spikes_p,
-			SPIKES_OUT_N =>int_spikes_n
+			clk          =>clk,
+			rst_n          =>rst_n,
+			spkies_in_up =>spike_in_p,
+			spikes_in_un =>spike_in_n,
+			spikes_in_yp =>spikes_fb_div_p, 
+			spikes_in_yn =>spikes_fb_div_n, 
+			spikes_out_p =>int_spikes_p,
+			spikes_out_n =>int_spikes_n
 		);			  
 
 		U_INT: entity work.Spike_Int_n_Gen_BW 
@@ -94,9 +94,9 @@ architecture Behavioral of spikes_LPF_fullGain is
 			SAT         => SAT
 		)
 		Port Map ( 
-			CLK         => clk,
-			RST         => rst,
-			FREQ_DIV    => FREQ_DIV,
+			clk         => clk,
+			rst_n         => rst_n,
+			freq_div    => freq_div,
 			spike_in_p  => int_spikes_p,
 			spike_in_n  => int_spikes_n,
 			spike_out_p => spikes_out_tmp_p,

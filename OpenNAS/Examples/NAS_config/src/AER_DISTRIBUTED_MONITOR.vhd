@@ -72,7 +72,7 @@ architecture Behavioral of AER_DISTRIBUTED_MONITOR is
 		)
 		Port Map( 
 			clk               => clk,
-			rst               => rst_n,
+			rst_n               => rst_n,
 			SPIKES_IN         => spikes_in(N_SPIKES/4-1 downto 0),
 			AER_FIFO_RD       => fifo_rd_0,
 			AER_FIFO_DATA_OUT => aer_fifo_data_out_0,
@@ -87,7 +87,7 @@ architecture Behavioral of AER_DISTRIBUTED_MONITOR is
 		)
 		Port Map( 
 			clk               => clk,
-			rst               => rst_n,
+			rst_n               => rst_n,
 			SPIKES_IN         => spikes_in(N_SPIKES/2-1 downto N_SPIKES/4),
 			AER_FIFO_RD       => fifo_rd_1,
 			AER_FIFO_DATA_OUT => aer_fifo_data_out_1,
@@ -102,7 +102,7 @@ architecture Behavioral of AER_DISTRIBUTED_MONITOR is
 		)
 		Port Map( 
 			clk               => clk,
-			rst               => rst_n,
+			rst_n               => rst_n,
 			SPIKES_IN         => spikes_in(3*N_SPIKES/4-1 downto N_SPIKES/2),
 			AER_FIFO_RD       => fifo_rd_2,
 			AER_FIFO_DATA_OUT => aer_fifo_data_out_2,
@@ -117,7 +117,7 @@ architecture Behavioral of AER_DISTRIBUTED_MONITOR is
 		)
 		Port Map( 
 			clk               => clk,
-			rst               => rst_n,
+			rst_n               => rst_n,
 			SPIKES_IN         => spikes_in(N_SPIKES-1 downto 3*N_SPIKES/4),
 			AER_FIFO_RD       => fifo_rd_3,
 			AER_FIFO_DATA_OUT => aer_fifo_data_out_3,

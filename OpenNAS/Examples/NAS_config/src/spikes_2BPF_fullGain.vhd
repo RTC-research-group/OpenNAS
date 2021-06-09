@@ -31,8 +31,8 @@ entity spikes_2BPF_fullGain is
 		SAT             : INTEGER := 1023
 	);
     Port ( 
-		CLK             : in  STD_LOGIC;
-		RST             : in  STD_LOGIC;
+		clk             : in  STD_LOGIC;
+		rst_n             : in  STD_LOGIC;
 		FREQ_DIV        : in  STD_LOGIC_VECTOR(7 downto 0);
 		SPIKES_DIV_FB   : in  STD_LOGIC_VECTOR(15 downto 0);
 		SPIKES_DIV_OUT  : in  STD_LOGIC_VECTOR(15 downto 0);				
@@ -69,11 +69,11 @@ architecture Behavioral of spikes_2BPF_fullGain is
 			SAT => SAT
 		)
 		Port map ( 
-			CLK            => CLK,
-			RST            => RST,
-			FREQ_DIV       => FREQ_DIV,
-			SPIKES_DIV_FB  => SPIKES_DIV_FB,
-			SPIKES_DIV_OUT => SPIKES_DIV_OUT,		
+			clk            => clk,
+			rst_n            => rst_n,
+			freq_div       => FREQ_DIV,
+			spikes_div_fb  => SPIKES_DIV_FB,
+			spikes_div_out => SPIKES_DIV_OUT,		
 			spike_in_p     => spike_in_slpf_p,
 			spike_in_n     => spike_in_slpf_n,
 			spike_out_p    => spikes_out_tmp_p,
@@ -82,14 +82,14 @@ architecture Behavioral of spikes_2BPF_fullGain is
 				
 		U_DIF: entity work.AER_DIF
 		port map (
-			CLK          => clk,
-			RST          => RST,
-			SPIKES_IN_UP => spike_in_shf_p,
-			SPIKES_IN_UN => spike_in_shf_n,
-			SPIKES_IN_YP => spikes_out_tmp_p, 
-			SPIKES_IN_YN => spikes_out_tmp_n, 
-			SPIKES_OUT_P => spikes_bpf_tmp_p,
-			SPIKES_OUT_N => spikes_bpf_tmp_n
+			clk          => clk,
+			rst_n          => rst_n,
+			spkies_in_up => spike_in_shf_p,
+			spikes_in_un => spike_in_shf_n,
+			spikes_in_yp => spikes_out_tmp_p, 
+			spikes_in_yn => spikes_out_tmp_n, 
+			spikes_out_p => spikes_bpf_tmp_p,
+			spikes_out_n => spikes_bpf_tmp_n
 		);			  
 
 		U_BPF_DIV: entity work.spikes_div_BW
@@ -97,8 +97,8 @@ architecture Behavioral of spikes_2BPF_fullGain is
 			GL => 8
 		)
 		Port map (
-			CLK         => clk,
-			RST         => RST,
+			clk         => clk,
+			rst_n         => rst_n,
 			spikes_div  => SPIKES_DIV_BPF(15 downto 8), -- TODO Deberían de coincidir el tamaño de estas señales.
 			spike_in_p  => spikes_bpf_tmp_p,
 			spike_in_n  => spikes_bpf_tmp_n,

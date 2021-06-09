@@ -31,7 +31,7 @@ entity OpenNas_Cascade_STEREO_64ch is
 		rst_ext_n     : in  std_logic;
 		--PDM Interface
 		pdm_clk_left  : out std_logic;
-		pdm_dat_lef   : in  std_logic;
+		pdm_dat_left   : in  std_logic;
 		pdm_clk_right : out std_logic;
 		pdm_dat_right : in  std_logic;
 		--I2S Bus
@@ -108,10 +108,10 @@ begin
 		)
 		Port Map(
 			clk         => clock,
-			rst         => pdm_reset_n,
+			rst_n         => pdm_reset_n,
 			clock_div   => x"07",       --PDM clock: +3,125MHz
 			pdm_clk     => pdm_clk_left,
-			pdm_dat     => pdm_dat_lef,
+			pdm_dat     => pdm_dat_left,
 			--Config Bus
 			config_data => config_data,
 			config_addr => config_addr,
@@ -131,7 +131,7 @@ begin
 		)
 		Port Map(
 			clk         => clock,
-			rst         => pdm_reset_n,
+			rst_n         => pdm_reset_n,
 			clock_div   => x"07",       --PDM clock: +3,125MHz
 			pdm_clk     => pdm_clk_right,
 			pdm_dat     => pdm_dat_right,
@@ -146,8 +146,8 @@ begin
 	--I2S Stereo
 	U_I2S_Stereo : entity work.i2s_to_spikes_stereo
 		Port Map(
-			clock        => clock,
-			reset        => i2s_reset_n,
+			clk        => clock,
+			rst_n        => i2s_reset_n,
 			--I2S Bus
 			i2s_bclk     => i2s_bclk,
 			i2s_d_in     => i2s_d_in,
@@ -183,7 +183,7 @@ begin
 		)
 		Port Map(
 			clock       => clock,
-			rst         => rst_ext_n,
+			rst_n         => rst_ext_n,
 			--Config Bus
 			config_data => config_data,
 			config_addr => config_addr,
@@ -200,7 +200,7 @@ begin
 		)
 		Port Map(
 			clock       => clock,
-			rst         => rst_ext_n,
+			rst_n         => rst_ext_n,
 			--Config Bus
 			config_data => config_data,
 			config_addr => config_addr,

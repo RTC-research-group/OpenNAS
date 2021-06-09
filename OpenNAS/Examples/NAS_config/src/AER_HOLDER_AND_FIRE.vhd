@@ -45,10 +45,10 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
  
 entity AER_HOLDER_AND_FIRE is
     Port ( 
-		CLK        : in  STD_LOGIC;
-		RST        : in  STD_LOGIC;
-		SET        : in  STD_LOGIC;
-		HOLD_PULSE : out  STD_LOGIC
+		clk        : in  STD_LOGIC;
+		rst        : in  STD_LOGIC;		-- Debe ser activo en alto porque este reset es provocado por un spike
+		set        : in  STD_LOGIC;
+		hold_pulse : out  STD_LOGIC
 	);
 end AER_HOLDER_AND_FIRE;
 
@@ -60,30 +60,30 @@ architecture Behavioral of AER_HOLDER_AND_FIRE is
 	
 	begin
 
-		process(RST, SET, CS, NS)
+		process(rst, set, CS, NS)
 		begin
 			case CS is
 				when IDLE =>
-					HOLD_PULSE <= '0';
-					if(SET = '1') then
+					hold_pulse <= '0';
+					if(set = '1') then
 						NS <= HOLD;
 					else
 						NS <= IDLE;
 					end if;
 				when HOLD =>
-					HOLD_PULSE <= '1';
+					hold_pulse <= '1';
 					NS         <= HOLD;
 				when others =>
-					HOLD_PULSE <= '0';		
+					hold_pulse <= '0';		
 					NS         <= IDLE;
 			end case;
 		end process;
 
-		process(CLK, RST, CS, NS)
+		process(clk, rst, CS, NS)
 		begin
 
-			if(CLK = '1' and CLK'event) then
-				if(RST = '1') then
+			if(clk = '1' and clk'event) then
+				if(rst = '1') then
 					CS <= IDLE;
 				else
 					CS <= NS;

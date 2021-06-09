@@ -31,23 +31,23 @@ entity spikes_HPF is
 		SAT         : integer := 32536
 	);
     Port ( 
-		CLK         : in  STD_LOGIC;
-		RST         : in  STD_LOGIC;
-		FREQ_DIV    : in  STD_LOGIC_VECTOR(7 downto 0);
-		spike_in_p  : in  STD_LOGIC;
-		spike_in_n  : in  STD_LOGIC;
-		spike_out_p : out STD_LOGIC;
-		spike_out_n : out STD_LOGIC
+		clk         : in  std_logic;
+		rst_n         : in  std_logic;
+		freq_div    : in  std_logic_vector(7 downto 0);
+		spike_in_p  : in  std_logic;
+		spike_in_n  : in  std_logic;
+		spike_out_p : out std_logic;
+		spike_out_n : out std_logic
 	);
 end spikes_HPF;
 
 architecture Behavioral of spikes_HPF is
 
-	signal int_spikes_p     : STD_LOGIC;
-	signal int_spikes_n     : STD_LOGIC;
+	signal int_spikes_p     : std_logic;
+	signal int_spikes_n     : std_logic;
 
-	signal spikes_out_tmp_p : STD_LOGIC;
-	signal spikes_out_tmp_n : STD_LOGIC;
+	signal spikes_out_tmp_p : std_logic;
+	signal spikes_out_tmp_n : std_logic;
 
 
 	begin
@@ -56,14 +56,14 @@ architecture Behavioral of spikes_HPF is
 
 		U_DIF: entity work.AER_DIF
 		Port map (
-			CLK          => clk,
-			RST          => RST,
-			SPIKES_IN_UP => spike_in_p,
-			SPIKES_IN_UN => spike_in_n,
-			SPIKES_IN_YP => spikes_out_tmp_p, 
-			SPIKES_IN_YN => spikes_out_tmp_n, 
-			SPIKES_OUT_P => int_spikes_p,
-			SPIKES_OUT_N => int_spikes_n
+			clk          => clk,
+			rst_n          => rst_n,
+			spkies_in_up => spike_in_p,
+			spikes_in_un => spike_in_n,
+			spikes_in_yp => spikes_out_tmp_p, 
+			spikes_in_yn => spikes_out_tmp_n, 
+			spikes_out_p => int_spikes_p,
+			spikes_out_n => int_spikes_n
 		);			  
 
 		U_INT: entity work.Spike_Int_n_Gen_BW 
@@ -72,9 +72,9 @@ architecture Behavioral of spikes_HPF is
 			SAT         => SAT
 		)
 		Port map ( 
-			CLK         => clk,
-			RST         => rst,
-			FREQ_DIV    => FREQ_DIV,
+			clk         => clk,
+			rst_n         => rst_n,
+			freq_div    => freq_div,
 			spike_in_p  => int_spikes_p,
 			spike_in_n  => int_spikes_n,
 			spike_out_p => spikes_out_tmp_p,

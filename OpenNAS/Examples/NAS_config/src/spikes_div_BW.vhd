@@ -1,6 +1,6 @@
 --/////////////////////////////////////////////////////////////////////////////////
 --//                                                                             //
---//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                      //
+--//    Copyright ï¿½ 2016  ï¿½ngel Francisco Jimï¿½nez-Fernï¿½ndez                      //
 --//                                                                             //
 --//    This file is part of OpenNAS.                                            //
 --//                                                                             //
@@ -29,8 +29,8 @@ entity spikes_div_BW is
 		GL          : INTEGER := 16
 	);
     Port ( 
-		CLK         : in  STD_LOGIC;
-		RST         : in  STD_LOGIC;	 
+		clk         : in  STD_LOGIC;
+		rst_n         : in  STD_LOGIC;	 
 		spikes_div  : in  STD_LOGIC_VECTOR(GL-1 downto 0);
 		SPIKE_IN_P  : in  STD_LOGIC;
 		SPIKE_IN_N  : in  STD_LOGIC;           
@@ -50,9 +50,9 @@ architecture Behavioral of spikes_div_BW is
 		--SIN SIGNO!
 		data_temp <= data_int(GL-2 downto 0);
 
-		process(clk, rst, ciclo, spikes_div)
+		process(clk, rst_n, ciclo, spikes_div)
 		begin
-			if(rst = '1') then
+			if(rst_n = '0') then
 				data_int   <= (others => '0');
 				ciclo_wise <= (others => '0');
 			elsif(clk = '1' and clk'event) then
@@ -67,9 +67,9 @@ architecture Behavioral of spikes_div_BW is
 			
 		end process;
 
-		process(clk, rst, spikes_div, ciclo, ciclo_wise, data_temp)
+		process(clk, rst_n, spikes_div, ciclo, ciclo_wise, data_temp)
 		begin
-			if(rst = '1') then
+			if(rst_n = '0') then
 				ciclo       <= (others => '0');
 				spike_out_p <= '0';
 				spike_out_n <= '0';

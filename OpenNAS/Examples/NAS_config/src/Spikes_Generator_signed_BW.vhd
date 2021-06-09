@@ -1,6 +1,6 @@
 --/////////////////////////////////////////////////////////////////////////////////
 --//                                                                             //
---//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                      //
+--//    Copyright ï¿½ 2016  ï¿½ngel Francisco Jimï¿½nez-Fernï¿½ndez                      //
 --//                                                                             //
 --//    This file is part of OpenNAS.                                            //
 --//                                                                             //
@@ -26,13 +26,13 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity Spikes_Generator_signed_BW is
     Port ( 
-		CLK      : in  STD_LOGIC;
-		RST      : in  STD_LOGIC;
-		FREQ_DIV : in  STD_LOGIC_VECTOR(15 downto 0);
-		DATA_IN  : in  STD_LOGIC_VECTOR(19 downto 0);
-		WR       : in  STD_LOGIC;
-		SPIKE_P  : out STD_LOGIC;
-		SPIKE_N  : out STD_LOGIC
+		clk      : in  STD_LOGIC;
+		rst_n      : in  STD_LOGIC;
+		freq_div : in  STD_LOGIC_VECTOR(15 downto 0);
+		data_in  : in  STD_LOGIC_VECTOR(19 downto 0);
+		wr       : in  STD_LOGIC;
+		spikes_p  : out STD_LOGIC;
+		spikes_n  : out STD_LOGIC
 	);
 end Spikes_Generator_signed_BW;
 
@@ -43,17 +43,17 @@ architecture Behavioral of Spikes_Generator_signed_BW is
 	signal pulse      : STD_LOGIC;
 	signal data_int   : STD_LOGIC_VECTOR (19 downto 0);
 	signal data_temp  : STD_LOGIC_VECTOR (18 downto 0);
-	signal CE         : STD_LOGIC;
+	signal ce         : STD_LOGIC;
 	signal tmp_count  : STD_LOGIC_VECTOR(15 downto 0);
 
 	begin
 
-		process(clk, rst)
+		process(clk, rst_n)
 		begin
-			if(rst = '0') then
+			if(rst_n = '0') then
 				data_int <= (others => '0');
 			elsif(clk = '1' and clk'event) then
-				if (WR = '1') then
+				if (wr = '1') then
 					data_int <= data_in;
 				else
 
@@ -72,38 +72,38 @@ architecture Behavioral of Spikes_Generator_signed_BW is
 
 		data_temp <= conv_std_logic_vector(abs(signed(data_int)),19);
 
-		process(clk, rst, data_in, pulse, ciclo, ciclo_wise, data_temp)
+		process(clk, rst_n, data_in, pulse, ciclo, ciclo_wise, data_temp)
 		begin
-			if(rst = '0') then
+			if(rst_n = '0') then
 				ciclo     <= (others=>'0');
 				tmp_count <= (others=>'0');
-				CE        <= '0';
-				Spike_p   <= '0';
-				Spike_n   <= '0';			
+				ce        <= '0';
+				spikes_p   <= '0';
+				spikes_n   <= '0';			
 				pulse     <= '0';	
 			else
 				if(clk = '1' and clk'event) then
 					if(freq_div = tmp_count) then
 						tmp_count <= (others=>'0');
 						ciclo     <= ciclo+1;				
-						CE        <= '1';
+						ce        <= '1';
 					else
 						tmp_count <= tmp_count+1;
-						CE        <= '0';
+						ce        <= '0';
 					end if;
 
-					if (CE = '1' and (conv_integer(data_temp) > conv_integer(ciclo_wise))) then
+					if (ce = '1' and (conv_integer(data_temp) > conv_integer(ciclo_wise))) then
 						pulse <= '1';
 					else
 						pulse <= '0';
 					end if;
 
 					if(data_int(19) = '1') then
-						Spike_p <= '0';
-						Spike_n <= pulse;			
+						spikes_p <= '0';
+						spikes_n <= pulse;			
 					else
-						Spike_p <= pulse;
-						Spike_n <= '0';
+						spikes_p <= pulse;
+						spikes_n <= '0';
 					end if;
 				else
 				

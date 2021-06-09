@@ -30,8 +30,8 @@ entity AER_DISTRIBUTED_MONITOR_MODULE is
 		LOG_2_N_IN_SPIKES : INTEGER := 5
 	);
 	Port ( 
-		CLK               : in  STD_LOGIC;
-		RST               : in  STD_LOGIC;
+		clk               : in  STD_LOGIC;
+		rst_n               : in  STD_LOGIC;
 		SPIKES_IN         : in  STD_LOGIC_VECTOR (N_IN_SPIKES-1 downto 0);
 		AER_FIFO_RD       : in  STD_LOGIC;
 		AER_FIFO_DATA_OUT : out STD_LOGIC_VECTOR (LOG_2_N_IN_SPIKES-1 downto 0);
@@ -51,10 +51,10 @@ architecture Behavioral of AER_DISTRIBUTED_MONITOR_MODULE is
 	begin
 
 
-		process (clk,rst,int_spikes,spikes_in, n_spikes,aer_fifo_full)
+		process (clk,rst_n,int_spikes,spikes_in, n_spikes,aer_fifo_full)
 			variable i: integer range 0 to N_IN_SPIKES/2-1 := 0;
 		begin
-			if(rst = '0') then
+			if(rst_n = '0') then
 				i                := 0;
 				int_spikes       <= (others => '0');
 				n_spikes         <= (others=>'0');
@@ -98,7 +98,7 @@ architecture Behavioral of AER_DISTRIBUTED_MONITOR_MODULE is
 			clk      => clk, 
 			wr       => aer_fifo_wr, 
 			rd	     => aer_fifo_rd,
-			rst      => rst,
+			rst      => rst_n,
 			empty    => aer_fifo_empty,
 			full     => aer_fifo_full,
 			data_in  => aer_fifo_data_in,

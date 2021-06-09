@@ -73,7 +73,7 @@ ARCHITECTURE Behavioral OF NAS_SOC_top_tb IS
 			rst_ext_n       : IN  STD_LOGIC;
 			-- Input interface: PDM
 			pdm_clk_left  : OUT STD_LOGIC;
-			pdm_dat_lef  : IN  STD_LOGIC;
+			pdm_dat_left  : IN  STD_LOGIC;
 			pdm_clk_right : OUT STD_LOGIC;
 			pdm_dat_right : IN  STD_LOGIC;
 			-- Input interface: I2S
@@ -155,7 +155,7 @@ BEGIN  -- architecture Behavioral
 			rst_ext_n => rst_ext,
 			--// Input PDM interface
 			pdm_clk_left => PDM_CLK_LEFT,
-			pdm_dat_lef => PDM_DAT_LEFT,
+			pdm_dat_left => PDM_DAT_LEFT,
 			pdm_clk_right => PDM_CLK_RIGTH,
 			pdm_dat_right => PDM_DAT_RIGTH,
 			--// Input I2S interface

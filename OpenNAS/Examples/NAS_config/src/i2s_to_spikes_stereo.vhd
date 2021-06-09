@@ -52,8 +52,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity i2s_to_spikes_stereo is
 	Port (
-		clock        : in STD_LOGIC;		
-		reset        : in STD_LOGIC;
+		clk        : in STD_LOGIC;		
+		rst_n        : in STD_LOGIC;
 		--I2S Bus
 		i2s_bclk     : in  STD_LOGIC;
 		i2s_d_in     : in  STD_LOGIC;
@@ -77,8 +77,8 @@ architecture Behavioral of i2s_to_spikes_stereo is
 
 		U_i2s_interface: entity work.I2S_inteface 
 		Port Map ( 
-			CLK         => clock,
-			RST         => reset,
+			clk         => clk,
+			rst_n         => rst_n,
 			i2s_bclk    => i2s_bclk,
 			i2s_d_in    => i2s_d_in,
 			i2s_lr      => i2s_lr,
@@ -89,24 +89,24 @@ architecture Behavioral of i2s_to_spikes_stereo is
 
 		U_Spikes_Gen_Left: entity work.Spikes_Generator_signed_BW
 		Port Map( 
-			CLK      => clock,
-			RST      => reset,
-			FREQ_DIV => genDiv,
-			DATA_IN  => left_in_data(31 downto 12),
-			WR       => data_ready,
-			SPIKE_P  => spikes_left(1),
-			SPIKE_N  => spikes_left(0)
+			clk      => clk,
+			rst_n      => rst_n,
+			freq_div => genDiv,
+			data_in  => left_in_data(31 downto 12),
+			wr       => data_ready,
+			spikes_p  => spikes_left(1),
+			spikes_n  => spikes_left(0)
 		);
 
 		U_Spikes_Gen_Rigth: entity work.Spikes_Generator_signed_BW
 		Port Map( 
-			CLK      => clock,
-			RST      => reset,
-			FREQ_DIV => genDiv,
-			DATA_IN  => right_in_data(31 downto 12),
-			WR       => data_ready,
-			SPIKE_P  => spikes_rigth(1),
-			SPIKE_N  => spikes_rigth(0)
+			clk      => clk,
+			rst_n      => rst_n,
+			freq_div => genDiv,
+			data_in  => right_in_data(31 downto 12),
+			wr       => data_ready,
+			spikes_p  => spikes_rigth(1),
+			spikes_n  => spikes_rigth(0)
 		);
 
 end Behavioral;

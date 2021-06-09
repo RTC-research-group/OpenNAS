@@ -1,6 +1,6 @@
 --/////////////////////////////////////////////////////////////////////////////////
 --//                                                                             //
---//    Copyright © 2016  Ángel Francisco Jiménez-Fernández                      //
+--//    Copyright ï¿½ 2016  ï¿½ngel Francisco Jimï¿½nez-Fernï¿½ndez                      //
 --//                                                                             //
 --//    This file is part of OpenNAS.                                            //
 --//                                                                             //
@@ -49,7 +49,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity I2S_inteface is
     Port ( 
 		clk           : in  STD_LOGIC;
-		rst           : in  STD_LOGIC;
+		rst_n           : in  STD_LOGIC;
         -- I2S signals   
 		i2s_bclk      : in  STD_LOGIC;
 		i2s_d_in      : in  STD_LOGIC;
@@ -74,9 +74,9 @@ architecture Behavioral of I2S_inteface is
 
 	begin
 
-		process (clk, rst)
+		process (clk, rst_n)
 		begin
-			if (rst = '0') then
+			if (rst_n = '0') then
 				cs          <= 0; 
 				ns          <= 0;
 				l_bclk      <= '0';
@@ -95,7 +95,7 @@ architecture Behavioral of I2S_inteface is
 						audio_l_out <= (others => '0');
 						audio_r_out <= (others => '0');
 						if(i_i2s_lr = '0') then
-							NS          <= 1;
+							ns          <= 1;
 							shift_right <= (others=>'0');
 							shift_left  <= (others=>'0');
 						end if;
@@ -104,7 +104,7 @@ architecture Behavioral of I2S_inteface is
 						audio_l_out <= (others => '0');
 						audio_r_out <= (others => '0');
 						if(l_bclk = '0' and i_i2s_bclk = '1') then
-							NS <= 2;		
+							ns <= 2;		
 						end if;
 					when 2 =>
 						audio_l_out <= (others => '0');
@@ -113,7 +113,7 @@ architecture Behavioral of I2S_inteface is
 							shift_left  <= shift_left(30 downto 0) & i_i2s_d_in;
 							shift_right <= shift_right;
 							if(i_i2s_lr = '1') then
-								NS <= 3;
+								ns <= 3;
 							end if;
 						end if;
 					when 3 =>
@@ -122,23 +122,23 @@ architecture Behavioral of I2S_inteface is
 						if(l_bclk = '0' and i_i2s_bclk = '1') then
 							shift_right <= shift_right(30 downto 0) & i_i2s_d_in;
 							if(i_i2s_lr = '0') then
-								NS <= 4;
+								ns <= 4;
 							end if;
 						end if;
 					when 4 =>
 						audio_l_out <= shift_left;
 						audio_r_out <= shift_right;
 						new_sample  <= '1';
-						NS          <= 5;
+						ns          <= 5;
 					when 5=>
 						audio_l_out <= (others => '0');
 						audio_r_out <= (others => '0');
 						shift_left  <= (others=>'0');
 						shift_right <=( others=>'0');
 						new_sample  <= '0';
-						NS          <= 2;
+						ns          <= 2;
 					when others =>
-						NS <= 0;
+						ns <= 0;
 				end case;
 			
 				cs <= ns;

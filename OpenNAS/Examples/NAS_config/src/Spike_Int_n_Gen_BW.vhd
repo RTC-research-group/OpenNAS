@@ -19,36 +19,36 @@
 --//                                                                             //
 --/////////////////////////////////////////////////////////////////////////////////
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all; -- @suppress "Deprecated package"
+use ieee.std_logic_unsigned.all; -- @suppress "Deprecated package"
 
 entity Spike_Int_n_Gen_BW is
 	Generic (
-		GL          : INTEGER := 12; 
-		SAT         : INTEGER := 2047
+		GL          : integer := 12; 
+		SAT         : integer := 2047
 	);
     Port ( 
-		CLK         : in  STD_LOGIC;
-		RST         : in  STD_LOGIC;
-		FREQ_DIV    : in  STD_LOGIC_VECTOR(7 downto 0);
-		spike_in_p  : in  STD_LOGIC;
-		spike_in_n  : in  STD_LOGIC;
-		spike_out_p : out STD_LOGIC;
-		spike_out_n : out STD_LOGIC
+		clk         : in  std_logic;
+		rst_n         : in  std_logic;
+		freq_div    : in  std_logic_vector(7 downto 0);
+		spike_in_p  : in  std_logic;
+		spike_in_n  : in  std_logic;
+		spike_out_p : out std_logic;
+		spike_out_n : out std_logic
 	);
 end Spike_Int_n_Gen_BW;
 
 architecture Behavioral of Spike_Int_n_Gen_BW is
 
-	signal ciclo      : STD_LOGIC_VECTOR (GL-2 downto 0);	--TOCAR AQUI
-	signal ciclo_wise : STD_LOGIC_VECTOR (GL-2 downto 0);
-	signal spike      : STD_LOGIC;
-	signal integrator : SIGNED (GL-1 downto 0);
-	signal data_temp  : STD_LOGIC_VECTOR (GL-2 downto 0);
-	signal CE         : STD_LOGIC;
-	signal tmp_count  : STD_LOGIC_VECTOR(7 downto 0);
+	signal ciclo      : std_logic_vector (GL-2 downto 0);	--TOCAR AQUI
+	signal ciclo_wise : std_logic_vector (GL-2 downto 0);
+	signal spike      : std_logic;
+	signal integrator : signed (GL-1 downto 0);
+	signal data_temp  : std_logic_vector (GL-2 downto 0);
+	signal CE         : std_logic;
+	signal tmp_count  : std_logic_vector(7 downto 0);
 	
 	begin
 
@@ -76,10 +76,10 @@ architecture Behavioral of Spike_Int_n_Gen_BW is
 		end process;
 
 
-		process(clk, rst, integrator, spike, ciclo, spike_in_p, spike_in_n)
+		process(clk, rst_n, integrator, spike, ciclo, spike_in_p, spike_in_n)
 		begin
 			
-			if(rst = '1') then
+			if(rst_n = '0') then
 				integrator <= (others=>'0');
 				ciclo      <= (others=>'0');
 				tmp_count  <= (others=>'0');
