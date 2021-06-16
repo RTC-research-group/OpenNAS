@@ -153,13 +153,20 @@ namespace OpenNAS_App.NASComponents
         /// </summary>
         public override YamlSequenceNode toYAML()
         {
+            SLPFParameters slpf = new SLPFParameters(clk, slpfCutOff, slpfGain, 3);
+            SLPFParameters shpf = new SLPFParameters(clk, shpfCutOff, 0, 3);
+
             YamlSequenceNode ysm = new YamlSequenceNode();
             ysm.Add(new YamlMappingNode(
                     new YamlScalarNode("Interface"), new YamlScalarNode("PDM"),
                     new YamlScalarNode("ClkDiv"), new YamlScalarNode(clkDiv.ToString()),
                     new YamlScalarNode("ShpfCutOff"), new YamlScalarNode(shpfCutOff.ToString()),
                     new YamlScalarNode("SlpfCutOff"), new YamlScalarNode(slpfCutOff.ToString()),
-                    new YamlScalarNode("SlpfGain"), new YamlScalarNode(slpfGain.ToString())
+                    new YamlScalarNode("SlpfGain"), new YamlScalarNode(slpfGain.ToString()),
+                    new YamlScalarNode("SHPF_FREQ_DIV"), new YamlScalarNode("0x" + shpf.freqDiv.ToString("X2")),
+                    new YamlScalarNode("SLPF_FREQ_DIV"), new YamlScalarNode("0x" + slpf.freqDiv.ToString("X2")),
+                    new YamlScalarNode("SLPF_SPIKES_DIV_FB"), new YamlScalarNode("0x" + slpf.fbDiv.ToString("X4")),
+                    new YamlScalarNode("SLPF_SPIKES_DIV_OUT"), new YamlScalarNode("0x" + slpf.outDiv.ToString("X4"))
                 ));
             ysm.Add(new YamlMappingNode(
                     new YamlScalarNode("Interface"), new YamlScalarNode("I2S"),
