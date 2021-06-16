@@ -19,83 +19,82 @@
 --//                                                                             //
 --/////////////////////////////////////////////////////////////////////////////////
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
-
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;           -- @suppress "Deprecated package"
+use ieee.std_logic_unsigned.all;        -- @suppress "Deprecated package"
 
 entity spikes_LPF_fullGain is
-	Generic (
-		GL             : INTEGER := 16; 
-		SAT            : INTEGER := 32536
+	Generic(
+		GL  : INTEGER := 16;
+		SAT : INTEGER := 32536
 	);
-    Port ( 
-		clk            : in  STD_LOGIC;
-		rst_n            : in  STD_LOGIC;
-		freq_div       : in  STD_LOGIC_VECTOR(7 downto 0);
-		spikes_div_fb  : in  STD_LOGIC_VECTOR(15 downto 0);
-		spikes_div_out : in  STD_LOGIC_VECTOR(15 downto 0);
-		spike_in_p     : in  STD_LOGIC;
-		spike_in_n     : in  STD_LOGIC;
-		spike_out_p    : out STD_LOGIC;
-		spike_out_n    : out STD_LOGIC
+	Port(
+		clk            : in  std_logic;
+		rst_n          : in  std_logic;
+		freq_div       : in  std_logic_vector(7 downto 0);
+		spikes_div_fb  : in  std_logic_vector(15 downto 0);
+		spikes_div_out : in  std_logic_vector(15 downto 0);
+		spike_in_p     : in  std_logic;
+		spike_in_n     : in  std_logic;
+		spike_out_p    : out std_logic;
+		spike_out_n    : out std_logic
 	);
 end spikes_LPF_fullGain;
 
 architecture Behavioral of spikes_LPF_fullGain is
-	
-	signal int_spikes_p     : STD_LOGIC;
-	signal int_spikes_n     : STD_LOGIC;
-	signal spikes_out_tmp_p : STD_LOGIC;
-	signal spikes_out_tmp_n : STD_LOGIC;
-	signal spikes_fb_div_p  : STD_LOGIC;
-	signal spikes_fb_div_n  : STD_LOGIC;
 
-	begin
+	signal int_spikes_p     : std_logic;
+	signal int_spikes_n     : std_logic;
+	signal spikes_out_tmp_p : std_logic;
+	signal spikes_out_tmp_n : std_logic;
+	signal spikes_fb_div_p  : std_logic;
+	signal spikes_fb_div_n  : std_logic;
 
-		U_OUT_DIV_out: entity work.spikes_div_BW
-		Port Map (
+begin
+
+	U_OUT_Div_out : entity work.Spikes_div_BW -- @suppress "Generic map uses default values. Missing optional actuals: GL"
+		Port Map(
 			clk         => clk,
-			rst_n         => rst_n,
-			spikes_div  => spikes_div_out,
-			spike_in_p  => spikes_out_tmp_p,
-			spike_in_n  => spikes_out_tmp_n,
+			rst_n       => rst_n,
+			spikes_div  => spikes_div_out, -- @suppress "Incorrect array size in assignment: expected (<GL>) but was (<16>)"
+			spikes_in_p  => spikes_out_tmp_p,
+			spikes_in_n  => spikes_out_tmp_n,
 			spike_out_p => spike_out_p,
 			spike_out_n => spike_out_n
 		);
 
-		U_FB_DIV: entity work.spikes_div_BW
-		Port Map (
+	U_FB_Div : entity work.Spikes_div_BW -- @suppress "Generic map uses default values. Missing optional actuals: GL"
+		Port Map(
 			clk         => clk,
-			rst_n         => rst_n,
-			spikes_div  => spikes_div_fb,
-			spike_in_p  => spikes_out_tmp_p,
-			spike_in_n  => spikes_out_tmp_n,
+			rst_n       => rst_n,
+			spikes_div  => spikes_div_fb, -- @suppress "Incorrect array size in assignment: expected (<GL>) but was (<16>)"
+			spikes_in_p  => spikes_out_tmp_p,
+			spikes_in_n  => spikes_out_tmp_n,
 			spike_out_p => spikes_fb_div_p,
 			spike_out_n => spikes_fb_div_n
 		);
 
-		U_DIF: entity work.AER_DIF
-		Port Map (
-			clk          =>clk,
-			rst_n          =>rst_n,
-			spkies_in_up =>spike_in_p,
-			spikes_in_un =>spike_in_n,
-			spikes_in_yp =>spikes_fb_div_p, 
-			spikes_in_yn =>spikes_fb_div_n, 
-			spikes_out_p =>int_spikes_p,
-			spikes_out_n =>int_spikes_n
-		);			  
+	U_DIF : entity work.AER_Dif
+		Port Map(
+			clk          => clk,
+			rst_n        => rst_n,
+			spkies_in_up => spike_in_p,
+			spikes_in_un => spike_in_n,
+			spikes_in_yp => spikes_fb_div_p,
+			spikes_in_yn => spikes_fb_div_n,
+			spikes_out_p => int_spikes_p,
+			spikes_out_n => int_spikes_n
+		);
 
-		U_INT: entity work.Spike_Int_n_Gen_BW 
+	U_INT : entity work.Spike_Int_n_Gen_BW
 		Generic Map(
-			GL          => GL, 
-			SAT         => SAT
+			GL  => GL,
+			SAT => SAT
 		)
-		Port Map ( 
+		Port Map(
 			clk         => clk,
-			rst_n         => rst_n,
+			rst_n       => rst_n,
 			freq_div    => freq_div,
 			spike_in_p  => int_spikes_p,
 			spike_in_n  => int_spikes_n,

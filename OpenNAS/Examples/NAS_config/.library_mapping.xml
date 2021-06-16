@@ -3,8 +3,8 @@
   <Mappings Location="Common Libraries/IEEE" Library="ieee"/>
   <Mappings Location="Common Libraries/IEEE Synopsys" Library="ieee"/>
   <Mappings Location="Common Libraries" Library="not mapped"/>
-  <Mappings Location="src_bkp" Library="not mapped"/>
   <Mappings Location="vivado" Library="not mapped"/>
   <Mappings Location="Common Libraries/STD" Library="std"/>
   <Mappings Location="" Library="work"/>
+  <Mappings Location="vivado/ip_repo" Library="work"/>
 </com.sigasi.hdt.shared.librarymapping.model:LibraryMappings>

@@ -21,30 +21,29 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.std_logic_arith.all; -- @suppress "Deprecated package"
-use ieee.std_logic_unsigned.all; -- @suppress "Deprecated package"
+use ieee.std_logic_arith.all;           -- @suppress "Deprecated package"
+use ieee.std_logic_unsigned.all;        -- @suppress "Deprecated package"
 
-
-entity spikes_2LPF_fullGain is
-	Generic (
-		GL             : integer := 16; 
-		SAT            : integer := 32535
+entity Spikes_2LPF_FullGain is
+	Generic(
+		GL  : integer := 16;
+		SAT : integer := 32535
 	);
-    Port ( 
+	Port(
 		clk            : in  STD_LOGIC;
-		rst_n            : in  STD_LOGIC;
+		rst_n          : in  STD_LOGIC;
 		freq_div       : in  STD_LOGIC_VECTOR(7 downto 0);
 		spikes_div_fb  : in  STD_LOGIC_VECTOR(15 downto 0);
-		spikes_div_out : in  STD_LOGIC_VECTOR(15 downto 0);				
+		spikes_div_out : in  STD_LOGIC_VECTOR(15 downto 0);
 		spike_in_p     : in  STD_LOGIC;
 		spike_in_n     : in  STD_LOGIC;
 		spike_out_p    : out STD_LOGIC;
 		spike_out_n    : out STD_LOGIC
 	);
-end spikes_2LPF_fullGain;
+end Spikes_2LPF_FullGain;
 
-architecture Behavioral of spikes_2LPF_fullGain is
-	
+architecture Behavioral of Spikes_2LPF_FullGain is
+
 	signal int_spikes_p       : STD_LOGIC;
 	signal int_spikes_n       : STD_LOGIC;
 	signal spikes_out_tmp_p   : STD_LOGIC;
@@ -52,20 +51,19 @@ architecture Behavioral of spikes_2LPF_fullGain is
 	signal spikes_div_fb_int  : STD_LOGIC_VECTOR(15 downto 0);
 	signal spikes_div_out_int : STD_LOGIC_VECTOR(15 downto 0);
 
-	begin
+begin
 
-		spike_out_p<=spikes_out_tmp_p;
-		spike_out_n<=spikes_out_tmp_n;
+	spike_out_p <= spikes_out_tmp_p;
+	spike_out_n <= spikes_out_tmp_n;
 
-
-		U_LPF1: entity work.spikes_LPF_fullGain
-		Generic Map (
-			GL             => GL, 
-			SAT            => SAT
+	U_LPF1 : entity work.spikes_LPF_fullGain
+		Generic Map(
+			GL  => GL,
+			SAT => SAT
 		)
-		Port Map ( 
+		Port Map(
 			clk            => clk,
-			rst_n            => rst_n,
+			rst_n          => rst_n,
 			freq_div       => freq_div,
 			spikes_div_fb  => spikes_div_fb,
 			spikes_div_out => spikes_div_out,
@@ -75,20 +73,20 @@ architecture Behavioral of spikes_2LPF_fullGain is
 			spike_out_n    => int_spikes_n
 		);
 
-		spikes_div_fb_int  <= spikes_div_fb  + x"0000";
-		spikes_div_out_int <= spikes_div_out + x"0000";
+	spikes_div_fb_int  <= spikes_div_fb + x"0000";
+	spikes_div_out_int <= spikes_div_out + x"0000";
 
-		U_LPF2: entity work.spikes_LPF_fullGain 
-		Generic Map (
-			GL             => GL, 
-			SAT            => SAT
+	U_LPF2 : entity work.spikes_LPF_fullGain
+		Generic Map(
+			GL  => GL,
+			SAT => SAT
 		)
-		Port Map( 
+		Port Map(
 			clk            => clk,
-			rst_n            => rst_n,
-			freq_div       => freq_div,	
+			rst_n          => rst_n,
+			freq_div       => freq_div,
 			spikes_div_fb  => spikes_div_fb_int,
-			spikes_div_out => spikes_div_out_int,		
+			spikes_div_out => spikes_div_out_int,
 			spike_in_p     => int_spikes_p,
 			spike_in_n     => int_spikes_n,
 			spike_out_p    => spikes_out_tmp_p,

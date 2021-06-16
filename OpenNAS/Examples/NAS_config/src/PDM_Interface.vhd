@@ -65,7 +65,7 @@ architecture PDM_Interface_arq of PDM_Interface is
 
 		pdm_clk <= pdm_clk_int;
 
-		process (clk, rst_n, pdm_int, pdm_dat, clock_counter)
+		process (clk, rst_n)
 		begin
 			if(rst_n = '0') then
 				clock_counter <= (others=>'0');

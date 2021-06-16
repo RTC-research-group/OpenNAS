@@ -1,5 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
+
 package OpenNas_top_pkg is
 	-- Top parameters
 	constant CONFIG_BUS_BIT_WIDTH           : integer := 16;

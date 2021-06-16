@@ -24,92 +24,91 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;           -- @suppress "Deprecated package"
 use ieee.std_logic_unsigned.all;        -- @suppress "Deprecated package"
 
-entity Spikes_Generator_signed_BW is
+entity Handshake_Out is
 	Port(
-		clk      : in  std_logic;
-		rst_n    : in  std_logic;
-		freq_div : in  std_logic_vector(15 downto 0);
-		data_in  : in  std_logic_vector(19 downto 0);
-		wr       : in  std_logic;
-		spikes_p : out std_logic;
-		spikes_n : out std_logic
+		rst     : in  std_logic;
+		clk     : in  std_logic;
+		ack     : in  std_logic;
+		dataIn  : in  std_logic_vector(15 downto 0);
+		load    : in  std_logic;
+		req     : out std_logic;
+		dataOut : out std_logic_vector(15 downto 0);
+		busy    : out std_logic
 	);
-end Spikes_Generator_signed_BW;
+end Handshake_Out;
 
-architecture Behavioral of Spikes_Generator_signed_BW is
+architecture handout of Handshake_Out is
 
-	signal ciclo      : std_logic_vector(18 downto 0);
-	signal ciclo_wise : std_logic_vector(18 downto 0);
-	signal pulse      : std_logic;
-	signal data_int   : std_logic_vector(19 downto 0);
-	signal data_temp  : std_logic_vector(18 downto 0);
-	signal ce         : std_logic;
-	signal tmp_count  : std_logic_vector(15 downto 0);
+	signal estado  : integer range 0 to 5;
+	signal sestado : integer range 0 to 5;
 
 begin
-
-	process(clk, rst_n)
+	process(load, ack, estado)
 	begin
-		if (rst_n = '0') then
-			data_int <= (others => '0');
-		elsif (clk = '1' and clk'event) then
-			if (wr = '1') then
-				data_int <= data_in;
-			else
-
-			end if;
-		else
-
-			end if;
+		case estado is
+			when 0 =>
+				req  <= '1';
+				busy <= '0';
+				if (load = '1') then
+					sestado <= 3;
+				else
+					sestado <= 0;
+				end if;
+			when 3 =>                   --Estado de setup
+				busy    <= '1';
+				req     <= '1';
+				sestado <= 1;
+			--				when 4 =>	--Estado de setup
+			--		
+			--					busy<='1';
+			--					req <= '1';
+			--					sestado <= 1;
+			when 1 =>
+				busy <= '1';
+				req  <= '0';
+				if (ack = '0') then
+					sestado <= 2;
+				else
+					sestado <= 1;
+				end if;
+			when 2 =>
+				busy <= '1';
+				req  <= '1';
+				if (ack = '1') then
+					sestado <= 5;
+				else
+					sestado <= 2;
+				end if;
+			when 5 =>                   --estado de hold
+				busy    <= '1';
+				req     <= '1';
+				sestado <= 0;
+			when others =>
+				busy    <= '1';
+				req     <= '1';
+				sestado <= 0;
+		end case;
 	end process;
 
-	process(ciclo)                      --combinational bit-wise operation
+	process(clk, rst)
 	begin
-		for i in 0 to 18 loop
-			ciclo_wise(18 - i) <= ciclo(i);
-		end loop;
-	end process;
-
-	data_temp <= conv_std_logic_vector(abs (signed(data_int)), 19);
-
-	process(clk, rst_n)
-	begin
-		if (rst_n = '0') then
-			ciclo     <= (others => '0');
-			tmp_count <= (others => '0');
-			ce        <= '0';
-			spikes_p  <= '0';
-			spikes_n  <= '0';
-			pulse     <= '0';
+		if (rst = '0') then
+			estado  <= 0;
+			dataOut <= (others => '0');
 		else
 			if (clk = '1' and clk'event) then
-				if (freq_div = tmp_count) then
-					tmp_count <= (others => '0');
-					ciclo     <= ciclo + 1;
-					ce        <= '1';
-				else
-					tmp_count <= tmp_count + 1;
-					ce        <= '0';
-				end if;
+				estado <= sestado;
 
-				if (ce = '1' and (conv_integer(data_temp) > conv_integer(ciclo_wise))) then
-					pulse <= '1';
+				if (load = '1' and estado = 0) then
+					dataOut <= dataIn;
 				else
-					pulse <= '0';
-				end if;
-
-				if (data_int(19) = '1') then
-					spikes_p <= '0';
-					spikes_n <= pulse;
-				else
-					spikes_p <= pulse;
-					spikes_n <= '0';
-				end if;
+						
+					end if;
 			else
-				
+
 				end if;
 		end if;
 	end process;
 
-end Behavioral;
+end handout;
 

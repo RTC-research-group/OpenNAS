@@ -24,29 +24,29 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;           -- @suppress "Deprecated package"
 use ieee.std_logic_unsigned.all;        -- @suppress "Deprecated package"
 
-entity AER_DIF is
+entity AER_Dif is
 	Port(
 		clk          : in  std_logic;
-		rst_n        : in  STD_LOGIC;
-		spkies_in_up : in  STD_LOGIC;
-		spikes_in_un : in  STD_LOGIC;
-		spikes_in_yp : in  STD_LOGIC;
-		spikes_in_yn : in  STD_LOGIC;
-		spikes_out_p : out STD_LOGIC;
-		spikes_out_n : out STD_LOGIC
+		rst_n        : in  std_logic;
+		spkies_in_up : in  std_logic;
+		spikes_in_un : in  std_logic;
+		spikes_in_yp : in  std_logic;
+		spikes_in_yn : in  std_logic;
+		spikes_out_p : out std_logic;
+		spikes_out_n : out std_logic
 	);
-end AER_DIF;
+end AER_Dif;
 
-architecture Behavioral of AER_DIF is
+architecture Behavioral of AER_Dif is
 
-	signal spikes_in     : STD_LOGIC_VECTOR(3 downto 0);
-	signal spikes_in_tmp : STD_LOGIC_VECTOR(3 downto 0);
-	signal spikes_out    : STD_LOGIC_VECTOR(1 downto 0);
-	signal spikes_hold   : STD_LOGIC_VECTOR(3 downto 0);
-	signal spikes_set    : STD_LOGIC_VECTOR(3 downto 0);
-	signal spikes_rst    : STD_LOGIC_VECTOR(3 downto 0);
+	signal spikes_in     : std_logic_vector(3 downto 0);
+	signal spikes_in_tmp : std_logic_vector(3 downto 0);
+	signal spikes_out    : std_logic_vector(1 downto 0);
+	signal spikes_hold   : std_logic_vector(3 downto 0);
+	signal spikes_set    : std_logic_vector(3 downto 0);
+	signal spikes_rst    : std_logic_vector(3 downto 0);
 
-	signal spikes_extra : STD_LOGIC_VECTOR(1 downto 0);
+	signal spikes_extra : std_logic_vector(1 downto 0);
 
 begin
 
@@ -69,7 +69,7 @@ begin
 		spikes_in_tmp when others;
 
 	--tpo u: 0x0fff - tpo y: 0x0002
-	u_AER_HOLDER_AND_FIRE_Up : entity work.AER_HOLDER_AND_FIRE
+	u_AER_Holder_And_Fire_Up : entity work.AER_Holder_And_Fire
 		Port Map(
 			clk        => clk,
 			rst        => spikes_rst(3),
@@ -77,7 +77,7 @@ begin
 			hold_pulse => spikes_hold(3)
 		);
 
-	u_AER_HOLDER_AND_FIRE_Un : entity work.AER_HOLDER_AND_FIRE
+	u_AER_Holder_And_Fire_Un : entity work.AER_Holder_And_Fire
 		Port Map(
 			clk        => clk,
 			rst        => spikes_rst(2),
@@ -85,7 +85,7 @@ begin
 			hold_pulse => spikes_hold(2)
 		);
 
-	u_AER_HOLDER_AND_FIRE_Yp : entity work.AER_HOLDER_AND_FIRE
+	u_AER_Holder_And_Fire_Yp : entity work.AER_Holder_And_Fire
 		Port Map(
 			clk        => clk,
 			rst        => spikes_rst(1),
@@ -93,7 +93,7 @@ begin
 			hold_pulse => spikes_hold(1)
 		);
 
-	u_AER_HOLDER_AND_FIRE_Yn : entity work.AER_HOLDER_AND_FIRE
+	u_AER_Holder_And_Fire_Yn : entity work.AER_Holder_And_Fire
 		Port Map(
 			clk        => clk,
 			rst        => spikes_rst(0),
@@ -101,7 +101,7 @@ begin
 			hold_pulse => spikes_hold(0)
 		);
 
-	process(rst_n, spikes_in, spikes_hold, clk, spkies_in_up, spikes_in_un, spikes_in_yp, spikes_in_yn)
+	process(rst_n, spikes_in, spikes_hold, spkies_in_up, spikes_in_un, spikes_in_yp, spikes_in_yn)
 	begin
 		if (rst_n = '0') then
 			spikes_set    <= (others => '0');

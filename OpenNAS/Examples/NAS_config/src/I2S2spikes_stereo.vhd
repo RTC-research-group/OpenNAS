@@ -38,75 +38,66 @@
 -- Additional Comments: 
 --
 ----------------------------------------------------------------------------------
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
--- use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
--- library UNISIM;
--- use UNISIM.VComponents.all;
-
-entity i2s_to_spikes_stereo is
-	Port (
-		clk        : in STD_LOGIC;		
-		rst_n        : in STD_LOGIC;
+entity I2S2spikes_stereo is
+	Port(
+		clk          : in  std_logic;
+		rst_n        : in  std_logic;
 		--I2S Bus
-		i2s_bclk     : in  STD_LOGIC;
-		i2s_d_in     : in  STD_LOGIC;
-		i2s_lr       : in  STD_LOGIC;		  
+		i2s_bclk     : in  std_logic;
+		i2s_d_in     : in  std_logic;
+		i2s_lr       : in  std_logic;
 		--Spikes Output
-		spikes_left  : out STD_LOGIC_VECTOR(1 downto 0);		
-		spikes_rigth : out STD_LOGIC_VECTOR(1 downto 0)	
+		spikes_left  : out std_logic_vector(1 downto 0);
+		spikes_rigth : out std_logic_vector(1 downto 0)
 	);
-end i2s_to_spikes_stereo;
+end I2S2spikes_stereo;
 
-architecture Behavioral of i2s_to_spikes_stereo is
+architecture Behavioral of I2S2spikes_stereo is
 
-	signal data_ready    : STD_LOGIC;
-	signal left_in_data  : STD_LOGIC_VECTOR(31 downto 0);
-	signal right_in_data : STD_LOGIC_VECTOR(31 downto 0);
-	signal genDiv        : STD_LOGIC_VECTOR(15 downto 0);
+	signal data_ready    : std_logic;
+	signal left_in_data  : std_logic_vector(31 downto 0);
+	signal right_in_data : std_logic_vector(31 downto 0);
+	signal genDiv        : std_logic_vector(15 downto 0);
 
-	begin
+begin
 
-		genDiv<=x"000F";
+	genDiv <= x"000F";
 
-		U_i2s_interface: entity work.I2S_inteface 
-		Port Map ( 
+	U_i2s_interface : entity work.I2S_inteface
+		Port Map(
 			clk         => clk,
-			rst_n         => rst_n,
+			rst_n       => rst_n,
 			i2s_bclk    => i2s_bclk,
 			i2s_d_in    => i2s_d_in,
 			i2s_lr      => i2s_lr,
 			audio_l_out => left_in_data,
 			audio_r_out => right_in_data,
-			new_sample  => data_ready 
+			new_sample  => data_ready
 		);
 
-		U_Spikes_Gen_Left: entity work.Spikes_Generator_signed_BW
-		Port Map( 
+	U_Spikes_Gen_Left : entity work.Spikes_Generator_signed_BW
+		Port Map(
 			clk      => clk,
-			rst_n      => rst_n,
+			rst_n    => rst_n,
 			freq_div => genDiv,
 			data_in  => left_in_data(31 downto 12),
 			wr       => data_ready,
-			spikes_p  => spikes_left(1),
-			spikes_n  => spikes_left(0)
+			spikes_p => spikes_left(1),
+			spikes_n => spikes_left(0)
 		);
 
-		U_Spikes_Gen_Rigth: entity work.Spikes_Generator_signed_BW
-		Port Map( 
+	U_Spikes_Gen_Rigth : entity work.Spikes_Generator_signed_BW
+		Port Map(
 			clk      => clk,
-			rst_n      => rst_n,
+			rst_n    => rst_n,
 			freq_div => genDiv,
 			data_in  => right_in_data(31 downto 12),
 			wr       => data_ready,
-			spikes_p  => spikes_rigth(1),
-			spikes_n  => spikes_rigth(0)
+			spikes_p => spikes_rigth(1),
+			spikes_n => spikes_rigth(0)
 		);
 
 end Behavioral;

@@ -19,37 +19,37 @@
 --//                                                                             //
 --/////////////////////////////////////////////////////////////////////////////////
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all; -- @suppress "Deprecated package"
+use ieee.std_logic_unsigned.all; -- @suppress "Deprecated package"
 
-entity dualram is
+entity Dualram is
 	Generic (
-		TAM     : INTEGER  := 64; 
-		IL      : INTEGER  := 6; 
-		WL      : INTEGER  := 32
+		TAM     : integer  := 64; 
+		IL      : integer  := 6; 
+		WL      : integer  := 32
 	);
 	Port (
-		clk     : in  STD_LOGIC; 
-		wr      : in  STD_LOGIC; 
-		index_i : in  STD_LOGIC_VECTOR(IL-1 downto 0); 
-		index_o : in  STD_LOGIC_VECTOR(IL-1 downto 0); 
-		word_i  : in  STD_LOGIC_VECTOR(WL-1 downto 0); 
-		word_o  : out STD_LOGIC_VECTOR(WL-1 downto 0)); 
-end dualram;
+		clk     : in  std_logic; 
+		wr      : in  std_logic; 
+		index_i : in  std_logic_vector(IL-1 downto 0); 
+		index_o : in  std_logic_vector(IL-1 downto 0); 
+		word_i  : in  std_logic_vector(WL-1 downto 0); 
+		word_o  : out std_logic_vector(WL-1 downto 0)); 
+end Dualram;
 
 
 -- Only XST supports RAM inference
 -- Infers Dual Port Distributed Ram 
  
- architecture syn of dualram is 
+ architecture syn of Dualram is 
 	
-	type ram_type is array (TAM-1 downto 0) of STD_LOGIC_VECTOR (WL-1 downto 0); 
+	type ram_type is array (TAM-1 downto 0) of std_logic_vector (WL-1 downto 0); 
 	signal RAM : ram_type; 
  
 	begin 
-	process (clk, index_i, word_i, wr) 
+	process (clk) 
 	begin 
 		if (clk'event and clk = '1') then  
 			if (wr = '1') then 

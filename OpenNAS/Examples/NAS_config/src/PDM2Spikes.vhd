@@ -112,7 +112,7 @@ architecture Behavioral of PDM2Spikes is
 			spikes_out => spikes_pdm
 		);
 
-		U_SHPF1: entity work.spikes_HPF
+		U_SHPF1: entity work.Spikes_HPF
 		Generic Map (
 			GL          => SHPF_GL, 
 			SAT         => SHPF_SAT
@@ -127,7 +127,7 @@ architecture Behavioral of PDM2Spikes is
 			spike_out_n => spikes_hpf_int(0)
 		);
 
-		U_SHPF2: entity work.spikes_HPF
+		U_SHPF2: entity work.Spikes_HPF
 		Generic Map (
 			GL          => SHPF_GL, 
 			SAT         => SHPF_SAT
@@ -142,7 +142,7 @@ architecture Behavioral of PDM2Spikes is
 			spike_out_n => spikes_hpf_int2(0)
 		);
 			
-		U_LPF1: entity work.spikes_2LPF_fullGain
+		U_LPF1: entity work.Spikes_2LPF_FullGain
 		generic Map (
 			GL             => SLPF_GL, 
 			SAT            => SLPF_SAT

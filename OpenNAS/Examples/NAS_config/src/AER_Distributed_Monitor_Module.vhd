@@ -19,43 +19,41 @@
 --//                                                                             //
 --/////////////////////////////////////////////////////////////////////////////////
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all; -- @suppress "Deprecated package"
+use ieee.std_logic_unsigned.all; -- @suppress "Deprecated package"
 
-entity AER_DISTRIBUTED_MONITOR_MODULE is
+entity AER_Distributed_Monitor_Module is
 	Generic (
-		N_IN_SPIKES       : INTEGER := 32; 
-		LOG_2_N_IN_SPIKES : INTEGER := 5
+		N_IN_SPIKES       : integer := 32; 
+		LOG_2_N_IN_SPIKES : integer := 5
 	);
 	Port ( 
-		clk               : in  STD_LOGIC;
-		rst_n               : in  STD_LOGIC;
-		SPIKES_IN         : in  STD_LOGIC_VECTOR (N_IN_SPIKES-1 downto 0);
-		AER_FIFO_RD       : in  STD_LOGIC;
-		AER_FIFO_DATA_OUT : out STD_LOGIC_VECTOR (LOG_2_N_IN_SPIKES-1 downto 0);
-		AER_FIFO_MEM_USED : out STD_LOGIC_VECTOR (7 downto 0);
-		AER_FIFO_EMPTY    : out STD_LOGIC
+		clk               : in  std_logic;
+		rst_n               : in  std_logic;
+		spikes_in         : in  std_logic_vector (N_IN_SPIKES-1 downto 0);
+		aer_fifo_rd       : in  std_logic;
+		aer_fifo_data_out : out std_logic_vector (LOG_2_N_IN_SPIKES-1 downto 0);
+		aer_fifo_mem_used : out std_logic_vector (7 downto 0);
+		aer_fifo_empty    : out std_logic
 	);
-end AER_DISTRIBUTED_MONITOR_MODULE;
+end AER_Distributed_Monitor_Module;
 
-architecture Behavioral of AER_DISTRIBUTED_MONITOR_MODULE is
+architecture Behavioral of AER_Distributed_Monitor_Module is
 	
-	signal int_spikes       : STD_LOGIC_VECTOR(N_IN_SPIKES-1 downto 0);
-	signal n_spikes         : STD_LOGIC_VECTOR(LOG_2_N_IN_SPIKES-2 downto 0); --No seria menos 2?
-	signal aer_fifo_wr      : STD_LOGIC;
-	signal aer_fifo_full    : STD_LOGIC;
-	signal aer_fifo_data_in : STD_LOGIC_VECTOR(LOG_2_N_IN_SPIKES-1 downto 0);
+	signal int_spikes       : std_logic_vector(N_IN_SPIKES-1 downto 0);
+	signal n_spikes         : std_logic_vector(LOG_2_N_IN_SPIKES-2 downto 0); --No seria menos 2?
+	signal aer_fifo_wr      : std_logic;
+	signal aer_fifo_full    : std_logic;
+	signal aer_fifo_data_in : std_logic_vector(LOG_2_N_IN_SPIKES-1 downto 0);
 
 	begin
-
-
-		process (clk,rst_n,int_spikes,spikes_in, n_spikes,aer_fifo_full)
-			variable i: integer range 0 to N_IN_SPIKES/2-1 := 0;
+		process (clk,rst_n)
+			-- variable i: integer range 0 to N_IN_SPIKES/2-1 := 0;
 		begin
 			if(rst_n = '0') then
-				i                := 0;
+				-- i                := 0;
 				int_spikes       <= (others => '0');
 				n_spikes         <= (others=>'0');
 				aer_fifo_wr      <= '0';
@@ -88,7 +86,7 @@ architecture Behavioral of AER_DISTRIBUTED_MONITOR_MODULE is
 
 		end process;
 
-		U_AER_FIFO: entity	work.ramfifo
+		U_AER_Fifo: entity	work.Ramfifo
 		Generic Map (
 			TAM      => 256, 
 			IL       => 8, 
@@ -98,7 +96,7 @@ architecture Behavioral of AER_DISTRIBUTED_MONITOR_MODULE is
 			clk      => clk, 
 			wr       => aer_fifo_wr, 
 			rd	     => aer_fifo_rd,
-			rst      => rst_n,
+			rst_n      => rst_n,
 			empty    => aer_fifo_empty,
 			full     => aer_fifo_full,
 			data_in  => aer_fifo_data_in,

@@ -19,46 +19,46 @@
 --//                                                                             //
 --/////////////////////////////////////////////////////////////////////////////////
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all; -- @suppress "Deprecated package"
+use ieee.std_logic_unsigned.all; -- @suppress "Deprecated package"
 
-entity ramfifo is
+entity Ramfifo is
 	Generic (
-		TAM      : INTEGER := 2048; 
-		IL       : INTEGER := 11; 
-		WL       : INTEGER := 16
+		TAM      : integer := 2048; 
+		IL       : integer := 11; 
+		WL       : integer := 16
 	);
 	Port (
-		clk      : in  STD_LOGIC; 
-		wr       : in  STD_LOGIC; 
-		rd	     : in  STD_LOGIC;
-		rst      : in  STD_LOGIC;
-		empty    : out STD_LOGIC;
-		full     : out STD_LOGIC;
-		data_in  : in  STD_LOGIC_VECTOR(WL-1 downto 0); 
-		data_out : out STD_LOGIC_VECTOR(WL-1 downto 0); 
-		mem_used : out STD_LOGIC_VECTOR(IL-1 downto 0)
+		clk      : in  std_logic; 
+		wr       : in  std_logic; 
+		rd	     : in  std_logic;
+		rst_n      : in  std_logic;
+		empty    : out std_logic;
+		full     : out std_logic;
+		data_in  : in  std_logic_vector(WL-1 downto 0); 
+		data_out : out std_logic_vector(WL-1 downto 0); 
+		mem_used : out std_logic_vector(IL-1 downto 0)
 	);
-end ramfifo;
+end Ramfifo;
 
 
  
-architecture syn of ramfifo is 
+architecture syn of Ramfifo is 
 
-	signal index_i : STD_LOGIC_VECTOR(IL-1 downto 0);
-	signal index_o : STD_LOGIC_VECTOR(IL-1 downto 0);
-	signal iempty  : STD_LOGIC;
-	signal ifull   : STD_LOGIC;
-	signal ramwr   : STD_LOGIC;
-	signal memused : STD_LOGIC_VECTOR(IL-1 downto 0);
-	signal dout    : STD_LOGIC_VECTOR(WL-1 downto 0);
+	signal index_i : std_logic_vector(IL-1 downto 0);
+	signal index_o : std_logic_vector(IL-1 downto 0);
+	signal iempty  : std_logic;
+	signal ifull   : std_logic;
+	signal ramwr   : std_logic;
+	signal memused : std_logic_vector(IL-1 downto 0);
+	signal dout    : std_logic_vector(WL-1 downto 0);
 
 
 	begin
 
-		uut: entity work.dualram 
+		uut: entity work.Dualram 
 		Generic map (
 			TAM     => TAM,
 			IL      => IL,
@@ -73,9 +73,9 @@ architecture syn of ramfifo is
 			word_o  => dout
 		);
 
-		process (clk, wr, rd, rst, ifull, iempty, index_i, index_o, memused) 
+		process (clk, rst_n) 
 		begin 
-			if (rst = '0') then
+			if (rst_n = '0') then
 				index_i <= (others=>'0');
 				index_o <= (others=>'0');
 				memused <= (others=>'0');

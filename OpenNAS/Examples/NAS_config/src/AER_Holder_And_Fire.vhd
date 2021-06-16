@@ -38,60 +38,59 @@
 -- Additional Comments: 
 --
 ----------------------------------------------------------------------------------
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
- 
-entity AER_HOLDER_AND_FIRE is
-    Port ( 
-		clk        : in  STD_LOGIC;
-		rst        : in  STD_LOGIC;		-- Debe ser activo en alto porque este reset es provocado por un spike
-		set        : in  STD_LOGIC;
-		hold_pulse : out  STD_LOGIC
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;           -- @suppress "Deprecated package"
+use ieee.std_logic_unsigned.all;        -- @suppress "Deprecated package"
+
+entity AER_Holder_And_Fire is
+	Port(
+		clk        : in  std_logic;
+		rst        : in  std_logic;     -- Debe ser activo en alto porque este reset es provocado por un spike
+		set        : in  std_logic;
+		hold_pulse : out std_logic
 	);
-end AER_HOLDER_AND_FIRE;
+end AER_Holder_And_Fire;
 
-architecture Behavioral of AER_HOLDER_AND_FIRE is
+architecture Behavioral of AER_Holder_And_Fire is
 
-	type STATE_TYPE is (IDLE,HOLD);
-	signal CS : STATE_TYPE := IDLE;
-	signal NS : STATE_TYPE;
-	
+	type state_type is (IDLE, HOLD);
+	signal CS : state_type := IDLE;
+	signal NS : state_type;
+
+begin
+
+	process(set, CS)
 	begin
-
-		process(rst, set, CS, NS)
-		begin
-			case CS is
-				when IDLE =>
-					hold_pulse <= '0';
-					if(set = '1') then
-						NS <= HOLD;
-					else
-						NS <= IDLE;
-					end if;
-				when HOLD =>
-					hold_pulse <= '1';
-					NS         <= HOLD;
-				when others =>
-					hold_pulse <= '0';		
-					NS         <= IDLE;
-			end case;
-		end process;
-
-		process(clk, rst, CS, NS)
-		begin
-
-			if(clk = '1' and clk'event) then
-				if(rst = '1') then
-					CS <= IDLE;
+		case CS is
+			when IDLE =>
+				hold_pulse <= '0';
+				if (set = '1') then
+					NS <= HOLD;
 				else
-					CS <= NS;
+					NS <= IDLE;
 				end if;
+			when HOLD =>                -- @suppress "Dead state 'HOLD': state does not have outgoing transitions"
+				hold_pulse <= '1';
+				NS         <= HOLD;
+			when others =>              -- @suppress "Case statement contains all choices explicitly. You can safely remove the redundant 'others'"
+				hold_pulse <= '0';
+				NS         <= IDLE;
+		end case;
+	end process;
+
+	process(clk)
+	begin
+		if (clk = '1' and clk'event) then
+			if (rst = '1') then
+				CS <= IDLE;
 			else
+				CS <= NS;
+			end if;
+		else
 			
 			end if;
-		end process;
-		
+	end process;
+
 end Behavioral;
 

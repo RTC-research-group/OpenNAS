@@ -144,7 +144,7 @@ begin
 		);
 
 	--I2S Stereo
-	U_I2S_Stereo : entity work.i2s_to_spikes_stereo
+	U_I2S_Stereo : entity work.I2S2spikes_stereo
 		Port Map(
 			clk        => clock,
 			rst_n        => i2s_reset_n,
@@ -211,7 +211,7 @@ begin
 		);
 
 	--Spikes Distributed Monitor
-	U_AER_DISTRIBUTED_MONITOR : entity work.AER_DISTRIBUTED_MONITOR
+	U_AER_DISTRIBUTED_MONITOR : entity work.AER_Distributed_Monitor
 		Generic Map(
 			N_SPIKES       => 256,
 			LOG_2_N_SPIKES => 8,
