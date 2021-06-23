@@ -490,16 +490,30 @@ namespace OpenNAS_App.NASComponents
             YamlSequenceNode ysm_slpf = new YamlSequenceNode();
 
             int i = 0;
-            for(i = 1; i < nCH+1; i++)
+            for(i = 0; i < nCH+1; i++)
             {
-                ysm_slpf.Add(new YamlMappingNode(
-                    new YamlScalarNode("CH"), new YamlScalarNode((i-1).ToString()),
-                    new YamlScalarNode("FREQ_DIV"), new YamlScalarNode("0x"+slpfParam[i].freqDiv.ToString("X2")),
-                    new YamlScalarNode("SPIKES_DIV_FB"), new YamlScalarNode("0x" + slpfParam[i].fbDiv.ToString("X4")),
-                    new YamlScalarNode("SPIKES_DIV_OUT"), new YamlScalarNode("0x" + slpfParam[i].outDiv.ToString("X4")),
-                    new YamlScalarNode("SPIKES_DIV_BPF"), new YamlScalarNode("0x" + attDiv[i - 1].ToString("X4"))
-                    )    
-                );
+                if (i == 0)
+                {
+                    ysm_slpf.Add(new YamlMappingNode(
+                        new YamlScalarNode("FILTER"), new YamlScalarNode(i.ToString()),
+                        new YamlScalarNode("FREQ_DIV"), new YamlScalarNode("0x" + slpfParam[i].freqDiv.ToString("X2")),
+                        new YamlScalarNode("SPIKES_DIV_FB"), new YamlScalarNode("0x" + slpfParam[i].fbDiv.ToString("X4")),
+                        new YamlScalarNode("SPIKES_DIV_OUT"), new YamlScalarNode("0x" + slpfParam[i].outDiv.ToString("X4")),
+                        new YamlScalarNode("SPIKES_DIV_BPF"), new YamlScalarNode("0x" + 0.ToString("X4"))
+                        )
+                    );
+                }
+                else
+                {
+                    ysm_slpf.Add(new YamlMappingNode(
+                        new YamlScalarNode("FILTER"), new YamlScalarNode(i.ToString()),
+                        new YamlScalarNode("FREQ_DIV"), new YamlScalarNode("0x" + slpfParam[i].freqDiv.ToString("X2")),
+                        new YamlScalarNode("SPIKES_DIV_FB"), new YamlScalarNode("0x" + slpfParam[i].fbDiv.ToString("X4")),
+                        new YamlScalarNode("SPIKES_DIV_OUT"), new YamlScalarNode("0x" + slpfParam[i].outDiv.ToString("X4")),
+                        new YamlScalarNode("SPIKES_DIV_BPF"), new YamlScalarNode("0x" + attDiv[i - 1].ToString("X4"))
+                        )
+                    );
+                }
             }
 
             res.Add(new YamlMappingNode(
