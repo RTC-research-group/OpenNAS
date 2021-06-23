@@ -178,7 +178,7 @@ begin
 	--Cascade Filter Bank
 	U_CFBank_2or_64CH_Left : entity work.CFBank_2or_64CH
 		generic map(
-			CONFIG_ADDRESS => 16#0009#,
+			CONFIG_ADDRESS => 16#0008#,
 			CONFIG_OFFSET  => 259       -- Don't change this value
 		)
 		Port Map(
@@ -195,7 +195,7 @@ begin
 
 	U_CFBank_2or_64CH_Rigth : entity work.CFBank_2or_64CH
 		generic map(
-			CONFIG_ADDRESS => 16#010D#,
+			CONFIG_ADDRESS => 16#010C#,
 			CONFIG_OFFSET  => 259       -- Don't change this value
 		)
 		Port Map(

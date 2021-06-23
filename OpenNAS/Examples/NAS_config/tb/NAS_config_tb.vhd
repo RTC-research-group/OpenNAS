@@ -102,8 +102,8 @@ ARCHITECTURE Behavioral OF NAS_SOC_top_tb IS
 	-- Component input ports
 	SIGNAL clock         : STD_LOGIC := '0';
 	SIGNAL rst_ext       : STD_LOGIC := '0';
-	SIGNAL PDM_DAT_LEFT  : STD_LOGIC := '0';
-	SIGNAL PDM_DAT_RIGTH : STD_LOGIC := '0';
+	SIGNAL pdm_dat_left  : STD_LOGIC := '0';
+	SIGNAL pdm_dat_right : STD_LOGIC := '0';
 	SIGNAL i2s_d_in      : STD_LOGIC := '0';
 	SIGNAL i2s_bclk      : STD_LOGIC := '0';
 	SIGNAL i2s_lr        : STD_LOGIC := '0';
@@ -114,10 +114,10 @@ ARCHITECTURE Behavioral OF NAS_SOC_top_tb IS
 	SIGNAL AER_ACK       : STD_LOGIC := '1';
 
 	-- Component output ports
-	SIGNAL PDM_CLK_LEFT  : STD_LOGIC;
-	SIGNAL PDM_CLK_RIGTH : STD_LOGIC;
-	SIGNAL AER_REQ       : STD_LOGIC;
-	SIGNAL AER_DATA_OUT  : STD_LOGIC_VECTOR(15 DOWNTO 0);
+	SIGNAL pdm_clk_left  : STD_LOGIC;
+	SIGNAL pdm_clk_right : STD_LOGIC;
+	SIGNAL aer_req       : STD_LOGIC;
+	SIGNAL aer_data_out  : STD_LOGIC_VECTOR(15 DOWNTO 0);
 
 	---------------------------------------------------------------------------
     -- Testbench signals declaration
@@ -154,10 +154,10 @@ BEGIN  -- architecture Behavioral
 			clock => clock,
 			rst_ext_n => rst_ext,
 			--// Input PDM interface
-			pdm_clk_left => PDM_CLK_LEFT,
-			pdm_dat_left => PDM_DAT_LEFT,
-			pdm_clk_right => PDM_CLK_RIGTH,
-			pdm_dat_right => PDM_DAT_RIGTH,
+			pdm_clk_left => pdm_clk_left,
+			pdm_dat_left => pdm_dat_left,
+			pdm_clk_right => pdm_clk_right,
+			pdm_dat_right => pdm_dat_right,
 			--// Input I2S interface
 			i2s_bclk    => i2s_bclk,
 			i2s_d_in   => i2s_d_in,
@@ -169,8 +169,8 @@ BEGIN  -- architecture Behavioral
 			--// Spikes source selector
 			source_sel => source_sel,
 			--// Output AER interface
-			aer_data_out  => AER_DATA_OUT,
-			aer_req   => AER_REQ,
+			aer_data_out  => aer_data_out,
+			aer_req   => aer_req,
 			aer_ack   => AER_ACK
 		);
 
@@ -280,7 +280,7 @@ BEGIN  -- architecture Behavioral
     -- type   : combinational
     -- inputs : o_out_aer_req
     -- outputs: i_out_aer_ack
-    AER_ACK <= AER_REQ AFTER (c_sys_clock_period * 2);
+    AER_ACK <= aer_req AFTER (c_sys_clock_period * 2);
 
 
 
@@ -373,7 +373,7 @@ BEGIN  -- architecture Behavioral
 			REPORT "Output event counter NAS: " & INTEGER'image(v_out_events_counter_NAS);
 
 			-- Writing the event address ( lr + freq_channel + polarity)
-			write(v_OLINE_AER, conv_integer(unsigned(AER_DATA_OUT(15 DOWNTO 0))), right, 1);
+			write(v_OLINE_AER, conv_integer(unsigned(aer_data_out(15 DOWNTO 0))), right, 1);
 			write(v_OLINE_AER, ',', right, 1);
 
 			-- Writing the timestamp
