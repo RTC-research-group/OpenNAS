@@ -1318,6 +1318,7 @@ namespace OpenNAS_App.NASComponents
             sw.WriteLine(tclTopFileName);
 
             sw.WriteLine("]");
+            sw.WriteLine("add_files -norecurse -fileset $obj $hdl_files");
             sw.WriteLine("");
 
             sw.WriteLine("# constraints with pin placements. This file will need to be replaced if you");
