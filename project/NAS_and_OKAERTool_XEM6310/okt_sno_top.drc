@@ -1,8 +1,0 @@
-Release 14.7 Drc P.20131013 (lin64)
-Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
-
-Thu Mar 13 12:17:37 2025
-
-drc -z okt_sno_top.ncd okt_sno_top.pcf
-
-DRC detected 0 errors and 0 warnings.
