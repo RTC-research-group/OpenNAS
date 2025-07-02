@@ -1,0 +1,704 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Wed May  7 09:41:06 2025
+# Process ID: 285846
+# Current directory: /home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.runs/design_1_OpenNas_Cascade_STER_0_2_synth_1
+# Command line: vivado -log design_1_OpenNas_Cascade_STER_0_2.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_OpenNas_Cascade_STER_0_2.tcl
+# Log file: /home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.runs/design_1_OpenNas_Cascade_STER_0_2_synth_1/design_1_OpenNas_Cascade_STER_0_2.vds
+# Journal file: /home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.runs/design_1_OpenNas_Cascade_STER_0_2_synth_1/vivado.jou
+# Running On: us, OS: Linux, CPU Frequency: 3600.000 MHz, CPU Physical cores: 8, Host memory: 67182 MB
+#-----------------------------------------------------------
+source design_1_OpenNas_Cascade_STER_0_2.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2022.1/data/ip'.
+Command: synth_design -top design_1_OpenNas_Cascade_STER_0_2 -part xc7a200tfbg484-1 -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a200t'
+INFO: [Device 21-403] Loading part xc7a200tfbg484-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 285925
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2712.141 ; gain = 0.000 ; free physical = 32791 ; free virtual = 167551
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'design_1_OpenNas_Cascade_STER_0_2' [/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.gen/sources_1/bd/design_1/ip/design_1_OpenNas_Cascade_STER_0_2/synth/design_1_OpenNas_Cascade_STER_0_2.v:53]
+INFO: [Synth 8-638] synthesizing module 'OpenNas_Cascade_STEREO_64ch' [/home/arios/Projects/OpenNAS/created_projects/sources_config/OpenNas_TOP_Cascade_STEREO_64ch.vhd:54]
+INFO: [Synth 8-638] synthesizing module 'PDM2Spikes' [/home/arios/Projects/OpenNAS/created_projects/sources_config/PDM2Spikes.vhd:71]
+INFO: [Synth 8-638] synthesizing module 'PDM_Interface' [/home/arios/Projects/OpenNAS/created_projects/sources_config/PDM_Interface.vhd:57]
+INFO: [Synth 8-256] done synthesizing module 'PDM_Interface' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/PDM_Interface.vhd:57]
+INFO: [Synth 8-638] synthesizing module 'Spikes_HPF' [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_HPF.vhd:43]
+INFO: [Synth 8-638] synthesizing module 'aer_dif' [/home/arios/Projects/OpenNAS/created_projects/sources_config/AER_Dif.vhd:40]
+INFO: [Synth 8-256] done synthesizing module 'aer_dif' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/AER_Dif.vhd:40]
+INFO: [Synth 8-638] synthesizing module 'Spike_Int_n_Gen_BW' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'Spike_Int_n_Gen_BW' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'Spikes_HPF' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_HPF.vhd:43]
+INFO: [Synth 8-638] synthesizing module 'Spikes_2LPF_FullGain' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'spikes_LPF_fullGain' [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'Spikes_div_BW' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'Spikes_div_BW' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:41]
+INFO: [Synth 8-638] synthesizing module 'Spike_Int_n_Gen_BW__parameterized0' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'Spike_Int_n_Gen_BW__parameterized0' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'spikes_LPF_fullGain' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'Spikes_2LPF_FullGain' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'PDM2Spikes' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/PDM2Spikes.vhd:71]
+INFO: [Synth 8-638] synthesizing module 'PDM2Spikes__parameterized0' [/home/arios/Projects/OpenNAS/created_projects/sources_config/PDM2Spikes.vhd:71]
+INFO: [Synth 8-256] done synthesizing module 'PDM2Spikes__parameterized0' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/PDM2Spikes.vhd:71]
+INFO: [Synth 8-638] synthesizing module 'i2s_to_spikes_stereo' [/home/arios/Projects/OpenNAS/created_projects/sources_config/i2s_to_spikes_stereo.vhd:68]
+INFO: [Synth 8-638] synthesizing module 'I2S_inteface' [/home/arios/Projects/OpenNAS/created_projects/sources_config/I2S_inteface_sync.vhd:59]
+INFO: [Synth 8-256] done synthesizing module 'I2S_inteface' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/I2S_inteface_sync.vhd:59]
+INFO: [Synth 8-638] synthesizing module 'Spikes_Generator_signed_BW' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_Generator_signed_BW.vhd:39]
+INFO: [Synth 8-256] done synthesizing module 'Spikes_Generator_signed_BW' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_Generator_signed_BW.vhd:39]
+INFO: [Synth 8-256] done synthesizing module 'i2s_to_spikes_stereo' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/i2s_to_spikes_stereo.vhd:68]
+INFO: [Synth 8-638] synthesizing module 'SpikesSource_Selector' [/home/arios/Projects/OpenNAS/created_projects/sources_config/SpikesSource_Selector.vhd:36]
+INFO: [Synth 8-226] default block is never used [/home/arios/Projects/OpenNAS/created_projects/sources_config/SpikesSource_Selector.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'SpikesSource_Selector' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/SpikesSource_Selector.vhd:36]
+INFO: [Synth 8-638] synthesizing module 'CFBank_2or_64CH' [/home/arios/Projects/OpenNAS/created_projects/sources_config/CFBank_64.vhd:47]
+INFO: [Synth 8-638] synthesizing module 'spikes_2BPF_fullGain' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'Spikes_2LPF_FullGain__parameterized0' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'spikes_LPF_fullGain__parameterized0' [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'Spike_Int_n_Gen_BW__parameterized1' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'Spike_Int_n_Gen_BW__parameterized1' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'spikes_LPF_fullGain__parameterized0' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'Spikes_2LPF_FullGain__parameterized0' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'Spikes_div_BW__parameterized0' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'Spikes_div_BW__parameterized0' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'spikes_2BPF_fullGain' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'spikes_2BPF_fullGain__parameterized0' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-256] done synthesizing module 'spikes_2BPF_fullGain__parameterized0' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'spikes_2BPF_fullGain__parameterized1' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'Spikes_2LPF_FullGain__parameterized1' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'spikes_LPF_fullGain__parameterized1' [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'Spike_Int_n_Gen_BW__parameterized2' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'Spike_Int_n_Gen_BW__parameterized2' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'spikes_LPF_fullGain__parameterized1' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'Spikes_2LPF_FullGain__parameterized1' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'spikes_2BPF_fullGain__parameterized1' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'spikes_2BPF_fullGain__parameterized2' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'Spikes_2LPF_FullGain__parameterized2' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'spikes_LPF_fullGain__parameterized2' [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'Spike_Int_n_Gen_BW__parameterized3' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'Spike_Int_n_Gen_BW__parameterized3' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'spikes_LPF_fullGain__parameterized2' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'Spikes_2LPF_FullGain__parameterized2' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'spikes_2BPF_fullGain__parameterized2' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'spikes_2BPF_fullGain__parameterized3' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'Spikes_2LPF_FullGain__parameterized3' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'spikes_LPF_fullGain__parameterized3' [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'Spike_Int_n_Gen_BW__parameterized4' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'Spike_Int_n_Gen_BW__parameterized4' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'spikes_LPF_fullGain__parameterized3' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'Spikes_2LPF_FullGain__parameterized3' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'spikes_2BPF_fullGain__parameterized3' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'spikes_2BPF_fullGain__parameterized4' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'Spikes_2LPF_FullGain__parameterized4' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'spikes_LPF_fullGain__parameterized4' [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'Spike_Int_n_Gen_BW__parameterized5' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'Spike_Int_n_Gen_BW__parameterized5' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'spikes_LPF_fullGain__parameterized4' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'Spikes_2LPF_FullGain__parameterized4' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'spikes_2BPF_fullGain__parameterized4' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'spikes_2BPF_fullGain__parameterized5' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'Spikes_2LPF_FullGain__parameterized5' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'spikes_LPF_fullGain__parameterized5' [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'Spike_Int_n_Gen_BW__parameterized6' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'Spike_Int_n_Gen_BW__parameterized6' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'spikes_LPF_fullGain__parameterized5' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'Spikes_2LPF_FullGain__parameterized5' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'spikes_2BPF_fullGain__parameterized5' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'spikes_2BPF_fullGain__parameterized6' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'Spikes_2LPF_FullGain__parameterized6' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'spikes_LPF_fullGain__parameterized6' [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'Spike_Int_n_Gen_BW__parameterized7' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'Spike_Int_n_Gen_BW__parameterized7' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'spikes_LPF_fullGain__parameterized6' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'Spikes_2LPF_FullGain__parameterized6' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'spikes_2BPF_fullGain__parameterized6' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'spikes_2BPF_fullGain__parameterized7' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'Spikes_2LPF_FullGain__parameterized7' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'spikes_LPF_fullGain__parameterized7' [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'Spike_Int_n_Gen_BW__parameterized8' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'Spike_Int_n_Gen_BW__parameterized8' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'spikes_LPF_fullGain__parameterized7' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'Spikes_2LPF_FullGain__parameterized7' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'spikes_2BPF_fullGain__parameterized7' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'spikes_2BPF_fullGain__parameterized8' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'Spikes_2LPF_FullGain__parameterized8' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'spikes_LPF_fullGain__parameterized8' [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'Spike_Int_n_Gen_BW__parameterized9' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'Spike_Int_n_Gen_BW__parameterized9' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'spikes_LPF_fullGain__parameterized8' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'Spikes_2LPF_FullGain__parameterized8' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'spikes_2BPF_fullGain__parameterized8' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'spikes_2BPF_fullGain__parameterized9' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'Spikes_2LPF_FullGain__parameterized9' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'spikes_LPF_fullGain__parameterized9' [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'spikes_LPF_fullGain__parameterized9' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'Spikes_2LPF_FullGain__parameterized9' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'spikes_2BPF_fullGain__parameterized9' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'spikes_2BPF_fullGain__parameterized10' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-638] synthesizing module 'Spikes_2LPF_FullGain__parameterized10' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'spikes_LPF_fullGain__parameterized10' [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'Spike_Int_n_Gen_BW__parameterized10' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'Spike_Int_n_Gen_BW__parameterized10' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spike_Int_n_Gen_BW.vhd:43]
+INFO: [Synth 8-256] done synthesizing module 'spikes_LPF_fullGain__parameterized10' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/spikes_LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'Spikes_2LPF_FullGain__parameterized10' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2LPF_fullGain.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'spikes_2BPF_fullGain__parameterized10' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_2BPF_fullGain.vhd:50]
+INFO: [Synth 8-256] done synthesizing module 'CFBank_2or_64CH' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/CFBank_64.vhd:47]
+INFO: [Synth 8-638] synthesizing module 'CFBank_2or_64CH__parameterized0' [/home/arios/Projects/OpenNAS/created_projects/sources_config/CFBank_64.vhd:47]
+INFO: [Synth 8-256] done synthesizing module 'CFBank_2or_64CH__parameterized0' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/CFBank_64.vhd:47]
+INFO: [Synth 8-638] synthesizing module 'AER_Distributed_Monitor' [/home/arios/Projects/OpenNAS/created_projects/sources_config/AER_Distributed_Monitor.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'AER_Distributed_Monitor_Module' [/home/arios/Projects/OpenNAS/created_projects/sources_config/AER_Distributed_Monitor_Module.vhd:43]
+INFO: [Synth 8-638] synthesizing module 'Ramfifo' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Ramfifo.vhd:48]
+INFO: [Synth 8-638] synthesizing module 'Dualram' [/home/arios/Projects/OpenNAS/created_projects/sources_config/DualPortRAM.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'Dualram' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/DualPortRAM.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'Ramfifo' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Ramfifo.vhd:48]
+INFO: [Synth 8-256] done synthesizing module 'AER_Distributed_Monitor_Module' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/AER_Distributed_Monitor_Module.vhd:43]
+INFO: [Synth 8-638] synthesizing module 'AER_Out' [/home/arios/Projects/OpenNAS/created_projects/sources_config/AER_Out.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'Ramfifo__parameterized0' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Ramfifo.vhd:48]
+INFO: [Synth 8-638] synthesizing module 'Dualram__parameterized0' [/home/arios/Projects/OpenNAS/created_projects/sources_config/DualPortRAM.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'Dualram__parameterized0' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/DualPortRAM.vhd:46]
+INFO: [Synth 8-256] done synthesizing module 'Ramfifo__parameterized0' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/Ramfifo.vhd:48]
+INFO: [Synth 8-638] synthesizing module 'Handshake_Out' [/home/arios/Projects/OpenNAS/created_projects/sources_config/HandsakeOut.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'Handshake_Out' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/HandsakeOut.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'AER_Out' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/AER_Out.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'AER_Distributed_Monitor' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/AER_Distributed_Monitor.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'OpenNas_Cascade_STEREO_64ch' (0#1) [/home/arios/Projects/OpenNAS/created_projects/sources_config/OpenNas_TOP_Cascade_STEREO_64ch.vhd:54]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_OpenNas_Cascade_STER_0_2' (0#1) [/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.gen/sources_1/bd/design_1/ip/design_1_OpenNas_Cascade_STER_0_2/synth/design_1_OpenNas_Cascade_STER_0_2.v:53]
+WARNING: [Synth 8-7129] Port spikes_div_bpf[7] in module spikes_2BPF_fullGain__parameterized10 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[6] in module spikes_2BPF_fullGain__parameterized10 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[5] in module spikes_2BPF_fullGain__parameterized10 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[4] in module spikes_2BPF_fullGain__parameterized10 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[3] in module spikes_2BPF_fullGain__parameterized10 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[2] in module spikes_2BPF_fullGain__parameterized10 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[1] in module spikes_2BPF_fullGain__parameterized10 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[0] in module spikes_2BPF_fullGain__parameterized10 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[7] in module spikes_2BPF_fullGain__parameterized9 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[6] in module spikes_2BPF_fullGain__parameterized9 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[5] in module spikes_2BPF_fullGain__parameterized9 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[4] in module spikes_2BPF_fullGain__parameterized9 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[3] in module spikes_2BPF_fullGain__parameterized9 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[2] in module spikes_2BPF_fullGain__parameterized9 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[1] in module spikes_2BPF_fullGain__parameterized9 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[0] in module spikes_2BPF_fullGain__parameterized9 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[7] in module spikes_2BPF_fullGain__parameterized8 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[6] in module spikes_2BPF_fullGain__parameterized8 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[5] in module spikes_2BPF_fullGain__parameterized8 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[4] in module spikes_2BPF_fullGain__parameterized8 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[3] in module spikes_2BPF_fullGain__parameterized8 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[2] in module spikes_2BPF_fullGain__parameterized8 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[1] in module spikes_2BPF_fullGain__parameterized8 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[0] in module spikes_2BPF_fullGain__parameterized8 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[7] in module spikes_2BPF_fullGain__parameterized7 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[6] in module spikes_2BPF_fullGain__parameterized7 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[5] in module spikes_2BPF_fullGain__parameterized7 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[4] in module spikes_2BPF_fullGain__parameterized7 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[3] in module spikes_2BPF_fullGain__parameterized7 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[2] in module spikes_2BPF_fullGain__parameterized7 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[1] in module spikes_2BPF_fullGain__parameterized7 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[0] in module spikes_2BPF_fullGain__parameterized7 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[7] in module spikes_2BPF_fullGain__parameterized6 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[6] in module spikes_2BPF_fullGain__parameterized6 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[5] in module spikes_2BPF_fullGain__parameterized6 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[4] in module spikes_2BPF_fullGain__parameterized6 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[3] in module spikes_2BPF_fullGain__parameterized6 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[2] in module spikes_2BPF_fullGain__parameterized6 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[1] in module spikes_2BPF_fullGain__parameterized6 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[0] in module spikes_2BPF_fullGain__parameterized6 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[7] in module spikes_2BPF_fullGain__parameterized5 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[6] in module spikes_2BPF_fullGain__parameterized5 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[5] in module spikes_2BPF_fullGain__parameterized5 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[4] in module spikes_2BPF_fullGain__parameterized5 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[3] in module spikes_2BPF_fullGain__parameterized5 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[2] in module spikes_2BPF_fullGain__parameterized5 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[1] in module spikes_2BPF_fullGain__parameterized5 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[0] in module spikes_2BPF_fullGain__parameterized5 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[7] in module spikes_2BPF_fullGain__parameterized4 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[6] in module spikes_2BPF_fullGain__parameterized4 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[5] in module spikes_2BPF_fullGain__parameterized4 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[4] in module spikes_2BPF_fullGain__parameterized4 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[3] in module spikes_2BPF_fullGain__parameterized4 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[2] in module spikes_2BPF_fullGain__parameterized4 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[1] in module spikes_2BPF_fullGain__parameterized4 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[0] in module spikes_2BPF_fullGain__parameterized4 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[7] in module spikes_2BPF_fullGain__parameterized3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[6] in module spikes_2BPF_fullGain__parameterized3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[5] in module spikes_2BPF_fullGain__parameterized3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[4] in module spikes_2BPF_fullGain__parameterized3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[3] in module spikes_2BPF_fullGain__parameterized3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[2] in module spikes_2BPF_fullGain__parameterized3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[1] in module spikes_2BPF_fullGain__parameterized3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[0] in module spikes_2BPF_fullGain__parameterized3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[7] in module spikes_2BPF_fullGain__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[6] in module spikes_2BPF_fullGain__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[5] in module spikes_2BPF_fullGain__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[4] in module spikes_2BPF_fullGain__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[3] in module spikes_2BPF_fullGain__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[2] in module spikes_2BPF_fullGain__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[1] in module spikes_2BPF_fullGain__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[0] in module spikes_2BPF_fullGain__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[7] in module spikes_2BPF_fullGain__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[6] in module spikes_2BPF_fullGain__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[5] in module spikes_2BPF_fullGain__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[4] in module spikes_2BPF_fullGain__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[3] in module spikes_2BPF_fullGain__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[2] in module spikes_2BPF_fullGain__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[1] in module spikes_2BPF_fullGain__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[0] in module spikes_2BPF_fullGain__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[7] in module spikes_2BPF_fullGain__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[6] in module spikes_2BPF_fullGain__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[5] in module spikes_2BPF_fullGain__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[4] in module spikes_2BPF_fullGain__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[3] in module spikes_2BPF_fullGain__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[2] in module spikes_2BPF_fullGain__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[1] in module spikes_2BPF_fullGain__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[0] in module spikes_2BPF_fullGain__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[7] in module spikes_2BPF_fullGain is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[6] in module spikes_2BPF_fullGain is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[5] in module spikes_2BPF_fullGain is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[4] in module spikes_2BPF_fullGain is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[3] in module spikes_2BPF_fullGain is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[2] in module spikes_2BPF_fullGain is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[1] in module spikes_2BPF_fullGain is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[0] in module spikes_2BPF_fullGain is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2712.141 ; gain = 0.000 ; free physical = 34909 ; free virtual = 169672
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2712.141 ; gain = 0.000 ; free physical = 34908 ; free virtual = 169671
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2712.141 ; gain = 0.000 ; free physical = 34908 ; free virtual = 169671
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.27 ; elapsed = 00:00:00.27 . Memory (MB): peak = 2712.141 ; gain = 0.000 ; free physical = 34803 ; free virtual = 169565
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2792.047 ; gain = 0.000 ; free physical = 34473 ; free virtual = 169240
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.78 ; elapsed = 00:00:00.23 . Memory (MB): peak = 2816.859 ; gain = 24.812 ; free physical = 34575 ; free virtual = 169341
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:10 . Memory (MB): peak = 2816.859 ; gain = 104.719 ; free physical = 34809 ; free virtual = 169617
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a200tfbg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:10 . Memory (MB): peak = 2816.859 ; gain = 104.719 ; free physical = 34809 ; free virtual = 169617
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:10 . Memory (MB): peak = 2816.859 ; gain = 104.719 ; free physical = 34809 ; free virtual = 169617
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'estado_reg' in module 'Handshake_Out'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                              000 |                              000
+                 iSTATE0 |                              001 |                              011
+                 iSTATE1 |                              010 |                              001
+                 iSTATE2 |                              011 |                              010
+                 iSTATE3 |                              100 |                              101
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'estado_reg' using encoding 'sequential' in module 'Handshake_Out'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 2816.859 ; gain = 104.719 ; free physical = 34762 ; free virtual = 169535
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   19 Bit       Adders := 2     
+	   2 Input   17 Bit       Adders := 4     
+	   2 Input   16 Bit       Adders := 28    
+	   2 Input   15 Bit       Adders := 28    
+	   2 Input   14 Bit       Adders := 24    
+	   2 Input   13 Bit       Adders := 24    
+	   2 Input   12 Bit       Adders := 24    
+	   2 Input   11 Bit       Adders := 83    
+	   2 Input   10 Bit       Adders := 72    
+	   2 Input    9 Bit       Adders := 72    
+	   2 Input    8 Bit       Adders := 358   
+	   2 Input    7 Bit       Adders := 194   
+	   2 Input    6 Bit       Adders := 16    
+	   2 Input    5 Bit       Adders := 4     
+	   2 Input    2 Bit       Adders := 1     
+	   2 Input    1 Bit       Adders := 2     
++---Registers : 
+	               64 Bit    Registers := 4     
+	               32 Bit    Registers := 4     
+	               20 Bit    Registers := 2     
+	               16 Bit    Registers := 1057  
+	               11 Bit    Registers := 55    
+	               10 Bit    Registers := 48    
+	                9 Bit    Registers := 48    
+	                8 Bit    Registers := 468   
+	                7 Bit    Registers := 166   
+	                6 Bit    Registers := 12    
+	                5 Bit    Registers := 4     
+	                3 Bit    Registers := 2     
+	                2 Bit    Registers := 799   
+	                1 Bit    Registers := 1878  
++---Muxes : 
+	   2 Input   64 Bit        Muxes := 256   
+	   2 Input   33 Bit        Muxes := 4     
+	   7 Input   32 Bit        Muxes := 4     
+	   2 Input   19 Bit        Muxes := 2     
+	   2 Input   17 Bit        Muxes := 4     
+	   2 Input   16 Bit        Muxes := 28    
+	   2 Input   15 Bit        Muxes := 28    
+	   2 Input   14 Bit        Muxes := 24    
+	   2 Input   13 Bit        Muxes := 24    
+	   2 Input   12 Bit        Muxes := 24    
+	   2 Input   11 Bit        Muxes := 28    
+	   2 Input   10 Bit        Muxes := 24    
+	   2 Input    9 Bit        Muxes := 24    
+	   2 Input    8 Bit        Muxes := 294   
+	   2 Input    7 Bit        Muxes := 28    
+	   2 Input    6 Bit        Muxes := 12    
+	   7 Input    3 Bit        Muxes := 1     
+	   5 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 3     
+	  16 Input    2 Bit        Muxes := 398   
+	   6 Input    2 Bit        Muxes := 398   
+	   8 Input    2 Bit        Muxes := 398   
+	   2 Input    2 Bit        Muxes := 115   
+	   3 Input    2 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 1611  
+	   6 Input    1 Bit        Muxes := 398   
+	   7 Input    1 Bit        Muxes := 5     
+	   5 Input    1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 740 (col length:100)
+BRAMs: 730 (col length: RAMB18 100 RAMB36 50)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+WARNING: [Synth 8-7129] Port spikes_div_bpf[7] in module spikes_2BPF_fullGain__parameterized7__1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[6] in module spikes_2BPF_fullGain__parameterized7__1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[5] in module spikes_2BPF_fullGain__parameterized7__1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port spikes_div_bpf[4] in module spikes_2BPF_fullGain__parameterized7__1 is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_OUT_Div_out/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_OUT_Div_out/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Synth 8-4471] merging register 'U_LPF2/U_LPF2/U_FB_Div/data_int_reg[15:0]' into 'U_LPF2/U_LPF1/U_FB_Div/data_int_reg[15:0]' [/home/arios/Projects/OpenNAS/created_projects/sources_config/Spikes_div_BW.vhd:51]
+INFO: [Common 17-14] Message 'Synth 8-4471' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-4652] Swapped enable and write-enable on 1 RAM instances of RAM U_AER_OUT/U_fifo/uut/RAM_reg to conserve power
+INFO: [Synth 8-3886] merging instance 'U_PDM2Spikes_Rigth/U_PDM_Interface/int_counter_reg[1]' (FDCE) to 'U_PDM2Spikes_Rigth/U_PDM_Interface/int_counter_reg[7]'
+INFO: [Synth 8-3886] merging instance 'U_PDM2Spikes_Rigth/U_PDM_Interface/int_counter_reg[2]' (FDCE) to 'U_PDM2Spikes_Rigth/U_PDM_Interface/int_counter_reg[7]'
+INFO: [Synth 8-3886] merging instance 'U_PDM2Spikes_Rigth/U_PDM_Interface/int_counter_reg[3]' (FDCE) to 'U_PDM2Spikes_Rigth/U_PDM_Interface/int_counter_reg[7]'
+INFO: [Synth 8-3886] merging instance 'U_PDM2Spikes_Rigth/U_PDM_Interface/int_counter_reg[4]' (FDCE) to 'U_PDM2Spikes_Rigth/U_PDM_Interface/int_counter_reg[7]'
+INFO: [Synth 8-3886] merging instance 'U_PDM2Spikes_Rigth/U_PDM_Interface/int_counter_reg[5]' (FDCE) to 'U_PDM2Spikes_Rigth/U_PDM_Interface/int_counter_reg[7]'
+INFO: [Synth 8-3886] merging instance 'U_PDM2Spikes_Rigth/U_PDM_Interface/int_counter_reg[6]' (FDCE) to 'U_PDM2Spikes_Rigth/U_PDM_Interface/int_counter_reg[7]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U_PDM2Spikes_Rigth/U_PDM_Interface/int_counter_reg[7] )
+INFO: [Synth 8-3886] merging instance 'U_PDM2Spikes_Left/U_PDM_Interface/int_counter_reg[1]' (FDCE) to 'U_PDM2Spikes_Left/U_PDM_Interface/int_counter_reg[7]'
+INFO: [Synth 8-3886] merging instance 'U_PDM2Spikes_Left/U_PDM_Interface/int_counter_reg[2]' (FDCE) to 'U_PDM2Spikes_Left/U_PDM_Interface/int_counter_reg[7]'
+INFO: [Synth 8-3886] merging instance 'U_PDM2Spikes_Left/U_PDM_Interface/int_counter_reg[3]' (FDCE) to 'U_PDM2Spikes_Left/U_PDM_Interface/int_counter_reg[7]'
+INFO: [Synth 8-3886] merging instance 'U_PDM2Spikes_Left/U_PDM_Interface/int_counter_reg[4]' (FDCE) to 'U_PDM2Spikes_Left/U_PDM_Interface/int_counter_reg[7]'
+INFO: [Synth 8-3886] merging instance 'U_PDM2Spikes_Left/U_PDM_Interface/int_counter_reg[5]' (FDCE) to 'U_PDM2Spikes_Left/U_PDM_Interface/int_counter_reg[7]'
+INFO: [Synth 8-3886] merging instance 'U_PDM2Spikes_Left/U_PDM_Interface/int_counter_reg[6]' (FDCE) to 'U_PDM2Spikes_Left/U_PDM_Interface/int_counter_reg[7]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\U_PDM2Spikes_Left/U_PDM_Interface/int_counter_reg[7] )
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:49 . Memory (MB): peak = 2816.859 ; gain = 104.719 ; free physical = 25322 ; free virtual = 160293
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping Report (see note below)
++--------------------------+------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name               | RTL Object                   | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++--------------------------+------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|U_AER_Distributed_Monitor | U_AER_OUT/U_fifo/uut/RAM_reg | 2 K x 8(READ_FIRST)    | W |   | 2 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
++--------------------------+------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++-------------------------------------------------------------+------------------------+-----------+----------------------+-------------+
+|Module Name                                                  | RTL Object             | Inference | Size (Depth x Width) | Primitives  | 
++-------------------------------------------------------------+------------------------+-----------+----------------------+-------------+
+|U_AER_Distributed_Monitor/U_AER_Distributed_Monitor_Module_0 | U_AER_Fifo/uut/RAM_reg | Implied   | 256 x 6              | RAM64M x 8  | 
+|U_AER_Distributed_Monitor/U_AER_Distributed_Monitor_Module_1 | U_AER_Fifo/uut/RAM_reg | Implied   | 256 x 6              | RAM64M x 8  | 
+|U_AER_Distributed_Monitor/U_AER_Distributed_Monitor_Module_2 | U_AER_Fifo/uut/RAM_reg | Implied   | 256 x 6              | RAM64M x 8  | 
+|U_AER_Distributed_Monitor/U_AER_Distributed_Monitor_Module_3 | U_AER_Fifo/uut/RAM_reg | Implied   | 256 x 6              | RAM64M x 8  | 
++-------------------------------------------------------------+------------------------+-----------+----------------------+-------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:37 ; elapsed = 00:00:53 . Memory (MB): peak = 2816.859 ; gain = 104.719 ; free physical = 24771 ; free virtual = 159825
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:38 ; elapsed = 00:00:53 . Memory (MB): peak = 2816.859 ; gain = 104.719 ; free physical = 24684 ; free virtual = 159737
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++--------------------------+------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name               | RTL Object                   | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++--------------------------+------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|U_AER_Distributed_Monitor | U_AER_OUT/U_fifo/uut/RAM_reg | 2 K x 8(READ_FIRST)    | W |   | 2 K x 8(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
++--------------------------+------------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+
+Distributed RAM: Final Mapping Report
++-------------------------------------------------------------+------------------------+-----------+----------------------+-------------+
+|Module Name                                                  | RTL Object             | Inference | Size (Depth x Width) | Primitives  | 
++-------------------------------------------------------------+------------------------+-----------+----------------------+-------------+
+|U_AER_Distributed_Monitor/U_AER_Distributed_Monitor_Module_0 | U_AER_Fifo/uut/RAM_reg | Implied   | 256 x 6              | RAM64M x 8  | 
+|U_AER_Distributed_Monitor/U_AER_Distributed_Monitor_Module_1 | U_AER_Fifo/uut/RAM_reg | Implied   | 256 x 6              | RAM64M x 8  | 
+|U_AER_Distributed_Monitor/U_AER_Distributed_Monitor_Module_2 | U_AER_Fifo/uut/RAM_reg | Implied   | 256 x 6              | RAM64M x 8  | 
+|U_AER_Distributed_Monitor/U_AER_Distributed_Monitor_Module_3 | U_AER_Fifo/uut/RAM_reg | Implied   | 256 x 6              | RAM64M x 8  | 
++-------------------------------------------------------------+------------------------+-----------+----------------------+-------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance insti_17/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:43 ; elapsed = 00:00:59 . Memory (MB): peak = 2816.859 ; gain = 104.719 ; free physical = 23764 ; free virtual = 158836
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:48 ; elapsed = 00:01:03 . Memory (MB): peak = 2829.598 ; gain = 117.457 ; free physical = 23766 ; free virtual = 158837
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:48 ; elapsed = 00:01:03 . Memory (MB): peak = 2829.598 ; gain = 117.457 ; free physical = 23766 ; free virtual = 158837
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:51 ; elapsed = 00:01:07 . Memory (MB): peak = 2829.598 ; gain = 117.457 ; free physical = 28941 ; free virtual = 164012
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:51 ; elapsed = 00:01:07 . Memory (MB): peak = 2829.598 ; gain = 117.457 ; free physical = 28941 ; free virtual = 164012
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:52 ; elapsed = 00:01:07 . Memory (MB): peak = 2829.598 ; gain = 117.457 ; free physical = 28939 ; free virtual = 164011
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:52 ; elapsed = 00:01:07 . Memory (MB): peak = 2829.598 ; gain = 117.457 ; free physical = 28939 ; free virtual = 164011
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |CARRY4   |  6769|
+|2     |LUT1     |  3409|
+|3     |LUT2     |  9749|
+|4     |LUT3     |  3673|
+|5     |LUT4     | 12795|
+|6     |LUT5     |  3878|
+|7     |LUT6     |  6800|
+|8     |MUXF7    |    10|
+|9     |RAM64M   |    32|
+|10    |RAMB18E1 |     1|
+|11    |FDCE     | 30493|
+|12    |FDPE     |  2606|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:52 ; elapsed = 00:01:07 . Memory (MB): peak = 2829.598 ; gain = 117.457 ; free physical = 28939 ; free virtual = 164011
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 400 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:49 ; elapsed = 00:01:06 . Memory (MB): peak = 2833.508 ; gain = 16.648 ; free physical = 34172 ; free virtual = 169237
+Synthesis Optimization Complete : Time (s): cpu = 00:00:55 ; elapsed = 00:01:09 . Memory (MB): peak = 2833.508 ; gain = 121.367 ; free physical = 34176 ; free virtual = 169233
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.38 ; elapsed = 00:00:00.38 . Memory (MB): peak = 2833.508 ; gain = 0.000 ; free physical = 34053 ; free virtual = 169109
+INFO: [Netlist 29-17] Analyzing 6812 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2929.152 ; gain = 0.000 ; free physical = 34236 ; free virtual = 169292
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 32 instances were transformed.
+  RAM64M => RAM64M (RAMD64E(x4)): 32 instances
+
+Synth Design complete, checksum: e24472d5
+INFO: [Common 17-83] Releasing license: Synthesis
+286 Infos, 100 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:02 ; elapsed = 00:01:17 . Memory (MB): peak = 2929.152 ; gain = 217.012 ; free physical = 34443 ; free virtual = 169555
+INFO: [Common 17-1381] The checkpoint '/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.runs/design_1_OpenNas_Cascade_STER_0_2_synth_1/design_1_OpenNas_Cascade_STER_0_2.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_OpenNas_Cascade_STER_0_2, cache-ID = 1db1b06b9e4967c6
+INFO: [Coretcl 2-1174] Renamed 1878 cell refs.
+INFO: [Common 17-1381] The checkpoint '/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.runs/design_1_OpenNas_Cascade_STER_0_2_synth_1/design_1_OpenNas_Cascade_STER_0_2.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file design_1_OpenNas_Cascade_STER_0_2_utilization_synth.rpt -pb design_1_OpenNas_Cascade_STER_0_2_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed May  7 09:42:37 2025...

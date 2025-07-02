@@ -1,0 +1,95 @@
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+/opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/trce -intstyle ise -v 3 -s 3 -n
+3 -fastpaths -xml OpenNas_Cascade_STEREO_64ch.twx
+OpenNas_Cascade_STEREO_64ch.ncd -o OpenNas_Cascade_STEREO_64ch.twr
+OpenNas_Cascade_STEREO_64ch.pcf -ucf Node_constraints.ucf
+
+Design file:              OpenNas_Cascade_STEREO_64ch.ncd
+Physical constraint file: OpenNas_Cascade_STEREO_64ch.pcf
+Device,package,speed:     xc6slx150t,fgg484,C,-3 (PRODUCTION 1.23 2013-10-13)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock clock
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+AER_ACK     |    6.150(R)|      SLOW  |   -3.625(R)|      FAST  |clock_BUFGP       |   0.000|
+PDM_DAT_LEFT|    1.368(R)|      SLOW  |   -0.603(R)|      SLOW  |clock_BUFGP       |   0.000|
+i2s_bclk    |   -0.213(R)|      FAST  |    1.376(R)|      SLOW  |clock_BUFGP       |   0.000|
+i2s_d_in    |    0.006(R)|      FAST  |    1.069(R)|      SLOW  |clock_BUFGP       |   0.000|
+i2s_lr      |   -0.020(R)|      FAST  |    1.120(R)|      SLOW  |clock_BUFGP       |   0.000|
+rst_ext     |   15.638(R)|      SLOW  |    0.334(R)|      SLOW  |clock_BUFGP       |   0.000|
+source_sel  |   13.452(R)|      SLOW  |   -0.269(R)|      SLOW  |clock_BUFGP       |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Clock clock to Pad
+----------------+-----------------+------------+-----------------+------------+------------------+--------+
+                |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination     |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+----------------+-----------------+------------+-----------------+------------+------------------+--------+
+AER_DATA_OUT<0> |        12.058(R)|      SLOW  |         6.749(R)|      FAST  |clock_BUFGP       |   0.000|
+AER_DATA_OUT<1> |        11.732(R)|      SLOW  |         6.556(R)|      FAST  |clock_BUFGP       |   0.000|
+AER_DATA_OUT<2> |        11.915(R)|      SLOW  |         6.666(R)|      FAST  |clock_BUFGP       |   0.000|
+AER_DATA_OUT<3> |        11.965(R)|      SLOW  |         6.748(R)|      FAST  |clock_BUFGP       |   0.000|
+AER_DATA_OUT<4> |        10.653(R)|      SLOW  |         5.905(R)|      FAST  |clock_BUFGP       |   0.000|
+AER_DATA_OUT<5> |        10.629(R)|      SLOW  |         5.886(R)|      FAST  |clock_BUFGP       |   0.000|
+AER_DATA_OUT<6> |        10.966(R)|      SLOW  |         6.125(R)|      FAST  |clock_BUFGP       |   0.000|
+AER_DATA_OUT<7> |        10.527(R)|      SLOW  |         5.904(R)|      FAST  |clock_BUFGP       |   0.000|
+AER_DATA_OUT<8> |        11.809(R)|      SLOW  |         6.736(R)|      FAST  |clock_BUFGP       |   0.000|
+AER_DATA_OUT<9> |        12.185(R)|      SLOW  |         6.976(R)|      FAST  |clock_BUFGP       |   0.000|
+AER_DATA_OUT<10>|        10.194(R)|      SLOW  |         5.632(R)|      FAST  |clock_BUFGP       |   0.000|
+AER_DATA_OUT<11>|        11.623(R)|      SLOW  |         6.682(R)|      FAST  |clock_BUFGP       |   0.000|
+AER_DATA_OUT<12>|        10.579(R)|      SLOW  |         6.004(R)|      FAST  |clock_BUFGP       |   0.000|
+AER_DATA_OUT<13>|        10.142(R)|      SLOW  |         5.606(R)|      FAST  |clock_BUFGP       |   0.000|
+AER_DATA_OUT<14>|        11.456(R)|      SLOW  |         6.553(R)|      FAST  |clock_BUFGP       |   0.000|
+AER_DATA_OUT<15>|        10.862(R)|      SLOW  |         6.159(R)|      FAST  |clock_BUFGP       |   0.000|
+AER_REQ         |        13.989(R)|      SLOW  |         7.811(R)|      FAST  |clock_BUFGP       |   0.000|
+PDM_CLK_LEFT    |         9.099(R)|      SLOW  |         4.857(R)|      FAST  |clock_BUFGP       |   0.000|
+PDM_CLK_RIGTH   |         8.752(R)|      SLOW  |         4.650(R)|      FAST  |clock_BUFGP       |   0.000|
+----------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock to Setup on destination clock clock
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clock          |    9.851|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Analysis completed Mon Mar 24 10:43:48 2025 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 1100 MB
+
+
+

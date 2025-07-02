@@ -1,0 +1,14 @@
+# PROMGEN: Xilinx Prom Generator P.20131013
+# Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+SOFTWARE_VERSION P.20131013
+DATE             3/24/2025 - 11:16
+SOURCE          /home/arios/Projects/OpenNAS/created_projects/project/CPNAS/Untitled_0.mcs
+DEVICE          XCF32P
+DATA_WIDTH      8
+FILL_DATA       0xFF
+SIGNATURE       0x029D2FCE
+BLOCK 0 VERSION 0 0x12289A55
+BLOCK 1 VERSION 0 0x12289A55
+BLOCK 2 VERSION 0 0x12289A55
+BLOCK 3 VERSION 0 0x12289A55

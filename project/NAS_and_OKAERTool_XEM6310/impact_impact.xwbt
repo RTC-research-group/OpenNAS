@@ -1,0 +1,8 @@
+INTSTYLE=impact
+INFILE=/home/arios/Projects/OpenNAS/created_projects/project/NAS_TFM/impact.xsl
+OUTFILE=/home/arios/Projects/OpenNAS/created_projects/project/NAS_TFM/impact.xsl
+FAMILY=None
+PART=None
+WORKINGDIR=/home/arios/Projects/OpenNAS/created_projects/project/NAS_TFM
+LICENSE=iMPACT
+USER_INFO=iMPACT

@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=/home/arios/Projects/OpenNAS/created_projects/project/NAS_TFM/OpenNas_Cascade_STEREO_64ch.ncd
+OUTFILE=/home/arios/Projects/OpenNAS/created_projects/project/NAS_TFM/OpenNas_Cascade_STEREO_64ch.bit
+FAMILY=Spartan6
+PART=xc6slx150t-3fgg484
+WORKINGDIR=/home/arios/Projects/OpenNAS/created_projects/project/NAS_TFM
+LICENSE=ISE
+USER_INFO=210937593_1777530533_0_106

@@ -1,0 +1,867 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Wed Jul  2 11:07:30 2025
+# Process ID: 115176
+# Current directory: /home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.runs/impl_1
+# Command line: vivado -log design_1_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source design_1_wrapper.tcl -notrace
+# Log file: /home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.runs/impl_1/design_1_wrapper.vdi
+# Journal file: /home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.runs/impl_1/vivado.jou
+# Running On: us, OS: Linux, CPU Frequency: 3600.000 MHz, CPU Physical cores: 8, Host memory: 67182 MB
+#-----------------------------------------------------------
+source design_1_wrapper.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2022.1/data/ip'.
+Command: link_design -top design_1_wrapper -part xc7a200tfbg484-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Device 21-403] Loading part xc7a200tfbg484-1
+INFO: [Project 1-454] Reading design checkpoint '/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.gen/sources_1/bd/design_1/ip/design_1_OpenNas_Cascade_STER_0_2/design_1_OpenNas_Cascade_STER_0_2.dcp' for cell 'design_1_i/OpenNas_Cascade_STER_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.gen/sources_1/bd/design_1/ip/design_1_OpenNas_Parallel_STE_0_0/design_1_OpenNas_Parallel_STE_0_0.dcp' for cell 'design_1_i/OpenNas_Parallel_STE_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0_1/design_1_clk_wiz_0_1.dcp' for cell 'design_1_i/clk_wiz_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.gen/sources_1/bd/design_1/ip/design_1_okt_sno_top_0_0/design_1_okt_sno_top_0_0.dcp' for cell 'design_1_i/okt_sno_top_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.gen/sources_1/bd/design_1/ip/design_1_okt_top_0_2/design_1_okt_top_0_2.dcp' for cell 'design_1_i/okt_top_0'
+Netlist sorting complete. Time (s): cpu = 00:00:00.54 ; elapsed = 00:00:00.55 . Memory (MB): peak = 2832.199 ; gain = 0.000 ; free physical = 40338 ; free virtual = 178148
+INFO: [Netlist 29-17] Analyzing 14527 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2022.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+WARNING: [Opt 31-32] Removing redundant IBUF since it is not being driven by a top-level port. design_1_i/clk_wiz_0/inst/clkin1_ibufg 
+Resolution: The tool has removed redundant IBUF. To resolve this warning, check for redundant IBUF in the input design.
+INFO: [Opt 31-140] Inserted 4 IBUFs to IO ports without IO buffers.
+WARNING: [Constraints 18-550] Could not create 'IBUF_LOW_PWR' constraint because net 'design_1_i/clk_wiz_0/clk_in1' is not directly connected to top level port. Synthesis is ignored for IBUF_LOW_PWR but preserved for implementation.
+Parsing XDC File [/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0_1/design_1_clk_wiz_0_1_board.xdc] for cell 'design_1_i/clk_wiz_0/inst'
+Finished Parsing XDC File [/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0_1/design_1_clk_wiz_0_1_board.xdc] for cell 'design_1_i/clk_wiz_0/inst'
+Parsing XDC File [/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0_1/design_1_clk_wiz_0_1.xdc] for cell 'design_1_i/clk_wiz_0/inst'
+INFO: [Timing 38-35] Done setting XDC timing constraints. [/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0_1/design_1_clk_wiz_0_1.xdc:57]
+INFO: [Timing 38-2] Deriving generated clocks [/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0_1/design_1_clk_wiz_0_1.xdc:57]
+get_clocks: Time (s): cpu = 00:00:09 ; elapsed = 00:00:05 . Memory (MB): peak = 3212.660 ; gain = 380.461 ; free physical = 39568 ; free virtual = 177396
+Finished Parsing XDC File [/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0_1/design_1_clk_wiz_0_1.xdc] for cell 'design_1_i/clk_wiz_0/inst'
+Parsing XDC File [/home/arios/Projects/okaertool/src/XEM7310-A200/CPNAS_OKAERTool_xem7310.xdc]
+Finished Parsing XDC File [/home/arios/Projects/okaertool/src/XEM7310-A200/CPNAS_OKAERTool_xem7310.xdc]
+Parsing XDC File [/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.srcs/constrs_1/new/debug.xdc]
+Finished Parsing XDC File [/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.srcs/constrs_1/new/debug.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3227.535 ; gain = 0.000 ; free physical = 39725 ; free virtual = 177553
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 159 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 33 instances
+  LUT6_2 => LUT6_2 (LUT5, LUT6): 50 instances
+  RAM128X1S => RAM128X1S (MUXF7, RAMS64E(x2)): 8 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 4 instances
+  RAM64M => RAM64M (RAMD64E(x4)): 64 instances
+
+18 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:24 ; elapsed = 00:00:20 . Memory (MB): peak = 3227.535 ; gain = 395.336 ; free physical = 39725 ; free virtual = 177553
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a200t'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.4 . Memory (MB): peak = 3291.566 ; gain = 64.031 ; free physical = 39709 ; free virtual = 177536
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: 28c9db03f
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:01 . Memory (MB): peak = 3291.566 ; gain = 0.000 ; free physical = 39562 ; free virtual = 177390
+
+Starting Logic Optimization Task
+
+Phase 1 Generate And Synthesize Debug Cores
+INFO: [Chipscope 16-329] Generating Script for core instance : dbg_hub 
+INFO: [IP_Flow 19-3806] Processing IP xilinx.com:ip:xsdbm:3.0 for cell dbg_hub_CV.
+INFO: [Chipscope 16-329] Generating Script for core instance : u_ila_0 
+INFO: [IP_Flow 19-3806] Processing IP xilinx.com:ip:ila:6.2 for cell u_ila_0_CV.
+INFO: [Chipscope 16-469] Using cached IP synthesis design for IP xilinx.com:ip:xsdbm:3.0, cache-ID = 276885753b21dafc.
+INFO: [Chipscope 16-469] Using cached IP synthesis design for IP xilinx.com:ip:ila:6.2, cache-ID = 46ce926915c9a8f0.
+Netlist sorting complete. Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.08 . Memory (MB): peak = 3578.160 ; gain = 0.000 ; free physical = 39186 ; free virtual = 177082
+Phase 1 Generate And Synthesize Debug Cores | Checksum: 23497e3d8
+
+Time (s): cpu = 00:00:19 ; elapsed = 00:00:25 . Memory (MB): peak = 3578.160 ; gain = 82.594 ; free physical = 39186 ; free virtual = 177082
+
+Phase 2 Retarget
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/aer_out_data_in[7]_i_1 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/aer_out_data_in[7]_i_3, which resulted in an inversion of 5 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[10].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__109 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[10].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__109, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[10].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__110 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[10].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__110, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[11].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__107 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[11].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__107, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[11].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__108 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[11].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__108, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[12].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__105 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[12].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__105, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[12].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__106 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[12].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__106, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[13].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__103 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[13].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__103, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[13].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__104 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[13].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__104, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[26].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__19 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[26].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__19, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[26].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__20 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[26].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__20, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[27].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__29 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[27].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__29, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[27].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__30 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[27].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__30, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[28].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__27 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[28].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__27, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[28].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__28 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[28].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__28, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[29].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__25 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[29].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__25, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[29].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__26 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[29].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__26, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[30].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__23 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[30].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__23, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[30].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__24 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[30].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__24, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[31].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__39 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[31].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__39, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[31].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__40 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[31].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__40, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[32].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__37 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[32].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__37, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[32].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__38 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[32].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__38, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[8].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__113 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[8].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__113, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[8].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__114 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[8].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__114, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[9].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__111 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[9].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__111, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[9].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__112 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Left/BPF_gen[9].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__112, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[10].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__243 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[10].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__243, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[10].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__244 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[10].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__244, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[11].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__245 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[11].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__245, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[11].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__246 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[11].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__246, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[12].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__247 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[12].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__247, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[12].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__248 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[12].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__248, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[13].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__249 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[13].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__249, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[13].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__250 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[13].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__250, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[26].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__157 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[26].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__157, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[26].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__158 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[26].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__158, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[27].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__155 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[27].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__155, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[27].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__156 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[27].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__156, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[28].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__153 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[28].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__153, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[28].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__154 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[28].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__154, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[29].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__167 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[29].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__167, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[29].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__168 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[29].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__168, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[30].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__165 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[30].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__165, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[30].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__166 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[30].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__166, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[32].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__163 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[32].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__163, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[32].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__164 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[32].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__164, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[49].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__151 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[49].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__151, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[49].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__152 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[49].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__152, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[8].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__239 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[8].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__239, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[8].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__240 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[8].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__240, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[9].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_1__241 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[9].REST_BPF.U_BPF/U_LPF2/U_LPF1/U_INT/CE_i_2__241, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[9].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_1__242 into driver instance design_1_i/OpenNas_Cascade_STER_0/inst/U_CFBank_2or_64CH_Rigth/BPF_gen[9].REST_BPF.U_BPF/U_LPF2/U_LPF2/U_INT/CE_i_2__242, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/aer_out_data_in[7]_i_1 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/aer_out_data_in[7]_i_3, which resulted in an inversion of 5 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[16].U_BPF/u_int_1/CE_i_1__3 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[16].U_BPF/u_int_1/CE_i_2__3, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[16].U_BPF/u_int_2/CE_i_1__4 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[16].U_BPF/u_int_2/CE_i_2__4, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[17].U_BPF/u_int_1/CE_i_1__5 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[17].U_BPF/u_int_1/CE_i_2__5, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[17].U_BPF/u_int_2/CE_i_1__6 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[17].U_BPF/u_int_2/CE_i_2__6, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[18].U_BPF/u_int_1/CE_i_1__7 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[18].U_BPF/u_int_1/CE_i_2__7, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[18].U_BPF/u_int_2/CE_i_1__8 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[18].U_BPF/u_int_2/CE_i_2__8, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[19].U_BPF/u_int_1/CE_i_1__9 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[19].U_BPF/u_int_1/CE_i_2__9, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[19].U_BPF/u_int_2/CE_i_1__10 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[19].U_BPF/u_int_2/CE_i_2__10, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[20].U_BPF/u_int_1/CE_i_1__11 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[20].U_BPF/u_int_1/CE_i_2__11, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[20].U_BPF/u_int_2/CE_i_1__12 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[20].U_BPF/u_int_2/CE_i_2__12, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[22].U_BPF/u_int_1/CE_i_1__13 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[22].U_BPF/u_int_1/CE_i_2__13, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[22].U_BPF/u_int_2/CE_i_1__14 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Left/BPF_gen[22].U_BPF/u_int_2/CE_i_2__14, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[16].U_BPF/u_int_1/CE_i_1__129 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[16].U_BPF/u_int_1/CE_i_2__129, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[16].U_BPF/u_int_2/CE_i_1__130 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[16].U_BPF/u_int_2/CE_i_2__130, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[17].U_BPF/u_int_1/CE_i_1__131 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[17].U_BPF/u_int_1/CE_i_2__131, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[17].U_BPF/u_int_2/CE_i_1__132 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[17].U_BPF/u_int_2/CE_i_2__132, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[18].U_BPF/u_int_1/CE_i_1__133 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[18].U_BPF/u_int_1/CE_i_2__133, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[18].U_BPF/u_int_2/CE_i_1__134 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[18].U_BPF/u_int_2/CE_i_2__134, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[19].U_BPF/u_int_1/CE_i_1__135 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[19].U_BPF/u_int_1/CE_i_2__135, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[19].U_BPF/u_int_2/CE_i_1__136 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[19].U_BPF/u_int_2/CE_i_2__136, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[20].U_BPF/u_int_1/CE_i_1__137 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[20].U_BPF/u_int_1/CE_i_2__137, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[20].U_BPF/u_int_2/CE_i_1__138 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[20].U_BPF/u_int_2/CE_i_2__138, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[21].U_BPF/u_int_1/CE_i_1__139 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[21].U_BPF/u_int_1/CE_i_2__139, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[21].U_BPF/u_int_2/CE_i_1__140 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[21].U_BPF/u_int_2/CE_i_2__140, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[22].U_BPF/u_int_1/CE_i_1__141 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[22].U_BPF/u_int_1/CE_i_2__141, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[22].U_BPF/u_int_2/CE_i_1__142 into driver instance design_1_i/OpenNas_Parallel_STE_0/inst/U_PFBank_2or_64CH_Rigth/BPF_gen[22].U_BPF/u_int_2/CE_i_2__142, which resulted in an inversion of 9 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/leeb76b405f165a9b4ab0606f3ea0b3c4[7]_i_1 into driver instance design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/ld307737e57d50d07f937891de086bf8e_i_3, which resulted in an inversion of 7 pins
+INFO: [Opt 31-1287] Pulled Inverter design_1_i/okt_top_0/inst/cu_inst/status_reg[7]_i_1 into driver instance design_1_i/okt_top_0/inst/cu_inst_i_1, which resulted in an inversion of 18 pins
+INFO: [Opt 31-1287] Pulled Inverter u_ila_0/inst/ila_core_inst/u_ila_regs/slaveRegDo_mux_2[15]_i_1 into driver instance u_ila_0/inst/ila_core_inst/u_ila_regs/slaveRegDo_mux_2[4]_i_3, which resulted in an inversion of 6 pins
+INFO: [Opt 31-1287] Pulled Inverter u_ila_0/inst/ila_core_inst/xsdb_memory_read_inst/current_state[0]_i_1 into driver instance u_ila_0/inst/ila_core_inst/xsdb_memory_read_inst/read_addr[9]_i_4, which resulted in an inversion of 15 pins
+INFO: [Opt 31-138] Pushed 6 inverter(s) to 33 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 2 Retarget | Checksum: 2362258fd
+
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 3578.160 ; gain = 82.594 ; free physical = 39304 ; free virtual = 177200
+INFO: [Opt 31-389] Phase Retarget created 26 cells and removed 123 cells
+INFO: [Opt 31-1021] In phase Retarget, 104 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 3 Constant propagation
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 3 Constant propagation | Checksum: 1a0b90c98
+
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:30 . Memory (MB): peak = 3578.160 ; gain = 82.594 ; free physical = 39305 ; free virtual = 177201
+INFO: [Opt 31-389] Phase Constant propagation created 13 cells and removed 30 cells
+INFO: [Opt 31-1021] In phase Constant propagation, 55 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 4 Sweep
+Phase 4 Sweep | Checksum: 22ccad7e0
+
+Time (s): cpu = 00:00:27 ; elapsed = 00:00:31 . Memory (MB): peak = 3578.160 ; gain = 82.594 ; free physical = 39304 ; free virtual = 177200
+INFO: [Opt 31-389] Phase Sweep created 1 cells and removed 49 cells
+INFO: [Opt 31-1021] In phase Sweep, 1080 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 5 BUFG optimization
+INFO: [Opt 31-129] Inserted BUFG to drive high-fanout reset|set|enable net. BUFG cell: design_1_i/okt_top_0/inst/cu_inst/rst_EP/ep_dataout[0]_BUFG_inst, Net: design_1_i/okt_top_0/inst/cu_inst/rst_EP/ep_dataout[0]
+Phase 5 BUFG optimization | Checksum: 141664d4c
+
+Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 3578.160 ; gain = 82.594 ; free physical = 39298 ; free virtual = 177194
+INFO: [Opt 31-662] Phase BUFG optimization created 2 cells of which 1 are BUFGs and removed 0 cells.
+
+Phase 6 Shift Register Optimization
+INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
+Phase 6 Shift Register Optimization | Checksum: 141664d4c
+
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:32 . Memory (MB): peak = 3578.160 ; gain = 82.594 ; free physical = 39298 ; free virtual = 177194
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 7 Post Processing Netlist
+Phase 7 Post Processing Netlist | Checksum: 22d8534a4
+
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:32 . Memory (MB): peak = 3578.160 ; gain = 82.594 ; free physical = 39298 ; free virtual = 177194
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+INFO: [Opt 31-1021] In phase Post Processing Netlist, 61 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |              26  |             123  |                                            104  |
+|  Constant propagation         |              13  |              30  |                                             55  |
+|  Sweep                        |               1  |              49  |                                           1080  |
+|  BUFG optimization            |               2  |               0  |                                              0  |
+|  Shift Register Optimization  |               0  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               0  |                                             61  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00.16 ; elapsed = 00:00:00.15 . Memory (MB): peak = 3578.160 ; gain = 0.000 ; free physical = 39297 ; free virtual = 177194
+Ending Logic Optimization Task | Checksum: 2058f5d38
+
+Time (s): cpu = 00:00:32 ; elapsed = 00:00:35 . Memory (MB): peak = 3578.160 ; gain = 82.594 ; free physical = 39297 ; free virtual = 177194
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+INFO: [Power 33-23] Power model is not available for a0/d0/dna0
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Pwropt 34-9] Applying IDT optimizations ...
+INFO: [Pwropt 34-10] Applying ODC optimizations ...
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+
+
+Starting PowerOpt Patch Enables Task
+INFO: [Pwropt 34-162] WRITE_MODE attribute of 1 BRAM(s) out of a total of 66 has been updated to save power. Run report_power_opt to get a complete listing of the BRAMs updated.
+INFO: [Pwropt 34-201] Structural ODC has moved 1 WE to EN ports
+Number of BRAM Ports augmented: 5 newly gated: 1 Total Ports: 132
+Number of Flops added for Enable Generation: 3
+
+Ending PowerOpt Patch Enables Task | Checksum: 21ccddc25
+
+Time (s): cpu = 00:00:00.38 ; elapsed = 00:00:00.31 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 39134 ; free virtual = 177034
+Ending Power Optimization Task | Checksum: 21ccddc25
+
+Time (s): cpu = 00:00:21 ; elapsed = 00:00:07 . Memory (MB): peak = 4383.668 ; gain = 805.508 ; free physical = 39268 ; free virtual = 177168
+
+Starting Final Cleanup Task
+
+Starting Logic Optimization Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Logic Optimization Task | Checksum: 2b63ee270
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:03 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 39283 ; free virtual = 177185
+Ending Final Cleanup Task | Checksum: 2b63ee270
+
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:05 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 39280 ; free virtual = 177184
+
+Starting Netlist Obfuscation Task
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 39280 ; free virtual = 177184
+Ending Netlist Obfuscation Task | Checksum: 2b63ee270
+
+Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 39280 ; free virtual = 177184
+INFO: [Common 17-83] Releasing license: Implementation
+144 Infos, 20 Warnings, 0 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:01:09 ; elapsed = 00:00:49 . Memory (MB): peak = 4383.668 ; gain = 1156.133 ; free physical = 39280 ; free virtual = 177184
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.02 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 39149 ; free virtual = 177059
+INFO: [Common 17-1381] The checkpoint '/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.runs/impl_1/design_1_wrapper_opt.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:11 ; elapsed = 00:00:06 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 39074 ; free virtual = 177007
+INFO: [runtcl-4] Executing : report_drc -file design_1_wrapper_drc_opted.rpt -pb design_1_wrapper_drc_opted.pb -rpx design_1_wrapper_drc_opted.rpx
+Command: report_drc -file design_1_wrapper_drc_opted.rpt -pb design_1_wrapper_drc_opted.pb -rpx design_1_wrapper_drc_opted.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file /home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.runs/impl_1/design_1_wrapper_drc_opted.rpt.
+report_drc completed successfully
+INFO: [Chipscope 16-240] Debug cores have already been implemented
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a200t'
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors, 42 Warnings
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+Starting Placer Task
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 8 CPUs
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38919 ; free virtual = 176854
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 1d45a9faf
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.04 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38919 ; free virtual = 176854
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38919 ; free virtual = 176854
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 115dec848
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38966 ; free virtual = 176904
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: 16a0b060f
+
+Time (s): cpu = 00:00:21 ; elapsed = 00:00:10 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38831 ; free virtual = 176770
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: 16a0b060f
+
+Time (s): cpu = 00:00:21 ; elapsed = 00:00:10 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38830 ; free virtual = 176769
+Phase 1 Placer Initialization | Checksum: 16a0b060f
+
+Time (s): cpu = 00:00:21 ; elapsed = 00:00:11 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38823 ; free virtual = 176763
+
+Phase 2 Global Placement
+
+Phase 2.1 Floorplanning
+Phase 2.1 Floorplanning | Checksum: 16716348f
+
+Time (s): cpu = 00:00:28 ; elapsed = 00:00:12 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38724 ; free virtual = 176664
+
+Phase 2.2 Update Timing before SLR Path Opt
+Phase 2.2 Update Timing before SLR Path Opt | Checksum: 12c644145
+
+Time (s): cpu = 00:00:32 ; elapsed = 00:00:14 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38726 ; free virtual = 176666
+
+Phase 2.3 Post-Processing in Floorplanning
+Phase 2.3 Post-Processing in Floorplanning | Checksum: 12c644145
+
+Time (s): cpu = 00:00:33 ; elapsed = 00:00:14 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38726 ; free virtual = 176666
+
+Phase 2.4 Global Placement Core
+
+Phase 2.4.1 Physical Synthesis In Placer
+INFO: [Physopt 32-1035] Found 0 LUTNM shape to break, 1317 LUT instances to create LUTNM shape
+INFO: [Physopt 32-1044] Break lutnm for timing: one critical 0, two critical 0, total 0, new lutff created 0
+INFO: [Physopt 32-1138] End 1 Pass. Optimized 569 nets or LUTs. Breaked 0 LUT, combined 569 existing LUTs and moved 0 existing LUT
+INFO: [Physopt 32-65] No nets found for high-fanout optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-670] No setup violation found.  DSP Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  Shift Register to Pipeline Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  Shift Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  BRAM Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  URAM Register Optimization was not performed.
+INFO: [Physopt 32-949] No candidate nets found for dynamic/static region interface net replication
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38688 ; free virtual = 176631
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization                                     |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  LUT Combining                                    |            0  |            569  |                   569  |           0  |           1  |  00:00:00  |
+|  Retime                                           |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Very High Fanout                                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  DSP Register                                     |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Shift Register to Pipeline                       |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Shift Register                                   |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  BRAM Register                                    |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  URAM Register                                    |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Dynamic/Static Region Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Total                                            |            0  |            569  |                   569  |           0  |           4  |  00:00:01  |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Phase 2.4.1 Physical Synthesis In Placer | Checksum: 123de8e5e
+
+Time (s): cpu = 00:01:30 ; elapsed = 00:00:35 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38691 ; free virtual = 176634
+Phase 2.4 Global Placement Core | Checksum: 1b630c730
+
+Time (s): cpu = 00:01:36 ; elapsed = 00:00:37 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38677 ; free virtual = 176620
+Phase 2 Global Placement | Checksum: 1b630c730
+
+Time (s): cpu = 00:01:36 ; elapsed = 00:00:37 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38715 ; free virtual = 176659
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: 1b5aa72b9
+
+Time (s): cpu = 00:01:41 ; elapsed = 00:00:39 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38689 ; free virtual = 176632
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 1559eef6a
+
+Time (s): cpu = 00:01:53 ; elapsed = 00:00:45 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38659 ; free virtual = 176603
+
+Phase 3.3 Area Swap Optimization
+Phase 3.3 Area Swap Optimization | Checksum: 104d0ba3e
+
+Time (s): cpu = 00:01:54 ; elapsed = 00:00:45 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38659 ; free virtual = 176602
+
+Phase 3.4 Pipeline Register Optimization
+Phase 3.4 Pipeline Register Optimization | Checksum: 98f5379e
+
+Time (s): cpu = 00:01:54 ; elapsed = 00:00:46 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38659 ; free virtual = 176602
+
+Phase 3.5 Small Shape Detail Placement
+Phase 3.5 Small Shape Detail Placement | Checksum: 1cdf4b386
+
+Time (s): cpu = 00:02:06 ; elapsed = 00:00:57 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38567 ; free virtual = 176511
+
+Phase 3.6 Re-assign LUT pins
+Phase 3.6 Re-assign LUT pins | Checksum: 1e54943ef
+
+Time (s): cpu = 00:02:09 ; elapsed = 00:00:59 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38577 ; free virtual = 176521
+
+Phase 3.7 Pipeline Register Optimization
+Phase 3.7 Pipeline Register Optimization | Checksum: 1e82f14c9
+
+Time (s): cpu = 00:02:09 ; elapsed = 00:01:00 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38577 ; free virtual = 176521
+Phase 3 Detail Placement | Checksum: 1e82f14c9
+
+Time (s): cpu = 00:02:09 ; elapsed = 00:01:00 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38577 ; free virtual = 176521
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Commit Optimization
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Phase 4.1.1 Post Placement Optimization
+Post Placement Optimization Initialization | Checksum: 24f1a9238
+
+Phase 4.1.1.1 BUFG Insertion
+
+Starting Physical Synthesis Task
+
+Phase 1 Physical Synthesis Initialization
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 8 CPUs
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=11.023 | TNS=0.000 |
+Phase 1 Physical Synthesis Initialization | Checksum: 25928d526
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:01 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38580 ; free virtual = 176523
+INFO: [Place 46-56] BUFG insertion identified 0 candidate nets. Inserted BUFG: 0, Replicated BUFG Driver: 0, Skipped due to Placement/Routing Conflicts: 0, Skipped due to Timing Degradation: 0, Skipped due to Illegal Netlist: 0.
+Ending Physical Synthesis Task | Checksum: 27c8e189b
+
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:02 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38574 ; free virtual = 176518
+Phase 4.1.1.1 BUFG Insertion | Checksum: 24f1a9238
+
+Time (s): cpu = 00:02:34 ; elapsed = 00:01:08 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38576 ; free virtual = 176520
+
+Phase 4.1.1.2 Post Placement Timing Optimization
+INFO: [Place 30-746] Post Placement Timing Summary WNS=11.023. For the most accurate timing information please run report_timing.
+Phase 4.1.1.2 Post Placement Timing Optimization | Checksum: 2900de227
+
+Time (s): cpu = 00:02:35 ; elapsed = 00:01:09 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38576 ; free virtual = 176520
+
+Time (s): cpu = 00:02:35 ; elapsed = 00:01:09 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38576 ; free virtual = 176520
+Phase 4.1 Post Commit Optimization | Checksum: 2900de227
+
+Time (s): cpu = 00:02:35 ; elapsed = 00:01:09 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38577 ; free virtual = 176520
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: 2900de227
+
+Time (s): cpu = 00:02:36 ; elapsed = 00:01:09 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38576 ; free virtual = 176519
+
+Phase 4.3 Placer Reporting
+
+Phase 4.3.1 Print Estimated Congestion
+INFO: [Place 30-612] Post-Placement Estimated Congestion 
+ ____________________________________________________
+|           | Global Congestion | Short Congestion  |
+| Direction | Region Size       | Region Size       |
+|___________|___________________|___________________|
+|      North|                1x1|                2x2|
+|___________|___________________|___________________|
+|      South|                1x1|                2x2|
+|___________|___________________|___________________|
+|       East|                1x1|                1x1|
+|___________|___________________|___________________|
+|       West|                1x1|                1x1|
+|___________|___________________|___________________|
+
+Phase 4.3.1 Print Estimated Congestion | Checksum: 2900de227
+
+Time (s): cpu = 00:02:36 ; elapsed = 00:01:10 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38575 ; free virtual = 176519
+Phase 4.3 Placer Reporting | Checksum: 2900de227
+
+Time (s): cpu = 00:02:36 ; elapsed = 00:01:10 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38575 ; free virtual = 176519
+
+Phase 4.4 Final Placement Cleanup
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38575 ; free virtual = 176519
+
+Time (s): cpu = 00:02:36 ; elapsed = 00:01:10 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38575 ; free virtual = 176519
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 22ac86bc8
+
+Time (s): cpu = 00:02:37 ; elapsed = 00:01:11 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38575 ; free virtual = 176518
+Ending Placer Task | Checksum: 135645f7b
+
+Time (s): cpu = 00:02:37 ; elapsed = 00:01:11 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38575 ; free virtual = 176518
+INFO: [Common 17-83] Releasing license: Implementation
+180 Infos, 20 Warnings, 0 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+place_design: Time (s): cpu = 00:02:40 ; elapsed = 00:01:13 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38735 ; free virtual = 176679
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:08 ; elapsed = 00:00:03 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38502 ; free virtual = 176658
+INFO: [Common 17-1381] The checkpoint '/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.runs/impl_1/design_1_wrapper_placed.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:16 ; elapsed = 00:00:08 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38657 ; free virtual = 176649
+INFO: [runtcl-4] Executing : report_io -file design_1_wrapper_io_placed.rpt
+report_io: Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.12 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38641 ; free virtual = 176632
+INFO: [runtcl-4] Executing : report_utilization -file design_1_wrapper_utilization_placed.rpt -pb design_1_wrapper_utilization_placed.pb
+INFO: [runtcl-4] Executing : report_control_sets -verbose -file design_1_wrapper_control_sets_placed.rpt
+report_control_sets: Time (s): cpu = 00:00:00.22 ; elapsed = 00:00:00.28 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38656 ; free virtual = 176649
+Command: phys_opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a200t'
+INFO: [Vivado_Tcl 4-383] Design worst setup slack (WNS) is greater than or equal to 0.000 ns. Skipping all physical synthesis optimizations.
+INFO: [Vivado_Tcl 4-232] No setup violation found. The netlist was not modified.
+INFO: [Common 17-83] Releasing license: Implementation
+189 Infos, 20 Warnings, 0 Critical Warnings and 0 Errors encountered.
+phys_opt_design completed successfully
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:08 ; elapsed = 00:00:03 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38387 ; free virtual = 176593
+INFO: [Common 17-1381] The checkpoint '/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.runs/impl_1/design_1_wrapper_physopt.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:12 ; elapsed = 00:00:06 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38556 ; free virtual = 176598
+Command: route_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a200t'
+Running DRC as a precondition to command route_design
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+
+Starting Routing Task
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 8 CPUs
+
+Phase 1 Build RT Design
+Checksum: PlaceDB: d7d5ffd3 ConstDB: 0 ShapeSum: 5d8e5fa8 RouteDB: 0
+Post Restoration Checksum: NetGraph: 3bdb27b4 NumContArr: d272a27 Constraints: 0 Timing: 0
+Phase 1 Build RT Design | Checksum: 490251db
+
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:25 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38375 ; free virtual = 176417
+
+Phase 2 Router Initialization
+
+Phase 2.1 Fix Topology Constraints
+Phase 2.1 Fix Topology Constraints | Checksum: 490251db
+
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:25 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38324 ; free virtual = 176365
+
+Phase 2.2 Pre Route Cleanup
+Phase 2.2 Pre Route Cleanup | Checksum: 490251db
+
+Time (s): cpu = 00:00:41 ; elapsed = 00:00:25 . Memory (MB): peak = 4383.668 ; gain = 0.000 ; free physical = 38323 ; free virtual = 176366
+ Number of Nodes with overlaps = 0
+
+Phase 2.3 Update Timing
+Phase 2.3 Update Timing | Checksum: 2184580ea
+
+Time (s): cpu = 00:01:05 ; elapsed = 00:00:35 . Memory (MB): peak = 4482.992 ; gain = 99.324 ; free physical = 38270 ; free virtual = 176312
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=11.172 | TNS=0.000  | WHS=-0.197 | THS=-1284.876|
+
+
+Phase 2.4 Update Timing for Bus Skew
+
+Phase 2.4.1 Update Timing
+Phase 2.4.1 Update Timing | Checksum: 1881cc2c6
+
+Time (s): cpu = 00:01:29 ; elapsed = 00:00:41 . Memory (MB): peak = 4482.992 ; gain = 99.324 ; free physical = 38242 ; free virtual = 176284
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=11.172 | TNS=0.000  | WHS=N/A    | THS=N/A    |
+
+Phase 2.4 Update Timing for Bus Skew | Checksum: 20a3e5320
+
+Time (s): cpu = 00:01:29 ; elapsed = 00:00:41 . Memory (MB): peak = 4482.992 ; gain = 99.324 ; free physical = 38241 ; free virtual = 176284
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0.00435267 %
+  Global Horizontal Routing Utilization  = 0.000495704 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 107635
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 107627
+  Number of Partially Routed Nets     = 8
+  Number of Node Overlaps             = 5
+
+Phase 2 Router Initialization | Checksum: 23f17d052
+
+Time (s): cpu = 00:01:30 ; elapsed = 00:00:42 . Memory (MB): peak = 4482.992 ; gain = 99.324 ; free physical = 38239 ; free virtual = 176283
+
+Phase 3 Initial Routing
+
+Phase 3.1 Global Routing
+Phase 3.1 Global Routing | Checksum: 23f17d052
+
+Time (s): cpu = 00:01:30 ; elapsed = 00:00:42 . Memory (MB): peak = 4482.992 ; gain = 99.324 ; free physical = 38239 ; free virtual = 176283
+Phase 3 Initial Routing | Checksum: 1722d99e8
+
+Time (s): cpu = 00:01:55 ; elapsed = 00:00:46 . Memory (MB): peak = 4553.039 ; gain = 169.371 ; free physical = 38188 ; free virtual = 176231
+
+Phase 4 Rip-up And Reroute
+
+Phase 4.1 Global Iteration 0
+ Number of Nodes with overlaps = 5226
+ Number of Nodes with overlaps = 11
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=7.585  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+
+Phase 4.1 Global Iteration 0 | Checksum: 23e165a91
+
+Time (s): cpu = 00:02:25 ; elapsed = 00:00:58 . Memory (MB): peak = 4553.039 ; gain = 169.371 ; free physical = 38200 ; free virtual = 176243
+
+Phase 4.2 Global Iteration 1
+ Number of Nodes with overlaps = 6
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=7.585  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+
+Phase 4.2 Global Iteration 1 | Checksum: eaa1caec
+
+Time (s): cpu = 00:02:31 ; elapsed = 00:01:02 . Memory (MB): peak = 4553.039 ; gain = 169.371 ; free physical = 38207 ; free virtual = 176250
+
+Phase 4.3 Global Iteration 2
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=7.585  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+
+Phase 4.3 Global Iteration 2 | Checksum: 1b76549ea
+
+Time (s): cpu = 00:02:33 ; elapsed = 00:01:04 . Memory (MB): peak = 4553.039 ; gain = 169.371 ; free physical = 38207 ; free virtual = 176251
+Phase 4 Rip-up And Reroute | Checksum: 1b76549ea
+
+Time (s): cpu = 00:02:33 ; elapsed = 00:01:04 . Memory (MB): peak = 4553.039 ; gain = 169.371 ; free physical = 38207 ; free virtual = 176251
+
+Phase 5 Delay and Skew Optimization
+
+Phase 5.1 Delay CleanUp
+Phase 5.1 Delay CleanUp | Checksum: 1b76549ea
+
+Time (s): cpu = 00:02:33 ; elapsed = 00:01:04 . Memory (MB): peak = 4553.039 ; gain = 169.371 ; free physical = 38207 ; free virtual = 176251
+
+Phase 5.2 Clock Skew Optimization
+Phase 5.2 Clock Skew Optimization | Checksum: 1b76549ea
+
+Time (s): cpu = 00:02:33 ; elapsed = 00:01:04 . Memory (MB): peak = 4553.039 ; gain = 169.371 ; free physical = 38207 ; free virtual = 176251
+Phase 5 Delay and Skew Optimization | Checksum: 1b76549ea
+
+Time (s): cpu = 00:02:33 ; elapsed = 00:01:04 . Memory (MB): peak = 4553.039 ; gain = 169.371 ; free physical = 38212 ; free virtual = 176256
+
+Phase 6 Post Hold Fix
+
+Phase 6.1 Hold Fix Iter
+
+Phase 6.1.1 Update Timing
+Phase 6.1.1 Update Timing | Checksum: 214e43093
+
+Time (s): cpu = 00:02:40 ; elapsed = 00:01:07 . Memory (MB): peak = 4553.039 ; gain = 169.371 ; free physical = 38213 ; free virtual = 176256
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=7.585  | TNS=0.000  | WHS=0.008  | THS=0.000  |
+
+Phase 6.1 Hold Fix Iter | Checksum: 1a8c41b5b
+
+Time (s): cpu = 00:02:40 ; elapsed = 00:01:07 . Memory (MB): peak = 4553.039 ; gain = 169.371 ; free physical = 38210 ; free virtual = 176254
+Phase 6 Post Hold Fix | Checksum: 1a8c41b5b
+
+Time (s): cpu = 00:02:40 ; elapsed = 00:01:07 . Memory (MB): peak = 4553.039 ; gain = 169.371 ; free physical = 38210 ; free virtual = 176254
+
+Phase 7 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 6.77303 %
+  Global Horizontal Routing Utilization  = 7.87521 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Phase 7 Route finalize | Checksum: 1a8c41b5b
+
+Time (s): cpu = 00:02:41 ; elapsed = 00:01:07 . Memory (MB): peak = 4553.039 ; gain = 169.371 ; free physical = 38210 ; free virtual = 176254
+
+Phase 8 Verifying routed nets
+
+ Verification completed successfully
+Phase 8 Verifying routed nets | Checksum: 1a8c41b5b
+
+Time (s): cpu = 00:02:41 ; elapsed = 00:01:07 . Memory (MB): peak = 4553.039 ; gain = 169.371 ; free physical = 38208 ; free virtual = 176251
+
+Phase 9 Depositing Routes
+Phase 9 Depositing Routes | Checksum: 22bd5e170
+
+Time (s): cpu = 00:02:45 ; elapsed = 00:01:11 . Memory (MB): peak = 4569.047 ; gain = 185.379 ; free physical = 38214 ; free virtual = 176258
+
+Phase 10 Post Router Timing
+INFO: [Route 35-57] Estimated Timing Summary | WNS=7.585  | TNS=0.000  | WHS=0.008  | THS=0.000  |
+
+INFO: [Route 35-327] The final timing numbers are based on the router estimated timing analysis. For a complete and accurate timing signoff, please run report_timing_summary.
+Phase 10 Post Router Timing | Checksum: 22bd5e170
+
+Time (s): cpu = 00:02:51 ; elapsed = 00:01:12 . Memory (MB): peak = 4569.047 ; gain = 185.379 ; free physical = 38214 ; free virtual = 176257
+INFO: [Route 35-16] Router Completed Successfully
+
+Time (s): cpu = 00:02:51 ; elapsed = 00:01:12 . Memory (MB): peak = 4569.047 ; gain = 185.379 ; free physical = 38321 ; free virtual = 176364
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+206 Infos, 20 Warnings, 0 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:03:10 ; elapsed = 00:01:18 . Memory (MB): peak = 4569.047 ; gain = 185.379 ; free physical = 38321 ; free virtual = 176364
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:09 ; elapsed = 00:00:03 . Memory (MB): peak = 4569.047 ; gain = 0.000 ; free physical = 38071 ; free virtual = 176346
+INFO: [Common 17-1381] The checkpoint '/home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.runs/impl_1/design_1_wrapper_routed.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:19 ; elapsed = 00:00:10 . Memory (MB): peak = 4577.051 ; gain = 8.004 ; free physical = 38193 ; free virtual = 176292
+INFO: [runtcl-4] Executing : report_drc -file design_1_wrapper_drc_routed.rpt -pb design_1_wrapper_drc_routed.pb -rpx design_1_wrapper_drc_routed.rpx
+Command: report_drc -file design_1_wrapper_drc_routed.rpt -pb design_1_wrapper_drc_routed.pb -rpx design_1_wrapper_drc_routed.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file /home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.runs/impl_1/design_1_wrapper_drc_routed.rpt.
+report_drc completed successfully
+report_drc: Time (s): cpu = 00:00:22 ; elapsed = 00:00:07 . Memory (MB): peak = 4695.383 ; gain = 118.332 ; free physical = 38092 ; free virtual = 176191
+INFO: [runtcl-4] Executing : report_methodology -file design_1_wrapper_methodology_drc_routed.rpt -pb design_1_wrapper_methodology_drc_routed.pb -rpx design_1_wrapper_methodology_drc_routed.rpx
+Command: report_methodology -file design_1_wrapper_methodology_drc_routed.rpt -pb design_1_wrapper_methodology_drc_routed.pb -rpx design_1_wrapper_methodology_drc_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-133] Running Methodology with 8 threads
+INFO: [Vivado_Tcl 2-1520] The results of Report Methodology are in file /home/arios/Projects/OpenNAS/created_projects/project/NAS_and_OKAERTool/NAS_and_OKAERTool.runs/impl_1/design_1_wrapper_methodology_drc_routed.rpt.
+report_methodology completed successfully
+report_methodology: Time (s): cpu = 00:00:23 ; elapsed = 00:00:08 . Memory (MB): peak = 4695.383 ; gain = 0.000 ; free physical = 38097 ; free virtual = 176196
+INFO: [runtcl-4] Executing : report_power -file design_1_wrapper_power_routed.rpt -pb design_1_wrapper_power_summary_routed.pb -rpx design_1_wrapper_power_routed.rpx
+Command: report_power -file design_1_wrapper_power_routed.rpt -pb design_1_wrapper_power_summary_routed.pb -rpx design_1_wrapper_power_routed.rpx
+INFO: [Power 33-23] Power model is not available for a0/d0/dna0
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+WARNING: [Power 33-332] Found switching activity that implies high-fanout reset nets being asserted for excessive periods of time which may result in inaccurate power analysis.
+Resolution: To review and fix problems, please run Power Constraints Advisor in the GUI from Tools > Power Constraints Advisor or run report_power with the -advisory option to generate a text report.
+219 Infos, 21 Warnings, 0 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+report_power: Time (s): cpu = 00:00:32 ; elapsed = 00:00:10 . Memory (MB): peak = 4734.402 ; gain = 39.020 ; free physical = 37999 ; free virtual = 176111
+INFO: [runtcl-4] Executing : report_route_status -file design_1_wrapper_route_status.rpt -pb design_1_wrapper_route_status.pb
+INFO: [runtcl-4] Executing : report_timing_summary -max_paths 10 -report_unconstrained -file design_1_wrapper_timing_summary_routed.rpt -pb design_1_wrapper_timing_summary_routed.pb -rpx design_1_wrapper_timing_summary_routed.rpx -warn_on_violation 
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+WARNING: [Timing 38-436] There are set_bus_skew constraint(s) in this design. Please run report_bus_skew to ensure that bus skew requirements are met.
+INFO: [runtcl-4] Executing : report_incremental_reuse -file design_1_wrapper_incremental_reuse_routed.rpt
+INFO: [Vivado_Tcl 4-1062] Incremental flow is disabled. No incremental reuse Info to report.
+INFO: [runtcl-4] Executing : report_clock_utilization -file design_1_wrapper_clock_utilization_routed.rpt
+INFO: [runtcl-4] Executing : report_bus_skew -warn_on_violation -file design_1_wrapper_bus_skew_routed.rpt -pb design_1_wrapper_bus_skew_routed.pb -rpx design_1_wrapper_bus_skew_routed.rpx
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+Command: write_bitstream -force design_1_wrapper.bit
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a200t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a200t'
+Running DRC as a precondition to command write_bitstream
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 8 threads
+WARNING: [DRC CHECK-3] Report rule limit reached: REQP-1839 rule limit reached: 20 violations have been found.
+WARNING: [DRC CHECK-3] Report rule limit reached: REQP-1840 rule limit reached: 20 violations have been found.
+WARNING: [DRC IOSR-1] IOB set reset sharing: IO i2s_bclk connects to flops which have these design_1_i/OpenNas_Cascade_STER_0/inst/U_I2S_Stereo/U_i2s_interface/source_sel_0, and design_1_i/OpenNas_Parallel_STE_0/inst/U_I2S_Stereo/U_i2s_interface/source_sel_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
+WARNING: [DRC IOSR-1] IOB set reset sharing: IO i2s_d_in connects to flops which have these design_1_i/OpenNas_Cascade_STER_0/inst/U_I2S_Stereo/U_i2s_interface/source_sel_0, and design_1_i/OpenNas_Parallel_STE_0/inst/U_I2S_Stereo/U_i2s_interface/source_sel_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
+WARNING: [DRC IOSR-1] IOB set reset sharing: IO i2s_lr connects to flops which have these design_1_i/OpenNas_Cascade_STER_0/inst/U_I2S_Stereo/U_i2s_interface/source_sel_0, and design_1_i/OpenNas_Parallel_STE_0/inst/U_I2S_Stereo/U_i2s_interface/source_sel_0 set/reset signals.  For optimal IOB flop packing there should be only one set/reset signal coming into the IOB.
+WARNING: [DRC PDCN-1569] LUT equation term check: Used physical LUT pin 'A1' of cell dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_switch/temp_curid[31]_i_1 (pin dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_switch/temp_curid[31]_i_1/I1) is not included in the LUT equation: 'O5=(A2*A3)+(A2*(~A3)*(~A5))+((~A2))'. If this cell is a user instantiated LUT in the design, please remove connectivity to the pin or change the equation and/or INIT string of the LUT to prevent this issue. If the cell is inferred or IP created LUT, please regenerate the IP and/or resynthesize the design to attempt to correct the issue.
+WARNING: [DRC PDCN-1569] LUT equation term check: Used physical LUT pin 'A3' of cell dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.id_state[0]_i_1 (pin dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.id_state[0]_i_1/I0) is not included in the LUT equation: 'O6=(A6+~A6)*((A5))'. If this cell is a user instantiated LUT in the design, please remove connectivity to the pin or change the equation and/or INIT string of the LUT to prevent this issue. If the cell is inferred or IP created LUT, please regenerate the IP and/or resynthesize the design to attempt to correct the issue.
+WARNING: [DRC PDCN-1569] LUT equation term check: Used physical LUT pin 'A4' of cell dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_switch/temp_curid[31]_i_1 (pin dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_switch/temp_curid[31]_i_1/I0) is not included in the LUT equation: 'O5=(A2*A3)+(A2*(~A3)*(~A5))+((~A2))'. If this cell is a user instantiated LUT in the design, please remove connectivity to the pin or change the equation and/or INIT string of the LUT to prevent this issue. If the cell is inferred or IP created LUT, please regenerate the IP and/or resynthesize the design to attempt to correct the issue.
+WARNING: [DRC PDRC-153] Gated clock check: Net design_1_i/okt_top_0/inst/cu_inst/status_reg[3]_i_1_n_0 is a gated clock net sourced by a combinational pin design_1_i/okt_top_0/inst/cu_inst/status_reg[3]_i_1/O, cell design_1_i/okt_top_0/inst/cu_inst/status_reg[3]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+WARNING: [DRC PDRC-153] Gated clock check: Net design_1_i/okt_top_0/inst/cu_inst/status_reg[4]_i_1_n_0 is a gated clock net sourced by a combinational pin design_1_i/okt_top_0/inst/cu_inst/status_reg[4]_i_1/O, cell design_1_i/okt_top_0/inst/cu_inst/status_reg[4]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+WARNING: [DRC PDRC-153] Gated clock check: Net design_1_i/okt_top_0/inst/cu_inst/status_reg[5]_i_1_n_0 is a gated clock net sourced by a combinational pin design_1_i/okt_top_0/inst/cu_inst/status_reg[5]_i_1/O, cell design_1_i/okt_top_0/inst/cu_inst/status_reg[5]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+WARNING: [DRC PDRC-153] Gated clock check: Net design_1_i/okt_top_0/inst/cu_inst/status_reg[6]_i_1_n_0 is a gated clock net sourced by a combinational pin design_1_i/okt_top_0/inst/cu_inst/status_reg[6]_i_1/O, cell design_1_i/okt_top_0/inst/cu_inst/status_reg[6]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+WARNING: [DRC PDRC-153] Gated clock check: Net design_1_i/okt_top_0/inst/cu_inst/status_reg[7]_i_2_n_0 is a gated clock net sourced by a combinational pin design_1_i/okt_top_0/inst/cu_inst/status_reg[7]_i_2/O, cell design_1_i/okt_top_0/inst/cu_inst/status_reg[7]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+WARNING: [DRC PDRC-153] Gated clock check: Net design_1_i/okt_top_0/inst/ecu_inst/ecu_node_ack_n02_out is a gated clock net sourced by a combinational pin design_1_i/okt_top_0/inst/ecu_inst/ecu_node_ack_n_reg_i_1/O, cell design_1_i/okt_top_0/inst/ecu_inst/ecu_node_ack_n_reg_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ADDRARDADDR[10] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg_n_0_[5]) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg[5]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ADDRARDADDR[11] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg_n_0_[6]) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg[6]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ADDRARDADDR[12] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg_n_0_[7]) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg[7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ADDRARDADDR[13] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg_n_0_[8]) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg[8]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ADDRARDADDR[5] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg_n_0_[0]) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ADDRARDADDR[6] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg_n_0_[1]) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ADDRARDADDR[7] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg_n_0_[2]) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg[2]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ADDRARDADDR[8] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg_n_0_[3]) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg[3]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ADDRARDADDR[9] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg_n_0_[4]) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg[4]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ADDRBWRADDR[10] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg_n_0_[5]) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg[5]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ADDRBWRADDR[11] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg_n_0_[6]) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg[6]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ADDRBWRADDR[12] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg_n_0_[7]) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg[7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ADDRBWRADDR[13] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg_n_0_[8]) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg[8]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ADDRBWRADDR[5] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg_n_0_[0]) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ADDRBWRADDR[6] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg_n_0_[1]) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ADDRBWRADDR[7] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg_n_0_[2]) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg[2]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ADDRBWRADDR[8] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg_n_0_[3]) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg[3]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ADDRBWRADDR[9] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg_n_0_[4]) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l287f1d33aab074157010cd04cb03cd77_reg[4]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/ENBWREN (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l2fd7e1a4c1a262bf4062db5f061b7878) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l2fd7e1a4c1a262bf4062db5f061b7878_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1839] RAMB36 async control check: The RAMB36E1 design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0 has an input control pin design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/r0/WEBWE[2] (net: design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l2fd7e1a4c1a262bf4062db5f061b7878) which is driven by a register (design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/l2fd7e1a4c1a262bf4062db5f061b7878_reg) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRARDADDR[10] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_1[7]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_i_reg[7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRARDADDR[11] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_1[8]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_i_reg[8]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRARDADDR[12] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_1[9]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_i_reg[9]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRARDADDR[13] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_1[10]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_i_reg[10]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRARDADDR[3] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_1[0]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_i_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRARDADDR[4] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_1[1]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_i_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRARDADDR[5] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_1[2]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_i_reg[2]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRARDADDR[6] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_1[3]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_i_reg[3]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRARDADDR[7] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_1[4]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_i_reg[4]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRARDADDR[8] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_1[5]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_i_reg[5]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRARDADDR[9] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_1[6]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_i_reg[6]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRBWRADDR[10] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_2[7]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_o_reg[7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRBWRADDR[11] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_2[8]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_o_reg[8]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRBWRADDR[12] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_2[9]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_o_reg[9]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRBWRADDR[13] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_2[10]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_o_reg[10]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRBWRADDR[5] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_2[2]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_o_reg[2]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRBWRADDR[6] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_2[3]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_o_reg[3]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRBWRADDR[7] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_2[4]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_o_reg[4]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRBWRADDR[8] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_2[5]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_o_reg[5]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg has an input control pin design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg/ADDRBWRADDR[9] (net: design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/uut/RAM_reg_2[6]) which is driven by a register (design_1_i/OpenNas_Cascade_STER_0/inst/U_AER_Distributed_Monitor/U_AER_OUT/U_fifo/index_o_reg[6]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC RTSTAT-10] No routable loads: 27 net(s) have no routable loads. The problem bus(es) and/or net(s) are dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/TMS, dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i, dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_CTL/ctl_reg[2:0], dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD1/ctl_reg_en_2[1], dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_CTL/ctl_reg_en_2[1], design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/a0/cb0/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_fb, design_1_i/okt_top_0/inst/cu_inst/okHI/core0/core0/a0/cb0/U0/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwss.wsts/ram_afull_i, dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_capture[0], dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_drck[0], dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_runtest[0], dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.rd_rst_reg[0], dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg[2], dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.wr_rst_reg[2], dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwhf.whf/overflow, dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwhf.whf/overflow... and (the first 15 of 25 listed).
+INFO: [Vivado 12-3199] DRC finished with 0 Errors, 55 Warnings
+INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
+INFO: [Designutils 20-2272] Running write_bitstream with 8 threads.
+Loading data files...
+Loading site data...
+Loading route data...
+Processing options...
+Creating bitmap...
+Creating bitstream...
+Bitstream compression saved 29816768 bits.
+Writing bitstream ./design_1_wrapper.bit...
+INFO: [Vivado 12-1842] Bitgen Completed Successfully.
+INFO: [Common 17-83] Releasing license: Implementation
+11 Infos, 55 Warnings, 0 Critical Warnings and 0 Errors encountered.
+write_bitstream completed successfully
+write_bitstream: Time (s): cpu = 00:00:50 ; elapsed = 00:00:27 . Memory (MB): peak = 5231.562 ; gain = 426.145 ; free physical = 37895 ; free virtual = 176020
+INFO: [Common 17-206] Exiting Vivado at Wed Jul  2 11:12:53 2025...

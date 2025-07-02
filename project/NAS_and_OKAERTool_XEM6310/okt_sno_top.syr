@@ -1,0 +1,443 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.03 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.03 secs
+ 
+--> 
+Reading design: okt_sno_top.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "okt_sno_top.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "okt_sno_top"
+Output Format                      : NGC
+Target Device                      : xc6slx150t-3-fgg484
+
+---- Source Options
+Top Module Name                    : okt_sno_top
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "/home/arios/Projects/okaertool/src/test/okt_sno_pkg.vhd" into library work
+Parsing package <okt_sno_pkg>.
+Parsing package body <okt_sno_pkg>.
+Parsing VHDL file "/home/arios/Projects/okaertool/src/test/okt_sno.vhd" into library work
+Parsing entity <okt_sno>.
+Parsing architecture <rtl> of entity <okt_sno>.
+Parsing VHDL file "/home/arios/Projects/okaertool/src/top/okt_sno_top.vhd" into library work
+Parsing entity <okt_sno_top>.
+Parsing architecture <Behavioral> of entity <okt_sno_top>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <okt_sno_top> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <okt_sno> (architecture <rtl>) from library <work>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <okt_sno_top>.
+    Related source file is "/home/arios/Projects/okaertool/src/top/okt_sno_top.vhd".
+    Found 1-bit register for signal <node_ack_n_latch_1>.
+    Found 1-bit register for signal <node_ack_n_latch_0>.
+    Summary:
+	inferred   2 D-type flip-flop(s).
+Unit <okt_sno_top> synthesized.
+
+Synthesizing Unit <okt_sno>.
+    Related source file is "/home/arios/Projects/okaertool/src/test/okt_sno.vhd".
+    Found 1-bit register for signal <node_req_n>.
+    Found 8-bit register for signal <node_data>.
+    Found 8-bit register for signal <AER_generator.counter>.
+    Found 2-bit register for signal <r_okt_sno_control_state>.
+    Found finite state machine <FSM_0> for signal <r_okt_sno_control_state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 7                                              |
+    | Inputs             | 1                                              |
+    | Outputs            | 3                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | rst_n (negative)                               |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | idle                                           |
+    | Power Up State     | idle                                           |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 8-bit adder for signal <AER_generator.counter[7]_GND_7_o_mux_4_OUT> created at line 75.
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  17 D-type flip-flop(s).
+	inferred   1 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <okt_sno> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 1
+ 8-bit adder                                           : 1
+# Registers                                            : 5
+ 1-bit register                                        : 3
+ 8-bit register                                        : 2
+# Multiplexers                                         : 1
+ 8-bit 2-to-1 multiplexer                              : 1
+# FSMs                                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <okt_sno>.
+The following registers are absorbed into counter <AER_generator.counter>: 1 register on signal <AER_generator.counter>.
+Unit <okt_sno> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 1
+ 8-bit up counter                                      : 1
+# Registers                                            : 11
+ Flip-Flops                                            : 11
+# Multiplexers                                         : 1
+ 8-bit 2-to-1 multiplexer                              : 1
+# FSMs                                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <okt_sno_inst/FSM_0> on signal <r_okt_sno_control_state[1:2]> with user encoding.
+----------------------
+ State    | Encoding
+----------------------
+ idle     | 00
+ req      | 01
+ wait_ack | 10
+ ack      | 11
+----------------------
+
+Optimizing unit <okt_sno_top> ...
+
+Optimizing unit <okt_sno> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block okt_sno_top, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 21
+ Flip-Flops                                            : 21
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : okt_sno_top.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 44
+#      GND                         : 1
+#      INV                         : 2
+#      LUT1                        : 7
+#      LUT2                        : 8
+#      LUT3                        : 2
+#      LUT4                        : 8
+#      MUXCY                       : 7
+#      VCC                         : 1
+#      XORCY                       : 8
+# FlipFlops/Latches                : 21
+#      FDC                         : 2
+#      FDCE                        : 16
+#      FDP                         : 2
+#      FDPE                        : 1
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 11
+#      IBUF                        : 2
+#      OBUF                        : 9
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx150tfgg484-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:              21  out of  184304     0%  
+ Number of Slice LUTs:                   27  out of  92152     0%  
+    Number used as Logic:                27  out of  92152     0%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:     30
+   Number with an unused Flip Flop:       9  out of     30    30%  
+   Number with an unused LUT:             3  out of     30    10%  
+   Number of fully used LUT-FF pairs:    18  out of     30    60%  
+   Number of unique control sets:         2
+
+IO Utilization: 
+ Number of IOs:                          12
+ Number of bonded IOBs:                  12  out of    296     4%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clock                              | BUFGP                  | 21    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 2.656ns (Maximum Frequency: 376.492MHz)
+   Minimum input arrival time before clock: 3.550ns
+   Maximum output required time after clock: 3.597ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clock'
+  Clock period: 2.656ns (frequency: 376.492MHz)
+  Total number of paths / destination ports: 101 / 37
+-------------------------------------------------------------------------
+Delay:               2.656ns (Levels of Logic = 10)
+  Source:            okt_sno_inst/AER_generator.counter_0 (FF)
+  Destination:       okt_sno_inst/AER_generator.counter_7 (FF)
+  Source Clock:      clock rising
+  Destination Clock: clock rising
+
+  Data Path: okt_sno_inst/AER_generator.counter_0 to okt_sno_inst/AER_generator.counter_7
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             3   0.447   0.650  okt_sno_inst/AER_generator.counter_0 (okt_sno_inst/AER_generator.counter_0)
+     INV:I->O              1   0.206   0.000  okt_sno_inst/Mcount_AER_generator.counter_lut<0>_INV_0 (okt_sno_inst/Mcount_AER_generator.counter_lut<0>)
+     MUXCY:S->O            1   0.172   0.000  okt_sno_inst/Mcount_AER_generator.counter_cy<0> (okt_sno_inst/Mcount_AER_generator.counter_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  okt_sno_inst/Mcount_AER_generator.counter_cy<1> (okt_sno_inst/Mcount_AER_generator.counter_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  okt_sno_inst/Mcount_AER_generator.counter_cy<2> (okt_sno_inst/Mcount_AER_generator.counter_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  okt_sno_inst/Mcount_AER_generator.counter_cy<3> (okt_sno_inst/Mcount_AER_generator.counter_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  okt_sno_inst/Mcount_AER_generator.counter_cy<4> (okt_sno_inst/Mcount_AER_generator.counter_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  okt_sno_inst/Mcount_AER_generator.counter_cy<5> (okt_sno_inst/Mcount_AER_generator.counter_cy<5>)
+     MUXCY:CI->O           0   0.019   0.000  okt_sno_inst/Mcount_AER_generator.counter_cy<6> (okt_sno_inst/Mcount_AER_generator.counter_cy<6>)
+     XORCY:CI->O           1   0.180   0.580  okt_sno_inst/Mcount_AER_generator.counter_xor<7> (okt_sno_inst/Result<7>)
+     LUT4:I3->O            1   0.205   0.000  okt_sno_inst/AER_generator.counter_7_dpot (okt_sno_inst/AER_generator.counter_7_dpot)
+     FDCE:D                    0.102          okt_sno_inst/AER_generator.counter_7
+    ----------------------------------------
+    Total                      2.656ns (1.426ns logic, 1.230ns route)
+                                       (53.7% logic, 46.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clock'
+  Total number of paths / destination ports: 22 / 22
+-------------------------------------------------------------------------
+Offset:              3.550ns (Levels of Logic = 2)
+  Source:            rst_ext (PAD)
+  Destination:       node_ack_n_latch_0 (FF)
+  Destination Clock: clock rising
+
+  Data Path: rst_ext to node_ack_n_latch_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   1.222   0.579  rst_ext_IBUF (rst_ext_IBUF)
+     INV:I->O             21   0.206   1.113  rst_ext_inv1_INV_0 (okt_sno_inst/rst_n_inv)
+     FDPE:PRE                  0.430          okt_sno_inst/node_req_n
+    ----------------------------------------
+    Total                      3.550ns (1.858ns logic, 1.691ns route)
+                                       (52.3% logic, 47.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clock'
+  Total number of paths / destination ports: 9 / 9
+-------------------------------------------------------------------------
+Offset:              3.597ns (Levels of Logic = 1)
+  Source:            okt_sno_inst/node_data_7 (FF)
+  Destination:       AER_DATA_OUT<7> (PAD)
+  Source Clock:      clock rising
+
+  Data Path: okt_sno_inst/node_data_7 to AER_DATA_OUT<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDCE:C->Q             1   0.447   0.579  okt_sno_inst/node_data_7 (okt_sno_inst/node_data_7)
+     OBUF:I->O                 2.571          AER_DATA_OUT_7_OBUF (AER_DATA_OUT<7>)
+    ----------------------------------------
+    Total                      3.597ns (3.018ns logic, 0.579ns route)
+                                       (83.9% logic, 16.1% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clock
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clock          |    2.656|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 2.00 secs
+Total CPU time to Xst completion: 1.99 secs
+ 
+--> 
+
+
+Total memory usage is 383196 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

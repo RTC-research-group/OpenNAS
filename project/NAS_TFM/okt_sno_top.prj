@@ -1,0 +1,3 @@
+vhdl work "../../../../okaertool/src/test/okt_sno_pkg.vhd"
+vhdl work "../../../../okaertool/src/test/okt_sno.vhd"
+vhdl work "../../../../okaertool/src/top/okt_sno_top.vhd"

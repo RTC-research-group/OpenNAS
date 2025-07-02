@@ -1,0 +1,506 @@
+Release 14.7 par P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+us::  Wed Mar 19 10:43:46 2025
+
+par -w -intstyle ise -ol high -mt off OpenNas_Cascade_STEREO_64ch_map.ncd
+OpenNas_Cascade_STEREO_64ch.ncd OpenNas_Cascade_STEREO_64ch.pcf 
+
+
+Constraints file: OpenNas_Cascade_STEREO_64ch.pcf.
+Loading device for application Rf_Device from file '6slx150t.nph' in environment /opt/Xilinx/14.7/ISE_DS/ISE/.
+   "OpenNas_Cascade_STEREO_64ch" is an NCD, version 3.2, device xc6slx150t, package fgg484, speed -3
+
+Initializing temperature to 85.000 Celsius. (default - Range: 0.000 to 85.000 Celsius)
+Initializing voltage to 1.140 Volts. (default - Range: 1.140 to 1.260 Volts)
+
+INFO:Par:282 - No user timing constraints were detected or you have set the option to ignore timing constraints ("par
+   -x"). Place and Route will run in "Performance Evaluation Mode" to automatically improve the performance of all
+   internal clocks in this design. Because there are not defined timing requirements, a timing score will not be
+   reported in the PAR report in this mode. The PAR timing summary will list the performance achieved for each clock.
+   Note: For the fastest runtime, set the effort level to "std".  For best performance, set the effort level to "high".
+
+Device speed data version:  "PRODUCTION 1.23 2013-10-13".
+
+
+
+Device Utilization Summary:
+
+Slice Logic Utilization:
+  Number of Slice Registers:                11,581 out of 184,304    6%
+    Number used as Flip Flops:              11,581
+    Number used as Latches:                      0
+    Number used as Latch-thrus:                  0
+    Number used as AND/OR logics:                0
+  Number of Slice LUTs:                     22,202 out of  92,152   24%
+    Number used as logic:                   20,908 out of  92,152   22%
+      Number using O6 output only:           9,681
+      Number using O5 output only:           4,069
+      Number using O5 and O6:                7,158
+      Number used as ROM:                        0
+    Number used as Memory:                     704 out of  21,680    3%
+      Number used as Dual Port RAM:            704
+        Number using O6 output only:           704
+        Number using O5 output only:             0
+        Number using O5 and O6:                  0
+      Number used as Single Port RAM:            0
+      Number used as Shift Register:             0
+    Number used exclusively as route-thrus:    590
+      Number with same-slice register load:      4
+      Number with same-slice carry load:       586
+      Number with other load:                    0
+
+Slice Logic Distribution:
+  Number of occupied Slices:                 7,467 out of  23,038   32%
+  Number of MUXCYs used:                    15,988 out of  46,076   34%
+  Number of LUT Flip Flop pairs used:       22,839
+    Number with an unused Flip Flop:        11,473 out of  22,839   50%
+    Number with an unused LUT:                 637 out of  22,839    2%
+    Number of fully used LUT-FF pairs:      10,729 out of  22,839   46%
+    Number of slice register sites lost
+      to control set restrictions:               0 out of 184,304    0%
+
+  A LUT Flip Flop pair for this architecture represents one LUT paired with
+  one Flip Flop within a slice.  A control set is a unique combination of
+  clock, reset, set, and enable signals for a registered element.
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+
+IO Utilization:
+  Number of bonded IOBs:                        23 out of     296    7%
+
+Specific Feature Utilization:
+  Number of RAMB16BWERs:                         0 out of     268    0%
+  Number of RAMB8BWERs:                          0 out of     536    0%
+  Number of BUFIO2/BUFIO2_2CLKs:                 0 out of      32    0%
+  Number of BUFIO2FB/BUFIO2FB_2CLKs:             0 out of      32    0%
+  Number of BUFG/BUFGMUXs:                       1 out of      16    6%
+    Number used as BUFGs:                        1
+    Number used as BUFGMUX:                      0
+  Number of DCM/DCM_CLKGENs:                     0 out of      12    0%
+  Number of ILOGIC2/ISERDES2s:                   0 out of     586    0%
+  Number of IODELAY2/IODRP2/IODRP2_MCBs:         0 out of     586    0%
+  Number of OLOGIC2/OSERDES2s:                   0 out of     586    0%
+  Number of BSCANs:                              0 out of       4    0%
+  Number of BUFHs:                               0 out of     384    0%
+  Number of BUFPLLs:                             0 out of       8    0%
+  Number of BUFPLL_MCBs:                         0 out of       4    0%
+  Number of DSP48A1s:                            0 out of     180    0%
+  Number of GTPA1_DUALs:                         0 out of       2    0%
+  Number of ICAPs:                               0 out of       1    0%
+  Number of MCBs:                                0 out of       4    0%
+  Number of PCIE_A1s:                            0 out of       1    0%
+  Number of PCILOGICSEs:                         0 out of       2    0%
+  Number of PLL_ADVs:                            0 out of       6    0%
+  Number of PMVs:                                0 out of       1    0%
+  Number of STARTUPs:                            0 out of       1    0%
+  Number of SUSPEND_SYNCs:                       0 out of       1    0%
+
+
+Overall effort level (-ol):   High 
+Router effort level (-rl):    High 
+
+Starting initial Timing Analysis.  REAL time: 8 secs 
+Finished initial Timing Analysis.  REAL time: 8 secs 
+
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM33_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM34_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM45_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM41_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM65_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM78_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM1_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM10_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM3_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM36_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM35_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM43_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM80_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM75_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM73_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM79_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM144_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM140_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM142_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM137_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM131_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM130_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM69_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM72_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM71_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM70_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM136_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM135_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM12_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM13_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM11_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM2_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM4_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM9_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM42_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM74_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM67_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM66_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM77_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM141_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM143_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM138_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM133_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM134_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM14_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM15_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM16_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM46_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM44_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM76_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM139_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM132_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM129_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM47_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM48_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM68_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM37_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM18_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM29_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM81_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM145_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM8_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM7_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM6_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM5_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM38_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM39_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM40_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM17_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM20_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM94_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM148_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM147_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM146_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM28_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM27_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM30_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM82_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM152_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM25_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM32_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM84_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM93_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM92_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM160_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM151_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM150_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM149_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM19_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM83_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM89_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM156_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM155_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM153_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM154_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM88_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM85_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM31_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM58_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM90_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM96_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM159_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM86_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM26_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM91_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM95_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM158_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM87_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM56_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM49_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM50_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM52_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM60_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM61_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM62_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM157_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM23_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM24_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM54_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM55_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM53_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM51_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM59_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM63_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM64_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_3/U_AER_FIFO/uut/Mram_RAM5_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_0/U_AER_FIFO/uut/Mram_RAM7_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_1/U_AER_FIFO/uut/Mram_RAM7_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_2/U_AER_FIFO/uut/Mram_RAM8_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_0/U_AER_FIFO/uut/Mram_RAM5_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_0/U_AER_FIFO/uut/Mram_RAM6_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_0/U_AER_FIFO/uut/Mram_RAM8_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM57_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_1/U_AER_FIFO/uut/Mram_RAM6_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_1/U_AER_FIFO/uut/Mram_RAM8_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_1/U_AER_FIFO/uut/Mram_RAM5_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_3/U_AER_FIFO/uut/Mram_RAM6_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_3/U_AER_FIFO/uut/Mram_RAM7_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_3/U_AER_FIFO/uut/Mram_RAM8_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_3/U_AER_FIFO/uut/Mram_RAM3_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM22_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_OUT/U_fifo/uut/Mram_RAM21_RAMD_O has no load.  PAR will not attempt to route
+   this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_2/U_AER_FIFO/uut/Mram_RAM7_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_2/U_AER_FIFO/uut/Mram_RAM4_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_0/U_AER_FIFO/uut/Mram_RAM3_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_0/U_AER_FIFO/uut/Mram_RAM1_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_0/U_AER_FIFO/uut/Mram_RAM4_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_3/U_AER_FIFO/uut/Mram_RAM4_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_2/U_AER_FIFO/uut/Mram_RAM2_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_2/U_AER_FIFO/uut/Mram_RAM3_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_2/U_AER_FIFO/uut/Mram_RAM1_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_0/U_AER_FIFO/uut/Mram_RAM2_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_1/U_AER_FIFO/uut/Mram_RAM2_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_1/U_AER_FIFO/uut/Mram_RAM1_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_3/U_AER_FIFO/uut/Mram_RAM2_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_3/U_AER_FIFO/uut/Mram_RAM1_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_2/U_AER_FIFO/uut/Mram_RAM5_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_1/U_AER_FIFO/uut/Mram_RAM4_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_1/U_AER_FIFO/uut/Mram_RAM3_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+WARNING:Par:288 - The signal U_AER_DISTRIBUTED_MONITOR/U_AER_DISTRIBUTED_MONITOR_MODULE_2/U_AER_FIFO/uut/Mram_RAM6_RAMD_O has no load.  PAR
+   will not attempt to route this signal.
+Starting Router
+
+
+Phase  1  : 107433 unrouted;      REAL time: 9 secs 
+
+Phase  2  : 91030 unrouted;      REAL time: 11 secs 
+
+Phase  3  : 29281 unrouted;      REAL time: 35 secs 
+
+Phase  4  : 29297 unrouted; (Par is working to improve performance)     REAL time: 40 secs 
+
+Updating file: OpenNas_Cascade_STEREO_64ch.ncd with current fully routed design.
+
+Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 56 secs 
+
+Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 56 secs 
+
+Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 56 secs 
+
+Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 56 secs 
+
+Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 56 secs 
+
+Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 58 secs 
+Total REAL time to Router completion: 58 secs 
+Total CPU time to Router completion: 1 mins 1 secs 
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Generating "PAR" statistics.
+INFO:Par:459 - The Clock Report is not displayed in the non timing-driven mode.
+Timing Score: 0 (Setup: 0, Hold: 0)
+
+Asterisk (*) preceding a constraint indicates it was not met.
+   This may be due to a setup or hold violation.
+
+----------------------------------------------------------------------------------------------------------
+  Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
+                                            |             |    Slack   | Achievable | Errors |    Score   
+----------------------------------------------------------------------------------------------------------
+  Autotimespec constraint for clock net clo | SETUP       |         N/A|    11.371ns|     N/A|           0
+  ck_BUFGP                                  | HOLD        |     0.291ns|            |       0|           0
+----------------------------------------------------------------------------------------------------------
+
+
+All constraints were met.
+INFO:Timing:2761 - N/A entries in the Constraints List may indicate that the 
+   constraint is not analyzed due to the following: No paths covered by this 
+   constraint; Other constraints intersect with this constraint; or This 
+   constraint was disabled by a Path Tracing Control. Please run the Timespec 
+   Interaction Report (TSI) via command line (trce tsi) or Timing Analyzer GUI.
+
+
+Generating Pad Report.
+
+All signals are completely routed.
+
+WARNING:Par:283 - There are 160 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
+
+Total REAL time to PAR completion: 1 mins 
+Total CPU time to PAR completion: 1 mins 2 secs 
+
+Peak Memory Usage:  1300 MB
+
+Placer: Placement generated during map.
+Routing: Completed - No errors found.
+
+Number of error messages: 0
+Number of warning messages: 162
+Number of info messages: 2
+
+Writing design to file OpenNas_Cascade_STEREO_64ch.ncd
+
+
+
+PAR done!

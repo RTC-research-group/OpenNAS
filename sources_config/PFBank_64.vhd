@@ -1,0 +1,102 @@
+--///////////////////////////////////////////////////////////////////////////////
+--//                                                                           //
+--//    Copyright © 2016  Angel Francisco Jimenez-Fernandez                    //
+--//                                                                           //
+--//    This file is part of OpenNAS.                                          //
+--//                                                                           //
+--//    OpenNAS is free software: you can redistribute it and/or modify        //
+--//    it under the terms of the GNU General Public License as published by   //
+--//    the Free Software Foundation, either version 3 of the License, or      //
+--//    (at your option) any later version.                                    //
+--//                                                                           //
+--//    OpenNAS is distributed in the hope that it will be useful,             //
+--//    but WITHOUT ANY WARRANTY; without even the implied warranty of         //
+--//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the            //
+--//    GNU General Public License for more details.                           //
+--//                                                                           //
+--//    You should have received a copy of the GNU General Public License      //
+--//    along with OpenNAS. If not, see <http://www.gnu.org/licenses/>.        //
+--//                                                                           //
+--///////////////////////////////////////////////////////////////////////////////
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use work.OpenNas_top_pkg.all;
+use ieee.numeric_std.all;
+
+entity PFBank_64CH is
+    generic(
+        CONFIG_ADDRESS : integer := 16#0000#;
+        CONFIG_OFFSET  : integer := 259 -- Don't change this value
+    );
+    Port(
+        clock       : in  std_logic;
+        rst_n       : in  std_logic;
+        --Config Bus
+        config_data : in  std_logic_vector(CONFIG_BUS_BIT_WIDTH - 1 downto 0);
+        config_addr : in  std_logic_vector(CONFIG_BUS_BIT_WIDTH - 1 downto 0);
+        config_wren : in  std_logic;
+        --Output
+        spikes_in   : in  std_logic_vector(SPIKE_BUS_BIT_WIDTH - 1 downto 0);
+        spikes_out  : out std_logic_vector(SPIKE_OUT_FILTER_BUS_BIT_WIDTH - 1 downto 0)
+    );
+end PFBank_64CH;
+
+architecture PFBank_arq of PFBank_64CH is
+
+    signal lpf_spikes : lpf_bus;
+    type register_bank is array (0 to CONFIG_OFFSET) of std_logic_vector(CONFIG_BUS_BIT_WIDTH - 1 downto 0);
+    signal config_mem : register_bank;
+
+    -- -- DEBUG
+	-- attribute MARK_DEBUG : string;
+	-- attribute MARK_DEBUG of lpf_spikes, config_mem : signal is "TRUE";
+
+begin
+
+    U_Config_registers : process(clock, rst_n)
+    begin
+        if (rst_n = '0') then           -- In reset mode the parameter are zeros
+            for c_idx in 0 to (CONFIG_OFFSET) loop
+                config_mem(c_idx) <= std_logic_vector(to_unsigned(PARALLEL_FILTER_DEFAULT_parameter(c_idx), CONFIG_BUS_BIT_WIDTH));
+            end loop;
+
+        elsif rising_edge(clock) then
+            if config_wren = '1' then
+                for c_idx in 0 to CONFIG_OFFSET loop
+                    if config_addr = std_logic_vector(to_unsigned(CONFIG_ADDRESS + c_idx, CONFIG_BUS_BIT_WIDTH)) then
+                        config_mem(c_idx) <= config_data;
+                    end if;
+                end loop;
+            end if;
+        end if;
+    end process;
+
+    BPF_gen : for f_idx in 0 to NUM_CHANNELS-1 generate
+        U_BPF : entity work.spikes_BPF_HQ
+            generic map(
+                GL  => PARALLEL_GL_parameter(f_idx),
+                SAT => PARALLEL_SAT_parameter(f_idx)
+            )
+            port map(
+                clk            => clock,
+                rst_n          => rst_n,
+                freq_div       => config_mem(f_idx * 4 + 0)(7 downto 0),
+                spikes_div_fb  => config_mem(f_idx * 4 + 1),
+                spikes_div_out => config_mem(f_idx * 4 + 2),
+                spikes_div     => config_mem(f_idx * 4 + 3),
+                spike_in_p     => spikes_in(1),
+                spike_in_n     => spikes_in(0),
+                spike_out_p    => lpf_spikes(f_idx)(1),
+                spike_out_n    => lpf_spikes(f_idx)(0)
+            );
+    end generate BPF_gen;
+
+    OUT_spikes : for c_idx in 0 to NUM_CHANNELS-1 generate
+        spikes_out(c_idx * 2 + 1) <= lpf_spikes(c_idx)(1);
+        spikes_out(c_idx * 2)     <= lpf_spikes(c_idx)(0);
+    end generate OUT_spikes;    
+
+end PFBank_arq;

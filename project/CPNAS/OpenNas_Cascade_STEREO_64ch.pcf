@@ -1,0 +1,24 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Mon Mar 24 10:42:08 2025
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "clock" LOCATE = SITE "AB13" LEVEL 1;
+COMP "AER_DATA_OUT<0>" LOCATE = SITE "M2" LEVEL 1;
+COMP "AER_DATA_OUT<1>" LOCATE = SITE "K1" LEVEL 1;
+COMP "AER_DATA_OUT<2>" LOCATE = SITE "J1" LEVEL 1;
+COMP "AER_DATA_OUT<3>" LOCATE = SITE "H2" LEVEL 1;
+COMP "AER_DATA_OUT<4>" LOCATE = SITE "F1" LEVEL 1;
+COMP "AER_DATA_OUT<5>" LOCATE = SITE "E1" LEVEL 1;
+COMP "AER_DATA_OUT<6>" LOCATE = SITE "D2" LEVEL 1;
+COMP "AER_DATA_OUT<7>" LOCATE = SITE "B1" LEVEL 1;
+COMP "i2s_lr" LOCATE = SITE "B20" LEVEL 1;
+COMP "AER_ACK" LOCATE = SITE "U3" LEVEL 1;
+COMP "AER_REQ" LOCATE = SITE "N3" LEVEL 1;
+COMP "rst_ext" LOCATE = SITE "A20" LEVEL 1;
+PIN rst_ext_pin<0> = BEL "rst_ext" PINNAME PAD;
+PIN "rst_ext_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
+COMP "i2s_d_in" LOCATE = SITE "F17" LEVEL 1;
+COMP "i2s_bclk" LOCATE = SITE "C19" LEVEL 1;
+SCHEMATIC END;
+

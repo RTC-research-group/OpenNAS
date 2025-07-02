@@ -1,0 +1,7 @@
+xst -intstyle ise -ifn "/home/arios/Projects/OpenNAS/created_projects/project/NAS_TFM/okt_sno_top.xst" -ofn "/home/arios/Projects/OpenNAS/created_projects/project/NAS_TFM/okt_sno_top.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc /home/arios/Projects/OpenNAS/created_projects/constraints/Node_constraints.ucf -p xc6slx150t-fgg484-3 okt_sno_top.ngc okt_sno_top.ngd  
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc /home/arios/Projects/OpenNAS/created_projects/constraints/Node_constraints.ucf -p xc6slx150t-fgg484-3 okt_sno_top.ngc okt_sno_top.ngd  
+map -intstyle ise -p xc6slx150t-fgg484-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o okt_sno_top_map.ncd okt_sno_top.ngd okt_sno_top.pcf 
+par -w -intstyle ise -ol high -mt off okt_sno_top_map.ncd okt_sno_top.ncd okt_sno_top.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml okt_sno_top.twx okt_sno_top.ncd -o okt_sno_top.twr okt_sno_top.pcf 
+bitgen -intstyle ise -f okt_sno_top.ut okt_sno_top.ncd 

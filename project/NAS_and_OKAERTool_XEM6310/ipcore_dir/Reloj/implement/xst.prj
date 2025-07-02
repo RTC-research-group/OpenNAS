@@ -1,0 +1,2 @@
+vhdl work ../../Reloj.vhd
+vhdl work ../example_design/Reloj_exdes.vhd
