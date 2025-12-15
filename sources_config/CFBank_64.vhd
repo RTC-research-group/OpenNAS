@@ -50,9 +50,9 @@ architecture CFBank_arq of CFBank_2or_64CH is
 	type register_bank is array (0 to CONFIG_OFFSET) of std_logic_vector(CONFIG_BUS_BIT_WIDTH - 1 downto 0);
 	signal config_mem : register_bank;
 
-	-- -- DEBUG
-	-- attribute MARK_DEBUG : string;
-	-- attribute MARK_DEBUG of lpf_spikes, config_mem : signal is "TRUE";
+	-- Debug
+	attribute MARK_DEBUG : string; 
+	attribute MARK_DEBUG of config_mem : signal is "TRUE";
 
 begin
 
@@ -60,7 +60,8 @@ begin
 	begin
 		if (rst_n = '0') then           -- In reset mode the parameter are zeros
 			for c_idx in 0 to (CONFIG_OFFSET) loop
-				config_mem(c_idx) <= std_logic_vector(to_unsigned(CASCADE_FILTER_DEFAULT_parameter(c_idx), CONFIG_BUS_BIT_WIDTH));
+				-- config_mem(c_idx) <= std_logic_vector(to_unsigned(CASCADE_FILTER_DEFAULT_parameter(c_idx), CONFIG_BUS_BIT_WIDTH));
+				config_mem(c_idx) <= (others => '0');
 			end loop;
 
 		elsif rising_edge(clock) then

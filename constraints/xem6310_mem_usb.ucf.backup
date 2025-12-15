@@ -1,0 +1,329 @@
+############################################################################
+# XEM6310 - Xilinx constraints file
+#
+# Pin mappings for the XEM6310.  Use this as a template and comment out 
+# the pins that are not used in your design.  (By default, map will fail
+# if this file contains constraints for signals not in your design).
+#
+# Copyright (c) 2004-2010 Opal Kelly Incorporated
+# $Rev: 10 $ $Date: 2014-05-03 14:30:14 -0700 (Sat, 03 May 2014) $
+############################################################################
+CONFIG VCCAUX = "3.3"; //Required for Spartan-6
+
+NET "okUH[0]" TNM_NET = "okHostClk";
+TIMESPEC "TS_okHostClk" = PERIOD "okHostClk" 9.92 ns HIGH 50%;
+
+NET "okUHU[*]" TNM = "okHostINOUT_grp";
+TIMEGRP "okHostINOUT_grp" OFFSET = IN 2 ns VALID 4 ns BEFORE "okUH[0]" RISING;
+TIMEGRP "okHostINOUT_grp" OFFSET = OUT 8 ns AFTER "okUH[0]" RISING;
+
+NET "okHU[2]" TNM = "okHostOUT_grp";
+NET "okHU[0]" TNM = "okHostOUT_grp";
+NET "okHU[1]" TNM = "okHostOUT_grp";
+TIMEGRP "okHostOUT_grp" OFFSET = OUT 8 ns AFTER "okUH[0]" RISING;
+
+NET "okUH[4]"   TNM = "okHostIN_grp";
+NET "okUH[3]"   TNM = "okHostIN_grp";
+NET "okUH[2]"   TNM = "okHostIN_grp";
+NET "okUH[1]"   TNM = "okHostIN_grp";
+TIMEGRP "okHostIN_grp" OFFSET = IN 2 ns VALID 2 ns BEFORE "okUH[0]" RISING;
+
+#############################################################################
+### System Clocks                                                        
+#############################################################################
+#NET "sys_clkp"      LOC=Y11   | IOSTANDARD=LVDS_25;
+#NET "sys_clkn"      LOC=AB11  | IOSTANDARD=LVDS_25;
+#
+#NET "sys_clkp" TNM_NET = "okSysClk";
+#TIMESPEC "TS_okSysClk" = PERIOD "okSysClk" 10 ns HIGH 50%;
+
+############################################################################
+## User Reset                                                        
+############################################################################
+#NET "rst"         LOC="AB8"    | IOSTANDARD="LVCMOS18" | SLEW="FAST" | PULLUP;
+
+############################################################################
+## FrontPanel Host Interface
+############################################################################
+NET "okHU[0]"       LOC="AA8"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okHU[1]"       LOC="U10"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okHU[2]"       LOC="AB5"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+
+NET "okUH[0]"        LOC="Y12"    | IOSTANDARD="LVCMOS18";
+NET "okUH[1]"        LOC="AA4"    | IOSTANDARD="LVCMOS18";
+NET "okUH[2]"        LOC="AB3"    | IOSTANDARD="LVCMOS18";
+NET "okUH[3]"        LOC="Y6"     | IOSTANDARD="LVCMOS18";
+NET "okUH[4]"        LOC="AB21"   | IOSTANDARD="LVCMOS18";
+
+NET "okUHU<0>"       LOC="AB12"   | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<1>"       LOC="AA12"   | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<2>"       LOC="Y13"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<3>"       LOC="AB18"   | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<4>"       LOC="AA18"   | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<5>"       LOC="V15"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<6>"       LOC="AB2"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<7>"       LOC="AA2"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<8>"       LOC="Y7"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<9>"       LOC="Y4"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<10>"      LOC="W4"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<11>"      LOC="AB6"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<12>"      LOC="AA6"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<13>"      LOC="U13"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<14>"      LOC="U14"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<15>"      LOC="AA20"   | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<16>"      LOC="T16"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<17>"      LOC="AA10"   | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<18>"      LOC="U16"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<19>"      LOC="Y15"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<20>"      LOC="R15"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<21>"      LOC="U17"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<22>"      LOC="AA14"   | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<23>"      LOC="T15"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<24>"      LOC="T10"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<25>"      LOC="Y17"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<26>"      LOC="AA16"   | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<27>"      LOC="R16"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<28>"      LOC="V9"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<29>"      LOC="AB15"   | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<30>"      LOC="Y5"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<31>"      LOC="U8"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+
+NET "okAA"           LOC="W11"    | IOSTANDARD="LVCMOS18";
+
+
+############################################################################
+## Peripherals
+############################################################################
+
+# LEDs ################################################################
+NET "leds[0]"     LOC="V19"    | IOSTANDARD=LVCMOS18;
+NET "leds[1]"     LOC="V18"    | IOSTANDARD=LVCMOS18;
+NET "leds[2]"     LOC="Y19"    | IOSTANDARD=LVCMOS18;
+NET "leds[3]"     LOC="AB14"   | IOSTANDARD=LVCMOS18;
+NET "leds[4]"     LOC="AB19"   | IOSTANDARD=LVCMOS18;
+NET "leds[5]"     LOC="AB17"   | IOSTANDARD=LVCMOS18;
+NET "leds[6]"     LOC="AB16"   | IOSTANDARD=LVCMOS18;
+NET "leds[7]"     LOC="AB10"   | IOSTANDARD=LVCMOS18;
+
+# PDM & I2C ################################################################
+#NET "i2s_bclk" LOC = A18 | IOSTANDARD = LVCMOS33;
+#NET "i2s_d_in" LOC = C11 | IOSTANDARD = LVCMOS33;
+#NET "i2s_lr" LOC = A17 | IOSTANDARD = LVCMOS33;
+#NET "source_sel" LOC = T19 | IOSTANDARD = LVCMOS33;
+#NET "pdm_clk_left" LOC = D6 | IOSTANDARD = LVCMOS33;
+#NET "pdm_dat_left" LOC = B10 | IOSTANDARD = LVCMOS33;
+#NET "pdm_clk_right" LOC = D7 | IOSTANDARD = LVCMOS33;
+#NET "pdm_dat_right" LOC = L17 | IOSTANDARD = LVCMOS33;
+
+    
+
+
+## DRAM ################################################################     
+#NET  "MCB3_DRAM_A[0]"       LOC = "H2" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_A[10]"      LOC = "G4" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_A[11]"      LOC = "C1" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_A[12]"      LOC = "D1" | IOSTANDARD = SSTL18_II;
+##NET  "MCB3_DRAM_A[13]"      LOC = "G6" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_A[1]"       LOC = "H1" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_A[2]"       LOC = "H5" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_A[3]"       LOC = "K6" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_A[4]"       LOC = "F3" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_A[5]"       LOC = "K3" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_A[6]"       LOC = "J4" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_A[7]"       LOC = "H6" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_A[8]"       LOC = "E3" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_A[9]"       LOC = "E1" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_BA[0]"      LOC = "G3" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_BA[1]"      LOC = "G1" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_BA[2]"      LOC = "F1" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_CAS_N"      LOC = "K4" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_CK"         LOC = "H4" | IOSTANDARD = DIFF_SSTL18_II;
+#NET  "MCB3_DRAM_CK_N"       LOC = "H3" | IOSTANDARD = DIFF_SSTL18_II;
+#NET  "MCB3_DRAM_CKE"        LOC = "D2" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_DM"         LOC = "L4" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_DQ[0]"      LOC = "N3" | IOSTANDARD = SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_DQ[10]"     LOC = "R3" | IOSTANDARD = SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_DQ[11]"     LOC = "R1" | IOSTANDARD = SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_DQ[12]"     LOC = "U3" | IOSTANDARD = SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_DQ[13]"     LOC = "U1" | IOSTANDARD = SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_DQ[14]"     LOC = "V2" | IOSTANDARD = SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_DQ[15]"     LOC = "V1" | IOSTANDARD = SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_DQ[1]"      LOC = "N1" | IOSTANDARD = SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_DQ[2]"      LOC = "M2" | IOSTANDARD = SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_DQ[3]"      LOC = "M1" | IOSTANDARD = SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_DQ[4]"      LOC = "J3" | IOSTANDARD = SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_DQ[5]"      LOC = "J1" | IOSTANDARD = SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_DQ[6]"      LOC = "K2" | IOSTANDARD = SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_DQ[7]"      LOC = "K1" | IOSTANDARD = SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_DQ[8]"      LOC = "P2" | IOSTANDARD = SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_DQ[9]"      LOC = "P1" | IOSTANDARD = SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_DQS"        LOC = "L3" | IOSTANDARD = DIFF_SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_DQS_N"      LOC = "L1" | IOSTANDARD = DIFF_SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_ODT"        LOC = "J6" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_RAS_N"      LOC = "K5" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_UDM"        LOC = "M3" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_UDQS"       LOC = "T2" | IOSTANDARD = DIFF_SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_UDQS_N"     LOC = "T1" | IOSTANDARD = DIFF_SSTL18_II | IN_TERM = NONE;
+#NET  "MCB3_DRAM_WE_N"       LOC = "F2" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_DRAM_CS_N"       LOC = "C3" | IOSTANDARD = LVCMOS18;
+#NET  "MCB3_RZQ"        LOC = "K7" | IOSTANDARD = SSTL18_II;
+#NET  "MCB3_ZIO"        LOC = "Y2" | IOSTANDARD = SSTL18_II;
+
+############################################################################
+# Extended MCB performance mode requires a different Vccint specification to
+# achieve higher maximum frequencies for DDR2 and DDR3.Consult the Spartan-6
+#datasheet (DS162) table 2 and 24 for more information 
+############################################################################
+CONFIG MCB_PERFORMANCE= STANDARD;
+
+###################################################################################
+## Timing Ignore constraints for paths crossing the clock domain 
+###################################################################################
+##NET "memc?_wrapper_inst/memc?_mcb_raw_wrapper_inst/selfrefresh_mcb_mode" TIG;
+##NET "c?_pll_lock" TIG;
+##NET "memc?_wrapper_inst/memc?_mcb_raw_wrapper_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_inst/CKE_Train" TIG;
+#NET "ddr2_controller/memc?_wrapper_inst/memc?_mcb_raw_wrapper_inst/selfrefresh_mcb_mode" TIG;
+#NET "ddr2_controller/c?_pll_lock" TIG;
+#NET "ddr2_controller/memc?_wrapper_inst/memc?_mcb_raw_wrapper_inst/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_inst/CKE_Train" TIG;
+     
+#############################################################################
+### Clock constraints                                                        
+#############################################################################
+##NET "memc3_infrastructure_inst/sys_clk_ibufg" TNM_NET = "SYS_CLK3";
+##TIMESPEC "TS_SYS_CLK3" = PERIOD "SYS_CLK3"  5  ns HIGH 50 %;
+#NET "ddr2_controller/memc3_infrastructure_inst/sys_clk_ibufg" TNM_NET = "SYS_CLK1";
+#TIMESPEC "TS_SYS_CLK1" = PERIOD "SYS_CLK1"  5ns HIGH 50 %;
+
+###########################################################################
+# AER INTERFACES
+###########################################################################
+
+#AER_OUT
+NET "out_data[0]" LOC = A20 | IOSTANDARD = LVCMOS33;
+NET "out_data[1]" LOC = J22 | IOSTANDARD = LVCMOS33;
+NET "out_data[2]" LOC = C22 | IOSTANDARD = LVCMOS33;
+NET "out_data[3]" LOC = J20 | IOSTANDARD = LVCMOS33;
+NET "out_data[4]" LOC = C20 | IOSTANDARD = LVCMOS33;
+NET "out_data[5]" LOC = A21 | IOSTANDARD = LVCMOS33;
+NET "out_data[6]" LOC = E22 | IOSTANDARD = LVCMOS33;
+NET "out_data[7]" LOC = B22 | IOSTANDARD = LVCMOS33;
+NET "out_data[8]" LOC = E20 | IOSTANDARD = LVCMOS33;
+NET "out_data[9]" LOC = B21 | IOSTANDARD = LVCMOS33;
+NET "out_data[10]" LOC = G22 | IOSTANDARD = LVCMOS33;
+NET "out_data[11]" LOC = D22 | IOSTANDARD = LVCMOS33;
+NET "out_data[12]" LOC = G20 | IOSTANDARD = LVCMOS33;
+NET "out_data[13]" LOC = D21 | IOSTANDARD = LVCMOS33;
+NET "out_data[14]" LOC = K22 | IOSTANDARD = LVCMOS33;
+NET "out_data[15]" LOC = F22 | IOSTANDARD = LVCMOS33;
+NET "out_req_n" LOC = M20 | IOSTANDARD = LVCMOS33 | PULLUP;
+NET "out_ack_n" LOC = L19 | IOSTANDARD = LVCMOS33;
+
+
+##AER_B
+#NET "rome_b_data[0]" LOC = C10 | IOSTANDARD = LVCMOS33;
+#NET "rome_b_data[1]" LOC = D11 | IOSTANDARD = LVCMOS33;
+#NET "rome_b_data[2]" LOC = C12 | IOSTANDARD = LVCMOS33;
+#NET "rome_b_data[3]" LOC = D15 | IOSTANDARD = LVCMOS33;
+#NET "rome_b_data[4]" LOC = C16 | IOSTANDARD = LVCMOS33;
+#NET "rome_b_data[5]" LOC = B6 | IOSTANDARD = LVCMOS33;
+#NET "rome_b_data[6]" LOC = A6 | IOSTANDARD = LVCMOS33;
+#NET "rome_b_data[7]" LOC = C7 | IOSTANDARD = LVCMOS33;
+#NET "rome_b_data[8]" LOC = A7 | IOSTANDARD = LVCMOS33;
+#NET "rome_b_data[9]" LOC = C9 | IOSTANDARD = LVCMOS33;
+#NET "rome_b_data[10]" LOC = A9 | IOSTANDARD = LVCMOS33;
+#NET "rome_b_data[11]" LOC = B12 | IOSTANDARD = LVCMOS33;
+#NET "rome_b_data[12]" LOC = A12 | IOSTANDARD = LVCMOS33;
+#NET "rome_b_data[13]" LOC = B14 | IOSTANDARD = LVCMOS33;
+#NET "rome_b_data[14]" LOC = A14 | IOSTANDARD = LVCMOS33;
+#NET "rome_b_data[15]" LOC = B16 | IOSTANDARD = LVCMOS33;
+#NET "rome_b_req_n" LOC = A16 | IOSTANDARD = LVCMOS33 | PULLUP;
+#NET "rome_b_ack_n" LOC = B18 | IOSTANDARD = LVCMOS33;
+
+
+##AER_NODE_OUT (CAVIAR COMPATIBLE)
+#NET "node_data[0]" LOC = V22 | IOSTANDARD = LVCMOS33;
+#NET "node_data[1]" LOC = T22 | IOSTANDARD = LVCMOS33;
+#NET "node_data[2]" LOC = P22 | IOSTANDARD = LVCMOS33;
+#NET "node_data[3]" LOC = M22 | IOSTANDARD = LVCMOS33;
+#NET "node_data[4]" LOC = L22 | IOSTANDARD = LVCMOS33;
+#NET "node_data[5]" LOC = H22 | IOSTANDARD = LVCMOS33;
+#NET "node_data[6]" LOC = F22 | IOSTANDARD = LVCMOS33;
+#NET "node_data[7]" LOC = D22 | IOSTANDARD = LVCMOS33;
+#NET "node_data[8]" LOC = D21 | IOSTANDARD = LVCMOS33;
+#NET "node_data[9]" LOC = F21 | IOSTANDARD = LVCMOS33;
+#NET "node_data[10]" LOC = H21 | IOSTANDARD = LVCMOS33;
+#NET "node_data[11]" LOC = L20 | IOSTANDARD = LVCMOS33;
+#NET "node_data[12]" LOC = M21 | IOSTANDARD = LVCMOS33;
+#NET "node_data[13]" LOC = P21 | IOSTANDARD = LVCMOS33;
+#NET "node_data[14]" LOC = T21 | IOSTANDARD = LVCMOS33;
+#NET "node_data[15]" LOC = V21 | IOSTANDARD = LVCMOS33;
+#NET "node_req_n" LOC = K16 | IOSTANDARD = LVCMOS33 | PULLUP;
+#NET "node_out_ack_n" LOC = F16 | IOSTANDARD = LVCMOS33;
+
+##AER_NODE_OUT
+#NET "node_data[0]" LOC = D22 | IOSTANDARD = LVCMOS33;
+#NET "node_data[1]" LOC = D21 | IOSTANDARD = LVCMOS33;
+#NET "node_data[2]" LOC = F22 | IOSTANDARD = LVCMOS33;
+#NET "node_data[3]" LOC = F21 | IOSTANDARD = LVCMOS33;
+#NET "node_data[4]" LOC = H22 | IOSTANDARD = LVCMOS33;
+#NET "node_data[5]" LOC = H21 | IOSTANDARD = LVCMOS33;
+#NET "node_data[6]" LOC = L22 | IOSTANDARD = LVCMOS33;
+#NET "node_data[7]" LOC = L20 | IOSTANDARD = LVCMOS33;
+#NET "node_data[8]" LOC = M22 | IOSTANDARD = LVCMOS33;
+#NET "node_data[9]" LOC = M21 | IOSTANDARD = LVCMOS33;
+#NET "node_data[10]" LOC = P22 | IOSTANDARD = LVCMOS33;
+#NET "node_data[11]" LOC = P21 | IOSTANDARD = LVCMOS33;
+#NET "node_data[12]" LOC = T22 | IOSTANDARD = LVCMOS33;
+#NET "node_data[13]" LOC = T21 | IOSTANDARD = LVCMOS33;
+#NET "node_data[14]" LOC = V22 | IOSTANDARD = LVCMOS33;
+#NET "node_data[15]" LOC = V21 | IOSTANDARD = LVCMOS33;
+#NET "node_req_n" LOC = K16 | IOSTANDARD = LVCMOS33 | PULLUP;
+#NET "node_out_ack_n" LOC = F16 | IOSTANDARD = LVCMOS33;
+
+##AER_NODE_IN (CAVIAR COMPATIBLE)
+#NET "out_data[0]" LOC = V20 | IOSTANDARD = LVCMOS33;
+#NET "out_data[1]" LOC = W22 | IOSTANDARD = LVCMOS33;
+#NET "out_data[2]" LOC = T19 | IOSTANDARD = LVCMOS33;
+#NET "out_data[3]" LOC = P17 | IOSTANDARD = LVCMOS33;
+#NET "out_data[4]" LOC = M17 | IOSTANDARD = LVCMOS33;
+#NET "out_data[5]" LOC = P18 | IOSTANDARD = LVCMOS33;
+#NET "out_data[6]" LOC = D9 | IOSTANDARD = LVCMOS33;
+#NET "out_data[7]" LOC = D10 | IOSTANDARD = LVCMOS33;
+#NET "out_data[8]" LOC = C8 | IOSTANDARD = LVCMOS33;
+#NET "out_data[9]" LOC = R19 | IOSTANDARD = LVCMOS33;
+#NET "out_data[10]" LOC = M18 | IOSTANDARD = LVCMOS33;
+#NET "out_data[11]" LOC = N16 | IOSTANDARD = LVCMOS33;
+#NET "out_data[12]" LOC = T20 | IOSTANDARD = LVCMOS33;
+#NET "out_data[13]" LOC = W20 | IOSTANDARD = LVCMOS33;
+#NET "out_data[14]" LOC = U19 | IOSTANDARD = LVCMOS33;
+#NET "out_data[15]" LOC = C5 | IOSTANDARD = LVCMOS33;
+#NET "out_req_n" LOC = C14 | IOSTANDARD = LVCMOS33 | PULLUP;
+#NET "node_in_ack_n" LOC = D8 | IOSTANDARD = LVCMOS33;
+
+##AER_NODE_IN
+#NET "out_data[0]" LOC = D10 | IOSTANDARD = LVCMOS33;
+#NET "out_data[1]" LOC = C8 | IOSTANDARD = LVCMOS33;
+#NET "out_data[2]" LOC = D9 | IOSTANDARD = LVCMOS33;
+#NET "out_data[3]" LOC = R19 | IOSTANDARD = LVCMOS33;
+#NET "out_data[4]" LOC = P18 | IOSTANDARD = LVCMOS33;
+#NET "out_data[5]" LOC = M18 | IOSTANDARD = LVCMOS33;
+#NET "out_data[6]" LOC = M17 | IOSTANDARD = LVCMOS33;
+#NET "out_data[7]" LOC = N16 | IOSTANDARD = LVCMOS33;
+#NET "out_data[8]" LOC = P17 | IOSTANDARD = LVCMOS33;
+#NET "out_data[9]" LOC = T20 | IOSTANDARD = LVCMOS33;
+#NET "out_data[10]" LOC = T19 | IOSTANDARD = LVCMOS33;
+#NET "out_data[11]" LOC = W20 | IOSTANDARD = LVCMOS33;
+#NET "out_data[12]" LOC = W22 | IOSTANDARD = LVCMOS33;
+#NET "out_data[13]" LOC = U19 | IOSTANDARD = LVCMOS33;
+#NET "out_data[14]" LOC = V20 | IOSTANDARD = LVCMOS33;
+#NET "out_data[15]" LOC = C5 | IOSTANDARD = LVCMOS33;
+#NET "out_req_n" LOC = C14 | IOSTANDARD = LVCMOS33 | PULLUP;
+#NET "node_in_ack_n" LOC = D8 | IOSTANDARD = LVCMOS33;
+
+
+##########################################################
+# 				SPI AER NODE BOARD INTERFACE
+##########################################################
+#NET "SCLK" LOC = J19 | IOSTANDARD = LVCMOS33;
+#NET "MOSI" LOC = F20 | IOSTANDARD = LVCMOS33;
+#NET "NSS" LOC = G19 | IOSTANDARD = LVCMOS33;

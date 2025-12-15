@@ -39,7 +39,7 @@ entity OpenNas_Cascade_STEREO_64ch is
 		i2s_d_in      : in  std_logic;
 		i2s_lr        : in  std_logic;
 		--Spikes Source Selector
-		source_sel    : in  std_logic;
+		-- source_sel    : in  std_logic;
 		--Config Bus
 		config_data   : in  std_logic_vector(CONFIG_BUS_BIT_WIDTH - 1 downto 0);
 		config_addr   : in  std_logic_vector(CONFIG_BUS_BIT_WIDTH - 1 downto 0);
@@ -58,7 +58,7 @@ architecture OpenNas_arq of OpenNas_Cascade_STEREO_64ch is
 	signal i2s_reset : std_logic;
 
 	--Inverted Source selector signal
-	signal source_sel_n : std_logic;
+	-- signal source_sel_n : std_logic;
 
 	--Audio input modules out spikes signal
 	signal spikes_in_left_i2s : std_logic_vector(SPIKE_BUS_BIT_WIDTH - 1 downto 0);
@@ -90,60 +90,61 @@ architecture OpenNas_arq of OpenNas_Cascade_STEREO_64ch is
 begin
 
 	--Inverted source selector signal
-	source_sel_n <= not source_sel;
+	-- source_sel_n <= not source_sel;
 
 	--PDM / I2S reset signals
-	pdm_reset <= rst_n and source_sel;
-	i2s_reset <= rst_n and source_sel_n;
+	-- pdm_reset <= rst_n and source_sel;
+	-- i2s_reset <= rst_n and source_sel_n;
+	i2s_reset <= rst_n;
 
 	--Output spikes connection
 	spikes_out <= spikes_out_rigth & spikes_out_left;
 
-	U_PDM2Spikes_Left : entity work.PDM2Spikes
-		generic Map(
-			CONFIG_ADDRESS => 16#0000#,
-			CONFIG_OFFSET  => 3,        -- Don't change this value
-			SLPF_GL        => 8,
-			SLPF_SAT       => 127,
-			SHPF_GL        => 17,
-			SHPF_SAT       => 65535
-		)
-		Port Map(
-			clk         => clock,
-			rst_n       => pdm_reset,
-			clock_div   => x"07",       --PDM clock: +3,125MHz
-			pdm_clk     => pdm_clk_left,
-			pdm_dat     => pdm_dat_left,
-			--Config Bus
-			config_data => config_data,
-			config_addr => config_addr,
-			config_wren => config_wren,
-			--Spikes Output
-			spikes_out  => spikes_in_left_pdm
-		);
+	-- U_PDM2Spikes_Left : entity work.PDM2Spikes
+	-- 	generic Map(
+	-- 		CONFIG_ADDRESS => 16#0000#,
+	-- 		CONFIG_OFFSET  => 3,        -- Don't change this value
+	-- 		SLPF_GL        => 8,
+	-- 		SLPF_SAT       => 127,
+	-- 		SHPF_GL        => 17,
+	-- 		SHPF_SAT       => 65535
+	-- 	)
+	-- 	Port Map(
+	-- 		clk         => clock,
+	-- 		rst_n       => pdm_reset,
+	-- 		clock_div   => x"07",       --PDM clock: +3,125MHz
+	-- 		pdm_clk     => pdm_clk_left,
+	-- 		pdm_dat     => pdm_dat_left,
+	-- 		--Config Bus
+	-- 		config_data => config_data,
+	-- 		config_addr => config_addr,
+	-- 		config_wren => config_wren,
+	-- 		--Spikes Output
+	-- 		spikes_out  => spikes_in_left_pdm
+	-- 	);
 
-	U_PDM2Spikes_Rigth : entity work.PDM2Spikes
-		Generic Map(
-			CONFIG_ADDRESS => 16#0004#,
-			CONFIG_OFFSET  => 3,        -- Don't change this value
-			SLPF_GL        => 8,
-			SLPF_SAT       => 127,
-			SHPF_GL        => 17,
-			SHPF_SAT       => 65535
-		)
-		Port Map(
-			clk         => clock,
-			rst_n       => pdm_reset,
-			clock_div   => x"07",       --PDM clock: +3,125MHz
-			pdm_clk     => pdm_clk_right,
-			pdm_dat     => pdm_dat_right,
-			--Config Bus
-			config_data => config_data,
-			config_addr => config_addr,
-			config_wren => config_wren,
-			--Spikes Output
-			spikes_out  => spikes_in_right_pdm
-		);
+	-- U_PDM2Spikes_Rigth : entity work.PDM2Spikes
+	-- 	Generic Map(
+	-- 		CONFIG_ADDRESS => 16#0004#,
+	-- 		CONFIG_OFFSET  => 3,        -- Don't change this value
+	-- 		SLPF_GL        => 8,
+	-- 		SLPF_SAT       => 127,
+	-- 		SHPF_GL        => 17,
+	-- 		SHPF_SAT       => 65535
+	-- 	)
+	-- 	Port Map(
+	-- 		clk         => clock,
+	-- 		rst_n       => pdm_reset,
+	-- 		clock_div   => x"07",       --PDM clock: +3,125MHz
+	-- 		pdm_clk     => pdm_clk_right,
+	-- 		pdm_dat     => pdm_dat_right,
+	-- 		--Config Bus
+	-- 		config_data => config_data,
+	-- 		config_addr => config_addr,
+	-- 		config_wren => config_wren,
+	-- 		--Spikes Output
+	-- 		spikes_out  => spikes_in_right_pdm
+	-- 	);
 
 	--I2S Stereo
 	U_I2S_Stereo : entity work.i2s_to_spikes_stereo
@@ -167,23 +168,23 @@ begin
 			spikes_rigth => spikes_in_right_i2s
 		);
 
-	--Spikes source selector left
-	U_SpikesSrcSel_Left : entity work.SpikesSource_Selector
-		Port Map(
-			source_sel  => source_sel,
-			i2s_data    => spikes_in_left_i2s,
-			pdm_data    => spikes_in_left_pdm,
-			spikes_data => spikes_in_left
-		);
+	-- --Spikes source selector left
+	-- U_SpikesSrcSel_Left : entity work.SpikesSource_Selector
+	-- 	Port Map(
+	-- 		source_sel  => source_sel,
+	-- 		i2s_data    => spikes_in_left_i2s,
+	-- 		pdm_data    => spikes_in_left_pdm,
+	-- 		spikes_data => spikes_in_left
+	-- 	);
 
-	--Spikes source selector right
-	U_SpikesSrcSel_Right : entity work.SpikesSource_Selector
-		Port Map(
-			source_sel  => source_sel,
-			i2s_data    => spikes_in_right_i2s,
-			pdm_data    => spikes_in_right_pdm,
-			spikes_data => spikes_in_rigth
-		);
+	-- --Spikes source selector right
+	-- U_SpikesSrcSel_Right : entity work.SpikesSource_Selector
+	-- 	Port Map(
+	-- 		source_sel  => source_sel,
+	-- 		i2s_data    => spikes_in_right_i2s,
+	-- 		pdm_data    => spikes_in_right_pdm,
+	-- 		spikes_data => spikes_in_rigth
+	-- 	);
 
 	--Cascade Filter Bank
 	U_CFBank_2or_64CH_Left : entity work.CFBank_2or_64CH
@@ -199,7 +200,7 @@ begin
 			config_addr => config_addr,
 			config_wren => config_wren,
 			--Output
-			spikes_in   => spikes_in_left,
+			spikes_in   => spikes_in_left_i2s,
 			spikes_out  => spikes_out_left
 		);
 
@@ -216,7 +217,7 @@ begin
 			config_addr => config_addr,
 			config_wren => config_wren,
 			--Output
-			spikes_in   => spikes_in_rigth,
+			spikes_in   => spikes_in_right_i2s,
 			spikes_out  => spikes_out_rigth
 		);
 
